@@ -1,21 +1,24 @@
 {
-  "name": "tnt",
+  "name": "@thombruce/tnt",
   "version": "0.1.0",
   "license": "GPL-3.0",
-  "private": true,
+  "type": "module",
+  "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
-  "devDependencies": {
+  "dependencies": {
     "@nuxt/content": "^2.7.2",
     "@nuxt/image": "^1.0.0-rc.1",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@tailwindcss/typography": "^0.5.9",
+    "daisyui": "^3.5.1"
+  },
+  "devDependencies": {
     "@types/node": "^18.17.3",
-    "daisyui": "^3.5.1",
     "nuxt": "^3.6.5"
   }
 }
