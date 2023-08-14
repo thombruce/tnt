@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const appInfo = await queryContent('/_app/config').only(['name', 'footer']).findOne()
+const appConfig = useAppConfig()
 
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: false }, _dir: '' }] }
@@ -9,7 +9,7 @@ const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: fals
   <div>
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">{{ appInfo.name }}</NuxtLink>
+        <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">{{ appConfig.name }}</NuxtLink>
       </div>
       <ContentNavigation v-slot="{ navigation }">
         <div class="flex-none">
@@ -28,9 +28,9 @@ const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: fals
     </div>
     <footer class="footer footer-center p-10 bg-base-200 text-base-content">
       <div>
-        <div v-html="appInfo.footer.icon" class="fill-current"></div>
+        <div v-html="appConfig.footer.icon" class="fill-current"></div>
         <p class="font-bold whitespace-pre">
-          {{ appInfo.footer.text }}
+          {{ appConfig.footer.text }}
         </p>
         <p>Copyright © {{ new Date().getFullYear() }} - All rights reserved</p>
       </div>
