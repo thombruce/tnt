@@ -44,21 +44,21 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            dist
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
+            packages/docs/dist
+            packages/docs/.nuxt
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('packages/docs/dist') }}
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
         run: yarn install
       - name: Static HTML export with Nuxt
-        run: yarn run generate
+        run: cd packages/docs && yarn run generate
         env:
           NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./dist
+          path: ./packages/docs/dist
 
   # Deployment job
   deploy:
