@@ -23,7 +23,7 @@ const crumbs = computed(() => {
 </script>
 
 <template>
-  <div v-if="crumbs" class="breadcrumbs not-prose text-sm">
+  <div class="breadcrumbs not-prose text-sm">
     <ul>
       <li>
         <NuxtLink to="/">Home</NuxtLink>
