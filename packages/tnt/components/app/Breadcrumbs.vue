@@ -14,8 +14,7 @@ const crumbs = computed(() => {
     param = param.split(/[?#]/)[0]
     path = `${path}/${param}`
     crumbs.push({
-      title: param,
-      path: path,
+      path,
     })
   })
 
@@ -30,7 +29,11 @@ const crumbs = computed(() => {
         <NuxtLink to="/">Home</NuxtLink>
       </li>
       <li v-for="crumb in crumbs" :key="crumb.path">
-        <NuxtLink :to="crumb.path">{{ crumb.title }}</NuxtLink>
+        <NuxtLink :to="crumb.path">
+          <ContentQuery :path="crumb.path" find="one" v-slot="{ data }">
+            {{ data.title }}
+          </ContentQuery>
+        </NuxtLink>
       </li>
     </ul>
   </div>
