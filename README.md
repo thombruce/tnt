@@ -11,17 +11,13 @@ _Configure NUXT_APP_BASE_URL to the name of your repo (e.g. /tnt/) in your envir
 ### Installation
 
 ```sh
-git clone https://github.com/thombruce/tnt.git {your app}
-cd {your app}
-git remote set-url origin {your repo}
-git push -u origin main
+yarn add -D @thombruce/tnt
 ```
 
 ### Updating
 
 ```sh
-git remote add tnt https://github.com/thombruce/tnt.git
-git pull --no-rebase tnt main
+yarn upgrade @thombruce/tnt
 ```
 
 ## Credits
