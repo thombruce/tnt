@@ -1,4 +1,4 @@
-# Breadcrumbs
+# Table of Contents
 
 :breadcrumbs
 
@@ -7,13 +7,17 @@
 ## Usage
 
 ```
-:breadcrumbs
+:table-of-contents
+```
+
+```
+:toc
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:breadcrumbs
+:toc
 ::
 
 :prev-next

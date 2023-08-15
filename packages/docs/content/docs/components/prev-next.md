@@ -1,4 +1,4 @@
-# Breadcrumbs
+# Prev/Next
 
 :breadcrumbs
 
@@ -7,13 +7,13 @@
 ## Usage
 
 ```
-:breadcrumbs
+:prev-next
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:breadcrumbs
+:prev-next
 ::
 
 :prev-next

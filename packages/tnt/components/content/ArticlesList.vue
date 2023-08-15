@@ -1,12 +1,16 @@
 <script setup lang="ts">
 const route = useRoute()
 
+const props = defineProps(['path'])
+
+const path = props.path || route.path
+
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 const query: QueryBuilderParams = {
   where: [
     { navigation: { $ne: false } },
-    { _path: { $contains: route.path } },
-    { _dir: route.path.split('/').slice(-1)[0] }
+    { _path: { $contains: path } },
+    { _dir: path.split('/').slice(-1)[0] }
   ]
 }
 </script>

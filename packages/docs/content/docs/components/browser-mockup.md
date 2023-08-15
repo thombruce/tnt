@@ -1,4 +1,4 @@
-# Breadcrumbs
+# Browser Mockup
 
 :breadcrumbs
 
@@ -7,13 +7,15 @@
 ## Usage
 
 ```
-:breadcrumbs
+::browser-mockup{url="https://tnt.thombruce.com"}
+Hello, world!
+::
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:breadcrumbs
+Hello, world!
 ::
 
 :prev-next
