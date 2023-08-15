@@ -10,5 +10,6 @@ export default defineNuxtConfig({
   },
   content: {
     documentDriven: true,
+    respectPathCase: true,
   }
 })
