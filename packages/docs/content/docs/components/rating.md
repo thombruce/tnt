@@ -1,5 +1,7 @@
 # Rating
 
+:breadcrumbs
+
 Example:
 
 :rating{score="7"}

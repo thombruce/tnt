@@ -1,5 +1,7 @@
 # Progress Bar
 
+:breadcrumbs
+
 Example:
 
 :progress-bar{value="50"}

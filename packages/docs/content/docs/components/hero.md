@@ -1,5 +1,7 @@
 # Hero
 
+:breadcrumbs
+
 Example:
 
 ::hero
