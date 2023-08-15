@@ -1,6 +1,4 @@
----
-title: Hero
----
+# Hero
 
 Example:
 

@@ -1,6 +1,4 @@
----
-title: Rating
----
+# Rating
 
 Example:
 

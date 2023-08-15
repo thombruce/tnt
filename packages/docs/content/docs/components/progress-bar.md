@@ -1,6 +1,4 @@
----
-title: Progress Bar
----
+# Progress Bar
 
 Example:
 
