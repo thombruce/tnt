@@ -2,7 +2,7 @@
 const route = useRoute()
 
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
-const query: QueryBuilderParams = { path: route.path, where: [{ navigation: { $ne: false }, _dir: route.path.slice(1) }] }
+const query: QueryBuilderParams = { path: route.path.replace(/([^/])$/, '$1/'), where: [{ navigation: { $ne: false } }, { _path: { $ne: route.path } }] }
 </script>
 
 <template>
