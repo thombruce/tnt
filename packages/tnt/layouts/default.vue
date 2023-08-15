@@ -13,7 +13,7 @@ const query: QueryBuilderParams = {
 
 <template>
   <main class="my-10">
-    <Breadcrumbs class="not-prose" />
+    <AppBreadcrumbs class="not-prose" />
     <slot />
     <ContentList :query="query">
       <template #default="{ list }">

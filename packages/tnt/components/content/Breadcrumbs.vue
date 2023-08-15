@@ -1,0 +1,3 @@
+<template>
+  <AppBreadcrumbs />
+</template>
