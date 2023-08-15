@@ -2,9 +2,8 @@
 module.exports = {
   daisyui: {
     themes: [
-      "lofi",
-      { dark: { ...require("daisyui/src/theming/themes")["[data-theme=black]"] }
-      }
+      { light: { ...require("daisyui/src/theming/themes")["[data-theme=lofi]"] } },
+      { dark: { ...require("daisyui/src/theming/themes")["[data-theme=black]"] } }
     ]
   }
 }
