@@ -12,12 +12,12 @@ export default defineEventHandler(async (event) => {
     })
 
     const docs = await serverQueryContent(event).sort({ date: -1 }).where({ _partial: false }).find()
-    const blogPosts = docs.filter((doc) => doc?._path?.includes('/docs'))
+    const blogPosts = docs.filter((doc) => doc?._path?.includes(useAppConfig().rss))
 
     for (const doc of blogPosts) {
       feed.item({
         title: doc.title ?? '-',
-        url: `${useAppConfig().hostname}${doc._path}`,
+        url: `${hostname}${doc._path}`,
         date: doc.date,
         description: doc.description,
       })
