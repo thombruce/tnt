@@ -6,7 +6,7 @@
 
 ## Usage
 
-```
+```md
 ::hero
 TNT
 

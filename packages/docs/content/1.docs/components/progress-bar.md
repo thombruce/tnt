@@ -6,7 +6,7 @@
 
 ## Usage
 
-```
+```md
 :progress-bar{value="50"}
 ```
 

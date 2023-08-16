@@ -6,7 +6,7 @@
 
 ## Usage
 
-```
+```md
 ::browser-mockup{url="https://tnt.thombruce.com"}
 Hello, world!
 ::

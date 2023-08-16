@@ -6,11 +6,11 @@
 
 ## Usage
 
-```
+```md
 :articles-list
 ```
 
-```
+```md
 :articles-list{path="/docs"}
 ```
 

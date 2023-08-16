@@ -6,10 +6,10 @@
 
 ## Usage
 
-```
+```md
 ::card
-<h2 class="card-title">Open Source</h2>
-<p>TNT is licensed under GNU GPL-3.0.</p>
+## Open Source
+TNT is licensed under GNU GPL-3.0.
 ::
 ```
 
@@ -17,7 +17,7 @@
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
   :::card
-  # Open Source
+  ## Open Source
   TNT is licensed under GNU GPL-3.0.
   :::
 ::

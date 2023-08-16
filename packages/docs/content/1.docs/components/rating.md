@@ -6,7 +6,7 @@
 
 ## Usage
 
-```
+```md
 :rating{score="7"}
 ```
 

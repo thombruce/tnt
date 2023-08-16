@@ -6,11 +6,11 @@
 
 ## Usage
 
-```
+```md
 :table-of-contents
 ```
 
-```
+```md
 :toc
 ```
 
