@@ -2,23 +2,21 @@ import { serverQueryContent } from '#content/server'
 import { SitemapStream, streamToPromise } from 'sitemap'
 
 export default defineEventHandler(async (event) => {
-  const hostname = useAppConfig().hostname
+  const hostname = useAppConfig().hostname?.replace(/\/$/, '') || 'https://example.com'
 
-  if (hostname) {
-    // Fetch all documents
-    const docs = await serverQueryContent(event).find()
-    const sitemap = new SitemapStream({
-        hostname: useAppConfig().hostname
+  // Fetch all documents
+  const docs = await serverQueryContent(event).find()
+  const sitemap = new SitemapStream({
+    hostname: hostname
+  })
+
+  for (const doc of docs) {
+    sitemap.write({
+      url: doc._path,
+      changefreq: 'monthly'
     })
-
-    for (const doc of docs) {
-        sitemap.write({
-        url: doc._path,
-        changefreq: 'monthly'
-        })
-    }
-    sitemap.end()
-
-    return streamToPromise(sitemap)
   }
+  sitemap.end()
+
+  return streamToPromise(sitemap)
 })
