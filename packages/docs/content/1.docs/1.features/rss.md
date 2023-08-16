@@ -4,7 +4,7 @@
 
 :toc
 
-Generate a basic sitemap by providing a content route.
+Generate a basic RSS feed by providing a content route.
 
 ## Usage
 
