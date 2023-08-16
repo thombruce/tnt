@@ -16,5 +16,10 @@ export default defineNuxtConfig({
         default: 'github-dark'
       }
     },
+  },
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
   }
 })
