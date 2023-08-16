@@ -1,4 +1,4 @@
-# Articles List
+# Breadcrumbs
 
 :breadcrumbs
 
@@ -7,17 +7,13 @@
 ## Usage
 
 ```
-:articles-list
-```
-
-```
-:articles-list{path="/docs"}
+:breadcrumbs
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:articles-list{path="/docs"}
+  :breadcrumbs
 ::
 
 :prev-next

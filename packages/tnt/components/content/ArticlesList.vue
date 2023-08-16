@@ -16,7 +16,8 @@ const query: QueryBuilderParams = {
 </script>
 
 <template>
-    <ContentList :query="query">
+  <div class="inline-block w-full">
+    <ContentList :query="query" class="">
       <template #default="{ list }">
         <ul>
           <li v-for="article in list" :key="article._path">
@@ -26,4 +27,5 @@ const query: QueryBuilderParams = {
       </template>
       <template #not-found></template>
     </ContentList>
+  </div>
 </template>

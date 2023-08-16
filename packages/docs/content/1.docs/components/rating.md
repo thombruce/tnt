@@ -1,4 +1,4 @@
-# Table of Contents
+# Rating
 
 :breadcrumbs
 
@@ -7,17 +7,13 @@
 ## Usage
 
 ```
-:table-of-contents
-```
-
-```
-:toc
+:rating{score="7"}
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:toc
+  :rating{score="7"}
 ::
 
 :prev-next

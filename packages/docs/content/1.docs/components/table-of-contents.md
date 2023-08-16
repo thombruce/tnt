@@ -1,4 +1,4 @@
-# Progress Bar
+# Table of Contents
 
 :breadcrumbs
 
@@ -7,13 +7,17 @@
 ## Usage
 
 ```
-:progress-bar{value="50"}
+:table-of-contents
+```
+
+```
+:toc
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:progress-bar{value="50"}
+  :toc
 ::
 
 :prev-next

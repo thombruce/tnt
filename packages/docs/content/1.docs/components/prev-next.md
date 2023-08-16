@@ -1,4 +1,4 @@
-# Rating
+# Prev/Next
 
 :breadcrumbs
 
@@ -7,13 +7,13 @@
 ## Usage
 
 ```
-:rating{score="7"}
+:prev-next
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:rating{score="7"}
+  :prev-next
 ::
 
 :prev-next

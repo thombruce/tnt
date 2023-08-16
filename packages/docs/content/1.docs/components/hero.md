@@ -18,12 +18,12 @@ A dynamite Nuxt template.
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-::hero
-TNT
+  :::hero
+  TNT
 
-#description
-A dynamite Nuxt template.
-::
+  #description
+  A dynamite Nuxt template.
+  :::
 ::
 
 :prev-next

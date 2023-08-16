@@ -1,4 +1,4 @@
-# Prev/Next
+# Progress Bar
 
 :breadcrumbs
 
@@ -7,13 +7,13 @@
 ## Usage
 
 ```
-:prev-next
+:progress-bar{value="50"}
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-:prev-next
+  :progress-bar{value="50"}
 ::
 
 :prev-next
