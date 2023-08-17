@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/thombruce/tnt/actions/workflows/nuxtjs.yml/badge.svg?branch=main)](https://github.com/thombruce/tnt/actions/workflows/nuxtjs.yml?query=branch%3Amain)
 [![Version](https://img.shields.io/github/v/tag/thombruce/tnt?label=release)](https://github.com/thombruce/tnt/tags)
-[![License](https://img.shields.io/github/license/thombruce/tnt)](https://github.com/thombruce/tnt/blob/main/COPYING)
+[![License](https://img.shields.io/github/license/thombruce/tnt)](https://github.com/thombruce/tnt/blob/main/LICENSE)
 
 ## Usage
 
