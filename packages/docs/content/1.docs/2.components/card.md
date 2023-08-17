@@ -18,7 +18,7 @@ TNT is licensed under GNU GPL-3.0.
 ::browser-mockup{url="https://tnt.thombruce.com"}
   :::card
   ## Open Source
-  TNT is licensed under GNU GPL-3.0.
+  TNT is open source under the [MIT](https://opensource.org/license/mit/) license.
   :::
 ::
 
