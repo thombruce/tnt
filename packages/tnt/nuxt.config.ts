@@ -21,5 +21,8 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/sitemap.xml', '/feed.xml']
     }
-  }
+  },
+  css: [
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ]
 })
