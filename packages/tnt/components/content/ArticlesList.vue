@@ -10,7 +10,8 @@ const query: QueryBuilderParams = {
   where: [
     { navigation: { $ne: false } },
     { _path: { $contains: path } },
-    { _dir: path.split('/').slice(-1)[0] }
+    { _dir: path.split('/').slice(-1)[0] },
+    { _partial: false }
   ]
 }
 </script>
