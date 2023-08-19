@@ -1,10 +1,16 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
+    '@vueuse/nuxt',
+    'nuxt-lodash',
     '@nuxt/image',
     '@nuxt/content',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
+  lodash: {
+    prefix: "_",
+    upperAfterPrefix: false,
+  },
   image: {
     // Options
   },
