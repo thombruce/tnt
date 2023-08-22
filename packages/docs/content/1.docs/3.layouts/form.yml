@@ -15,8 +15,34 @@ body:
       name: fields[file]
       label: File
       labelAlt: "!"
-      hint: Pick a file.
-      hintAlt: Any file.
+      hint: Upload a file
+      hintAlt: Useful for images
+  - select:
+      name: fields[select]
+      label: Select
+      labelAlt: "[]"
+      hint: Pick an option.
+      hintAlt: Any option.
+      placeholder: Pick one
+      options:
+        - text: The Phantom Menace
+          value: ep1
+        - text: Attack of the Clones
+          value: ep2
+        - text: Revenge of the Sith
+          value: ep3
+        - text: A New Hope
+          value: ep4
+        - text: The Empire Strikes Back
+          value: ep5
+        - text: Return of the Jedi
+          value: ep6
+        - text: The Force Awakens
+          value: ep7
+        - text: The Last Jedi
+          value: ep8
+        - text: The Rise of Skywalker
+          value: ep9
   - range:
       name: fields[range]
       label: Range
