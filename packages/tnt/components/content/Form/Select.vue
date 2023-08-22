@@ -18,7 +18,7 @@ defineProps([
       <span v-if="labelAlt" class="label-text-alt" v-html="labelAlt" />
     </label>
     <select :id="id" :name="name" class="select select-bordered">
-      <option v-if="placeholder" disabled selected>{{ placeholder }}</option>
+      <option disabled selected>{{ placeholder }}</option>
       <option v-for="option in options" :value="option.value || option">{{ option.text || option }}</option>
     </select>
     <label v-if="hint || hintAlt" :for="id" class="label">
