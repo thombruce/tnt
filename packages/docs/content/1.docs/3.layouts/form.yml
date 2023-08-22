@@ -1,0 +1,45 @@
+title: Form
+layout: form
+action: /docs/layouts/form
+method: GET
+body:
+  - input:
+      type: text
+      name: fields[name]
+      label: Name
+      labelAlt: "?" # occurs to me we should be able to add dropdown hints
+      hint: You know this.
+      hintAlt: You really do.
+      placeholder: What do people call you?
+  - file:
+      name: fields[file]
+      label: File
+      labelAlt: "!"
+      hint: Pick a file.
+      hintAlt: Any file.
+  - range:
+      name: fields[range]
+      label: Range
+      labelAlt: "<"
+      hint: Slide it up or down.
+      hintAlt: Oh yeah!
+      min: 0
+      max: 100
+      value: 50
+  - rating:
+      name: fields[rating]
+      label: Rating
+      labelAlt: "*****"
+      hint: Slap a score on there.
+      hintAlt: Feels good, right?
+      score: 3
+  - textarea:
+      name: fields[content]
+      label: Content
+      label-alt: Supports Markdown
+      hint: Give a hint.
+      hintAlt: Give alt hint.
+      placeholder: What do you have to say?
+  - button:
+      label: Submit!
+      type: submit
