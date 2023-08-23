@@ -1,10 +1,22 @@
 <script setup>
-defineProps([
-  'name',
-  'label',
-  'checked', // Not valid if 'options' provided
-  'options',
-])
+defineProps({
+  name: {
+    type: String,
+  },
+  label: {
+    type: String,
+  },
+  checked: {
+    type: [Boolean, String],
+  },
+  options: {
+    type: Array,
+  },
+  klass: {
+    type: String,
+    default: 'checkbox'
+  },
+})
 </script>
 
 <template>
@@ -17,7 +29,7 @@ defineProps([
       <div v-for="option in options" class="form-control">
         <label class="label cursor-pointer">
           <span class="label-text">{{ option.label || option }}</span>
-          <input type="checkbox" :name="name" class="checkbox" :value="option.value || option" />
+          <input type="checkbox" :name="name" :class="klass" :value="option.value || option" />
         </label>
       </div>
       <label v-if="hint || hintAlt" :for="id" class="label">
@@ -27,7 +39,7 @@ defineProps([
     </template>
     <label v-else class="label cursor-pointer">
       <span class="label-text">{{ label }}</span>
-      <input :name="name" type="checkbox" :checked="checked" class="checkbox" />
+      <input :name="name" type="checkbox" :checked="checked" :class="klass" />
     </label>
   </div>
 </template>

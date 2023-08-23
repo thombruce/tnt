@@ -82,6 +82,14 @@ body:
       label: Toggle
       checked: false
 
+  - toggle:
+      name: fields[toggleOptions]
+      label: Toggle with options
+      options:
+        - Feature One
+        - Feature Two
+        - Feature Three
+
   - radio:
       name: fields[radio]
       label: Radio
