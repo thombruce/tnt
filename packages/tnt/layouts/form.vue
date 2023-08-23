@@ -7,7 +7,7 @@
       <template #default="{ doc }">
         <h1>{{ doc.title }}</h1>
 
-        <FormWrapper
+        <TntForm
           :action="doc.action"
           :method="doc.method"
           :body="doc.body"
