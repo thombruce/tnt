@@ -11,12 +11,14 @@ body:
       hint: You know this.
       hintAlt: You really do.
       placeholder: What do people call you?
+
   - file:
       name: fields[file]
       label: File
       labelAlt: "!"
       hint: Upload a file
       hintAlt: Useful for images
+
   - select:
       name: fields[select]
       label: Select
@@ -43,6 +45,7 @@ body:
           value: ep8
         - text: The Rise of Skywalker
           value: ep9
+
   - combobox:
       name: fields[combobox]
       label: Combobox
@@ -60,6 +63,32 @@ body:
         - The Force Awakens
         - The Last Jedi
         - The Rise of Skywalker
+
+  - checkbox:
+      name: fields[checkbox]
+      label: Checkbox
+      checked: false
+
+  - checkbox:
+      name: fields[checkboxOptions]
+      label: Checkbox with options
+      options:
+        - Salt
+        - Pepper
+        - Vinegar
+
+  - toggle:
+      name: fields[toggle]
+      label: Toggle
+      checked: false
+
+  - radio:
+      name: fields[radio]
+      label: Radio
+      options:
+        - Red pill
+        - Blue pill
+
   - range:
       name: fields[range]
       label: Range
@@ -69,6 +98,7 @@ body:
       min: 0
       max: 100
       value: 50
+
   - rating:
       name: fields[rating]
       label: Rating
@@ -76,6 +106,7 @@ body:
       hint: Slap a score on there.
       hintAlt: Feels good, right?
       score: 3
+
   - textarea:
       name: fields[content]
       label: Content
@@ -83,6 +114,7 @@ body:
       hint: Give a hint.
       hintAlt: Give alt hint.
       placeholder: What do you have to say?
+
   - button:
       label: Submit!
       type: submit
