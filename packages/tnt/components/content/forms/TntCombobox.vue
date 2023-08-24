@@ -1,6 +1,9 @@
 <script setup>
 const props = defineProps({
-  modelValue: { type: String },
+  modelValue: {
+    type: String,
+    default: ''
+  },
   id: { type: String },
   name: { type: String },
   type: { type: String },

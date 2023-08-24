@@ -1,6 +1,8 @@
 <script setup>
 defineProps({
-  modelValue: {},
+  modelValue: {
+    default: ''
+  },
   id: {},
   name: {},
   type: {

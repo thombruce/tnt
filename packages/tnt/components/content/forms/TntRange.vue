@@ -1,15 +1,21 @@
 <script setup>
-defineProps([
-  'modelValue',
-  'id',
-  'name',
-  'label',
-  'labelAlt',
-  'hint',
-  'hintAlt',
-  'min', // Should have default 0
-  'max', // Should have default 100
-])
+defineProps({
+  modelValue: {
+    default: []
+  },
+  id: {},
+  name: {},
+  label: {},
+  labelAlt: {},
+  hint: {},
+  hintAlt: {},
+  min: {
+    default: 0
+  },
+  max: {
+    default: 100
+  },
+})
 
 defineEmits([
   'update:modelValue'

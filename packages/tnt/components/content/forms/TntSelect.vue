@@ -1,15 +1,17 @@
 <script setup>
-defineProps([
-  'modelValue',
-  'id',
-  'name',
-  'label',
-  'labelAlt',
-  'hint',
-  'hintAlt',
-  'placeholder',
-  'options', // array of strings or { value, text } objects
-])
+defineProps({
+  modelValue: {
+    default: ''
+  },
+  id: {},
+  name: {},
+  label: {},
+  labelAlt: {},
+  hint: {},
+  hintAlt: {},
+  placeholder: {},
+  options: {}, // array of strings or { value, text } objects
+})
 
 defineEmits([
   'update:modelValue'
