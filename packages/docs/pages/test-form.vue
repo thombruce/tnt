@@ -4,7 +4,6 @@
   const TntRadioModel = ref(undefined)
   const TntRangeModel = ref(50)
   const TntRatingModel = ref(undefined)
-  const TntTextareaModel = ref('This is a text area')
 </script>
 
 <template>
