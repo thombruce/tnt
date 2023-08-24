@@ -1,13 +1,21 @@
 <script setup>
-defineProps([
-  'id',
-  'name',
-  'type',
-  'label',
-  'labelAlt',
-  'hint',
-  'hintAlt',
-  'placeholder',
+defineProps({
+  modelValue: {},
+  id: {},
+  name: {},
+  type: {
+    type: String,
+    default: 'text'
+  },
+  label: {},
+  labelAlt: {},
+  hint: {},
+  hintAlt: {},
+  placeholder: {},
+})
+
+defineEmits([
+  'update:modelValue'
 ])
 </script>
 
@@ -18,6 +26,8 @@ defineProps([
       <span v-if="labelAlt" class="label-text-alt" v-html="labelAlt" />
     </label>
     <input
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
       :id="id"
       :name="name"
       :type="type"

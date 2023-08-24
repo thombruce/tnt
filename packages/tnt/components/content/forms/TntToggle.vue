@@ -18,3 +18,5 @@ defineProps({
 <template>
   <Checkbox v-bind="$props" klass="toggle" />
 </template>
+
+<!-- TODO: Multi binding -->

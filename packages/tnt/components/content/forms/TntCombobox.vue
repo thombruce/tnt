@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps({
+  modelValue: { type: String },
   id: { type: String },
   name: { type: String },
   type: { type: String },
@@ -17,7 +18,17 @@ const props = defineProps({
   },
 })
 
-const query = ref('')
+const emit = defineEmits([
+  'update:modelValue'
+])
+
+const value = computed({
+  get() { return props.modelValue },
+  async set(value) {
+    await emit('update:modelValue', value)
+    search()
+  }
+})
 
 const results = ref([])
 
@@ -28,17 +39,11 @@ const isActive = ref(false)
 // It should return:
 // array of strings
 function search() {
-  if (query.value == '') {
+  if (value.value == '') {
     results.value = []
     return
   }
-  results.value = props.filter(props.options, query.value)
-}
-
-function populate(value) {
-  query.value = value
-  search()
-  isActive.value = false
+  results.value = props.filter(props.options, value.value)
 }
 
 const target = ref(null)
@@ -54,6 +59,7 @@ onClickOutside(target, () => isActive.value = false)
     </label>
     <div class="join join-vertical" ref="target">
       <input
+        v-model="value"
         :id="id"
         :name="name"
         :class="`input input-bordered${isActive && results.length ? ' join-item' : ''}`"
@@ -61,12 +67,10 @@ onClickOutside(target, () => isActive.value = false)
         :placeholder="placeholder"
         autocomplete="off"
         @focus="isActive = true"
-        @input="search()"
-        v-model="query"
       />
       <ul class="menu bg-base-200 join-item" v-show="isActive && results.length">
         <li v-for="result in results" :key="result">
-          <a @click="populate(result)">
+          <a @click="value = result;isActive = false">
             {{ result }}
           </a>
         </li>

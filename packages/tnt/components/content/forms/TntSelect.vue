@@ -1,5 +1,6 @@
 <script setup>
 defineProps([
+  'modelValue',
   'id',
   'name',
   'label',
@@ -9,6 +10,10 @@ defineProps([
   'placeholder',
   'options', // array of strings or { value, text } objects
 ])
+
+defineEmits([
+  'update:modelValue'
+])
 </script>
 
 <template>
@@ -17,7 +22,13 @@ defineProps([
       <span v-if="label" class="label-text" v-html="label" />
       <span v-if="labelAlt" class="label-text-alt" v-html="labelAlt" />
     </label>
-    <select :id="id" :name="name" class="select select-bordered">
+    <select
+      :value="modelValue"
+      @change="$emit('update:modelValue', $event.target.value)"
+      :id="id"
+      :name="name"
+      class="select select-bordered"
+    >
       <option disabled selected>{{ placeholder }}</option>
       <option v-for="option in options" :value="option.value || option">{{ option.text || option }}</option>
     </select>

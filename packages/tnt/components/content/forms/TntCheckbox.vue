@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+  modelValue: {},
   name: {
     type: String,
   },
@@ -17,6 +18,10 @@ defineProps({
     default: 'checkbox'
   },
 })
+
+defineEmits([
+  'update:modelValue'
+])
 </script>
 
 <template>
@@ -39,7 +44,15 @@ defineProps({
     </template>
     <label v-else class="label cursor-pointer">
       <span class="label-text">{{ label }}</span>
-      <input :name="name" type="checkbox" :checked="checked" :class="klass" />
+      <input
+        :checked="modelValue"
+        @change="$emit('update:modelValue', $event.target.checked)"
+        :name="name"
+        type="checkbox"
+        :class="klass"
+      />
     </label>
   </div>
 </template>
+
+<!-- TODO: Multi binding -->
