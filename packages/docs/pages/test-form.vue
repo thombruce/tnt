@@ -1,7 +1,7 @@
 <script setup>
   const TntCheckboxWithOptionsModel = ref(undefined)
   const TntToggleWithOptionsModel = ref(undefined)
-  const TntRadioModel = ref(undefined)
+  const TntRadioWithOptionsModel = ref(undefined)
   const TntRangeModel = ref(50)
   const TntRatingModel = ref(undefined)
 </script>
@@ -18,8 +18,8 @@
       TODO: Radio requires `options`.
       Rework radio so that it works with single values.
     -->
-    <TntRadio v-model="TntRadioModel" :options="['One', 'Two']" />
-    {{ TntRadioModel }}
+    <TntRadio v-model="TntRadioWithOptionsModel" :options="['One', 'Two']" />
+    {{ TntRadioWithOptionsModel }}
 
     <TntRange v-model="TntRangeModel" />
     {{ TntRangeModel }}
