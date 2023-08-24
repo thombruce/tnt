@@ -32,9 +32,6 @@
     <TntRating v-model="TntRatingModel" />
     {{ TntRatingModel }}
 
-    <TntTextarea v-model="TntTextareaModel" />
-    {{ TntTextareaModel }}
-
     <TntButton />
   </TntForm>
 </template>
