@@ -2,7 +2,6 @@
   const TntCheckboxWithOptionsModel = ref(undefined)
   const TntToggleWithOptionsModel = ref(undefined)
   const TntRadioWithOptionsModel = ref(undefined)
-  const TntRangeModel = ref(50)
   const TntRatingModel = ref(undefined)
 </script>
 
@@ -20,9 +19,6 @@
     -->
     <TntRadio v-model="TntRadioWithOptionsModel" :options="['One', 'Two']" />
     {{ TntRadioWithOptionsModel }}
-
-    <TntRange v-model="TntRangeModel" />
-    {{ TntRangeModel }}
 
     <!--
       TODO: Rating uses Radio.
