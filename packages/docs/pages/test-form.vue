@@ -1,7 +1,5 @@
 <script setup>
-  const TntCheckboxModel = ref(true)
   const TntCheckboxWithOptionsModel = ref(undefined)
-  const TntToggleModel = ref(undefined)
   const TntToggleWithOptionsModel = ref(undefined)
   const TntRadioModel = ref(undefined)
   const TntRangeModel = ref(50)
@@ -11,24 +9,26 @@
 
 <template>
   <TntForm>
-    <TntCheckbox v-model="TntCheckboxModel" />
-    {{ TntCheckboxModel }}
-
-    <TntCheckbox v-model="TntCheckboxWithOptionsModel" /><!-- With options -->
+    <TntCheckbox v-model="TntCheckboxWithOptionsModel" :options="['One', 'Two', 'Three']" /><!-- With options -->
     {{ TntCheckboxWithOptionsModel }}
 
-    <TntToggle v-model="TntToggleModel" />
-    {{ TntToggleModel }}
-
-    <TntToggle v-model="TntToggleWithOptionsModel" /><!-- With options -->
+    <TntToggle v-model="TntToggleWithOptionsModel" :options="['One', 'Two', 'Three']" /><!-- With options -->
     {{ TntToggleWithOptionsModel }}
 
-    <TntRadio v-model="TntRadioModel" />
+    <!--
+      TODO: Radio requires `options`.
+      Rework radio so that it works with single values.
+    -->
+    <TntRadio v-model="TntRadioModel" :options="['One', 'Two']" />
     {{ TntRadioModel }}
 
     <TntRange v-model="TntRangeModel" />
     {{ TntRangeModel }}
 
+    <!--
+      TODO: Rating uses Radio.
+      Rework so that TntRating uses TntRadio.
+    -->
     <TntRating v-model="TntRatingModel" />
     {{ TntRatingModel }}
 
