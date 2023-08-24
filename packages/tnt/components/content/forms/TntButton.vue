@@ -1,12 +1,16 @@
 <script setup>
-defineProps([
-  'type',
-  'label',
-])
+defineProps({
+  type: {
+    type: String,
+    default: 'submit'
+  },
+  label: {
+    type: String,
+    default: 'Submit'
+  }
+})
 </script>
 
 <template>
-  <div class="mt-5">
-    <button :type="type" class="btn btn-primary">{{ label }}</button>
-  </div>
+  <button :type="type" class="btn btn-primary">{{ label }}</button>
 </template>
