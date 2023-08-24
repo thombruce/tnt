@@ -1,0 +1,19 @@
+# Forms
+
+:breadcrumbs
+
+:toc
+
+## Usage
+
+```md
+:tnt-input{type="text" name="fields[name]" label="Name" labelAlt="?" hint="This is how your name will be displayed" hintAlt="e.g. Clark Kent" placeholder="What do people call you?"}
+```
+
+## Example
+
+::browser-mockup{url="https://tnt.thombruce.com"}
+  :tnt-input{type="text" name="fields[name]" label="Name" labelAlt="?" hint="This is how your name will be displayed" hintAlt="e.g. Clark Kent" placeholder="What do people call you?"}
+::
+
+:prev-next

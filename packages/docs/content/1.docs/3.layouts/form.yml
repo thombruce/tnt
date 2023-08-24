@@ -1,0 +1,128 @@
+title: Form
+layout: form
+action: /docs/layouts/form
+method: GET
+body:
+  - input:
+      type: text
+      name: fields[name]
+      label: Name
+      labelAlt: "?" # occurs to me we should be able to add dropdown hints
+      hint: You know this.
+      hintAlt: You really do.
+      placeholder: What do people call you?
+
+  - file:
+      name: fields[file]
+      label: File
+      labelAlt: "!"
+      hint: Upload a file
+      hintAlt: Useful for images
+
+  - select:
+      name: fields[select]
+      label: Select
+      labelAlt: "[]"
+      hint: Pick an option.
+      hintAlt: Any option.
+      placeholder: Pick one
+      options:
+        - text: The Phantom Menace
+          value: ep1
+        - text: Attack of the Clones
+          value: ep2
+        - text: Revenge of the Sith
+          value: ep3
+        - text: A New Hope
+          value: ep4
+        - text: The Empire Strikes Back
+          value: ep5
+        - text: Return of the Jedi
+          value: ep6
+        - text: The Force Awakens
+          value: ep7
+        - text: The Last Jedi
+          value: ep8
+        - text: The Rise of Skywalker
+          value: ep9
+
+  - combobox:
+      name: fields[combobox]
+      label: Combobox
+      labelAlt: "???"
+      hint: Search for something
+      hintAlt: Look it up
+      placeholder: Star Wars...
+      options:
+        - The Phantom Menace
+        - Attack of the Clones
+        - Revenge of the Sith
+        - A New Hope
+        - The Empire Strikes Back
+        - Return of the Jedi
+        - The Force Awakens
+        - The Last Jedi
+        - The Rise of Skywalker
+
+  - checkbox:
+      name: fields[checkbox]
+      label: Checkbox
+      checked: false
+
+  - checkbox:
+      name: fields[checkboxOptions]
+      label: Checkbox with options
+      options:
+        - Salt
+        - Pepper
+        - Vinegar
+
+  - toggle:
+      name: fields[toggle]
+      label: Toggle
+      checked: false
+
+  - toggle:
+      name: fields[toggleOptions]
+      label: Toggle with options
+      options:
+        - Feature One
+        - Feature Two
+        - Feature Three
+
+  - radio:
+      name: fields[radio]
+      label: Radio
+      options:
+        - Red pill
+        - Blue pill
+
+  - range:
+      name: fields[range]
+      label: Range
+      labelAlt: "<"
+      hint: Slide it up or down.
+      hintAlt: Oh yeah!
+      min: 0
+      max: 100
+      value: 50
+
+  - rating:
+      name: fields[rating]
+      label: Rating
+      labelAlt: "*****"
+      hint: Slap a score on there.
+      hintAlt: Feels good, right?
+      score: 3
+
+  - textarea:
+      name: fields[content]
+      label: Content
+      label-alt: Supports Markdown
+      hint: Give a hint.
+      hintAlt: Give alt hint.
+      placeholder: What do you have to say?
+
+  - button:
+      label: Submit!
+      type: submit
