@@ -4,5 +4,3 @@
     klass="toggle"
   />
 </template>
-
-<!-- TODO: Multi binding -->
