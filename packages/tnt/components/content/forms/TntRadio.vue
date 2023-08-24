@@ -21,7 +21,14 @@ defineEmits([
       <div v-for="option in options" class="form-control">
         <label class="label cursor-pointer">
           <span class="label-text">{{ option.label || option }}</span>
-          <input type="radio" :name="name" class="radio" :value="option.value || option" />
+          <input
+            :checked="modelValue == (option.value || option)"
+            @change="$emit('update:modelValue', $event.target.value)"
+            :value="option.value || option"
+            type="radio"
+            :name="name"
+            class="radio"
+          />
         </label>
       </div>
       <label v-if="hint || hintAlt" :for="id" class="label">
@@ -41,5 +48,3 @@ defineEmits([
     </label>
   </div>
 </template>
-
-<!-- TODO: Multi binding -->

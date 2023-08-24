@@ -1,12 +1,16 @@
 <script setup>
 defineProps([
+  'modelValue',
   'id',
   'name',
   'label',
   'labelAlt',
   'hint',
   'hintAlt',
-  'score',
+])
+
+defineEmits([
+  'update:modelValue'
 ])
 </script>
 
@@ -17,11 +21,16 @@ defineProps([
       <span v-if="labelAlt" class="label-text-alt" v-html="labelAlt" />
     </label>
     <div :id="id" class="rating">
-      <input type="radio" :name="name" class="mask mask-star" :checked="score == 1" />
-      <input type="radio" :name="name" class="mask mask-star" :checked="score == 2" />
-      <input type="radio" :name="name" class="mask mask-star" :checked="score == 3" />
-      <input type="radio" :name="name" class="mask mask-star" :checked="score == 4" />
-      <input type="radio" :name="name" class="mask mask-star" :checked="score == 5" />
+      <template v-for="option in _range(1,6)">
+        <input
+          :checked="modelValue == option"
+          @change="$emit('update:modelValue', $event.target.value)"
+          :value="option"
+          type="radio"
+          :name="name"
+          class="mask mask-star"
+        />
+      </template>
     </div>
     <label v-if="hint || hintAlt" :for="id" class="label">
       <span v-if="hint" class="label-text-alt" v-html="hint" />
@@ -29,5 +38,3 @@ defineProps([
     </label>
   </div>
 </template>
-
-<!-- TODO: Multi binding -->
