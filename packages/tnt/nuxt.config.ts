@@ -3,16 +3,12 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     'nuxt-lodash',
-    '@nuxt/image',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
   ],
   lodash: {
     prefix: "_",
     upperAfterPrefix: false,
-  },
-  image: {
-    // Options
   },
   content: {
     documentDriven: true,
