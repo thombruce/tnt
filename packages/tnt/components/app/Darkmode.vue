@@ -1,9 +1,5 @@
 <script setup>
-import { themeChange } from 'theme-change'
-
-onMounted(() => {
-  themeChange(false)
-})
+const colorMode = useColorMode()
 </script>
 
 <template>
@@ -13,10 +9,8 @@ onMounted(() => {
     </button>
     <dialog id="my_modal_1" class="modal">
       <form method="dialog" class="modal-box">
-        <h3 class="font-bold text-lg">Dark Mode</h3>
-        <button class="btn" data-set-theme="" data-act-class="ACTIVECLASS">System</button>
-        <button class="btn" data-set-theme="light" data-act-class="ACTIVECLASS">Light</button>
-        <button class="btn" data-set-theme="dark" data-act-class="ACTIVECLASS">Dark</button>
+        <h3 class="font-bold text-lg">Settings</h3>
+        <TntRadio v-model="$colorMode.preference" label="Dark Mode" :options="['system', 'light', 'dark']" />
       </form>
       <form method="dialog" class="modal-backdrop">
         <button>close</button>

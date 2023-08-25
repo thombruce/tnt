@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     'nuxt-lodash',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
   ],
   lodash: {
     prefix: "_",
@@ -23,6 +24,9 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/sitemap.xml', '/feed.xml']
     }
+  },
+  colorMode: {
+    dataValue: 'theme'
   },
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css'
