@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <main class="my-10">
     <ContentDoc>
@@ -16,3 +13,7 @@
     </ContentDoc>
   </main>
 </template>
+
+<!--
+  TODO: Support markdown. Maybe by adding a <slot /> to TntForm as alternative to :body
+-->
