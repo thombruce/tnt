@@ -3,12 +3,16 @@ defineProps({
   modelValue: {
     default: []
   },
+  id: {},
   name: {
     type: String,
   },
   label: {
     type: String,
   },
+  labelAlt: {},
+  hint: {},
+  hintAlt: {},
   checked: {
     type: [Boolean, String],
   },

@@ -3,8 +3,12 @@ defineProps({
   modelValue: {
     default: ''
   },
+  id: {},
   name: {},
   label: {},
+  labelAlt: {},
+  hint: {},
+  hintAlt: {},
   options: {},
 })
 
