@@ -12,7 +12,16 @@ export default defineNuxtConfig({
     upperAfterPrefix: false,
   },
   content: {
-    documentDriven: true,
+    documentDriven: {
+      globals: {
+        config: {
+          where: {
+            _id: 'content:_config.yml'
+          }
+        }
+      },
+      layoutFallbacks: ['config'],
+    },
     respectPathCase: true,
     highlight: {
       theme: {
