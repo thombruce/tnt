@@ -1,9 +1,6 @@
 <script setup>
 const props = defineProps({
-  modelValue: {
-    type: String,
-    default: ''
-  },
+  modelValue: { type: String },
   id: { type: String },
   name: { type: String },
   type: { type: String },
@@ -25,10 +22,16 @@ const emit = defineEmits([
   'update:modelValue'
 ])
 
+const query = ref('')
+
 const value = computed({
-  get() { return props.modelValue },
+  get() { return props.modelValue || query.value },
   async set(value) {
-    await emit('update:modelValue', value)
+    if (props.modelValue != undefined){
+      await emit('update:modelValue', value)
+    } else {
+      query.value = value
+    }
     search()
   }
 })
