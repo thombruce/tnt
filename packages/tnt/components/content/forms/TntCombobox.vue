@@ -16,6 +16,10 @@ const props = defineProps({
       return items.filter(item => String(item).startsWith(query))
     }
   },
+  debounce: {
+    type: [Boolean, Object],
+    default: false
+  }
 })
 
 const emit = defineEmits([
@@ -44,13 +48,25 @@ const isActive = ref(false)
 // array of strings (the options), query string
 // It should return:
 // array of strings
-function search() {
+async function search() {
   if (value.value == '') {
     results.value = []
     return
   }
-  results.value = props.filter(props.options, value.value)
+  if (props.debounce) {
+    debounced()
+  } else {
+    results.value = await props.filter(props.options, value.value)
+  }
 }
+
+const debounced = _debounce(
+  async () => {
+    results.value = await props.filter(props.options, value.value)
+  },
+  props.debounce?.wait || 250,
+  { 'maxWait': props.debounce?.maxWait || 1000 }
+)
 
 const target = ref(null)
 
