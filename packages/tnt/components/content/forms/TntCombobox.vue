@@ -1,10 +1,19 @@
 <script setup>
 const props = defineProps({
   modelValue: { type: String },
-  id: { type: String },
-  name: { type: String },
-  type: { type: String },
   label: { type: String },
+  id: {
+    type: String,
+    default: (props) => `${_camelCase(props.label || 'combobox')}-${_uniqueId()}`
+  },
+  name: {
+    type: String,
+    default: (props) => _camelCase(props.label || 'combobox')
+  },
+  type: {
+    type: String,
+    default: 'text'
+  },
   labelAlt: { type: String },
   hint: { type: String },
   hintAlt: { type: String },
@@ -85,7 +94,7 @@ onClickOutside(target, () => isActive.value = false)
         :id="id"
         :name="name"
         :class="`input input-bordered${isActive && results.length ? ' join-item' : ''}`"
-        type="text"
+        :type="type"
         :placeholder="placeholder"
         autocomplete="off"
         @focus="isActive = true"

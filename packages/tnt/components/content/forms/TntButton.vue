@@ -1,12 +1,12 @@
 <script setup>
-defineProps({
+const props = defineProps({
   type: {
     type: String,
     default: 'submit'
   },
   label: {
     type: String,
-    default: 'Submit'
+    default: (props) => _startCase(props.type)
   }
 })
 </script>

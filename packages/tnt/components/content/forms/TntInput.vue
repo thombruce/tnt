@@ -1,15 +1,21 @@
 <script setup>
-defineProps({
+const props = defineProps({
   modelValue: {
     default: ''
   },
-  id: {},
-  name: {},
+  label: { type: String },
+  id: {
+    type: String,
+    default: (props) => `${_camelCase(props.label || 'input')}-${_uniqueId()}`
+  },
+  name: {
+    type: String,
+    default: (props) => _camelCase(props.label || 'input')
+  },
   type: {
     type: String,
     default: 'text'
   },
-  label: {},
   labelAlt: {},
   hint: {},
   hintAlt: {},
