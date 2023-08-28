@@ -17,5 +17,8 @@ const { page } = useContent()
         <PrevNext v-if="page.prevnext !== false" />
       </template>
     </ContentDoc>
+    <ClientOnly>
+      <Cusdis />
+    </ClientOnly>
   </main>
 </template>
