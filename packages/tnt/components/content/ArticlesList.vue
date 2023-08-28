@@ -26,7 +26,9 @@ const query: QueryBuilderParams = {
           </li>
         </ul>
       </template>
-      <template #not-found></template>
+      <template #not-found>
+        <p>No articles found.</p>
+      </template>
     </ContentList>
   </div>
 </template>
