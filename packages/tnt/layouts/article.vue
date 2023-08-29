@@ -11,7 +11,7 @@ const { taxonomies } = useAppConfig()
 
         <Breadcrumbs v-if="page.breadcrumbs !== false" />
 
-        <div class="flex mt-5">
+        <div v-if="_keys(doc).some(k => taxonomies.includes(k))" class="flex mt-5">
           <template v-for="tax in taxonomies">
             <TagList v-if="doc[tax]" :taxonomy="tax" class="flex-1" />
           </template>
