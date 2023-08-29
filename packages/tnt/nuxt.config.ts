@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    'nuxt-icon',
   ],
   lodash: {
     prefix: "_",
@@ -28,7 +29,4 @@ export default defineNuxtConfig({
   colorMode: {
     dataValue: 'theme'
   },
-  css: [
-    '@fortawesome/fontawesome-svg-core/styles.css'
-  ]
 })
