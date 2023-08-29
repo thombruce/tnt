@@ -1,9 +1,23 @@
 <script setup lang="ts">
 import { useRuntimeConfig } from '#app'
-import { useContent, useContentHead, useRequestEvent } from '#imports'
+import { useContent, useContentHead, useRequestEvent, useRoute, useAppConfig } from '#imports'
 
-const { contentHead } = useRuntimeConfig().public.content
-const { page, layout } = useContent()
+const { contentHead } = useRuntimeConfig().public.content as any
+const { page } = useContent()
+
+const { path } = useRoute()
+const { taxonomies } = useAppConfig()
+const items = path.replace(/(?:^\/|\/$)/, '').split('/')
+
+let layout = ''
+
+if (taxonomies.includes(items[0]) && items[1]) {
+  layout = 'tags'
+} else if (taxonomies.includes(items[0])) {
+  layout = 'taxonomy'
+} else {
+  layout = useContent().layout
+}
 
 // Page not found, set correct status code on SSR
 if (!(page as any).value && process.server) {

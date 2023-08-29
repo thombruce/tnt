@@ -11,16 +11,14 @@ const { page } = useContent()
         <Breadcrumbs v-if="page.breadcrumbs !== false" />
 
         <ContentRenderer :value="doc" />
-
-        <ArticlesList />
       </template>
+
       <template #empty>
         <h1>{{ page.title }}</h1>
 
         <Breadcrumbs v-if="page.breadcrumbs !== false" />
-
-        <ArticlesList />
       </template>
     </ContentDoc>
+    <ArticlesList />
   </main>
 </template>
