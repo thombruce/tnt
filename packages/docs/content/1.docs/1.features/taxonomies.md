@@ -12,10 +12,10 @@ Support for custom taxonomies.
 
 ```md
 ---
-authors:
-  - Thom Bruce
+authors: Thom Bruce
 categories:
   - Features
+  - Components
 tags:
   - example
   - articles
