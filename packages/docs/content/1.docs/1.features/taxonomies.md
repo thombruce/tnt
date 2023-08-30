@@ -23,18 +23,20 @@ tags:
 ---
 ```
 
-You can also configure your own taxonomies in your project's `app.config.ts`:
+You can add additional taxonomies in your project's `app.config.ts`:
 
 ```ts [app.config.ts]
 export default defineAppConfig({
   // ...
   taxonomies: [
-    'categories',
-    'tags',
+    'books',
+    'movies',
     'contributors',
   ],
   // ...
 })
 ```
+
+_These will extend the list of taxonomies supported, not replace it._
 
 :prev-next
