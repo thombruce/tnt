@@ -1,21 +1,21 @@
 <script setup>
-const { path } = useRoute()
+const { path, params } = useRoute()
 
-const items = path.replace(/(?:^\/|\/$)/, '').split('/')
+const taxonomy = params.tag[0]
 
-const contentQuery = await queryContent().where({ [items[0].substring(1)]: { $exists: true } }).only(items[0].substring(1)).find()
+const contentQuery = await queryContent().where({ [taxonomy]: { $exists: true } }).only(taxonomy).find()
 
-const tags = _uniq(contentQuery.map((c) => c[items[0].substring(1)]).flat())
+const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 </script>
 
 <template>
   <main class="my-10">
-    <h1>{{ _startCase(items[0].substring(1)) }}</h1>
+    <h1>{{ _startCase(taxonomy) }}</h1>
     <Breadcrumbs />
 
     <ul v-if="tags.length">
       <li v-for="tag of tags" :key="tag">
-        <NuxtLink :to="`/${items[0]}/${tag}`">{{ tag }}</NuxtLink>
+        <NuxtLink :to="`${path}/${tag}`">{{ tag }}</NuxtLink>
       </li>
     </ul>
   </main>

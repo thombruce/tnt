@@ -1,19 +1,20 @@
 <script setup>
-const { path } = useRoute()
+const { params } = useRoute()
 
-const items = path.replace(/(?:^\/|\/$)/, '').split('/')
+const taxonomy = params.tag[0]
+const tag = params.tag[1]
 </script>
 
 <template>
   <main class="my-10">
-    <h1>{{ _startCase(items[1]) }}</h1>
+    <h1>{{ _startCase(tag) }}</h1>
     <Breadcrumbs />
 
-    <ContentQuery path="/" :where="{ [items[0].substring(1)]: {
+    <ContentQuery path="/" :where="{ [taxonomy]: {
       $containsAny: [
-        items[1],
-        _kebabCase(items[1]),
-        _startCase(items[1])
+        tag,
+        _kebabCase(tag),
+        _startCase(tag)
       ]
     } }">
       <template #default="{ data }">

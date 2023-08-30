@@ -5,15 +5,17 @@ definePageMeta({
   },
 })
 
-const { path } = useRoute()
+const { params } = useRoute()
 const { taxonomies } = useAppConfig()
-const items = path.replace(/(?:^\/|\/$)/, '').split('/')
+
+const taxonomy = params.tag[0]
+const tag = params.tag[1]
 
 let layout = ''
 
-if (taxonomies.includes(items[0].substring(1)) && items[1]) {
+if (taxonomies.includes(taxonomy) && tag) {
   layout = 'tags'
-} else if (taxonomies.includes(items[0].substring(1))) {
+} else if (taxonomies.includes(taxonomy)) {
   layout = 'taxonomy'
 }
 </script>
