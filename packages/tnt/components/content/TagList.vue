@@ -8,7 +8,10 @@ const { page } = useContent()
     <dt>{{ _startCase(taxonomy) }}</dt>
     <dd>
       <ul>
-        <li v-for="tag in page[taxonomy]" :key="tag">
+        <li v-if="typeof page[taxonomy] === 'string'">
+          <NuxtLink :to="`/~${taxonomy}/${_kebabCase(page[taxonomy])}`">{{ page[taxonomy] }}</NuxtLink>
+        </li>
+        <li v-else v-for="tag in page[taxonomy]" :key="tag">
           <NuxtLink :to="`/~${taxonomy}/${_kebabCase(tag)}`">{{ tag }}</NuxtLink>
         </li>
       </ul>
