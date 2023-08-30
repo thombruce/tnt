@@ -31,14 +31,7 @@ const crumbs = computed(() => {
       </li>
       <li v-for="crumb in crumbs" :key="crumb.path">
         <NuxtLink :to="crumb.path">
-          <ContentQuery :path="crumb.path" find="one">
-            <template #default="{ data }">
-              {{ data.title }}
-            </template>
-            <template #not-found>
-              {{ _startCase(crumb.param) }}
-            </template>
-          </ContentQuery>
+          {{ _startCase(crumb.param) }}
         </NuxtLink>
       </li>
     </ul>

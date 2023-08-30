@@ -9,7 +9,7 @@ const { page } = useContent()
     <dd>
       <ul>
         <li v-for="tag in page[taxonomy]" :key="tag">
-          <NuxtLink :to="`/${taxonomy}/${_kebabCase(tag)}`">{{ tag }}</NuxtLink>
+          <NuxtLink :to="`/~${taxonomy}/${_kebabCase(tag)}`">{{ tag }}</NuxtLink>
         </li>
       </ul>
     </dd>
