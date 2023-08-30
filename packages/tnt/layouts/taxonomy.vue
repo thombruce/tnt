@@ -15,7 +15,7 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 
     <ul v-if="tags.length">
       <li v-for="tag of tags" :key="tag">
-        <NuxtLink :to="`${path}/${tag}`">{{ tag }}</NuxtLink>
+        <NuxtLink :to="`${path}/${_kebabCase(tag)}`">{{ tag }}</NuxtLink>
       </li>
     </ul>
   </main>
