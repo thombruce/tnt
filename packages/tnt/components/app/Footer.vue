@@ -12,7 +12,7 @@ const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: fals
       <p class="font-bold whitespace-pre">
         {{ appConfig.footer.text }}
       </p>
-      <p>Copyright © {{ new Date().getFullYear() }} - All rights reserved</p>
+      <p>{{ appConfig.footer.copyright }}</p>
     </div>
 
     <div class="hidden">
