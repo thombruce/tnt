@@ -1,20 +1,15 @@
 <script setup>
-const { fullPath } = useRoute()
+const { path } = useRoute()
 
 const crumbs = computed(() => {
-  let params = fullPath.startsWith('/')
-    ? fullPath.substring(1).split('/')
-    : fullPath.split('/')
-  params = params.filter(item => item)
+  const params = path.split('/').filter(item => item)
 
-  const crumbs = []
-  let path = ''
-
-  params.forEach((param, index) => {
-    param = param.split(/[?#]/)[0]
-    path = `${path}/${param}`
+  let crumbs = []
+  let p = ''
+  params.forEach((param) => {
+    p = `${p}/${param}`
     crumbs.push({
-      path,
+      path: p,
       param,
     })
   })
