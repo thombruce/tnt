@@ -1,5 +1,5 @@
 <script setup>
-const { params } = useRoute()
+const { path, params } = useRoute()
 
 const taxonomy = params.tag[0]
 const tag = params.tag[1]
@@ -7,8 +7,22 @@ const tag = params.tag[1]
 
 <template>
   <main class="my-10">
-    <h1>{{ _startCase(tag) }}</h1>
-    <Breadcrumbs />
+    <ContentQuery :path="path" :where="{ _path: path }">
+      <template #default="{ data }">
+        <h1>{{ data[0].title }}</h1>
+
+        <Breadcrumbs v-if="data[0].breadcrumbs !== false" />
+
+        <ContentRenderer :value="data[0]">
+          <template #empty>
+          </template>
+        </ContentRenderer>
+      </template>
+      <template #not-found>
+        <h1>{{ _startCase(tag) }}</h1>
+        <Breadcrumbs />
+      </template>
+    </ContentQuery>
 
     <ContentQuery path="/" :where="{ [taxonomy]: {
       $containsAny: [

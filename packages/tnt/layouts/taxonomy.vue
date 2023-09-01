@@ -10,8 +10,22 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 
 <template>
   <main class="my-10">
-    <h1>{{ _startCase(taxonomy) }}</h1>
-    <Breadcrumbs />
+    <ContentQuery :path="path" :where="{ _path: path }">
+      <template #default="{ data }">
+        <h1>{{ data[0].title }}</h1>
+
+        <Breadcrumbs v-if="data[0].breadcrumbs !== false" />
+
+        <ContentRenderer :value="data[0]">
+          <template #empty>
+          </template>
+        </ContentRenderer>
+      </template>
+      <template #not-found>
+        <h1>{{ _startCase(taxonomy) }}</h1>
+        <Breadcrumbs />
+      </template>
+    </ContentQuery>
 
     <ul v-if="tags.length">
       <li v-for="tag of tags" :key="tag">
