@@ -20,6 +20,13 @@ export default defineNuxtConfig({
         default: 'github-dark'
       }
     },
+    sources: {
+      authors: {
+        prefix: '/_data',
+        driver: 'fs',
+        base: 'data'
+      }
+    },
   },
   nitro: {
     prerender: {
