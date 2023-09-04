@@ -1,6 +1,6 @@
 {
   "name": "tnt",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "private": true,
   "workspaces": [
     "packages/*"
