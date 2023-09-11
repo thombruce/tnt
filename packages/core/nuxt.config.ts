@@ -12,11 +12,6 @@ export default defineNuxtConfig({
     prefix: "_",
     upperAfterPrefix: false,
   },
-  nitro: {
-    prerender: {
-      routes: ['/sitemap.xml', '/feed.xml']
-    }
-  },
   colorMode: {
     dataValue: 'theme'
   },
