@@ -1,18 +1,11 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: [
-    '@vueuse/nuxt',
-    'nuxt-lodash',
-    '@nuxt/content',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@nuxt/image',
-    'nuxt-icon',
+  extends: [
+    '@thombruce/tnt'
   ],
-  lodash: {
-    prefix: "_",
-    upperAfterPrefix: false,
-  },
+  modules: [
+    '@nuxt/content',
+  ],
   content: {
     documentDriven: true,
     respectPathCase: true,
@@ -38,8 +31,5 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/sitemap.xml', '/feed.xml']
     }
-  },
-  colorMode: {
-    dataValue: 'theme'
   },
 })
