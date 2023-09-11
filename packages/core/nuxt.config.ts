@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     'nuxt-lodash',
-    '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/image',
@@ -12,27 +11,6 @@ export default defineNuxtConfig({
   lodash: {
     prefix: "_",
     upperAfterPrefix: false,
-  },
-  content: {
-    documentDriven: true,
-    respectPathCase: true,
-    highlight: {
-      theme: {
-        default: 'github-dark'
-      }
-    },
-    sources: {
-      authors: {
-        prefix: '/_data',
-        driver: 'fs',
-        base: 'data'
-      }
-    },
-    markdown: {
-      tags: {
-        img: 'TntImg'
-      }
-    },
   },
   nitro: {
     prerender: {
