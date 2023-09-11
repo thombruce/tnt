@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@nuxt/image',
     'nuxt-icon',
   ],
   lodash: {
@@ -25,6 +26,11 @@ export default defineNuxtConfig({
         prefix: '/_data',
         driver: 'fs',
         base: 'data'
+      }
+    },
+    markdown: {
+      tags: {
+        img: 'TntImg'
       }
     },
   },
