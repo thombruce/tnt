@@ -12,7 +12,8 @@ const query: QueryBuilderParams = {
     { _path: { $contains: path } },
     { _dir: path.split('/').slice(-1)[0] },
     { _partial: false }
-  ]
+  ],
+  sort: [{ date: -1 }]
 }
 </script>
 
