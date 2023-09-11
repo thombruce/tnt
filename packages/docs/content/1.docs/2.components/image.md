@@ -1,3 +1,7 @@
+---
+image: /uploads/tamanna-rumee-9ROY8fXmTto-unsplash.jpg
+---
+
 # Image
 
 :breadcrumbs
