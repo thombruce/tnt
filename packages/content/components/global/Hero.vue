@@ -8,7 +8,7 @@ defineProps(['image'])
     <div class="hero-content text-center text-neutral-content">
       <div class="max-w-md">
         <h1 class="mb-5 text-5xl font-bold"><slot /></h1>
-        <slot name="description" />
+        <ContentSlot :use="$slots.description" unwrap="p" />
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@ defineProps(['image'])
 <div class="card flex-1">
   <figure v-if="image"><img :src="image" /></figure>
   <div class="card-body not-prose">
-    <slot />
+    <ContentSlot :use="$slots.default" />
   </div>
 </div>
 </template>
