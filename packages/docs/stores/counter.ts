@@ -1,6 +1,4 @@
 import { useStorage } from '@vueuse/core'
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', () => {
   const count = useStorage('pinia-demo-count', 0)

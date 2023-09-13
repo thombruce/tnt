@@ -13,6 +13,11 @@ export default defineNuxtConfig({
     prefix: "_",
     upperAfterPrefix: false,
   },
+  pinia: {
+    autoImports: [
+      'defineStore',
+    ],
+  },
   colorMode: {
     dataValue: 'theme'
   },
