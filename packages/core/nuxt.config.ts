@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@nuxtjs/i18n',
     '@nuxt/image',
     'nuxt-icon',
   ],
@@ -20,5 +21,8 @@ export default defineNuxtConfig({
   },
   colorMode: {
     dataValue: 'theme'
+  },
+  i18n: {
+    vueI18n: './i18n.config.ts'
   },
 })
