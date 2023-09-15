@@ -1,5 +1,5 @@
 export const en = {
-  welcome: 'Docs Welcome',
-  settings: 'Docs Settings',
-  language: 'Docs Language',
+  welcome: 'Welcome',
+  settings: 'Settings',
+  language: 'Language',
 }

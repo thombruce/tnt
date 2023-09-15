@@ -1,7 +1,7 @@
 {
-  "tnt": {
-    "welcome": "Base Bienvenue",
-    "settings": "Base Paramètres",
-    "language": "Base Langue"
+  "tnti18n": {
+    "welcome": "Bienvenue",
+    "settings": "Paramètres",
+    "language": "Langue"
   }
 }
