@@ -6,14 +6,14 @@ const { locale } = useI18n()
 <template>
   <div>
     <button onclick="my_modal_1.showModal()">
-      {{ $t('settings') }}
+      {{ $t('settings', $t('tnt.settings')) }}
     </button>
 
     <dialog id="my_modal_1" class="modal">
       <TntForm method="dialog" class="modal-box">
-        <h3 class="font-bold text-lg">{{ $t('settings') }}</h3>
+        <h3 class="font-bold text-lg">{{ $t('settings', $t('tnt.settings')) }}</h3>
 
-        <TntSelect v-model="locale" :label="$t('language')" :options="['en','fr']" />
+        <TntSelect v-model="locale" :label="$t('language', $t('tnt.language'))" :options="['en','fr']" />
 
         <TntRadio v-model="$colorMode.preference" label="Dark Mode" :options="['system', 'light', 'dark']" />
       </TntForm>
