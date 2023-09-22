@@ -12,11 +12,17 @@ useHead({
 </script>
 
 <template>
-  <div>
-    <AppNavbar />
-    <div class="prose mx-auto">
-      <NuxtPage />
+  <div class="drawer">
+    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
+    <div class="drawer-content flex flex-col">
+      <AppNavbar />
+
+      <div class="prose mx-auto">
+        <NuxtPage />
+      </div>
+
+      <AppFooter />
     </div>
-    <AppFooter />
+    <AppSidebar />
   </div>
 </template>
