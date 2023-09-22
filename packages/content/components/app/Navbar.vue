@@ -7,15 +7,15 @@ const appConfig = useAppConfig()
     <div class="flex-1">
       <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">{{ appConfig.name }}</NuxtLink>
     </div>
-    <ContentNavigation v-slot="{ navigation }">
-      <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1">
+        <ContentNavigation v-slot="{ navigation }">
           <li v-for="link of navigation" :key="link._path">
             <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
           </li>
-          <li><AppSettings /></li>
-        </ul>
-      </div>
-    </ContentNavigation>
+        </ContentNavigation>
+        <li><AppSettings /></li>
+      </ul>
+    </div>    
   </div>
 </template>

@@ -7,5 +7,10 @@ const appConfig = useAppConfig()
     <div class="flex-1">
       <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">{{ appConfig.name }}</NuxtLink>
     </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1">
+        <li><AppSettings /></li>
+      </ul>
+    </div>
   </div>
 </template>
