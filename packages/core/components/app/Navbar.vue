@@ -20,8 +20,12 @@ const { toggleDrawer } = useUIStore()
 
     <div class="flex-none hidden lg:block">
       <ul class="menu menu-horizontal">
-        <li><NuxtLink to="/settings">{{ i18n('settings', i18n('tnti18n.settings')) }}</NuxtLink></li>
+        <!-- Empty -->
       </ul>
+    </div>
+
+    <div class="flex-none">
+      <AppSettings />
     </div>
   </div>
 </template>

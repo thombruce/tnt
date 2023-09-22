@@ -2,8 +2,6 @@
 import { storeToRefs } from 'pinia'
 import { useUIStore } from '@/stores/ui'
 
-useColorMode()
-
 const { name, umami } = useAppConfig()
 
 useHead({

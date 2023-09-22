@@ -25,9 +25,11 @@ const { toggleDrawer } = useUIStore()
             <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
           </li>
         </ContentNavigation>
-
-        <li><NuxtLink to="/settings">{{ i18n('settings', i18n('tnti18n.settings')) }}</NuxtLink></li>
       </ul>
+    </div>
+
+    <div class="flex-none">
+      <AppSettings />
     </div>
   </div>
 </template>
