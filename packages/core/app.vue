@@ -1,4 +1,6 @@
 <script setup>
+useColorMode()
+
 const { name, umami } = useAppConfig()
 
 useHead({
@@ -13,7 +15,7 @@ useHead({
 
 <template>
   <div class="drawer">
-    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
+    <input id="tnt-drawer" type="checkbox" class="drawer-toggle" /> 
     <div class="drawer-content flex flex-col">
       <AppNavbar />
 
