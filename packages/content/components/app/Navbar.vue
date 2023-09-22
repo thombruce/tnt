@@ -1,5 +1,5 @@
 <script setup>
-import { useUIStore } from '@/stores/ui'
+import { useUIStore } from '@thombruce/tnt/stores/ui'
 
 const appConfig = useAppConfig()
 
@@ -20,6 +20,12 @@ const { toggleDrawer } = useUIStore()
 
     <div class="flex-none hidden lg:block">
       <ul class="menu menu-horizontal">
+        <ContentNavigation v-slot="{ navigation }">
+          <li v-for="link of navigation" :key="link._path">
+            <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
+          </li>
+        </ContentNavigation>
+
         <li><NuxtLink to="/settings">{{ i18n('settings', i18n('tnti18n.settings')) }}</NuxtLink></li>
       </ul>
     </div>

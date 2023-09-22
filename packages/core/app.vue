@@ -1,4 +1,7 @@
 <script setup>
+import { storeToRefs } from 'pinia'
+import { useUIStore } from '@/stores/ui'
+
 useColorMode()
 
 const { name, umami } = useAppConfig()
@@ -11,11 +14,14 @@ useHead({
     [{ async: true, src: `https://${umami.domain}/script.js`, 'data-website-id': `${umami.id}` }] :
     undefined
 })
+
+const { drawer } = storeToRefs(useUIStore())
 </script>
 
 <template>
   <div class="drawer">
-    <input id="tnt-drawer" type="checkbox" class="drawer-toggle" /> 
+    <input id="tnt-drawer" type="checkbox" class="drawer-toggle" v-model="drawer" />
+
     <div class="drawer-content flex flex-col">
       <AppNavbar />
 
