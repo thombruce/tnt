@@ -1,4 +1,10 @@
 <script setup>
+definePageMeta({
+  documentDriven: {
+    page: false
+  },
+})
+
 const { locale } = useI18n()
 </script>
 
