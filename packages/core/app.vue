@@ -23,9 +23,9 @@ const { drawer } = storeToRefs(useUIStore())
     <div class="drawer-content flex flex-col">
       <AppNavbar />
 
-      <div class="prose mx-auto">
+      <main class="my-10 mx-auto">
         <NuxtPage />
-      </div>
+      </main>
 
       <AppFooter />
     </div>

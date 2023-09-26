@@ -6,7 +6,7 @@ const tag = params.tag[1]
 </script>
 
 <template>
-  <main class="my-10">
+  <article class="prose w-screen px-3">
     <ContentQuery :path="path" :where="{ _path: path }">
       <template #default="{ data }">
         <h1>{{ data[0].title }}</h1>
@@ -42,5 +42,5 @@ const tag = params.tag[1]
         <p>No articles found.</p>
       </template>
     </ContentQuery>
-  </main>
+  </article>
 </template>

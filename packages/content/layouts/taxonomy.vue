@@ -9,7 +9,7 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 </script>
 
 <template>
-  <main class="my-10">
+  <article class="prose w-screen px-3">
     <ContentQuery :path="path" :where="{ _path: path }">
       <template #default="{ data }">
         <h1>{{ data[0].title }}</h1>
@@ -32,5 +32,5 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
         <NuxtLink :to="`${path}/${_kebabCase(tag)}`">{{ tag }}</NuxtLink>
       </li>
     </ul>
-  </main>
+  </article>
 </template>

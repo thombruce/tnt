@@ -1,5 +1,5 @@
 <template>
-  <main class="my-10">
+  <article class="prose w-screen px-3">
     <ContentDoc>
       <template #default="{ doc }">
         <h1>{{ doc.title }}</h1>
@@ -11,7 +11,7 @@
         />
       </template>
     </ContentDoc>
-  </main>
+  </article>
 </template>
 
 <!--

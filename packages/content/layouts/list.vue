@@ -3,7 +3,7 @@ const { page } = useContent()
 </script>
 
 <template>
-  <main class="my-10">
+  <article class="prose w-screen px-3">
     <ContentDoc>
       <template #default="{ doc }">
         <h1>{{ doc.title }}</h1>
@@ -20,5 +20,5 @@ const { page } = useContent()
       </template>
     </ContentDoc>
     <ArticlesList />
-  </main>
+  </article>
 </template>

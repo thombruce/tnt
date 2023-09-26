@@ -4,7 +4,7 @@ const { taxonomies } = useAppConfig()
 </script>
 
 <template>
-  <main class="my-10">
+  <article class="prose w-screen px-3">
     <ContentDoc>
       <template #default="{ doc }">
         <h1>{{ doc.title }}</h1>
@@ -27,5 +27,5 @@ const { taxonomies } = useAppConfig()
     <ClientOnly>
       <Cusdis />
     </ClientOnly>
-  </main>
+  </article>
 </template>

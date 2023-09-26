@@ -1,5 +1,5 @@
 <template>
-  <main class="my-10">
+  <article class="prose w-screen px-3">
     <slot />
-  </main>
+  </article>
 </template>

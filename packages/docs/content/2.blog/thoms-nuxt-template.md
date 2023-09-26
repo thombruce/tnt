@@ -5,6 +5,8 @@ date: 2023-09-02T18:13:17Z
 layout: article
 ---
 
+![Red Presents](/uploads/tamanna-rumee-9ROY8fXmTto-unsplash.jpg)
+
 Welcome to TNT, a Nuxt template by me - Thom. Hence the name. The short form is just a lot catchier, a bit more... explosive.
 
 You don't need me to go over TNT's [features](/docs/features) here, or the [components](/docs/components) and [layouts](/docs/layouts) on offer, because those are all documented elsewhere. Instead, let's talk motivation and the future of TNT.
