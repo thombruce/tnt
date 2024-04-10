@@ -16,19 +16,17 @@ useHead({
 const { drawer } = storeToRefs(useUIStore())
 </script>
 
-<template>
-  <div class="drawer">
-    <input id="tnt-drawer" type="checkbox" class="drawer-toggle" v-model="drawer" />
+<template lang="pug">
+.drawer
+  input.drawer-toggle(id="tnt-drawer" type="checkbox" v-model="drawer")
 
-    <div class="drawer-content flex flex-col">
-      <AppNavbar />
+  .drawer-content.flex.flex-col
+    AppNavbar
 
-      <main class="my-10 mx-auto">
-        <NuxtPage />
-      </main>
+    main.my-10.mx-auto
+      NuxtPage
 
-      <AppFooter />
-    </div>
-    <AppSidebar />
-  </div>
+    AppFooter
+
+  AppSidebar
 </template>

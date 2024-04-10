@@ -22,7 +22,8 @@
     "daisyui": "^3.5.1",
     "nuxt-icon": "^0.5.0",
     "nuxt-lodash": "^2.5.0",
-    "pinia": "^2.1.6"
+    "pinia": "^2.1.6",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@types/node": "^18.17.3",
