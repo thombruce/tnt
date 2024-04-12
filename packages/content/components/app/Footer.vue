@@ -6,7 +6,7 @@ const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: fals
 </script>
 
 <template>
-  <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+  <footer class="footer footer-center p-10">
     <div>
       <div v-html="appConfig.footer.icon" class="fill-current"></div>
       <p class="font-bold whitespace-pre">
