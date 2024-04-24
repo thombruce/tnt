@@ -7626,9 +7626,9 @@ pacote@^17.0.5:
     tar "^6.1.11"
 
 pacote@^18.0.0:
-  version "18.0.1"
-  resolved "https://registry.yarnpkg.com/pacote/-/pacote-18.0.1.tgz#f34714cec6e32d045be4c82201546746bbb61cf9"
-  integrity sha512-w/XQHx1sJVxZYHqlQjQr15e6zi50yz/WY/L+9sDS7a+7+HmICWdfsNx1Kk89g4I3PkCRYgYRH8//ed4h2/zaaw==
+  version "18.0.2"
+  resolved "https://registry.yarnpkg.com/pacote/-/pacote-18.0.2.tgz#ac78b9d6a441788f024c14179e193e170a8af964"
+  integrity sha512-oMxnZQCOZqFZyEh5oJtpMepoub4hoI6EfMUCdbwkBqkFuJ1Dwfz5IMQD344dKbwPPBNZWKwGL/kNvmDubZyvug==
   dependencies:
     "@npmcli/git" "^5.0.0"
     "@npmcli/installed-package-contents" "^2.0.1"
