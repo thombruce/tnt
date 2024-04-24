@@ -3,7 +3,7 @@ const { name } = useAppConfig()
 </script>
 
 <template lang="pug">
-div.w-full.navbar.sticky.top-0.z-40
+div.w-full.navbar.sticky.top-0.z-40.bg-base-100
   .flex-1
     // Empty
 
