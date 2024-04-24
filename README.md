@@ -20,6 +20,15 @@ yarn add -D @thombruce/tnt
 yarn upgrade @thombruce/tnt
 ```
 
+## Development
+
+```sh
+git add -A
+git commit -m "My changes"
+git push
+lerna publish
+```
+
 ## Credits
 
 Dynamite emoji used as a Favicon is licensed under the CC-BY 4.0 license by Twitter Inc.
