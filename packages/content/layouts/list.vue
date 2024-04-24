@@ -19,6 +19,6 @@ const { page } = useContent()
         <Breadcrumbs v-if="page.breadcrumbs !== false" />
       </template>
     </ContentDoc>
-    <ArticlesList />
+    <Navigation />
   </article>
 </template>

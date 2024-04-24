@@ -1,4 +1,4 @@
-# Articles List
+# Navigation
 
 :breadcrumbs
 
@@ -7,17 +7,17 @@
 ## Usage
 
 ```md
-:articles-list
+:navigation
 ```
 
 ```md
-:articles-list{path="/docs"}
+:navigation{path="/docs"}
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-  :articles-list{path="/docs"}
+  :navigation{path="/docs"}
 ::
 
 :prev-next
