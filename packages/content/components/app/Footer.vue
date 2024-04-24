@@ -8,11 +8,7 @@ const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: fals
 <template>
   <footer class="footer footer-center p-10">
     <div>
-      <div v-html="appConfig.footer.icon" class="fill-current"></div>
-      <p class="font-bold whitespace-pre">
-        {{ appConfig.footer.text }}
-      </p>
-      <p>{{ appConfig.footer.copyright }}</p>
+      <p>{{ appConfig.copyright }}</p>
     </div>
 
     <div class="hidden">

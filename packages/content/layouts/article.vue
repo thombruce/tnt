@@ -24,8 +24,5 @@ const { taxonomies } = useAppConfig()
         <PrevNext v-if="page.prevnext !== false" />
       </template>
     </ContentDoc>
-    <ClientOnly>
-      <Cusdis />
-    </ClientOnly>
   </article>
 </template>

@@ -2,15 +2,12 @@
 import { storeToRefs } from 'pinia'
 import { useUIStore } from '@/stores/ui'
 
-const { name, umami } = useAppConfig()
+const { name } = useAppConfig()
 
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - ${name}` : name
-  },
-  script: umami && process.env.NODE_ENV === 'production' ?
-    [{ async: true, src: `https://${umami.domain}/script.js`, 'data-website-id': `${umami.id}` }] :
-    undefined
+  }
 })
 
 const { drawer } = storeToRefs(useUIStore())
