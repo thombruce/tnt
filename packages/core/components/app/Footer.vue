@@ -1,9 +1,8 @@
 <script setup lang="ts">
-const appConfig = useAppConfig()
+const { copyright } = useAppConfig()
 </script>
 
 <template lang="pug">
 footer.footer.footer-center.p-10
-  div
-    p {{ appConfig.copyright }}
+  small {{ copyright }}
 </template>

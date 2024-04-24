@@ -5,23 +5,16 @@ import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 const query: QueryBuilderParams = { path: '/', where: [{ navigation: { $eq: false }, _dir: '' }] }
 </script>
 
-<template>
-  <footer class="footer footer-center p-10">
-    <div>
-      <p>{{ appConfig.copyright }}</p>
-    </div>
+<template lang="pug">
+footer.footer.footer-center.p-10
+  small {{ appConfig.copyright }}
 
-    <div class="hidden">
-      <ContentList :query="query">
-        <template #default="{ list }">
-          <ul>
-            <li v-for="article in list" :key="article._path">
-              <NuxtLink :to="article._path">{{ article.title }}</NuxtLink>
-            </li>
-          </ul>
-        </template>
-        <template #not-found></template>
-      </ContentList>
-    </div>
-  </footer>
+  .hidden
+    ContentList(:query="query")
+      template(#default="{ list }")
+        ul
+          li(v-for="article in list" :key="article._path")
+            NuxtLink(:to="article._path") {{ article.title }}
+
+      template(#not-found)
 </template>

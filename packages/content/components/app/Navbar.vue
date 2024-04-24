@@ -1,25 +1,20 @@
 <script setup>
-const appConfig = useAppConfig()
+const { name } = useAppConfig()
 </script>
 
-<template>
-  <div class="w-full navbar sticky top-0 z-40">
-    <div class="flex-1 px-2 mx-2">
-      <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">{{ appConfig.name }}</NuxtLink>
-    </div>
+<template lang="pug">
+.w-full.navbar.sticky.top-0.z-40
+  .flex-1
+    // Empty
 
-    <div class="flex-none hidden lg:block">
-      <ul class="menu menu-horizontal">
-        <ContentNavigation v-slot="{ navigation }">
-          <li v-for="link of navigation" :key="link._path">
-            <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
-          </li>
-        </ContentNavigation>
-      </ul>
-    </div>
+  .flex-1.justify-center
+    NuxtLink.btn.btn-ghost.normal-case.text-xl(to="/") {{ name }}
 
-    <div class="flex-none">
-      <AppSettings />
-    </div>
-  </div>
+  .flex-1.justify-end
+    div(class="flex-none hidden lg:block")
+      ul.menu.menu-horizontal
+        ContentNavigation(v-slot="{ navigation }")
+          li(v-for="link of navigation" :key="link._path")
+            NuxtLink(:to="link._path") {{ link.title }}
+    AppSettings
 </template>
