@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     FountainJS,
     '@nuxt/content',
   ],
+  css: ['@thombruce/fountainjs/src/fountain.css'],
   content: {
     documentDriven: true,
     respectPathCase: true,

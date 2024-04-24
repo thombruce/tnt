@@ -1,6 +1,6 @@
 import { defineTransformer } from '@nuxt/content/transformers'
 
-import fountain from './parser'
+import fountain from '@thombruce/fountainjs'
 
 export default defineTransformer({
   name: 'transformer',

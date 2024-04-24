@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^2.12.1",
+    "@thombruce/fountainjs": "^2.0.0",
     "@thombruce/tnt": "^0.16.0",
     "rss": "^1.2.2",
     "sitemap": "^7.1.1"
