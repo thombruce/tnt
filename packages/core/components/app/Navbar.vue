@@ -6,26 +6,19 @@ const appConfig = useAppConfig()
 const { toggleDrawer } = useUIStore()
 </script>
 
-<template>
-  <div class="w-full navbar sticky top-0 z-40">
-    <div class="flex-none lg:hidden">
-      <button @click="toggleDrawer()" class="btn btn-square btn-ghost">
-        <Icon name="fa:bars" />
-      </button>
-    </div> 
+<template lang="pug">
+div.w-full.navbar.sticky.top-0.z-40
+  div(class="flex-none lg:hidden")
+    button.btn.btn-square.btn-ghost(@click="toggleDrawer()")
+      Icon(name="fa:bars")
 
-    <div class="flex-1 px-2 mx-2">
-      <NuxtLink to="/" class="btn btn-ghost normal-case text-xl">{{ appConfig.name }}</NuxtLink>
-    </div>
+  div.flex-1.px-2.mx-2
+    NuxtLink.btn.btn-ghost.normal-case.text-xl(to="/") {{ appConfig.name }}
 
-    <div class="flex-none hidden lg:block">
-      <ul class="menu menu-horizontal">
-        <!-- Empty -->
-      </ul>
-    </div>
+  div(class="flex-none hidden lg:block")
+    ul.menu.menu-horizontal
+      //- Empty
 
-    <div class="flex-none">
-      <AppSettings />
-    </div>
-  </div>
+  .flex-none
+    AppSettings
 </template>

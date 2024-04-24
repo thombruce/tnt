@@ -2,10 +2,8 @@
 const appConfig = useAppConfig()
 </script>
 
-<template>
-  <footer class="footer footer-center p-10">
-    <div>
-      <p>{{ appConfig.copyright }}</p>
-    </div>
-  </footer>
+<template lang="pug">
+footer.footer.footer-center.p-10
+  div
+    p {{ appConfig.copyright }}
 </template>

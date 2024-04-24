@@ -20,12 +20,8 @@ if (taxonomies.includes(taxonomy) && tag) {
 }
 </script>
 
-<template>
-  <div>
-    <NuxtLayout :name="layout as string || 'default'">
-      <!--
-        Rendering handled by layout.
-      -->
-    </NuxtLayout>
-  </div>
+<template lang="pug">
+div
+  NuxtLayout(:name="layout as string || 'default'")
+    // Rendering handled by layout.
 </template>

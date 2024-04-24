@@ -3,26 +3,20 @@ const colorMode = useColorMode()
 const { locale } = useI18n()
 </script>
 
-<template>
-  <div>
-    <button onclick="my_modal_1.showModal()" class="btn btn-square btn-ghost">
-      <Icon name="fa:cog" />
-    </button>
+<template lang="pug">
+div
+  button.btn.btn-square.btn-ghost(onclick="my_modal_1.showModal()")
+    Icon(name="fa:cog")
 
-    <dialog id="my_modal_1" class="modal">
-      <TntForm method="dialog" class="modal-box">
-        <h3 class="font-bold text-lg">{{ i18n('settings', i18n('tnti18n.settings')) }}</h3>
+  dialog#my_modal_1.modal
+    TntForm.modal-box(method="dialog")
+      h3.font-bold.text-lg {{ i18n('settings', i18n('tnti18n.settings')) }}
 
-        <ClientOnly>
-          <TntSelect v-model="locale" :label="i18n('language', i18n('tnti18n.language'))" :options="['en','fr']" />
-        </ClientOnly>
+      ClientOnly
+        TntSelect(v-model="locale" :label="i18n('language', i18n('tnti18n.language'))" :options="['en','fr']")
 
-        <TntRadio v-model="$colorMode.preference" label="Dark Mode" :options="['system', 'light', 'dark']" />
-      </TntForm>
+      TntRadio(v-model="$colorMode.preference" label="Dark Mode" :options="['system', 'light', 'dark']")
 
-      <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-      </form>
-    </dialog>
-  </div>
+    form.modal-backdrop(method="dialog")
+      button close
 </template>
