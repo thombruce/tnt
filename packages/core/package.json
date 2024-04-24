@@ -11,7 +11,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@nuxt/image": "^1.0.0-rc.1",
+    "@nuxt/image": "^1.6.0",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/i18n": "^8.0.0-rc.4",
     "@nuxtjs/tailwindcss": "^6.12.0",
