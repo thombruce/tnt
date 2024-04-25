@@ -1803,11 +1803,6 @@
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
 
-"@thombruce/fountainjs@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@thombruce/fountainjs/-/fountainjs-2.0.0.tgz#6e543152f4862d917cbaad3cbb390fc2a8ce0ac8"
-  integrity sha512-tDS0ayTcMDqa8M4vEzZhtFwmMGJhn/e9vt1O3zICFMSP4C6UBzoGEMycEN4cMYdiUbyZ2VDJGWtOXXQvG8qLlg==
-
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
