@@ -8,6 +8,7 @@ export default defineTransformer({
   parse (_id, rawContent: String) {
     return {
       _id,
+      layout: 'fountain',
       body: fountain.parse(rawContent),
     }
   }
