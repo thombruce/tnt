@@ -11,6 +11,6 @@ const props = defineProps({
 })
 </script>
 
-<template>
-  <button :type="type" class="btn btn-primary">{{ label }}</button>
+<template lang="pug">
+button(:type="type" class="btn btn-primary") {{ label }}
 </template>
