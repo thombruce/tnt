@@ -25,10 +25,14 @@ const tag = params.tag[1]
     </ContentQuery>
 
     <ContentQuery path="/" :where="{ [taxonomy]: {
-      $containsAny: [
-        tag,
-        _kebabCase(tag),
-        _startCase(tag)
+      $or: [
+        { $icontains: _lowerCase(tag) },
+        {
+          $containsAny: [
+            tag,
+            _kebabCase(tag)
+          ]
+        }
       ]
     } }">
       <template #default="{ data }">
