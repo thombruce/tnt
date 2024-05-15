@@ -6,7 +6,7 @@ const taxonomy = params.tag[0]
 const tag = params.tag[1]
 
 // Fetch content page if it exists
-const { data: page } = await useAsyncData('tags', () => queryContent(path).findOne())
+const { data: page } = await useAsyncData('tags', () => queryContent(path).limit(1).find())
 
 // Default tag or conditions, used in the absence of a page
 let orConditions = [
@@ -20,8 +20,8 @@ let orConditions = [
 ]
 
 // If page exists, add title to or query conditions
-if (page.value && page.value.title) {
-  orConditions.push({ $icontains: page.value.title })
+if (page.value[0] && page.value[0].title) {
+  orConditions.push({ $icontains: page.value[0].title })
 }
 </script>
 
