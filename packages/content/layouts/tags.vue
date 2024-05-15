@@ -1,12 +1,33 @@
 <script setup>
 const { path, params } = useRoute()
 
+// Get taxonomy and tag name from route params
 const taxonomy = params.tag[0]
 const tag = params.tag[1]
+
+// Fetch content page if it exists
+const { data: page } = await useAsyncData('tags', () => queryContent(path).findOne())
+
+// Default tag or conditions, used in the absence of a page
+let orConditions = [
+  { $icontains: _lowerCase(tag) },
+  {
+    $containsAny: [
+      tag,
+      _kebabCase(tag)
+    ]
+  }
+]
+
+// If page exists, add title to or query conditions
+if (page.value && page.value.title) {
+  orConditions.push({ $icontains: page.value.title })
+}
 </script>
 
 <template>
   <article class="prose w-screen px-3">
+    <!-- TODO: We're querying for the page again; this is redundant -->
     <ContentQuery :path="path" :where="{ _path: path }">
       <template #default="{ data }">
         <h1>{{ data[0].title }}</h1>
@@ -25,15 +46,7 @@ const tag = params.tag[1]
     </ContentQuery>
 
     <ContentQuery path="/" :where="{ [taxonomy]: {
-      $or: [
-        { $icontains: _lowerCase(tag) },
-        {
-          $containsAny: [
-            tag,
-            _kebabCase(tag)
-          ]
-        }
-      ]
+      $or: orConditions
     } }">
       <template #default="{ data }">
         <ul>
