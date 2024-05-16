@@ -25,39 +25,32 @@ if (page.value[0] && page.value[0].title) {
 }
 </script>
 
-<template>
-  <article class="prose w-screen px-3">
-    <!-- TODO: We're querying for the page again; this is redundant -->
-    <ContentQuery :path="path" :where="{ _path: path }">
-      <template #default="{ data }">
-        <h1>{{ data[0].title }}</h1>
+<template lang="pug">
+article.prose.w-screen.px-3
+  //- TODO: We're querying for the page again; this is redundant
+  ContentQuery(:path="path" :where="{ _path: path }")
+    template(#default="{ data }")
+      h1 {{ data[0].title }}
 
-        <Breadcrumbs v-if="data[0].breadcrumbs !== false" />
+      Breadcrumbs(v-if="data[0].breadcrumbs !== false")
 
-        <ContentRenderer :value="data[0]">
-          <template #empty>
-          </template>
-        </ContentRenderer>
-      </template>
-      <template #not-found>
-        <h1>{{ _startCase(tag) }}</h1>
-        <Breadcrumbs />
-      </template>
-    </ContentQuery>
+      ContentRenderer(:value="data[0]")
+        template(#empty)
+          // Empty
 
-    <ContentQuery path="/" :where="{ [taxonomy]: {
-      $or: orConditions
-    } }">
-      <template #default="{ data }">
-        <ul>
-          <li v-for="article of data" :key="article._path">
-            <NuxtLink :to="article._path">{{ article.title }}</NuxtLink>
-          </li>
-        </ul>
-      </template>
-      <template #not-found>
-        <p>No articles found.</p>
-      </template>
-    </ContentQuery>
-  </article>
+    template(#not-found)
+      h1 {{ _startCase(tag) }}
+      Breadcrumbs
+
+  ContentQuery(
+    path="/"
+    :where="{ [taxonomy]: { $or: orConditions } }"
+  )
+    template(#default="{ data }")
+      ul
+        li(v-for="article of data" :key="article._path")
+          NuxtLink(:to="article._path") {{ article.title }}
+
+    template(#not-found)
+      p No articles found.
 </template>

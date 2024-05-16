@@ -1,17 +1,14 @@
-<template>
-  <article class="prose w-screen px-3">
-    <ContentDoc>
-      <template #default="{ doc }">
-        <h1>{{ doc.title }}</h1>
+<template lang="pug">
+article.prose.w-screen.px-3
+  ContentDoc
+    template(#default="{ doc }")
+      h1 {{ doc.title }}
 
-        <TntForm
-          :action="doc.action"
-          :method="doc.method"
-          :body="doc.body"
-        />
-      </template>
-    </ContentDoc>
-  </article>
+      TntForm(
+        :action="doc.action"
+        :method="doc.method"
+        :body="doc.body"
+      )
 </template>
 
 <!--

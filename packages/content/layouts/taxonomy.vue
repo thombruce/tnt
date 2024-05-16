@@ -8,29 +8,21 @@ const contentQuery = await queryContent().where({ [taxonomy]: { $exists: true } 
 const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 </script>
 
-<template>
-  <article class="prose w-screen px-3">
-    <ContentQuery :path="path" :where="{ _path: path }">
-      <template #default="{ data }">
-        <h1>{{ data[0].title }}</h1>
+<template lang="pug">
+article.prose.w-screen.px-3
+  ContentQuery(:path="path" :where="{ _path: path }")
+    template(#default="{ data }")
+      h1 {{ data[0].title }}
 
-        <Breadcrumbs v-if="data[0].breadcrumbs !== false" />
+      Breadcrumbs(v-if="data[0].breadcrumbs !== false")
 
-        <ContentRenderer :value="data[0]">
-          <template #empty>
-          </template>
-        </ContentRenderer>
-      </template>
-      <template #not-found>
-        <h1>{{ _startCase(taxonomy) }}</h1>
-        <Breadcrumbs />
-      </template>
-    </ContentQuery>
+      ContentRenderer(:value="data[0]")
+        template(#empty)
+    template(#not-found)
+      h1 {{ _startCase(taxonomy) }}
+      Breadcrumbs
 
-    <ul v-if="tags.length">
-      <li v-for="tag of tags" :key="tag">
-        <NuxtLink :to="`${path}/${_kebabCase(tag)}`">{{ tag }}</NuxtLink>
-      </li>
-    </ul>
-  </article>
+  ul(v-if="tags.length")
+    li(v-for="tag of tags" :key="tag")
+      NuxtLink(:to="`${path}/${_kebabCase(tag)}`") {{ tag }}
 </template>

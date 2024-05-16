@@ -2,23 +2,20 @@
 const { page } = useContent()
 </script>
 
-<template>
-  <article class="prose w-screen px-3">
-    <ContentDoc>
-      <template #default="{ doc }">
-        <h1>{{ doc.title }}</h1>
+<template lang="pug">
+article.prose.w-screen.px-3
+  ContentDoc
+    template(#default="{ doc }")
+      h1 {{ doc.title }}
 
-        <Breadcrumbs v-if="page.breadcrumbs !== false" />
+      Breadcrumbs(v-if="page.breadcrumbs !== false")
 
-        <ContentRenderer :value="doc" />
-      </template>
+      ContentRenderer(:value="doc")
 
-      <template #empty>
-        <h1>{{ page.title }}</h1>
+    template(#empty)
+      h1 {{ page.title }}
 
-        <Breadcrumbs v-if="page.breadcrumbs !== false" />
-      </template>
-    </ContentDoc>
-    <Navigation />
-  </article>
+      Breadcrumbs(v-if="page.breadcrumbs !== false")
+
+  Navigation
 </template>
