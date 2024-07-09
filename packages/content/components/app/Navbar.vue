@@ -16,5 +16,6 @@ const { name } = useAppConfig()
         ContentNavigation(v-slot="{ navigation }")
           li(v-for="link of navigation" :key="link._path")
             NuxtLink(:to="link._path") {{ link.title }}
-    AppSettings
+    NuxtLink.btn.btn-square.btn-ghost(to="/settings")
+      Icon(name="fa:cog")
 </template>

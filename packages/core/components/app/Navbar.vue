@@ -14,5 +14,6 @@ div.w-full.navbar.sticky.top-0.z-40.bg-base-100
     div(class="flex-none hidden lg:block")
       ul.menu.menu-horizontal
         // Empty
-    AppSettings
+    NuxtLink.btn.btn-square.btn-ghost(to="/settings")
+      Icon(name="fa:cog")
 </template>
