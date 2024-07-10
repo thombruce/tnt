@@ -3,7 +3,7 @@ const { page } = useContent()
 </script>
 
 <template lang="pug">
-article.prose.w-screen.px-3
+article.prose.max-w-none
   ContentDoc
     template(#default="{ doc }")
       h1 {{ doc.title }}

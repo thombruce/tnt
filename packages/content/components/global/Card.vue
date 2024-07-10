@@ -10,13 +10,3 @@ defineProps(['image'])
   </div>
 </div>
 </template>
-
-<style lang="postcss">
-.card-body h1:first-child, .card-body h2:first-child, .card-body h3:first-child {
-  @apply card-title;
-}
-
-.card-body p a {
-  @apply link;
-}
-</style>

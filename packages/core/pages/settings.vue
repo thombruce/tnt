@@ -3,7 +3,7 @@ const { locale } = useI18n()
 </script>
 
 <template lang="pug">
-.prose.w-screen.px-3
+.prose.max-w-none
   TntForm
     h3.font-bold.text-lg {{ i18n('settings', i18n('tnti18n.settings')) }}
 
