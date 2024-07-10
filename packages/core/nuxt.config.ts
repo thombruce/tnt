@@ -37,9 +37,6 @@ export default defineNuxtConfig({
     prefix: "_",
     upperAfterPrefix: false,
   },
-  colorMode: {
-    dataValue: 'theme'
-  },
   i18n: {
     strategy: 'no_prefix'
   }

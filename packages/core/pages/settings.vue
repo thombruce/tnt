@@ -1,5 +1,4 @@
 <script setup>
-const colorMode = useColorMode()
 const { locale } = useI18n()
 </script>
 
@@ -10,6 +9,4 @@ const { locale } = useI18n()
 
     ClientOnly
       TntSelect(v-model="locale" :label="i18n('language', i18n('tnti18n.language'))" :options="['en','fr']")
-
-    TntRadio(v-model="$colorMode.preference" label="Dark Mode" :options="['system', 'light', 'dark']")
 </template>
