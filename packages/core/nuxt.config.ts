@@ -27,7 +27,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-lodash',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
     i18nTNT,
     '@nuxtjs/i18n',
     '@nuxt/image',
