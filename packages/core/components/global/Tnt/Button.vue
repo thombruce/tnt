@@ -12,5 +12,18 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-button(:type="type" class="btn btn-primary") {{ label }}
+button(:type="type") {{ label }}
 </template>
+
+<style lang="postcss">
+button {
+  @apply
+    py-2
+    px-4
+    rounded
+    font-bold
+    text-white
+    bg-blue-600
+    hover:bg-blue-700;
+}
+</style>

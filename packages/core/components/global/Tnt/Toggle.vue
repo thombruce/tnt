@@ -14,9 +14,6 @@ const props = defineProps({
 })
 </script>
 
-<template>
-  <TntCheckbox
-    v-bind="$props"
-    klass="toggle"
-  />
+<template lang="pug">
+TntCheckbox(v-bind="$props" klass="toggle")
 </template>
