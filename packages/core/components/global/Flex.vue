@@ -1,5 +1,4 @@
-<template>
-<div class="flex">
-    <slot />
-</div>
+<template lang="pug">
+.flex
+  slot
 </template>
