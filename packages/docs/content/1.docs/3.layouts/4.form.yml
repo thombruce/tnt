@@ -97,12 +97,6 @@ body:
       max: 100
       value: 50
 
-  - rating:
-      name: fields[rating]
-      label: Rating
-      hint: Slap a score on there.
-      score: 3
-
   - textarea:
       name: fields[content]
       label: Content
