@@ -12,9 +12,7 @@ const props = defineProps({
     type: String,
     default: (props) => _camelCase(props.label || 'radio')
   },
-  labelAlt: {},
   hint: {},
-  hintAlt: {},
   options: {},
 })
 
@@ -24,11 +22,10 @@ defineEmits([
 </script>
 
 <template>
-  <div class="form-control">
+  <div>
     <template v-if="options">
-      <label v-if="label || labelAlt" :for="id" class="label">
+      <label v-if="label" :for="id" class="label">
         <span v-if="label" class="label-text" v-html="label" />
-        <span v-if="labelAlt" class="label-text-alt" v-html="labelAlt" />
       </label>
       <div v-for="option in options" class="form-control">
         <label class="label cursor-pointer">
@@ -43,9 +40,8 @@ defineEmits([
           />
         </label>
       </div>
-      <label v-if="hint || hintAlt" :for="id" class="label">
+      <label v-if="hint" :for="id" class="label">
         <span v-if="hint" class="label-text-alt" v-html="hint" />
-        <span v-if="hintAlt" class="label-text-alt" v-html="hintAlt" />
       </label>
     </template>
     <label v-else class="label cursor-pointer">
