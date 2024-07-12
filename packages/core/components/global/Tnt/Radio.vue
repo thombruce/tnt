@@ -21,38 +21,34 @@ defineEmits([
 ])
 </script>
 
-<template>
-  <div>
-    <template v-if="options">
-      <label v-if="label" :for="id" class="label">
-        <span v-if="label" class="label-text" v-html="label" />
-      </label>
-      <div v-for="option in options" class="form-control">
-        <label class="label cursor-pointer">
-          <span class="label-text">{{ option.label || option }}</span>
-          <input
-            :checked="modelValue == (option.value || option)"
-            @change="$emit('update:modelValue', $event.target.value)"
-            :value="option.value || option"
-            type="radio"
-            :name="name"
-            class="radio"
-          />
-        </label>
-      </div>
-      <label v-if="hint" :for="id" class="label">
-        <span v-if="hint" class="label-text-alt" v-html="hint" />
-      </label>
-    </template>
-    <label v-else class="label cursor-pointer">
-      <span class="label-text">{{ label }}</span>
-      <input
-        :checked="modelValue"
-        @change="$emit('update:modelValue', $event.target.checked)"
-        :name="name"
+<template lang="pug">
+div
+  fieldset(v-if="options")
+    legend(v-if="label")
+      span.font-bold(v-if="label" v-html="label")
+    div(v-for="option in options")
+      input.mr-3(
+        :id="`${id}-${_camelCase(option)}`"
+        :checked="modelValue == (option.value || option)"
+        @change="$emit('update:modelValue', $event.target.value)"
+        :value="option.value || option"
         type="radio"
-        class="radio"
-      />
-    </label>
-  </div>
+        :name="name"
+      )
+      label(:for="`${id}-${_camelCase(option)}`")
+        span {{ option.label || option }}
+    label(v-if="hint" :for="id")
+      span.text-xs.text-gray-500(v-if="hint" v-html="hint")
+  div(v-else)
+    //- TODO: It occurs to me there's no point in an isolated radio button.
+    //-       Remove this v-else.
+    input.mr-3(
+      :id="id"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+      :name="name"
+      type="radio"
+    )
+    label(:for="id")
+      span.font-bold {{ label }}
 </template>
