@@ -16,9 +16,7 @@ const props = defineProps({
     type: String,
     default: 'text'
   },
-  labelAlt: {},
   hint: {},
-  hintAlt: {},
   placeholder: {},
 })
 
@@ -29,9 +27,8 @@ defineEmits([
 
 <template lang="pug">
 div
-  label(v-if="label || labelAlt" :for="id")
-    span(v-if="label" v-html="label")
-    span(v-if="labelAlt" v-html="labelAlt")
+  label(v-if="label" :for="id")
+    span.font-bold(v-if="label" v-html="label")
   input(
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
@@ -40,14 +37,15 @@ div
     :type="type"
     :placeholder="placeholder"
   )
-  label(v-if="hint || hintAlt" :for="id")
-    span(v-if="hint" v-html="hint")
-    span(v-if="hintAlt" v-html="hintAlt")
+  label(v-if="hint" :for="id")
+    span.text-xs.text-gray-500(v-if="hint" v-html="hint")
 </template>
 
 <style lang="postcss" scoped>
 input {
   @apply
+    block
+    w-full
     py-2
     px-3
     rounded
