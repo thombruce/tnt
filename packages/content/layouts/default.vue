@@ -1,4 +1,4 @@
 <template lang="pug">
-article.prose.w-screen.px-3
+article.prose.max-w-none
   slot
 </template>

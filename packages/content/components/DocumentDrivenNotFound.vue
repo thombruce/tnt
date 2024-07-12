@@ -1,3 +1,3 @@
-<template>
-  <h1>Page not found</h1>
+<template lang="pug">
+h1 Page not found
 </template>

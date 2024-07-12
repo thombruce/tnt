@@ -1,4 +1,3 @@
 <template lang="pug">
-.flex
-  slot
+// Empty
 </template>

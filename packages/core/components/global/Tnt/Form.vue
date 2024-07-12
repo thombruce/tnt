@@ -12,11 +12,9 @@ const props = defineProps({
 })
 </script>
 
-<template>
-  <form :action="action" :method="method" class="space-y-5">
-    <slot />
-    <template v-for="component in body">
-      <component :is="`tnt-${_keys(component)[0]}`" v-bind="_values(component)[0]" />
-    </template>
-  </form>
+<template lang="pug">
+form.space-y-5(:action="action" :method="method")
+  slot
+  template(v-for="component in body")
+    component(:is="`tnt-${_keys(component)[0]}`" v-bind="_values(component)[0]")
 </template>

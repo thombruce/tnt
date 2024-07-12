@@ -1,3 +1,3 @@
-<template>
-  <TableOfContents />
+<template lang="pug">
+TableOfContents
 </template>

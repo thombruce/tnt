@@ -26,7 +26,7 @@ if (page.value[0] && page.value[0].title) {
 </script>
 
 <template lang="pug">
-article.prose.w-screen.px-3
+article.prose.max-w-none
   //- TODO: We're querying for the page again; this is redundant
   ContentQuery(:path="path" :where="{ _path: path }")
     template(#default="{ data }")

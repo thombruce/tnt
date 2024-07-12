@@ -9,11 +9,21 @@ useHead({
 </script>
 
 <template lang="pug">
-.flex.flex-col
-  AppNavbar
+.max-w-4xl.mx-auto.my-4
+  AppHeader
 
-  main.my-10.mx-auto
+  main
     NuxtPage
 
   AppFooter
 </template>
+
+<style lang="postcss">
+body {
+  @apply bg-white text-black dark:bg-black dark:text-white;
+}
+
+.prose {
+  @apply dark:prose-invert;
+}
+</style>

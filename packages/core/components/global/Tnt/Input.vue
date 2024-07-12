@@ -16,9 +16,7 @@ const props = defineProps({
     type: String,
     default: 'text'
   },
-  labelAlt: {},
   hint: {},
-  hintAlt: {},
   placeholder: {},
 })
 
@@ -27,24 +25,36 @@ defineEmits([
 ])
 </script>
 
-<template>
-  <div class="form-control">
-    <label v-if="label || labelAlt" :for="id" class="label">
-      <span v-if="label" class="label-text" v-html="label" />
-      <span v-if="labelAlt" class="label-text-alt" v-html="labelAlt" />
-    </label>
-    <input
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      :id="id"
-      :name="name"
-      :type="type"
-      :placeholder="placeholder"
-      class="input input-bordered"
-    />
-    <label v-if="hint || hintAlt" :for="id" class="label">
-      <span v-if="hint" class="label-text-alt" v-html="hint" />
-      <span v-if="hintAlt" class="label-text-alt" v-html="hintAlt" />
-    </label>
-  </div>
+<template lang="pug">
+div
+  label(v-if="label" :for="id")
+    span.font-bold(v-if="label" v-html="label")
+  input(
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    :id="id"
+    :name="name"
+    :type="type"
+    :placeholder="placeholder"
+  )
+  label(v-if="hint" :for="id")
+    span.text-xs.text-gray-500(v-if="hint" v-html="hint")
 </template>
+
+<style lang="postcss" scoped>
+input {
+  @apply
+    block
+    w-full
+    py-2
+    px-3
+    rounded
+    border
+    bg-white
+    text-gray-700
+    border-gray-200
+    dark:bg-gray-900
+    dark:text-gray-300
+    dark:border-gray-700;
+}
+</style>

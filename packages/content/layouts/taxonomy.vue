@@ -9,7 +9,7 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 </script>
 
 <template lang="pug">
-article.prose.w-screen.px-3
+article.prose.max-w-none
   ContentQuery(:path="path" :where="{ _path: path }")
     template(#default="{ data }")
       h1 {{ data[0].title }}

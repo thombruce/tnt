@@ -1,0 +1,13 @@
+<script setup>
+const { name } = useAppConfig()
+</script>
+
+<template lang="pug">
+header.mb-4
+  NuxtLink(to="/")
+    strong {{ name }}
+  nav.space-x-4
+    AppNavigation
+    NuxtLink(to="/settings")
+      Icon(name="fa:cog")
+</template>
