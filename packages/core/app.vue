@@ -17,3 +17,13 @@ useHead({
 
   AppFooter
 </template>
+
+<style lang="postcss">
+body {
+  @apply bg-white text-black dark:bg-black dark:text-white;
+}
+
+.prose {
+  @apply dark:prose-invert;
+}
+</style>
