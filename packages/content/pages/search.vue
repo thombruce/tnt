@@ -16,5 +16,7 @@ div
     @input="search()"
   )
 
-  pre {{ results }}
+  ul
+    li(v-for="article in results" :key="article.id")
+      NuxtLink(:to="article.id") {{ article.navigation?.title || article.title }}
 </template>
