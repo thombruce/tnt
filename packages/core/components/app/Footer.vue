@@ -4,6 +4,7 @@ const { copyright } = useAppConfig()
 
 <template lang="pug">
 footer.mt-4.text-center
-  small {{ copyright }}
+  AppFooterContent
+  small.block {{ copyright }}
   AppFooterHidden
 </template>
