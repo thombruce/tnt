@@ -9,7 +9,7 @@ const search = async () => {
 </script>
 
 <template lang="pug">
-div
+.not-prose
   TntSearch.mb-5(
     placeholder="Search..."
     v-model="query"
