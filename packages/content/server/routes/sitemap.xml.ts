@@ -2,7 +2,7 @@ import { serverQueryContent } from '#content/server'
 import { SitemapStream, streamToPromise } from 'sitemap'
 
 export default defineEventHandler(async (event) => {
-  const hostname = useAppConfig().hostname?.replace(/\/$/, '') || 'https://example.com'
+  const hostname = useAppConfig().hostname?.replace(/\/$/, '') || 'https://example.com' // TODO: Does it make sense to fallback on example.com here? Really?
 
   // Fetch all documents
   const docs = await serverQueryContent(event).find()
