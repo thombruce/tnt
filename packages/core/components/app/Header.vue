@@ -10,4 +10,5 @@ header.mb-4
     AppNavigation
     NuxtLink(to="/settings")
       Icon(name="fa:cog")
+      span.sr-only {{ i18n('settings', i18n('tnti18n.settings')) }}
 </template>

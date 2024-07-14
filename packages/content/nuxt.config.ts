@@ -29,6 +29,9 @@ export default defineNuxtConfig({
         img: 'TntImg'
       }
     },
+    experimental: {
+      search: true,
+    },
   },
   nitro: {
     prerender: {
