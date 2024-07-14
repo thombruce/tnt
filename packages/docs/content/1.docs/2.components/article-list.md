@@ -1,23 +1,21 @@
-# Navigation
-
-:breadcrumbs
+# Article List
 
 :toc
 
 ## Usage
 
 ```md
-:navigation
+:article-list
 ```
 
 ```md
-:navigation{path="/docs"}
+:article-list{path="/docs"}
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-  :navigation{path="/docs"}
+  :article-list{path="/docs"}
 ::
 
 :prev-next
