@@ -1,4 +1,5 @@
 <script setup>
+const { path } = useRoute()
 const { page } = useContent()
 </script>
 
@@ -10,12 +11,23 @@ article.prose.max-w-none
 
       Breadcrumbs(v-if="page.breadcrumbs !== false")
 
-      ContentRenderer(:value="doc")
+      ContentRenderer.hidden-title(:value="doc")
 
     template(#empty)
       h1 {{ page.title }}
 
       Breadcrumbs(v-if="page.breadcrumbs !== false")
 
-  Navigation
+    template(#not-found)
+      h1 {{ _startCase(path.split('/').pop()) }}
+
+      Breadcrumbs
+
+  ArticleList
 </template>
+
+<style lang="postcss">
+.hidden-title > h1:first-child {
+  @apply hidden;
+}
+</style>
