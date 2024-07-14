@@ -4,7 +4,14 @@ const results = ref([])
 
 const search = async () => {
   const res = await searchContent(query.value, {})
-  results.value = res.value
+
+  const filtered = res.value.filter((value) => {
+    const titles = value.id.split('#')
+    if (titles.length <= 1) return true
+    if (titles[0].split('/').pop() !== titles[1]) return true
+  }) 
+
+  results.value = filtered
 }
 </script>
 
@@ -23,6 +30,7 @@ const search = async () => {
     li.py-5(v-for="article in results" :key="article.id")
       NuxtLink(:to="article.id")
         strong.text-lg {{ article.navigation?.title || article.title }}
+      small.block(class="text-gray-500/50") {{ article.id }}
       p {{ article.content }}
 
   //- pre {{ results }}

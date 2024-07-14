@@ -4,7 +4,7 @@ const { page } = useContent()
 </script>
 
 <template lang="pug">
-dl.not-prose
+dl.not-prose.pb-4.border-b(class="border-gray-500/50")
   dt
     strong {{ _startCase(taxonomy) }}:
   dd
