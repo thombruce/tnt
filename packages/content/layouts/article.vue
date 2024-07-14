@@ -17,7 +17,13 @@ article.prose.max-w-none
 
       Toc(v-if="page.toc === true")
 
-      ContentRenderer(:value="doc")
+      ContentRenderer.hidden-title(:value="doc")
 
       PrevNext(v-if="page.prevnext !== false")
 </template>
+
+<style lang="postcss">
+.hidden-title > h1:first-child {
+  @apply hidden;
+}
+</style>

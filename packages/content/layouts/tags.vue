@@ -47,9 +47,11 @@ article.prose.max-w-none
     :where="{ [taxonomy]: { $or: orConditions } }"
   )
     template(#default="{ data }")
-      ul
-        li(v-for="article of data" :key="article._path")
-          NuxtLink(:to="article._path") {{ article.title }}
+      .not-prose
+        ul.divide-y(class="divide-gray-500/50")
+          li.py-5(v-for="article of data" :key="article._path")
+            NuxtLink(:to="article._path")
+              strong {{ article.title }}
 
     template(#not-found)
       p No articles found.

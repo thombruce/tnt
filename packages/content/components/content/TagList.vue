@@ -4,12 +4,21 @@ const { page } = useContent()
 </script>
 
 <template lang="pug">
-dl
-  dt {{ _startCase(taxonomy) }}
+dl.not-prose
+  dt
+    strong {{ _startCase(taxonomy) }}:
   dd
-    ul
-      li(v-if="typeof page[taxonomy] === 'string'")
-        NuxtLink(:to="`/~${taxonomy}/${_kebabCase(page[taxonomy])}`") {{ page[taxonomy] }}
-      li(v-else v-for="tag in page[taxonomy]" :key="tag")
-        NuxtLink(:to="`/~${taxonomy}/${_kebabCase(tag)}`") {{ tag }}
+    ul.space-x-3
+      TagListItem(
+        v-if="typeof page[taxonomy] === 'string'"
+        :taxonomy="taxonomy"
+        :tag="page[taxonomy]"
+      )
+      TagListItem(
+        v-else
+        v-for="tag in page[taxonomy]"
+        :taxonomy="taxonomy"
+        :tag="tag"
+        :key="tag"
+      )
 </template>
