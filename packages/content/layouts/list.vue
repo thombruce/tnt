@@ -23,7 +23,7 @@ article.prose.max-w-none
 
       Breadcrumbs
 
-  ArticleList
+  ArticleList(:sort="page.sort")
 </template>
 
 <style lang="postcss">

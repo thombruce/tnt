@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const props = defineProps(['path'])
+const props = defineProps(['path', 'sort'])
 
 const path = props.path || route.path
 
@@ -15,10 +15,7 @@ const query: QueryBuilderParams = {
     { _dir: path.split('/').slice(-1)[0] },
     { _partial: false }
   ],
-  // TODO: Let Nuxt sort by stem by default (this is how it would handle it if this were omitted).
-  //       Pass sort as an option to the component.
-  //       - Also make this possible when marking a document for the list layout
-  sort: [{ date: -1 }]
+  sort: props.sort
 }
 </script>
 
