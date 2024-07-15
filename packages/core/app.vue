@@ -13,7 +13,7 @@ useHead({
   AppHeader
 
   main
-    NuxtPage
+    NuxtPage(:page-key="route => route.fullPath")
 
   AppFooter
 </template>
