@@ -22,12 +22,13 @@ article.prose.max-w-none
       h1 {{ _startCase(taxonomy) }}
       Breadcrumbs
   .not-prose
-    ul.divide-y(class="divide-gray-500/50" v-if="tags.length")
-      li.py-5(v-for="tag of tags" :key="tag")
-        NuxtLink(:to="`${path}/${_kebabCase(tag)}`")
-          ContentQuery(:path="`${path}/${_kebabCase(tag)}`" :where="{ _path: `${path}/${_kebabCase(tag)}` }")
-            template(#default="{ data }")
-              strong {{ data[0].title }}
-            template(#not-found)
-              strong {{ tag }}
+    ul(class="divide-y divide-gray-500/50" v-if="tags.length")
+      template(v-for="tag of tags" :key="tag")
+        li.py-5
+          NuxtLink(:to="`${path}/${_kebabCase(tag)}`")
+            ContentQuery(:path="`${path}/${_kebabCase(tag)}`" :where="{ _path: `${path}/${_kebabCase(tag)}` }")
+              template(#default="{ data }")
+                strong {{ data[0].title }}
+              template(#not-found)
+                strong {{ tag }}
 </template>

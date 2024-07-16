@@ -48,10 +48,11 @@ article.prose.max-w-none
   )
     template(#default="{ data }")
       .not-prose
-        ul.divide-y(class="divide-gray-500/50")
-          li.py-5(v-for="article of data" :key="article._path")
-            NuxtLink(:to="article._path")
-              strong {{ article.title }}
+        ul(class="divide-y divide-gray-500/50")
+          template(v-for="article of data" :key="article._path")
+            li.py-5
+              NuxtLink(:to="article._path")
+                strong {{ article.title }}
 
     template(#not-found)
       p No articles found.

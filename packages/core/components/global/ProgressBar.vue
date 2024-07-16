@@ -16,7 +16,7 @@ const percent = computed(() => {
 </script>
 
 <template lang="pug">
-.relative.w-full(class="h-2.5")
+div(class="relative w-full h-2.5")
   span.progress.progress-bg
     span.sr-only {{ $t("conditions.open") }}
   span.progress.progress-fg(:style="'width:'+percent+'%;'")

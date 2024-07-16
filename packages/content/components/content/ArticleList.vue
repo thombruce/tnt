@@ -24,11 +24,12 @@ div
   ContentList(:query="query")
     template(#default="{ list }")
       .not-prose
-        ul.divide-y(class="divide-gray-500/50")
-          li.py-5(v-for="article in list" :key="article._path")
-            NuxtLink(:to="article._path")
-              strong.text-lg {{ article.navigation?.title || article.title }}
-            p {{ article.description }}
+        ul(class="divide-y divide-gray-500/50")
+          template(v-for="article in list" :key="article._path")
+            li.py-5
+              NuxtLink(:to="article._path")
+                strong.text-lg {{ article.navigation?.title || article.title }}
+              p {{ article.description }}
     template(#not-found)
       p No articles found.
 </template>

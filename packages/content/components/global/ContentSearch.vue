@@ -27,12 +27,13 @@ const search = async () => {
   //- TODO: It is probably better to use the ID to fetch the content itself for display (which will include nav title if present).
   //-       Drawback? Won't link to subheadings. But... you can always use the id for that.
   //-       Lot of design considerations here.
-  ul.divide-y(class="divide-gray-500/50")
-    li.py-5(v-for="article in results" :key="article.id")
-      NuxtLink(:to="article.id")
-        strong.text-lg {{ article.navigation?.title || article.title }}
-      small.block(class="text-gray-500/50") {{ article.id }}
-      p {{ article.content }}
+  ul(class="divide-y divide-gray-500/50")
+    template(v-for="article in results" :key="article.id")
+      li.py-5(v-for="article in results" :key="article.id")
+        NuxtLink(:to="article.id")
+          strong.text-lg {{ article.navigation?.title || article.title }}
+        small(class="block text-gray-500/50") {{ article.id }}
+        p {{ article.content }}
 
   //- pre {{ results }}
 </template>
