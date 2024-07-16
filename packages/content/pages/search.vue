@@ -1,4 +1,5 @@
 <template lang="pug">
-.prose.max-w-none
-  ContentSearch
+div
+  NuxtLayout(name="default")
+    ContentSearch
 </template>
