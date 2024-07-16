@@ -18,7 +18,7 @@ header
       li
         NuxtLink(to="/settings")
           Icon(name="fa:cog")
-          span.sr-only {{ i18n('settings', i18n('tnti18n.settings')) }}
+          span.sr-only Settings
 </template>
 
 <style lang="postcss" scoped>
