@@ -1,13 +1,20 @@
-@import './tailwind';
-
 body {
-  @apply bg-white text-black dark:bg-black dark:text-white;
+  @apply
+    bg-zinc-50
+    text-zinc-900
+    dark:bg-zinc-950
+    dark:text-zinc-100;
 }
 
 div.tnt-container {
-  @apply max-w-4xl mx-auto my-4;
+  @apply
+    max-w-4xl
+    mx-auto
+    my-4;
 }
 
 .prose {
-  @apply dark:prose-invert;
+  @apply
+    max-w-none
+    dark:prose-invert;
 }

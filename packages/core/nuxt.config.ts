@@ -23,8 +23,8 @@ export default defineNuxtConfig({
     prefix: "_",
     upperAfterPrefix: false,
   },
-  // css: [join(currentDir, './assets/css/base.css')],
+  // css: [join(currentDir, './assets/css/tnt.css')],
   tailwindcss: {
-    cssPath: join(currentDir, './assets/css/base.css'),
+    cssPath: join(currentDir, './assets/css/tnt.css'),
   },
 })

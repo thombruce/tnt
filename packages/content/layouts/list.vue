@@ -4,7 +4,7 @@ const { page } = useContent()
 </script>
 
 <template lang="pug">
-article.prose.max-w-none
+article.prose
   ContentDoc
     template(#default="{ doc }")
       h1 {{ doc.title }}
