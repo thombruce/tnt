@@ -13,11 +13,11 @@ header
           NuxtLink(:to="link._path") {{ link.title }}
       li
         NuxtLink(to="/search")
-          Icon(name="fa:search")
+          Icon(name="fa:search")/
           span.sr-only Search
       li
         NuxtLink(to="/settings")
-          Icon(name="fa:cog")
+          Icon(name="fa:cog")/
           span.sr-only Settings
 </template>
 

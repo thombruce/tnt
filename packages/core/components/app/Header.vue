@@ -11,7 +11,7 @@ header
       //- TNT Content: Content Navigation
       li
         NuxtLink(to="/settings")
-          Icon(name="fa:cog")
+          Icon(name="fa:cog")/
           span.sr-only Settings
 </template>
 
