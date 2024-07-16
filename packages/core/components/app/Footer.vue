@@ -3,8 +3,15 @@ const { copyright } = useAppConfig()
 </script>
 
 <template lang="pug">
-footer.mt-4.text-center
+footer
   AppFooterContent
-  small.block {{ copyright }}
-  AppFooterHidden
+  .tnt-copyright
+    small {{ copyright }}
+  //- TNT Content: Hidden Content Links
 </template>
+
+<style lang="postcss" scoped>
+footer {
+  @apply mt-4 text-center;
+}
+</style>

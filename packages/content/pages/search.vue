@@ -1,3 +1,4 @@
 <template lang="pug">
-ContentSearch
+.prose.max-w-none
+  ContentSearch
 </template>

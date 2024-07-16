@@ -9,7 +9,7 @@ useHead({
 </script>
 
 <template lang="pug">
-.max-w-4xl.mx-auto.my-4
+.tnt-container
   AppHeader
 
   main
@@ -21,6 +21,10 @@ useHead({
 <style lang="postcss">
 body {
   @apply bg-white text-black dark:bg-black dark:text-white;
+}
+
+div.tnt-container {
+  @apply max-w-4xl mx-auto my-4;
 }
 
 .prose {

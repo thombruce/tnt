@@ -19,14 +19,30 @@ const crumbs = computed(() => {
 </script>
 
 <template lang="pug">
-nav.not-prose.text-sm.space-x-2
-  NuxtLink(to="/") Home
-  template(v-for="crumb in crumbs" :key="crumb.path")
-    span.pointer-events-none >
-    NuxtLink(:to="crumb.path")
-      ContentQuery(:path="crumb.path" :where="{ _path: crumb.path }")
-        template(#default="{ data }")
-          | {{ data[0].title }}
-        template(#not-found)
-          | {{ _startCase(crumb.param) }}
+nav.not-prose
+  ul
+    li
+      NuxtLink(to="/") Home
+    li(v-for="crumb in crumbs" :key="crumb.path")
+      NuxtLink(:to="crumb.path")
+        ContentQuery(:path="crumb.path" :where="{ _path: crumb.path }")
+          template(#default="{ data }")
+            | {{ data[0].title }}
+          template(#not-found)
+            | {{ _startCase(crumb.param) }}
 </template>
+
+<style lang="postcss" scoped>
+nav {
+  @apply text-sm;
+}
+
+nav > ul > li {
+  @apply inline;
+}
+
+nav > ul > li + li::before {
+  @apply mx-2;
+  content: ">";
+}
+</style>

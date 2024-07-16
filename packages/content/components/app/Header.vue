@@ -8,7 +8,13 @@ header
     NuxtLink(to="/") {{ name }}
   nav
     ul
-      //- TNT Content: Content Navigation
+      ContentNavigation(v-slot="{ navigation }")
+        li(v-for="link of navigation" :key="link._path")
+          NuxtLink(:to="link._path") {{ link.title }}
+      li
+        NuxtLink(to="/search")
+          Icon(name="fa:search")
+          span.sr-only Search
       li
         NuxtLink(to="/settings")
           Icon(name="fa:cog")

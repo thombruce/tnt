@@ -9,7 +9,7 @@ useHead({
 </script>
 
 <template lang="pug">
-.prose
+.prose.max-w-none
   h1 Redirecting to {{ page.title }}...
   p
     | If you are not redirected automatically, click here:
