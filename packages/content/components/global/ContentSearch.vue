@@ -18,6 +18,7 @@ const search = async () => {
 <template lang="pug">
 .not-prose
   TntSearch.mb-5(
+    id="content-search"
     placeholder="Search..."
     v-model="query"
     :method="search"

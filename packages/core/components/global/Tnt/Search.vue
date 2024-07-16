@@ -10,6 +10,6 @@ const props = defineProps({
 <template lang="pug">
 TntInput(
   v-bind="$props"
-  :method="method()"
+  @input="method()"
 )
 </template>
