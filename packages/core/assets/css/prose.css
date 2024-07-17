@@ -1,0 +1,16 @@
+.prose {
+  @apply
+    prose-zinc
+    dark:prose-invert
+    max-w-none
+
+    text-content
+    dark:text-content-dark
+
+    prose-a:text-primary
+    dark:prose-a:text-primary-dark
+    hover:prose-a:text-primary-hover
+    dark:hover:prose-a:text-primary-dark-hover
+    prose-a:prose-headings:text-content
+    dark:prose-a:prose-headings:text-content-dark;
+}

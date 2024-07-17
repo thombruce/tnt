@@ -1,9 +1,9 @@
 body {
   @apply
-    bg-zinc-50
-    text-zinc-900
-    dark:bg-zinc-950
-    dark:text-zinc-100;
+    bg-base
+    text-content
+    dark:bg-base-dark
+    dark:text-content-dark;
 }
 
 div.tnt-container {
@@ -11,10 +11,4 @@ div.tnt-container {
     max-w-4xl
     mx-auto
     my-4;
-}
-
-.prose {
-  @apply
-    max-w-none
-    dark:prose-invert;
 }

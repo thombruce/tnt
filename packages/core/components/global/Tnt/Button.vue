@@ -23,7 +23,9 @@ button {
     rounded
     font-bold
     text-white
-    bg-blue-600
-    hover:bg-blue-700;
+    bg-primary
+    hover:bg-primary-hover
+    dark:bg-primary-dark
+    dark:hover:bg-primary-dark-hover;
 }
 </style>

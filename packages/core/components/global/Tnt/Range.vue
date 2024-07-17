@@ -49,9 +49,12 @@ input {
     block
     w-full
     py-2
-    accent-blue-600
-    hover:accent-blue-700
-    active:accent-blue-700;
+    accent-primary
+    hover:accent-primary-hover
+    active:accent-primary-hover
+    dark:accent-primary-dark
+    dark:hover:accent-primary-dark-hover
+    dark:active:accent-primary-dark-hover;
 }
 
 /*
