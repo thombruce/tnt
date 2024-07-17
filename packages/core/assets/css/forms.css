@@ -1,3 +1,25 @@
+/*
+  TODO:
+  Input types not yet addressed:
+  - button (but we provide styles for the <button> element instead)
+  - color
+  - date
+  - datetime-local
+  - email
+  - hidden (but this shouldn't need styling)
+  - image
+  - month
+  - number
+  - password
+  - reset (a button that resets form; but use of it is not recommended)
+  - search
+  - submit (but again we already provide <button> styles)
+  - tel
+  - time
+  - url
+  - week
+*/
+
 input[type="text"],
 input[type="file"],
 select,
