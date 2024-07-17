@@ -1,4 +1,3 @@
-import { createResolver, defineNuxtModule } from '@nuxt/kit'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 

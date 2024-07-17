@@ -1,7 +1,5 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
-import { createResolver, defineNuxtModule } from '@nuxt/kit'
-
 export default defineNuxtConfig({
   extends: [
     '@thombruce/tnt'
