@@ -25,9 +25,3 @@ article.prose
 
   ArticleList(:sort="page.sort")
 </template>
-
-<style lang="postcss">
-.hidden-title > h1:first-child {
-  @apply hidden;
-}
-</style>

@@ -12,3 +12,32 @@ div.tnt-container {
     mx-auto
     my-4;
 }
+
+header {
+  @apply mb-4;
+}
+
+header > nav > ul {
+  @apply space-x-4;
+}
+
+header > nav > ul > li {
+  @apply inline;
+}
+
+footer {
+  @apply mt-4 text-center;
+}
+
+.tnt-breadcrumbs > nav {
+  @apply my-8 text-sm;
+}
+
+.tnt-breadcrumbs > nav > ul > li {
+  @apply inline;
+}
+
+.tnt-breadcrumbs > nav > ul > li + li::before {
+  @apply mx-2;
+  content: ">";
+}

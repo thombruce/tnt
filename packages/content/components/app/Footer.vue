@@ -19,9 +19,3 @@ footer
             NuxtLink(:to="article._path") {{ article.title }}
       template(#not-found)
 </template>
-
-<style lang="postcss" scoped>
-footer {
-  @apply mt-4 text-center;
-}
-</style>

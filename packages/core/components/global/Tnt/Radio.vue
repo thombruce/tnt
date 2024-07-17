@@ -54,15 +54,3 @@ div
     label(:for="id")
       span.font-bold {{ label }}
 </template>
-
-<style lang="postcss" scoped>
-input {
-  @apply
-    checked:bg-primary
-    checked:focus:bg-primary-hover
-    checked:hover:bg-primary-hover
-    dark:checked:bg-primary-dark
-    dark:checked:focus:bg-primary-dark-hover
-    dark:checked:hover:bg-primary-dark-hover;
-}
-</style>

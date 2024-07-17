@@ -19,26 +19,12 @@ const crumbs = computed(() => {
 </script>
 
 <template lang="pug">
-nav.not-prose.my-8
-  ul
-    li
-      NuxtLink(to="/") Home
-    li(v-for="crumb in crumbs" :key="crumb.path")
-      NuxtLink(:to="crumb.path")
-        | {{ _startCase(crumb.param) }}
+.tnt-breadcrumbs.not-prose
+  nav
+    ul
+      li
+        NuxtLink(to="/") Home
+      li(v-for="crumb in crumbs" :key="crumb.path")
+        NuxtLink(:to="crumb.path")
+          | {{ _startCase(crumb.param) }}
 </template>
-
-<style lang="postcss" scoped>
-nav {
-  @apply text-sm;
-}
-
-nav > ul > li {
-  @apply inline;
-}
-
-nav > ul > li + li::before {
-  @apply mx-2;
-  content: ">";
-}
-</style>

@@ -1,0 +1,65 @@
+input[type="text"],
+input[type="file"],
+select,
+textarea {
+  @apply
+    block
+    w-full
+    py-2
+    px-3
+    rounded
+    border
+    bg-white
+    text-gray-700
+    border-gray-200
+    dark:bg-gray-900
+    dark:text-gray-300
+    dark:border-gray-700;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  @apply
+    checked:bg-primary
+    checked:focus:bg-primary-hover
+    checked:hover:bg-primary-hover
+    dark:checked:bg-primary-dark
+    dark:checked:focus:bg-primary-dark-hover
+    dark:checked:hover:bg-primary-dark-hover;
+}
+
+input[type="checkbox"] {
+  @apply
+    rounded;
+}
+
+input[type="range"] {
+  @apply
+    block
+    w-full
+    py-2
+    accent-primary
+    hover:accent-primary-hover
+    active:accent-primary-hover
+    dark:accent-primary-dark
+    dark:hover:accent-primary-dark-hover
+    dark:active:accent-primary-dark-hover;
+  /*
+    Pseudo-states for range input:
+      hover:
+      focus:
+      active:
+  */
+}
+
+button {
+  @apply
+    py-2
+    px-4
+    rounded
+    font-bold
+    text-white
+    bg-primary
+    hover:bg-primary-hover
+    dark:bg-primary-dark
+    dark:hover:bg-primary-dark-hover;
+}
