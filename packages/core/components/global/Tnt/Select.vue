@@ -37,21 +37,3 @@ div
   label(v-if="hint" :for="id")
     span.text-xs.text-gray-500(v-if="hint" v-html="hint")
 </template>
-
-<style lang="postcss" scoped>
-select {
-  @apply
-    block
-    w-full
-    py-2
-    px-3
-    rounded
-    border
-    bg-white
-    text-gray-700
-    border-gray-200
-    dark:bg-gray-900
-    dark:text-gray-300
-    dark:border-gray-700;
-}
-</style>

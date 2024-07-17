@@ -11,6 +11,8 @@ Welcome to TNT, a Nuxt template by me - Thom. Hence the name. The short form is 
 
 You don't need me to go over TNT's [features](/docs/features) here, or the [components](/docs/components) and [layouts](/docs/layouts) on offer, because those are all documented elsewhere. Instead, let's talk motivation and the future of TNT.
 
+---
+
 ## Why TNT?
 
 TNT is my attempt to make getting started with and managing many Nuxt-based projects just that bit quicker and easier. It is a _highly_ opinionated approach to developing in the Nuxt web development framework, and it is an incomplete one. In general, the features I've been adding are those that I have an immediate need of. Even this blog post isn't exempt from that rule; as I am presently fleshing out the blog and RSS feed capabilities of TNT, I am essentially writing this post to serve as an example and as a development and testing utility.
@@ -20,6 +22,8 @@ Outside of the TNT project itself, I've been using it in my own site ([ThomBruce
 The emphasis to this point has been to support content-driven websites, meaning we lean heavily on [Nuxt Content](https://content.nuxtjs.org/) for most of the functionality. And as a result of early design direction, most of TNT's components are compatible with Nuxt Content's MDC syntax. The docs right now heavily reflect this, as the only documented approach to using them is via that syntax.
 
 More recently, I've been thinking... _why stop there?_ I already have another project written in Vue as a browser application, some of the next steps for which are to add support for features which require a server, an API, a more robust approach than is offered directly by Vue. And as well as this, I've been thinking about ways to extend the availability of server-based services to static websites, like those currently supported by TNT. TNT might start to look a little different as I aim to support some of these ideas.
+
+---
 
 ## The Future
 

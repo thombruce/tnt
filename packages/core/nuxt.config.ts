@@ -1,4 +1,8 @@
 import { createResolver, defineNuxtModule } from '@nuxt/kit'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const currentDir = dirname(fileURLToPath(import.meta.url))
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -18,5 +22,9 @@ export default defineNuxtConfig({
   lodash: {
     prefix: "_",
     upperAfterPrefix: false,
+  },
+  // css: [join(currentDir, './assets/css/tnt.css')],
+  tailwindcss: {
+    cssPath: join(currentDir, './assets/css/tnt.css'),
   },
 })

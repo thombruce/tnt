@@ -3,7 +3,7 @@ const colorMode = useColorMode()
 </script>
 
 <template lang="pug">
-.prose.max-w-none
+.prose
   TntForm
     h3.font-bold.text-lg Settings
 

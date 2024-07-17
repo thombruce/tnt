@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./nuxt.config.ts",
+  "style": "./assets/css/tnt.css",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

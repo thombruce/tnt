@@ -20,17 +20,3 @@ header
           Icon(name="fa:cog")/
           span.sr-only Settings
 </template>
-
-<style lang="postcss" scoped>
-header {
-  @apply mb-4;
-}
-
-header > nav > ul {
-  @apply space-x-4;
-}
-
-header > nav > ul > li {
-  @apply inline;
-}
-</style>

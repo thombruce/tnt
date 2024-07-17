@@ -16,15 +16,17 @@ const percent = computed(() => {
 </script>
 
 <template lang="pug">
-div(class="relative w-full h-2.5")
-  span.progress.progress-bg
-    span.sr-only {{ $t("conditions.open") }}
-  span.progress.progress-fg(:style="'width:'+percent+'%;'")
-    span.sr-only {{ $t("conditions.closed") }}
+.progress
+  span.progress-bg
+  span.progress-fg(:style="'width:'+percent+'%;'")
 </template>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .progress {
+  @apply relative w-full h-2.5;
+}
+
+.progress > span {
   @apply
     block
     absolute
@@ -32,12 +34,12 @@ div(class="relative w-full h-2.5")
     rounded-full
     h-2.5;
 }
-.progress.progress-bg {
+.progress > span.progress-bg {
   @apply
     bg-gray-200
     dark:bg-gray-800;
 }
-.progress.progress-fg {
+.progress > span.progress-fg {
   @apply
     bg-emerald-500
     transition-[width]

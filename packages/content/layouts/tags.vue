@@ -26,7 +26,7 @@ if (page.value[0] && page.value[0].title) {
 </script>
 
 <template lang="pug">
-article.prose.max-w-none
+article.prose
   //- TODO: We're querying for the page again; this is redundant
   ContentQuery(:path="path" :where="{ _path: path }")
     template(#default="{ data }")
@@ -55,5 +55,5 @@ article.prose.max-w-none
                 strong {{ article.title }}
 
     template(#not-found)
-      p No articles found.
+      strong.text-lg No articles found.
 </template>

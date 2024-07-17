@@ -1,4 +1,4 @@
 <template lang="pug">
-article.prose.max-w-none
+article.prose
   slot
 </template>

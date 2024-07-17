@@ -1,0 +1,113 @@
+/*
+ Special class used to hide the initial title of a Markdown document
+ when the title is otherwise displayed by other means.
+*/
+.hidden-title > h1:first-child {
+  @apply hidden;
+}
+
+.prose {
+  @apply
+    prose-zinc
+    dark:prose-invert
+    max-w-none
+
+    text-content
+    dark:text-content-dark
+
+    /*
+      NOTE: Use `prose-{element}:` modifiers instead of `.prose {element}` selectors
+      to prevent overriding `.not-prose` styles as well.
+    */
+    /* prose-headings: h1, h2, h3, h4, th */
+    prose-headings:text-content-950
+    dark:prose-headings:text-content-50
+
+    /* prose-lead: [class~="lead"] */
+    prose-lead:text-xl
+    prose-lead:leading-relaxed
+    prose-lead:my-6
+    prose-lead:text-content-600
+    dark:prose-lead:text-content-400
+
+    /* prose-h1: h1 */
+    /* prose-h2: h2 */
+    /* prose-h3: h3 */
+    /* prose-h4: h4 */
+
+    /* prose-p: p */
+
+    /* prose-a */
+    prose-a:text-primary
+    dark:prose-a:text-primary-dark
+    hover:prose-a:text-primary-hover
+    dark:hover:prose-a:text-primary-dark-hover
+    /* prose-a < prose-headings */
+    prose-a:prose-headings:text-content
+    dark:prose-a:prose-headings:text-content-dark
+    hover:prose-a:prose-headings:text-content-700
+    dark:hover:prose-a:prose-headings:text-content-300
+
+    /* prose-blockquote: blockquote */
+
+    /* prose-figure: figure */
+
+    /* prose-figcaption: figcaption */
+
+    /* prose-strong: strong */
+
+    /* prose-em: em */
+
+    /* prose-kbd: kbd */
+
+    /* prose-code: code */
+    prose-code:bg-base-100
+    prose-code:text-emerald-600
+    dark:prose-code:bg-base-900
+    dark:prose-code:text-emerald-400
+
+    /* prose-pre: pre */
+
+    /* prose-ol: ol */
+
+    /* prose-ul: ul */
+
+    /* prose-li: li */
+
+    /* prose-table: table */
+
+    /* prose-thead: thead */
+
+    /* prose-tr: tr */
+
+    /* prose-th: th */
+
+    /* prose-td: td */
+
+    /* prose-img: img */
+
+    /* prose-video: video */
+
+    /* prose-hr: hr */
+    prose-hr:border-base-500/50;
+}
+
+/* NOTE: This CSS emulated Tailwind Typography's `.lead` class. It is better to apply this directly where desired.
+.prose :is(p:first-child, h1 + p:first-of-type) {
+  @apply
+    text-xl
+    leading-relaxed
+    my-6
+    text-content-600
+    dark:text-content-400;
+}
+*/
+
+
+.prose blockquote p:first-of-type::before {
+  content: ""
+}
+
+.prose blockquote p:last-of-type::after {
+  content: ""
+}
