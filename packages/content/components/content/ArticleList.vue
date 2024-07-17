@@ -31,5 +31,5 @@ div
                 strong.text-lg {{ article.navigation?.title || article.title }}
               p {{ article.description }}
     template(#not-found)
-      p No articles found.
+      strong.text-lg No articles found.
 </template>

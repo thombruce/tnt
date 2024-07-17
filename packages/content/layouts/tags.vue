@@ -55,5 +55,5 @@ article.prose
                 strong {{ article.title }}
 
     template(#not-found)
-      p No articles found.
+      strong.text-lg No articles found.
 </template>

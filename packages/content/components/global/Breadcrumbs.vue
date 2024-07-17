@@ -19,7 +19,7 @@ const crumbs = computed(() => {
 </script>
 
 <template lang="pug">
-nav.not-prose
+nav.not-prose.my-8
   ul
     li
       NuxtLink(to="/") Home
