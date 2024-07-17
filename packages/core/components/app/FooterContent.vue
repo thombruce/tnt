@@ -1,3 +1,4 @@
 <template lang="pug">
-// Empty
+.hidden
+  // Empty
 </template>
