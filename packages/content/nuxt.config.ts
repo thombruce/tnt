@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
   ],
   content: {
-    documentDriven: true,
+    // documentDriven: true,
     respectPathCase: true,
     highlight: {
       theme: {

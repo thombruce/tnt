@@ -1,12 +1,9 @@
-<script setup lang="ts">
-const { toc } = useContent()
-</script>
-
 <template lang="pug">
-div
-  h2 Table of Contents
-  ol(v-if="toc && toc.links")
-    li(v-for="link in toc.links" :key="link.text")
-      a(:href="`#${link.id}`")
-        | {{ link.text }}
+ContentQuery(:path="$route.path" find="one" v-slot="{ data: { body: { toc } } }")
+  .tnt-toc(v-if="toc?.links")
+    h2 Table of Contents
+    ol
+      li(v-for="link in toc.links" :key="link.text")
+        a(:href="`#${link.id}`")
+          | {{ link.text }}
 </template>

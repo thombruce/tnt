@@ -2,7 +2,7 @@
  Special class used to hide the initial title of a Markdown document
  when the title is otherwise displayed by other means.
 */
-.hidden-title > h1:first-child {
+.hidden-title h1:first-child:first-of-type {
   @apply hidden;
 }
 

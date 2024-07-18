@@ -1,10 +1,4 @@
 <script setup lang="ts">
-definePageMeta({
-  documentDriven: {
-    page: false
-  },
-})
-
 const { params } = useRoute()
 const { taxonomies } = useAppConfig()
 

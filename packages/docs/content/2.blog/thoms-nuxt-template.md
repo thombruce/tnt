@@ -1,11 +1,11 @@
 ---
-title: Thom's Nuxt Template
 authors: Thom Bruce
 date: 2023-09-02T18:13:17Z
 layout: article
+toc: true
 ---
 
-![Red Presents](/uploads/tamanna-rumee-9ROY8fXmTto-unsplash.jpg)
+# Thom's Nuxt Template
 
 Welcome to TNT, a Nuxt template by me - Thom. Hence the name. The short form is just a lot catchier, a bit more... explosive.
 

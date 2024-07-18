@@ -1,5 +1,6 @@
 <script setup>
-const { page } = useContent()
+const route = useRoute()
+const { data: page } = await useAsyncData(`tnt-redirect-${route.path}`, () => queryContent(route.path).findOne())
 
 useHead({
   title: `Redirecting to ${page.value.title}...`,

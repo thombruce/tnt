@@ -1,11 +1,12 @@
 <script setup>
 defineProps(['taxonomy'])
-const { page } = useContent()
+const route = useRoute()
+const { data: page } = await useAsyncData(`tnt-tag-list-${route.path}`, () => queryContent(route.path).findOne())
 </script>
 
 <template lang="pug">
 .not-prose
-  dl(class="pb-4 border-b border-gray-500/50")
+  dl
     dt
       strong {{ _startCase(taxonomy) }}:
     dd

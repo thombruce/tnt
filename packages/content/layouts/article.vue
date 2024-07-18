@@ -1,23 +1,17 @@
-<script setup>
-const { page } = useContent()
-const { taxonomies } = useAppConfig()
-</script>
-
 <template lang="pug">
 article.prose
   ContentDoc
     template(#default="{ doc }")
       h1 {{ doc.title }}
 
-      Breadcrumbs(v-if="page.breadcrumbs !== false")
+      Breadcrumbs(v-if="doc.breadcrumbs !== false")
 
-      div.flex.mt-5(v-if="_keys(doc).some(k => taxonomies.includes(k))")
-        template(v-for="tax in taxonomies")
-          TagList.flex-1(v-if="doc[tax]" :taxonomy="tax")
+      TagLists
 
-      Toc(v-if="page.toc === true")
+      Toc(v-if="doc.toc === true")
 
-      ContentRenderer.hidden-title(:value="doc")
+      .hidden-title
+        slot/
 
-      PrevNext(v-if="page.prevnext !== false")
+      PrevNext(v-if="doc.prevnext !== false")
 </template>
