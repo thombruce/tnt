@@ -1,0 +1,11 @@
+title: Getting Started
+# Ideally navigation would be false for prev-next but true for list page.
+# This means, what? Working out how to show navigation: false items in
+# the article-list component... but not necessarily by default.
+# navigation: false
+layout: redirect
+link: getting-started/installation
+
+# Note that the way Nuxt Content (and I'm sure others) do these redirect pages
+# is to simply add the redirect rule to `routeRules: {}` in nuxt.config. But
+# that would not automatically list the link on the parent page's content list.

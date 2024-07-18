@@ -5,6 +5,10 @@ const props = defineProps(['path', 'sort'])
 
 const path = props.path || route.path
 
+// TODO: Based on the query behaviour, this should be called DirectoryList
+//       We should either rewrite it to enable/disable depth/recursion
+//       via a prop, or rename this and have another component that can
+//       show a more complete list.
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 const query: QueryBuilderParams = {
   where: [
