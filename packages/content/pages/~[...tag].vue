@@ -15,7 +15,6 @@ if (taxonomies.includes(taxonomy) && tag) {
 </script>
 
 <template lang="pug">
-div
-  NuxtLayout(:name="layout || 'default'")
-    //- Rendering handled by layout.
+NuxtLayout(:name="layout || 'default'")
+  //- Rendering handled by layout.
 </template>
