@@ -1,6 +1,8 @@
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
+const fs = require('fs')
+
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -24,6 +26,9 @@ export default defineNuxtConfig({
   },
   // css: [join(currentDir, './assets/css/tnt.css')],
   tailwindcss: {
+    configPath: fs.existsSync('./tailwind.config.js') ? './tailwind.config.js'
+      : fs.existsSync('./tailwind.config.ts') ? './tailwind.config.ts'
+      : join(currentDir, './tailwind.preset.js'),
     cssPath: join(currentDir, './assets/css/tnt.css'),
   },
 })
