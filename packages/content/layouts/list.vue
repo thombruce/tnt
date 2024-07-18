@@ -14,15 +14,14 @@ article.prose
       .hidden-title
         slot/
       ArticleList(:sort="doc.sort")
-      PrevNext(v-if="doc.prevnext !== false")
+      PrevNext(v-if="doc.prevnext")
 
     template(#empty)
       h1 {{ page.title }}
       Breadcrumbs(v-if="page.breadcrumbs !== false")
       TagLists
-      Toc(v-if="page.toc === true")
       ArticleList(:sort="page.sort")
-      PrevNext(v-if="page.prevnext !== false")
+      PrevNext(v-if="page.prevnext")
 
     template(#not-found)
       h1 {{ _startCase(path.split('/').pop()) }}
