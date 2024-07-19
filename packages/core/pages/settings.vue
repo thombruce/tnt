@@ -3,7 +3,7 @@ const colorMode = useColorMode()
 </script>
 
 <template lang="pug">
-NuxtLayout(name="default")
+NuxtLayout
   .prose
     TntForm
       h3.font-bold.text-lg Settings

@@ -1,4 +1,4 @@
 <template lang="pug">
-NuxtLayout(name="default")
+NuxtLayout
   ContentSearch
 </template>
