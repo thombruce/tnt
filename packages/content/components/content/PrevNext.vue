@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const { data: prevNext } = await useAsyncData(
-  `tnt-prevnext-${route.path}`,
-  () => queryContent()
+const prevNext = await queryContent()
     .where([
       { navigation: { $ne: false } },
       { _path: {
@@ -12,7 +10,6 @@ const { data: prevNext } = await useAsyncData(
       { _partial: false }
     ])
     .findSurround(route.path)
-)
 </script>
 
 <template lang="pug">

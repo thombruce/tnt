@@ -9,4 +9,8 @@ article.prose
       .hidden-title
         slot/
       PrevNext(v-if="doc.prevnext !== false")
+    template(#empty)
+      slot/
+    template(#not-found)
+      slot/
 </template>
