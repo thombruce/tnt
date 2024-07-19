@@ -1,6 +1,23 @@
+<script lang="ts" setup>
+const route = useRoute()
+
+const { data: prevNext } = await useAsyncData(
+  `tnt-prevnext-${route.path}`,
+  () => queryContent()
+    .where([
+      { navigation: { $ne: false } },
+      { _path: {
+        $regex: new RegExp(`^${route.path.substring(0, route.path.lastIndexOf('/'))}/.+`)
+      } },
+      { _partial: false }
+    ])
+    .findSurround(route.path)
+)
+</script>
+
 <template lang="pug">
-ContentQuery(:path="$route.path" find="surround" v-slot="{ data: [prev, next] }")
-  .tnt-prevnext.not-prose(v-if="prev || next")
+.tnt-prevnext.not-prose
+  div(v-if="[prev, next] = prevNext")
     .tnt-prev
       NuxtLink(v-if="prev" :to="prev._path") {{ prev.title }}
     .tnt-next
@@ -8,7 +25,7 @@ ContentQuery(:path="$route.path" find="surround" v-slot="{ data: [prev, next] }"
 </template>
 
 <style lang="postcss" scoped>
-.tnt-prevnext {
+.tnt-prevnext > div {
   @apply my-8 flex justify-between;
 }
 
