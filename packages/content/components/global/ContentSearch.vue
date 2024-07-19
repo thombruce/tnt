@@ -2,6 +2,7 @@
 const query = ref('')
 const results = ref([])
 
+// const search = _debounce(async () => {
 const search = async () => {
   const res = await searchContent(query.value, {})
 
@@ -13,6 +14,7 @@ const search = async () => {
 
   results.value = filtered
 }
+// }, 250, { 'maxWait': 500 })
 </script>
 
 <template lang="pug">
