@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRuntimeConfig, useContentHead, useRequestEvent } from '#imports'
 
+const { layout } = useAppConfig()
+
 const route = useRoute()
 
 const { contentHead } = useRuntimeConfig().public.content
@@ -20,7 +22,7 @@ if (contentHead) {
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="page?.layout || 'default'")
+NuxtLayout(:name="page?.layout || layout || 'default'")
   ContentRenderer(v-if="page" :key="page._id" :value="page")
     template(#empty="{ value }")
       DocumentDrivenEmpty(:value="value")/

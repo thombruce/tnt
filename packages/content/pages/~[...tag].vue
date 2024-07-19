@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { layout: defaultLayout } = useAppConfig()
 const { params } = useRoute()
 const { taxonomies } = useAppConfig()
 
@@ -15,6 +16,6 @@ if (taxonomies.includes(taxonomy) && tag) {
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="layout || 'default'")
+NuxtLayout(:name="layout || defaultLayout || 'default'")
   //- Rendering handled by layout.
 </template>

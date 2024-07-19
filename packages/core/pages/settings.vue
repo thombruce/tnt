@@ -1,9 +1,10 @@
 <script setup>
+const { layout } = useAppConfig()
 const colorMode = useColorMode()
 </script>
 
 <template lang="pug">
-NuxtLayout
+NuxtLayout(:name="layout || 'default'")
   .prose
     TntForm
       h3.font-bold.text-lg Settings

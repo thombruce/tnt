@@ -1,4 +1,8 @@
+<script lang="ts" setup>
+const { layout } = useAppConfig()
+</script>
+
 <template lang="pug">
-NuxtLayout
+NuxtLayout(:name="layout || 'default'")
   ContentSearch
 </template>
