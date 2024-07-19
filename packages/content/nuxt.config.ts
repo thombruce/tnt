@@ -9,22 +9,26 @@ export default defineNuxtConfig({
   ],
   content: {
     // documentDriven: true,
-    respectPathCase: true,
-    highlight: {
-      theme: {
-        default: 'github-dark'
+    markdown: {
+      tags: {
+        img: 'TntImg'
       }
     },
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+      }
+    },
+    navigation: {
+      fields: ['link']
+    },
+    respectPathCase: true,
     sources: {
       authors: {
         prefix: '/_data',
         driver: 'fs',
         base: 'data'
-      }
-    },
-    markdown: {
-      tags: {
-        img: 'TntImg'
       }
     },
     experimental: {

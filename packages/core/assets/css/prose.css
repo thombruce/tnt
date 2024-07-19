@@ -67,6 +67,8 @@
     dark:prose-code:text-emerald-400
 
     /* prose-pre: pre */
+    prose-pre:bg-base-100
+    dark:prose-pre:bg-base-900
 
     /* prose-ol: ol */
 
@@ -102,7 +104,6 @@
     dark:text-content-400;
 }
 */
-
 
 .prose blockquote p:first-of-type::before {
   content: ""

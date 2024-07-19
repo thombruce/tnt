@@ -31,4 +31,10 @@ export default defineNuxtConfig({
       : join(currentDir, './tailwind.preset.js'),
     cssPath: join(currentDir, './assets/css/tnt.css'),
   },
+  colorMode: {
+    preference: 'system',
+    fallback: 'dark',
+    classPrefix: '',
+    classSuffix: '',
+  },
 })
