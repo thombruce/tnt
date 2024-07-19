@@ -77,14 +77,24 @@
     /* prose-li: li */
 
     /* prose-table: table */
+    prose-table:bg-base-100
+    dark:prose-table:bg-base-800
 
     /* prose-thead: thead */
+    prose-thead:bg-base-300
+    dark:prose-thead:bg-base-900
 
     /* prose-tr: tr */
+    even:prose-tr:bg-base-200
+    dark:even:prose-tr:bg-base-700
 
     /* prose-th: th */
+    prose-th:py-1
+    prose-th:px-2
 
     /* prose-td: td */
+    prose-td:py-1
+    prose-td:px-2
 
     /* prose-img: img */
 
