@@ -28,10 +28,7 @@ defineProps(['url'])
 
 .tnt-mockup > .tnt-content-window {
   @apply
-    flex
-    justify-center
-    px-4
-    py-16
+    p-4
     border-t
     border-base-300
     dark:border-base-700

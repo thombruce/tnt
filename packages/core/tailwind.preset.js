@@ -5,6 +5,15 @@ const colors = require('tailwindcss/colors')
 const palette = {
   neutral: {...colors.zinc, ...{
     DEFAULT: colors.zinc['500'],
+    hover: colors.zinc['600'],
+    light: {
+      DEFAULT: colors.zinc['500'],
+      hover: colors.zinc['600'],
+    },
+    dark: {
+      DEFAULT: colors.zinc['600'],
+      hover: colors.zinc['500'],
+    },
   }},
 
   primary: {...colors.sky, ...{
