@@ -16,4 +16,6 @@ useHead({
     NuxtPage(:page-key="route => route.fullPath")
 
   AppFooter
+
+  ToastStack
 </template>
