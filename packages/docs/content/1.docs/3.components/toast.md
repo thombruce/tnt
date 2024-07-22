@@ -39,11 +39,15 @@ if (!process.server) {
     ::p
       This is a toast
     ::
+  #actions
+    ::strong
+      Action
+    ::
   :::
 ::
 
 Or try adding some demo toasts to the built-in toast stack:
 
-:toast-button
+:demo-toast-button
 
 :prev-next
