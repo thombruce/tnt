@@ -10,6 +10,7 @@ const toasts = useToasts()
     :uid="toast.uid"
     :color="toast.color"
     :duration="toast.duration"
+    :showClose="toast.showClose"
   )
     component(v-for="el in toast.body" :is="el.is" v-bind="el.props") {{ el.content }}
     template(#actions)

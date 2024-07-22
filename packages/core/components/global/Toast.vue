@@ -10,6 +10,10 @@ const props = defineProps({
   duration: {
     type: Number,
     default: 10000,
+  },
+  showClose: {
+    type: Boolean,
+    default: false,
   }
 })
 
@@ -29,14 +33,18 @@ const startTimer = () => {
     prevTime = newTime
     progress.value = (props.duration - timerLength.value) * 100 / props.duration
     if(timerLength.value <= 0) {
-      stopTimer()
-      // _remove(toasts.value, (toast) => toast.uid === props.uid)
-      toasts.value = _reject(toasts.value, { uid: props.uid })
+      closeToast()
     }
   })
 }
 
 const stopTimer = () => clearInterval(timer.value)
+
+const closeToast = () => {
+  stopTimer()
+  // _remove(toasts.value, (toast) => toast.uid === props.uid)
+  toasts.value = _reject(toasts.value, { uid: props.uid })
+}
 
 onMounted(() => {
   if (props.duration) startTimer()
@@ -99,6 +107,9 @@ const styles = () => {
       slot
     .tnt-toast-actions.p-2.space-x-4
       slot(name="actions")
+      button.btn-none(v-if="!duration || showClose" type="button" @click="closeToast()")
+        Icon(name="fa:close")/
+        span.sr-only Close
   .progress(v-if="duration" :class="styles().progress")
     .progress-fill(:class="styles().fill" :style="'width:'+progress+'%;'")
 </template>

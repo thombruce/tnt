@@ -12,6 +12,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "@iconify-json/fa": "^1.1.8",
     "@nuxt/image": "^1.6.0",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/tailwindcss": "^6.12.0",

@@ -73,7 +73,7 @@ input[type="range"] {
   */
 }
 
-button {
+button:not(.btn-none) {
   @apply
     py-2
     px-4
@@ -84,4 +84,13 @@ button {
     hover:bg-primary-hover
     dark:bg-primary-dark
     dark:hover:bg-primary-dark-hover;
+  /*
+    TODO: Remove default colors or establish different ones
+          Add additional colors for btn-{style} classes
+  */
+}
+
+button.btn-none {
+  @apply
+    leading-none;
 }

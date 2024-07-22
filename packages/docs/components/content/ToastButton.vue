@@ -5,7 +5,7 @@ const addToasts = () => {
   toasts.value.push(
     {
       uid: `tnt-toast-${_uniqueId()}`,
-      duration: 3000,
+      duration: 0,
       color: 'error',
       body: [
         { is: 'strong', props: { class: 'text-lg' }, content: 'Error' },
@@ -29,7 +29,7 @@ const addToasts = () => {
     },
     {
       uid: `tnt-toast-${_uniqueId()}`,
-      duration: 5000,
+      duration: 0,
       color: 'success',
       body: [
         { is: 'strong', props: { class: 'text-lg' }, content: 'Success' },
@@ -54,19 +54,20 @@ const addToasts = () => {
     {
       uid: `tnt-toast-${_uniqueId()}`,
       duration: 8000,
+      showClose: true,
       color: 'neutral',
       body: [
         { is: 'strong', props: { class: 'text-lg' }, content: 'Neutral' },
         { is: 'p', content: 'This is text.' },
       ],
       actions: [
-        { is: 'Icon', props: { name: 'fa:check' } },
-        { is: 'Icon', props: { name: 'fa:close' } }
+        { is: 'Icon', props: { name: 'fa:check' } }
       ]
     },
     {
       uid: `tnt-toast-${_uniqueId()}`,
       // duration defaults to 10000
+      showClose: true,
       color: 'blank',
       body: [
         { is: 'strong', props: { class: 'text-lg' }, content: 'Toast' },
