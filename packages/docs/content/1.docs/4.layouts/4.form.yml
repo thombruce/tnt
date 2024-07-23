@@ -35,7 +35,8 @@ body:
       validate:
         min: 6
         max: 15
-        match: banana
+        matches: banana
+        required: true
 
   - file:
       name: fields[file]

@@ -25,36 +25,28 @@ const props = defineProps({
   rules: {
     type: Object,
     default: (props) => {
+      let yupRules
       switch(props.validate?.format || props.type) {
         case 'text':
         case 'string':
         case 'password':
-          return yup.string()
-            .min(props.validate?.min || 0)
-            .max(props.validate?.max || Number.MAX_SAFE_INTEGER)
-            // TODO: Case insensitivity should be configurable
-            .matches(props.validate?.match ? new RegExp(props.validate.match, 'i') : /.*/)
-            .label(props.label)
+          yupRules = yup.string()
+          break
         case 'email':
-          return yup.string()
-            .email()
-            .min(props.validate?.min || 0)
-            .max(props.validate?.max || Number.MAX_SAFE_INTEGER)
-            // TODO: Case insensitivity should be configurable
-            .matches(props.validate?.match ? new RegExp(props.validate.match, 'i') : /.*/)
-            .label(props.label)
+          yupRules = yup.string().email()
+          break
         case 'url':
-          return yup.string()
-            .url()
-            .min(props.validate?.min || 0)
-            .max(props.validate?.max || Number.MAX_SAFE_INTEGER)
-            // TODO: Case insensitivity should be configurable
-            .matches(props.validate?.match ? new RegExp(props.validate.match, 'i') : /.*/)
-            .label(props.label)
+          yupRules = yup.string().url()
+          break
         default:
-          return yup.mixed()
-            .label(props.label)
+          yupRules = yup.mixed()
       }
+      // NOTE: String(props.validate[method]) !== 'true'
+      //       This will have unintended consequences if, for instance, the user
+      //       wants to invoke the literal string 'true' for, say, a matches regex.
+      // TODO: Is there a better way?
+      Object.keys(props.validate || {}).forEach(method => yupRules = yupRules[method](String(props.validate[method]) !== 'true' ? props.validate[method] : undefined))
+      return yupRules.label(props.label)
     }
   }
 })
