@@ -32,7 +32,13 @@ defineEmits([
 
 <template lang="pug">
 div
-  VeeField(:name="name" :rules="rules" v-slot="{ field, errors }")
+  VeeField(
+    v-bind="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    :name="name"
+    :rules="rules"
+    v-slot="{ field, errors }"
+  )
     label(v-if="label" :for="id")
       span.font-bold(v-if="label" v-html="label")
 

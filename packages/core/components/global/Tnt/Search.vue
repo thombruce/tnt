@@ -11,5 +11,6 @@ const props = defineProps({
 TntInput(
   v-bind="$props"
   @input="method()"
+  type="search"
 )
 </template>
