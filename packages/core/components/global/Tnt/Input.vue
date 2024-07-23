@@ -1,4 +1,6 @@
 <script setup>
+import * as yup from 'yup'
+
 const props = defineProps({
   modelValue: {
     default: ''
@@ -20,8 +22,8 @@ const props = defineProps({
   placeholder: {},
   fullErrors: {},
   rules: {
-    type: Function,
-    default: () => () => {}
+    type: Object,
+    default: (props) => yup.mixed().label(props.label)
   }
 })
 
