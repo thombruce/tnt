@@ -20,6 +20,7 @@
   - week
 */
 
+input:not([type]),
 input[type="text"],
 input[type="file"],
 select,
@@ -31,12 +32,23 @@ textarea {
     px-3
     rounded
     border
+    focus:outline-none
+    focus:ring-0
+    focus:border-primary
+    dark:focus:border-primary-dark
     bg-white
     text-base-700
     border-base-200
     dark:bg-base-900
     dark:text-base-300
     dark:border-base-700;
+  &.error {
+    @apply
+      border-error
+      dark:border-error-dark
+      focus:border-error-hover
+      dark:focus:border-error-dark-hover;
+  }
 }
 
 input[type="checkbox"], input[type="radio"] {

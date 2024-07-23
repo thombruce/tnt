@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/image',
     'nuxt-icon',
+    '@vee-validate/nuxt',
   ],
   nitro: {
     prerender: {
@@ -36,5 +37,16 @@ export default defineNuxtConfig({
     fallback: 'dark',
     classPrefix: '',
     classSuffix: '',
+  },
+  veeValidate: {
+    // disable or enable auto imports
+    autoImports: true,
+    // Use different names for components
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
   },
 })
