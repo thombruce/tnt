@@ -1,6 +1,4 @@
 <script setup>
-import * as yup from 'yup'
-
 const props = defineProps({
   modelValue: {
     default: ''
@@ -21,9 +19,11 @@ const props = defineProps({
   hint: {},
   placeholder: {},
   fullErrors: {},
+  rules: {
+    type: Function,
+    default: () => () => {}
+  }
 })
-
-const rules = yup.string().label(props.label).min(3).max(12).email()
 
 defineEmits([
   'update:modelValue'
