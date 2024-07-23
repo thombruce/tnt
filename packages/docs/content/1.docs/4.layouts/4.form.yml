@@ -11,6 +11,18 @@ body:
       placeholder: What do people call you?
 
   - input:
+      type: text
+      name: fields[validations]
+      label: Validations
+      hint: This field is required; it must be between 6 and 15 characters long and contain the word 'banana'.
+      placeholder: I am a banana!
+      validate:
+        min: 6
+        max: 15
+        matches: banana
+        required: true
+
+  - input:
       type: email
       name: fields[email]
       label: Email
@@ -25,18 +37,6 @@ body:
       placeholder: correct horse battery staple
       validate:
         min: 6
-
-  - input:
-      type: text
-      name: fields[banana]
-      label: Banana
-      hint: This field must be between 6 and 15 characters long and contain the word 'banana'.
-      placeholder: I am a banana!
-      validate:
-        min: 6
-        max: 15
-        matches: banana
-        required: true
 
   - file:
       name: fields[file]
