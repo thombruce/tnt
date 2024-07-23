@@ -10,6 +10,33 @@ body:
       hint: You know this.
       placeholder: What do people call you?
 
+  - input:
+      type: email
+      name: fields[email]
+      label: Email
+      hint: How do we contact you?
+      placeholder: john@example.com
+
+  - input:
+      type: password
+      name: fields[password]
+      label: Password
+      hint: Keep it secret.
+      placeholder: correct horse battery staple
+      validate:
+        min: 6
+
+  - input:
+      type: text
+      name: fields[banana]
+      label: Banana
+      hint: This field must be between 6 and 15 characters long and contain the word 'banana'.
+      placeholder: I am a banana!
+      validate:
+        min: 6
+        max: 15
+        match: banana
+
   - file:
       name: fields[file]
       label: File

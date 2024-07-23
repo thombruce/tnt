@@ -21,9 +21,41 @@ const props = defineProps({
   hint: {},
   placeholder: {},
   fullErrors: {},
+  validate: {},
   rules: {
     type: Object,
-    default: (props) => yup.mixed().label(props.label)
+    default: (props) => {
+      switch(props.validate?.format || props.type) {
+        case 'text':
+        case 'string':
+        case 'password':
+          return yup.string()
+            .min(props.validate?.min || 0)
+            .max(props.validate?.max || Number.MAX_SAFE_INTEGER)
+            // TODO: Case insensitivity should be configurable
+            .matches(props.validate?.match ? new RegExp(props.validate.match, 'i') : /.*/)
+            .label(props.label)
+        case 'email':
+          return yup.string()
+            .email()
+            .min(props.validate?.min || 0)
+            .max(props.validate?.max || Number.MAX_SAFE_INTEGER)
+            // TODO: Case insensitivity should be configurable
+            .matches(props.validate?.match ? new RegExp(props.validate.match, 'i') : /.*/)
+            .label(props.label)
+        case 'url':
+          return yup.string()
+            .url()
+            .min(props.validate?.min || 0)
+            .max(props.validate?.max || Number.MAX_SAFE_INTEGER)
+            // TODO: Case insensitivity should be configurable
+            .matches(props.validate?.match ? new RegExp(props.validate.match, 'i') : /.*/)
+            .label(props.label)
+        default:
+          return yup.mixed()
+            .label(props.label)
+      }
+    }
   }
 })
 
