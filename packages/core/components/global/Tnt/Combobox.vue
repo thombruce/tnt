@@ -94,9 +94,9 @@ div
       autocomplete="off"
       @focus="isActive = true"
     )
-    ul(class="bg-base-200" v-show="isActive && results.length")
-      li(v-for="result in results" :key="result")
-        a(@click="value = result;isActive = false")
+    ul.not-prose(class="bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
+      li.w-full.px-3(v-for="result in results" :key="result" class="hover:bg-blue-600")
+        a.block.w-full.cursor-pointer(@click="value = result;isActive = false")
           | {{ result }}
   label(v-if="hint" :for="id")
     span.text-xs.text-gray-500(v-if="hint" v-html="hint")

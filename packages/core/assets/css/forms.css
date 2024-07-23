@@ -31,28 +31,35 @@ textarea {
     py-2
     px-3
     rounded
+    bg-white
+    dark:bg-base-900
+    text-base-700
+    dark:text-base-300
+    /* border, outline, ring */
     border
     focus:outline-none
-    focus:ring-0
+    focus:ring-1
+    /* border */
+    border-base-200
+    dark:border-base-700
     focus:border-primary
     dark:focus:border-primary-dark
-    bg-white
-    text-base-700
-    border-base-200
-    dark:bg-base-900
-    dark:text-base-300
-    dark:border-base-700;
+    /* ring */
+    focus:ring-primary-hover
+    dark:focus:ring-primary-dark-hover;
   &.error {
     @apply
       border-error
       dark:border-error-dark
-      focus:border-error-hover
-      dark:focus:border-error-dark-hover;
+      focus:ring-error-hover
+      dark:focus:ring-error-dark-hover;
   }
 }
 
 input[type="checkbox"], input[type="radio"] {
   @apply
+    focus:ring-primary
+    dark:focus:ring-primary-dark
     checked:bg-primary
     checked:focus:bg-primary-hover
     checked:hover:bg-primary-hover
