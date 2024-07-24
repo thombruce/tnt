@@ -47,15 +47,12 @@ body:
       hint: Got a website?
       placeholder: https://example.com
 
-  # TODO: Would be good to have a custom Yum schema extension for tel()
   - input:
       type: tel
       name: tel
       label: Telephone
       hint: What's your number?
       placeholder: '+44'
-      validate:
-        matches: ^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$
 
   - input:
       type: password

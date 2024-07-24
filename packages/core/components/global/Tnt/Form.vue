@@ -31,7 +31,7 @@ const props = defineProps({
             case 'string':
             case 'password':
             case 'tel':
-              yupRules = yup.string()
+              yupRules = yup.string().tel()
               break
             case 'email':
               yupRules = yup.string().email()
@@ -42,8 +42,8 @@ const props = defineProps({
             // TODO: yup.string().datetime() apparently has greater customisability than
             //       yup.date(), however the below still does not validate a time or a
             //       week properly. Either... customise the regex for these values or
-            //       create a new schema extension for time and for week just as you
-            //       intend to do for tel(). This extension may extend string().
+            //       create a new schema extension for time and for week just as I've
+            //       done for tel(). This extension may extend string().
             // case 'time':
             // case 'week':
             //   yupRules = yup.string().datetime()
