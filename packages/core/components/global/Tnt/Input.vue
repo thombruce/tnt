@@ -1,6 +1,4 @@
 <script setup>
-import * as yup from 'yup'
-
 const props = defineProps({
   modelValue: {
     default: ''

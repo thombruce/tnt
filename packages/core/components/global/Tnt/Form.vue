@@ -1,6 +1,4 @@
 <script setup>
-import * as yup from 'yup'
-
 const props = defineProps({
   action: {
     type: String
@@ -17,14 +15,6 @@ const props = defineProps({
   schema: {
     type: Object,
     default: (props) => {
-      // TODO: Placing this here avoids it not being defined in time
-      //       but this is getting way too heavy
-      yup.addMethod(yup.Schema, 'confirms', function confirm(field) {
-        return this.oneOf(
-          [yup.ref(field)],
-          `Must match ${yup.ref(field).key}`
-        )
-      })
       let yupRules
       const final = yup.object(
         Object.assign(...props.body.map((o) => {
