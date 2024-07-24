@@ -26,21 +26,9 @@ const props = defineProps({
     type: Object,
     default: (props) => {
       let yupRules
-      switch(props.validate?.format || props.type) {
-        case 'text':
-        case 'string':
-        case 'password':
-          yupRules = yup.string()
-          break
-        case 'email':
-          yupRules = yup.string().email()
-          break
-        case 'url':
-          yupRules = yup.string().url()
-          break
-        default:
-          yupRules = yup.mixed()
-      }
+
+      yupRules = yupAuto(props.validate?.format || props.type)
+
       // NOTE: String(props.validate[method]) !== 'true'
       //       This will have unintended consequences if, for instance, the user
       //       wants to invoke the literal string 'true' for, say, a matches regex.
