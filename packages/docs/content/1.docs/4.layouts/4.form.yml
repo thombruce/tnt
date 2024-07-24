@@ -4,6 +4,16 @@ action: /docs/layouts/form
 method: GET
 fullErrors: false
 body:
+  - h2: Arbitrary HTML
+  - p: |
+      The forms schema accepts a subset of arbitrary HTML tags.
+  - img:
+      src: /uploads/tamanna-rumee-9ROY8fXmTto-unsplash.jpg
+      class: m-auto
+      height: 200
+
+  - h2: String Inputs
+
   - input:
       type: text
       name: name
@@ -51,10 +61,13 @@ body:
         min: 6
         confirms: password
 
+  - h2: File Input
   - file:
       name: file
       label: File
       hint: Upload a file
+
+  - h2: Multi Inputs
 
   - select:
       name: select
@@ -97,6 +110,8 @@ body:
         - The Last Jedi
         - The Rise of Skywalker
 
+  - h2: Boolean Inputs
+
   - checkbox:
       name: checkbox
       label: Checkbox
@@ -117,6 +132,7 @@ body:
         - Red pill
         - Blue pill
 
+  - h2: Range Input
   - range:
       name: range
       label: Range
@@ -125,6 +141,7 @@ body:
       max: 100
       value: 50
 
+  - h2: Long Text Inputs
   - textarea:
       name: content
       label: Content

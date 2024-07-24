@@ -20,6 +20,8 @@ const props = defineProps({
       let yupRules
       const final = yup.object(
         Object.assign(...props.body.map((o) => {
+          if (!formComponents.includes(Object.keys(o)[0])) return {}
+
           let b = Object.values(o)[0]
           switch(b.validate?.format || b.type) {
             case 'text':
@@ -54,5 +56,10 @@ const props = defineProps({
 VeeForm.space-y-5(:action="action" :method="method" :validation-schema="schema" v-slot="{ errors }")
   slot
   template(v-for="component in body")
-    component(:is="`tnt-${_keys(component)[0]}`" v-bind="{ ..._omit(_values(component)[0], ['validate', 'rules']), ...{ fullErrors } }")
+    component(
+      :is="tntComponents.includes(_keys(component)[0]) ? `tnt-${_keys(component)[0]}` : _keys(component)[0]"
+      v-bind="{ ..._omit(_values(component)[0], ['validate', 'rules']), ...{ fullErrors } }"
+    )
+      template(v-if="typeof _values(component)[0] === 'string'") {{ _values(component)[0] }}
+      template(v-else-if="_keys(component).includes('body')") {{ component.body }}
 </template>
