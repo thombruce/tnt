@@ -3,16 +3,10 @@
   Input types not yet addressed:
   - button (but we provide styles for the <button> element instead)
   - color
-  - date
-  - datetime-local
   - hidden (but this shouldn't need styling)
   - image
-  - month
-  - number
   - reset (a button that resets form; but use of it is not recommended)
   - submit (but again we already provide <button> styles)
-  - time
-  - week
 */
 
 input:not([type]),
@@ -23,6 +17,12 @@ input[type="search"],
 input[type="tel"],
 input[type="url"],
 input[type="file"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="time"],
+input[type="week"],
 select,
 textarea {
   @apply

@@ -23,10 +23,14 @@ const props = defineProps({
           if (!formComponents.includes(Object.keys(o)[0])) return {}
 
           let b = Object.values(o)[0]
+          // TODO: Since this switch statement is being used here and on Input.vue
+          //       and ought to be identical on both, consider moving it to
+          //       the yup util, maybe so that it may be called as yup.auto(type)
           switch(b.validate?.format || b.type) {
             case 'text':
             case 'string':
             case 'password':
+            case 'tel':
               yupRules = yup.string()
               break
             case 'email':
@@ -34,6 +38,23 @@ const props = defineProps({
               break
             case 'url':
               yupRules = yup.string().url()
+              break
+            // TODO: yup.string().datetime() apparently has greater customisability than
+            //       yup.date(), however the below still does not validate a time or a
+            //       week properly. Either... customise the regex for these values or
+            //       create a new schema extension for time and for week just as you
+            //       intend to do for tel(). This extension may extend string().
+            // case 'time':
+            // case 'week':
+            //   yupRules = yup.string().datetime()
+            //   break
+            case 'number':
+              yupRules = yup.number()
+              break
+            case 'date':
+            case 'datetime-local':
+            case 'month':
+              yupRules = yup.date()
               break
             default:
               yupRules = yup.mixed()

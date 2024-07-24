@@ -41,6 +41,23 @@ body:
       placeholder: john@example.com
 
   - input:
+      type: url
+      name: url
+      label: URL
+      hint: Got a website?
+      placeholder: https://example.com
+
+  # TODO: Would be good to have a custom Yum schema extension for tel()
+  - input:
+      type: tel
+      name: tel
+      label: Telephone
+      hint: What's your number?
+      placeholder: '+44'
+      validate:
+        matches: ^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$
+
+  - input:
       type: password
       name: password
       label: Password
@@ -60,6 +77,53 @@ body:
         required: true
         min: 6
         confirms: password
+
+  - h2: Numeric Inputs
+
+  # TODO: Problems with number and date fields. Once entered, if deleted, validation fails due to casting.
+  #       Even if they are marked as strict, nullable or optional.
+
+  - input:
+      type: number
+      name: number
+      label: Number
+      hint: Pick a number. Any number.
+      placeholder: '42'
+      validate:
+        min: 13
+        max: 42
+
+  - h2: Date and Time Inputs
+
+  - input:
+      type: date
+      name: date
+      label: Date
+      hint: What's your birthday?
+
+  - input:
+      type: datetime-local
+      name: datetime-local
+      label: Datetime Local
+      hint: What time is it specifically?
+
+  - input:
+      type: month
+      name: month
+      label: Month
+      hint: There's only twelve.
+
+  - input:
+      type: time
+      name: time
+      label: Time
+      hint: What time is it?
+
+  - input:
+      type: week
+      name: week
+      label: Week
+      hint: There's fifty-two every year.
 
   - h2: File Input
   - file:
