@@ -2,17 +2,18 @@ title: Form
 layout: form
 action: /docs/layouts/form
 method: GET
+fullErrors: true # TODO: Achieve functionality - have form pass to individual inputs
 body:
   - input:
       type: text
-      name: fields[name]
+      name: name
       label: Name
       hint: You know this.
       placeholder: What do people call you?
 
   - input:
       type: text
-      name: fields[validations]
+      name: validations
       label: Validations
       hint: This field is required; it must be between 6 and 15 characters long and contain the word 'banana'.
       placeholder: I am a banana!
@@ -24,27 +25,41 @@ body:
 
   - input:
       type: email
-      name: fields[email]
+      name: email
       label: Email
       hint: How do we contact you?
       placeholder: john@example.com
 
   - input:
       type: password
-      name: fields[password]
+      name: password
       label: Password
       hint: Keep it secret.
       placeholder: correct horse battery staple
       validate:
+        required: true
         min: 6
 
+  # A good exercise for form-level validation would be to ensure
+  # that two fields match; the best candidate for this: password confirmation
+  - input:
+      type: password
+      name: password_confirmation
+      label: Password confirmation
+      hint: ...and remember it!
+      placeholder: correct horse battery staple
+      validate:
+        required: true
+        min: 6
+        confirms: password
+
   - file:
-      name: fields[file]
+      name: file
       label: File
       hint: Upload a file
 
   - select:
-      name: fields[select]
+      name: select
       label: Select
       hint: Pick an option.
       placeholder: Pick one
@@ -69,7 +84,7 @@ body:
           value: ep9
 
   - combobox:
-      name: fields[combobox]
+      name: combobox
       label: Combobox
       hint: Search for something
       placeholder: Star Wars...
@@ -85,12 +100,12 @@ body:
         - The Rise of Skywalker
 
   - checkbox:
-      name: fields[checkbox]
+      name: checkbox
       label: Checkbox
       checked: false
 
   - checkbox:
-      name: fields[checkboxOptions]
+      name: checkboxOptions
       label: Checkbox with options
       options:
         - Salt
@@ -98,14 +113,14 @@ body:
         - Vinegar
 
   - radio:
-      name: fields[radio]
+      name: radio
       label: Radio
       options:
         - Red pill
         - Blue pill
 
   - range:
-      name: fields[range]
+      name: range
       label: Range
       hint: Slide it up or down.
       min: 0
@@ -113,7 +128,7 @@ body:
       value: 50
 
   - textarea:
-      name: fields[content]
+      name: content
       label: Content
       hint: Give a hint.
       placeholder: What do you have to say?
