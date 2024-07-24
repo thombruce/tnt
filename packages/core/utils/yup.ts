@@ -19,12 +19,13 @@ export const yupAuto = (type) => {
     case 'text':
     case 'string':
     case 'password':
-    case 'tel':
-      return yup.string().tel()
+      return yup.string()
     case 'email':
       return yup.string().email()
     case 'url':
       return yup.string().url()
+    case 'tel':
+      return yup.string().tel()
     // TODO: yup.string().datetime() apparently has greater customisability than
     //       yup.date(), however the below still does not validate a time or a
     //       week properly. Either... customise the regex for these values or
