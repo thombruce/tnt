@@ -25,7 +25,7 @@ defineEmits([
 
 <template lang="pug">
 div
-  fieldset(v-if="options")
+  fieldset
     legend(v-if="label")
       span.font-bold(v-if="label" v-html="label")
     div(v-for="option in options")
@@ -41,16 +41,4 @@ div
         span {{ option.label || option }}
     label(v-if="hint" :for="id")
       span.text-xs.text-gray-500(v-if="hint" v-html="hint")
-  div(v-else)
-    //- TODO: It occurs to me there's no point in an isolated radio button.
-    //-       Remove this v-else.
-    input.mr-3(
-      :id="id"
-      :checked="modelValue"
-      @change="$emit('update:modelValue', $event.target.checked)"
-      :name="name"
-      type="radio"
-    )
-    label(:for="id")
-      span.font-bold {{ label }}
 </template>
