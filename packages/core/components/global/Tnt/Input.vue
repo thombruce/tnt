@@ -18,7 +18,9 @@ const props = defineProps({
   },
   hint: {},
   placeholder: {},
-  fullErrors: {},
+  fullErrors: {
+    type: Boolean
+  },
   validate: {},
   rules: {
     type: Object,

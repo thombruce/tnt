@@ -7,7 +7,9 @@ article.prose
       TntForm(
         :action="doc.action"
         :method="doc.method"
+        :fullErrors="doc.fullErrors"
         :body="doc.body"
+        :schema="doc.schema"
       )
 </template>
 

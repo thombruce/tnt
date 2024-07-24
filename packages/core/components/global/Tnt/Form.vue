@@ -10,7 +10,9 @@ const props = defineProps({
     type: Array
   },
   // TODO: fullErrors currently does nothing here
-  fullErrors: {},
+  fullErrors: {
+    type: Boolean
+  },
   // validate: {},
   schema: {
     type: Object,
@@ -52,5 +54,5 @@ const props = defineProps({
 VeeForm.space-y-5(:action="action" :method="method" :validation-schema="schema" v-slot="{ errors }")
   slot
   template(v-for="component in body")
-    component(:is="`tnt-${_keys(component)[0]}`" v-bind="_omit(_values(component)[0], ['validate', 'rules'])")
+    component(:is="`tnt-${_keys(component)[0]}`" v-bind="{ ..._omit(_values(component)[0], ['validate', 'rules']), ...{ fullErrors } }")
 </template>
