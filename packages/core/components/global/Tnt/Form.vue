@@ -9,7 +9,6 @@ const props = defineProps({
   body: {
     type: Array
   },
-  // TODO: fullErrors currently does nothing here
   fullErrors: {
     type: Boolean
   },
