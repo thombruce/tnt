@@ -5,12 +5,28 @@ method: GET
 fullErrors: false
 body:
   - h2: Arbitrary HTML
-  - p: |
-      The forms schema accepts a subset of arbitrary HTML tags.
+  - p:
+      class: lead
+      body: The forms schema accepts a subset of arbitrary HTML tags.
+  - p: The above example is a p tag with a text body attribute and a class of lead.
+  - p: 'The schema for that looks a little like this:'
+  - pre: |
+      body:
+        - p:
+          class: lead
+          body: The forms schema accepts a subset of arbitrary HTML tags.
+  - p: 'We can also render images:'
   - img:
       src: /uploads/tamanna-rumee-9ROY8fXmTto-unsplash.jpg
       class: m-auto
       height: 200
+  - p: 'And custom TNT components like this card:'
+  - card:
+      class: success
+      body:
+        - strong:
+            body: Card Title
+        - p: Card body
 
   - h2: String Inputs
 

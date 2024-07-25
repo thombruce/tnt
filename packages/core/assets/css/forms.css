@@ -9,6 +9,18 @@
   - submit (but again we already provide <button> styles)
 */
 
+.errors.full {
+  @apply hidden;
+}
+
+.full-errors .errors.full {
+  @apply block;
+}
+
+.full-errors .errors.single {
+  @apply hidden;
+}
+
 input:not([type]),
 input[type="text"],
 input[type="email"],

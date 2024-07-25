@@ -12,6 +12,24 @@ const props = defineProps({
   fullErrors: {
     type: Boolean
   },
+  // TODO: Enable use of validate: on Form, which may contain all of the forms
+  //       rules. To achieve this, ensure that the name, label, format and
+  //       validations for each input is passed to the form's validate attribute.
+  //       E.g.
+  //       validate:
+  //         - name: text # (required)
+  //           label: Text # (optional)
+  //           format: string # (required)
+  //           rules:
+  //             min: 6
+  //             max: 15
+  //             matches: banana
+  //             required: true
+  //
+  //       Arguably format may be left absent from the object in order to
+  //       default to .mixed() but it should be considered bad practice
+  //       due to likelihood of accidental omission and unexpected failures
+  //       of validations.
   // validate: {},
   schema: {
     type: Object,
@@ -40,13 +58,14 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-VeeForm.space-y-5(:action="action" :method="method" :validation-schema="schema" v-slot="{ errors }")
+VeeForm.space-y-5(
+  :class="fullErrors ? 'full-errors' : undefined"
+  :action="action"
+  :method="method"
+  :validation-schema="schema"
+  v-slot="{ errors }"
+)
   slot
   template(v-for="component in body")
-    component(
-      :is="tntComponents.includes(_keys(component)[0]) ? `tnt-${_keys(component)[0]}` : _keys(component)[0]"
-      v-bind="{ ..._omit(_values(component)[0], ['validate', 'rules']), ...{ fullErrors } }"
-    )
-      template(v-if="typeof _values(component)[0] === 'string'") {{ _values(component)[0] }}
-      template(v-else-if="_keys(component).includes('body')") {{ component.body }}
+    FromSchema(:component="component")
 </template>
