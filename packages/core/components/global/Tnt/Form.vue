@@ -30,30 +30,41 @@ const props = defineProps({
   //       default to .mixed() but it should be considered bad practice
   //       due to likelihood of accidental omission and unexpected failures
   //       of validations.
-  // validate: {},
   schema: {
     type: Object,
-    default: (props) => {
-      let yupRules
-      const final = yup.object(
-        Object.assign(...props.body.map((o) => {
-          if (!formComponents.includes(Object.keys(o)[0])) return {}
-
-          let b = Object.values(o)[0]
-
-          yupRules = yupAuto(b.validate?.format || b.type)
-
-          // NOTE: String(props.validate[method]) !== 'true'
-          //       This will have unintended consequences if, for instance, the user
-          //       wants to invoke the literal string 'true' for, say, a matches regex.
-          // TODO: Is there a better way?
-          Object.keys(b.validate || {}).forEach(method => yupRules = yupRules[method](String(b.validate[method]) !== 'true' ? b.validate[method] : undefined))
-          return { [b.name]: yupRules.label(b.label) }
-        }))
-      )
-      return final
-    }
   }
+})
+
+
+const computedSchema = computed(() => {
+  if (props.schema?.spec) return props.schema
+
+  let yupRules
+
+  const final = yup.object(
+    // TODO: This needs a bit of a total rewrite...
+    //       The below should apply if no schema is provided.
+    //       If a schema is provided that doesn't have .spec
+    //       then we ought to construct the schema from that instead...
+    //       potentially also merging in properties from body if/when
+    //       relevant. Prioritising which? That's a damn good question.
+    Object.assign(...props.body.map((o) => {
+      if (!formComponents.includes(Object.keys(o)[0])) return {}
+
+      let b = Object.values(o)[0]
+
+      yupRules = yupAuto(b.rules?.format || b.type)
+
+      // NOTE: String(props.validate[method]) !== 'true'
+      //       This will have unintended consequences if, for instance, the user
+      //       wants to invoke the literal string 'true' for, say, a matches regex.
+      // TODO: Is there a better way?
+      Object.entries(b.rules || {}).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
+      return { [b.name]: yupRules.label(b.label) }
+    }))
+  )
+  console.log(final)
+  return final
 })
 </script>
 
@@ -62,7 +73,7 @@ VeeForm.space-y-5(
   :class="fullErrors ? 'full-errors' : undefined"
   :action="action"
   :method="method"
-  :validation-schema="schema"
+  :validation-schema="computedSchema"
   v-slot="{ errors }"
 )
   slot

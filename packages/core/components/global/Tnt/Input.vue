@@ -21,22 +21,24 @@ const props = defineProps({
   fullErrors: {
     type: Boolean
   },
-  validate: {},
   rules: {
     type: Object,
-    default: (props) => {
-      let yupRules
-
-      yupRules = yupAuto(props.validate?.format || props.type)
-
-      // NOTE: String(props.validate[method]) !== 'true'
-      //       This will have unintended consequences if, for instance, the user
-      //       wants to invoke the literal string 'true' for, say, a matches regex.
-      // TODO: Is there a better way?
-      Object.keys(props.validate || {}).forEach(method => yupRules = yupRules[method](String(props.validate[method]) !== 'true' ? props.validate[method] : undefined))
-      return yupRules.label(props.label)
-    }
   }
+})
+
+const computedRules = computed(() => {
+  if (props.rules?.spec) return props.rules
+
+  let yupRules
+
+  yupRules = yupAuto(props.rules?.format || props.type)
+
+  // NOTE: String(props.rules[method]) !== 'true'
+  //       This will have unintended consequences if, for instance, the user
+  //       wants to invoke the literal string 'true' for, say, a matches regex.
+  // TODO: Is there a better way?
+  Object.entries(props.rules || {}).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
+  return yupRules.label(props.label)
 })
 
 defineEmits([
@@ -50,7 +52,7 @@ div(:class="fullErrors ? 'full-errors' : undefined")
     v-bind="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     :name="name"
-    :rules="rules"
+    :rules="computedRules"
     v-slot="{ field, errors }"
   )
     label(v-if="label" :for="id")
