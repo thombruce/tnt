@@ -33,10 +33,6 @@ const computedRules = computed(() => {
 
   yupRules = yupAuto(props.rules?.format || props.type)
 
-  // NOTE: String(props.rules[method]) !== 'true'
-  //       This will have unintended consequences if, for instance, the user
-  //       wants to invoke the literal string 'true' for, say, a matches regex.
-  // TODO: Is there a better way?
   Object.entries(props.rules || {}).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
   return yupRules.label(props.label)
 })

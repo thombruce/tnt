@@ -12,24 +12,6 @@ const props = defineProps({
   fullErrors: {
     type: Boolean
   },
-  // TODO: Enable use of validate: on Form, which may contain all of the forms
-  //       rules. To achieve this, ensure that the name, label, format and
-  //       validations for each input is passed to the form's validate attribute.
-  //       E.g.
-  //       validate:
-  //         - name: text # (required)
-  //           label: Text # (optional)
-  //           format: string # (required)
-  //           rules:
-  //             min: 6
-  //             max: 15
-  //             matches: banana
-  //             required: true
-  //
-  //       Arguably format may be left absent from the object in order to
-  //       default to .mixed() but it should be considered bad practice
-  //       due to likelihood of accidental omission and unexpected failures
-  //       of validations.
   schema: {
     type: Object,
   }
@@ -39,32 +21,50 @@ const props = defineProps({
 const computedSchema = computed(() => {
   if (props.schema?.spec) return props.schema
 
+  let fromSchema = yup.object(), fromBody
+
+  if (props.schema) {
+    let yupRules
+
+    fromSchema = yup.object(
+      Object.assign(...Object.entries(props.schema).map(([name, rules]) => {
+        yupRules = yupAuto(rules.format)
+
+        Object.entries(_omit(rules, ['format', 'label'])).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
+        return rules.label ? { [name]: yupRules.label(rules.label) } : { [name]: yupRules }
+      }))
+    )
+  }
+
   let yupRules
 
-  const final = yup.object(
-    // TODO: This needs a bit of a total rewrite...
-    //       The below should apply if no schema is provided.
-    //       If a schema is provided that doesn't have .spec
-    //       then we ought to construct the schema from that instead...
-    //       potentially also merging in properties from body if/when
-    //       relevant. Prioritising which? That's a damn good question.
+  fromBody = yup.object(
     Object.assign(...props.body.map((o) => {
       if (!formComponents.includes(Object.keys(o)[0])) return {}
 
       let b = Object.values(o)[0]
 
+      // TODO: This is a crude handling of schema merging. We're skipping the item here
+      //       if it both has no rules in its body component AND its name appears in
+      //       the schema prop. This does mean that if the body component does have
+      //       rules, any defined in the schema will be ignored. We should prefer
+      //       some kind of deep merge.
+      //       We could use Lodash _merge(schema, bodyRules) to achieve this,
+      //       but this would need to be done before the yup.object() handling.
+      //       Benefit: It would reduce our yup.object() usage back to one.
+      //       But it also requires careful handling of the body rules parts
+      //       to reduce their contents to a suitable match for merging with
+      //       the schema.
+      if (props.schema?.[b.name] && !b.rules) return {}
+
       yupRules = yupAuto(b.rules?.format || b.type)
 
-      // NOTE: String(props.validate[method]) !== 'true'
-      //       This will have unintended consequences if, for instance, the user
-      //       wants to invoke the literal string 'true' for, say, a matches regex.
-      // TODO: Is there a better way?
       Object.entries(b.rules || {}).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
       return { [b.name]: yupRules.label(b.label) }
     }))
   )
-  console.log(final)
-  return final
+
+  return fromSchema.concat(fromBody)
 })
 </script>
 

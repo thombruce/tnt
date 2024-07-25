@@ -2,6 +2,11 @@ title: Form
 layout: form
 action: /docs/layouts/form
 method: GET
+schema:
+  name: # name attribute of form element
+    label: Name # optional
+    format: string # implicitly required (technically very few validations will work without it)
+    matches: '[A-Za-z\s]+'
 fullErrors: false
 body:
   - h2: Arbitrary HTML
