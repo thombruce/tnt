@@ -52,6 +52,9 @@ export const yupAuto = (type) => {
     case 'text':
     case 'string':
     case 'password':
+    case 'select':
+    case 'combobox':
+    case 'textarea':
       return yup.string()
     case 'email':
       return yup.string().email()
@@ -69,11 +72,15 @@ export const yupAuto = (type) => {
     //   return yup.string().datetime()
     //   break
     case 'number':
+    case 'range':
       return yup.number()
     case 'date':
     case 'datetime-local':
     case 'month':
       return yup.date()
+    case 'file':
+    case 'checkbox':
+    case 'radio':
     default:
       return yup.mixed()
   }

@@ -51,7 +51,7 @@ body:
       rules:
         min: 6
         max: 15
-        matches: banana
+        matches: '[Bb]anana'
         required: true
 
   - input:
@@ -239,6 +239,9 @@ body:
       min: 0
       max: 100
       value: 50
+      rules:
+        min: 20
+        max: 80
 
   - h2: Long Text Inputs
   - textarea:
@@ -249,7 +252,7 @@ body:
       rules:
         min: 20
         max: 50
-        matches: the French
+        matches: '[Tt]he [Ff]rench'
 
   - button:
       label: Submit!

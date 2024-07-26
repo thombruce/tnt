@@ -96,6 +96,15 @@ input[type="range"] {
     dark:accent-primary-dark
     dark:hover:accent-primary-dark-hover
     dark:active:accent-primary-dark-hover;
+  &.error {
+    @apply
+      accent-error
+      hover:accent-error-hover
+      active:accent-error-hover
+      dark:accent-error-dark
+      dark:hover:accent-error-dark-hover
+      dark:active:accent-error-dark-hover;
+  }
   /*
     Pseudo-states for range input:
       hover:

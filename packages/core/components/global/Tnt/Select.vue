@@ -24,7 +24,7 @@ const props = defineProps({
 })
 
 const computedRules = computed(() => {
-  return useValidations(props.rules?.format || 'string', props.rules, props.label)
+  return useValidations(props.rules?.format || 'select', props.rules, props.label)
 })
 
 defineEmits([

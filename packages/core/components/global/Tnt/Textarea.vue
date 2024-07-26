@@ -23,7 +23,7 @@ const props = defineProps({
 })
 
 const computedRules = computed(() => {
-  return useValidations(props.rules?.format || 'text', props.rules, props.label)
+  return useValidations(props.rules?.format || 'textarea', props.rules, props.label)
 })
 
 defineEmits([
