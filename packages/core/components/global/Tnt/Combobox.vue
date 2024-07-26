@@ -20,7 +20,7 @@ const props = defineProps({
   filter: {
     type: Function,
     default(items, query) {
-      return items.filter(item => String(item).startsWith(query))
+      return items.filter(item => String(item).toLowerCase().includes(query.toLowerCase()))
     }
   },
   debounce: {
@@ -109,6 +109,7 @@ div(:class="fullErrors ? 'full-errors' : undefined")
         :placeholder="placeholder"
         autocomplete="off"
         @focus="isActive = true"
+        @keydown.tab="isActive = false"
         :class="errors[0] ? 'error' : ''"
       )
       ul.not-prose(class="bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
