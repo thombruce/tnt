@@ -246,6 +246,10 @@ body:
       label: Content
       hint: Give a hint.
       placeholder: What do you have to say?
+      rules:
+        min: 20
+        max: 50
+        matches: the French
 
   - button:
       label: Submit!

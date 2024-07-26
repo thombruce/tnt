@@ -33,13 +33,17 @@ const computedSchema = computed(() => {
 
   fromBody = yup.object(
     Object.assign(...props.body.map((o) => {
-      if (!formComponents.includes(Object.keys(o)[0])) return {}
+      const component = Object.keys(o)[0]
+      if (!formComponents.includes(component)) return {}
 
       let b = Object.values(o)[0]
 
       if (props.schema?.[b.name] && !b.rules) return {}
 
-      return { [b.name]: useValidations(b.rules?.format || b.type, b.rules, b.label) }
+      let type
+      if (component === 'textarea') type = 'text'
+
+      return { [b.name]: useValidations(b.rules?.format || b.type || type, b.rules, b.label) }
     }))
   )
 
