@@ -37,23 +37,23 @@ const computedSchema = computed(() => {
 
       let b = Object.values(o)[0]
 
-      // TODO: This is a crude handling of schema merging. We're skipping the item here
-      //       if it both has no rules in its body component AND its name appears in
-      //       the schema prop. This does mean that if the body component does have
-      //       rules, any defined in the schema will be ignored. We should prefer
-      //       some kind of deep merge.
-      //       We could use Lodash _merge(schema, bodyRules) to achieve this,
-      //       but this would need to be done before the yup.object() handling.
-      //       Benefit: It would reduce our yup.object() usage back to one.
-      //       But it also requires careful handling of the body rules parts
-      //       to reduce their contents to a suitable match for merging with
-      //       the schema.
       if (props.schema?.[b.name] && !b.rules) return {}
 
       return { [b.name]: useValidations(b.rules?.format || b.type, b.rules, b.label) }
     }))
   )
 
+  // TODO: This is a crude handling of schema merging. We're skipping the item here
+  //       if it both has no rules in its body component AND its name appears in
+  //       the schema prop. This does mean that if the body component does have
+  //       rules, any defined in the schema will be ignored. We should prefer
+  //       some kind of deep merge.
+  //       We could use Lodash _merge(schema, bodyRules) to achieve this,
+  //       but this would need to be done before the yup.object() handling.
+  //       Benefit: It would reduce our yup.object() usage back to one.
+  //       But it also requires careful handling of the body rules parts
+  //       to reduce their contents to a suitable match for merging with
+  //       the schema.
   return fromSchema.concat(fromBody)
 })
 </script>
