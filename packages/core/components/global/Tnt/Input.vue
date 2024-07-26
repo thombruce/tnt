@@ -27,14 +27,7 @@ const props = defineProps({
 })
 
 const computedRules = computed(() => {
-  if (props.rules?.spec) return props.rules
-
-  let yupRules
-
-  yupRules = yupAuto(props.rules?.format || props.type)
-
-  Object.entries(props.rules || {}).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
-  return yupRules.label(props.label)
+  return useValidations(props.rules?.format || props.type, props.rules, props.label)
 })
 
 defineEmits([

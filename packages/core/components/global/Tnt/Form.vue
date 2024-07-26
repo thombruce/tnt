@@ -24,19 +24,12 @@ const computedSchema = computed(() => {
   let fromSchema = yup.object(), fromBody
 
   if (props.schema) {
-    let yupRules
-
     fromSchema = yup.object(
       Object.assign(...Object.entries(props.schema).map(([name, rules]) => {
-        yupRules = yupAuto(rules.format)
-
-        Object.entries(_omit(rules, ['format', 'label'])).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
-        return rules.label ? { [name]: yupRules.label(rules.label) } : { [name]: yupRules }
+        return { [name]: useValidations(rules.format, rules, rules.label) }
       }))
     )
   }
-
-  let yupRules
 
   fromBody = yup.object(
     Object.assign(...props.body.map((o) => {
@@ -57,10 +50,7 @@ const computedSchema = computed(() => {
       //       the schema.
       if (props.schema?.[b.name] && !b.rules) return {}
 
-      yupRules = yupAuto(b.rules?.format || b.type)
-
-      Object.entries(b.rules || {}).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))
-      return { [b.name]: yupRules.label(b.label) }
+      return { [b.name]: useValidations(b.rules?.format || b.type, b.rules, b.label) }
     }))
   )
 
