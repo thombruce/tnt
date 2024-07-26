@@ -182,6 +182,11 @@ body:
           value: ep8
         - text: The Rise of Skywalker
           value: ep9
+      rules:
+        oneOf:
+          - ep4
+          - ep5
+          - ep6
 
   - combobox:
       name: combobox
@@ -198,6 +203,11 @@ body:
         - The Force Awakens
         - The Last Jedi
         - The Rise of Skywalker
+      # rules:
+      #   oneOf:
+      #     - A New Hope
+      #     - The Empire Strikes Back
+      #     - Return of the Jedi
 
   - h2: Boolean Inputs
 
