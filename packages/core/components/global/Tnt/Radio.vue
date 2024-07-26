@@ -1,6 +1,4 @@
 <script setup>
-// TODO: Rename Radio.vue to RadioGroup.vue for consistency with Checkbox and CheckboxGroup
-//       Also remove v-else for singular Radio buttons (I can't think of a situation this would be valid)
 const props = defineProps({
   modelValue: {
     default: ''
