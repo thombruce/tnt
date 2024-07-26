@@ -19,6 +19,7 @@ const props = defineProps({
 
 
 const computedSchema = computed(() => {
+  if (!props.schema && !props.body) return
   if (props.schema?.spec) return props.schema
 
   let fromSchema = yup.object(), fromBody
