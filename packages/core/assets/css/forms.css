@@ -78,6 +78,17 @@ input[type="checkbox"], input[type="radio"] {
     dark:checked:bg-primary-dark
     dark:checked:focus:bg-primary-dark-hover
     dark:checked:hover:bg-primary-dark-hover;
+  &.error {
+    @apply
+      focus:ring-error
+      dark:focus:ring-error-dark
+      checked:bg-error
+      checked:focus:bg-error-hover
+      checked:hover:bg-error-hover
+      dark:checked:bg-error-dark
+      dark:checked:focus:bg-error-dark-hover
+      dark:checked:hover:bg-error-dark-hover;
+  }
 }
 
 input[type="checkbox"] {

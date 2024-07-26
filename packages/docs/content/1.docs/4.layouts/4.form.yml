@@ -230,6 +230,8 @@ body:
       options:
         - Red pill
         - Blue pill
+      rules:
+        matches: Red pill
 
   - h2: Range Input
   - range:
