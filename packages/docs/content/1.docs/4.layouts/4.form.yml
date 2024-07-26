@@ -203,11 +203,11 @@ body:
         - The Force Awakens
         - The Last Jedi
         - The Rise of Skywalker
-      # rules:
-      #   oneOf:
-      #     - A New Hope
-      #     - The Empire Strikes Back
-      #     - Return of the Jedi
+      rules:
+        oneOf:
+          - A New Hope
+          - The Empire Strikes Back
+          - Return of the Jedi
 
   - h2: Boolean Inputs
 
