@@ -27,10 +27,16 @@ const props = defineProps({
   options: {
     type: Array,
   },
-  klass: {
-    type: String,
-    default: 'checkbox'
+  fullErrors: {
+    type: Boolean
   },
+  rules: {
+    type: Object,
+  }
+})
+
+const computedRules = computed(() => {
+  return useValidations(props.rules?.format || props.type || 'radio', props.rules, props.label)
 })
 
 defineEmits([
@@ -39,33 +45,50 @@ defineEmits([
 </script>
 
 <template lang="pug">
-div
-  fieldset(v-if="options")
-    legend(v-if="label")
-      span.font-bold(v-if="label" v-html="label")
-    div(v-for="option in options")
+div(:class="fullErrors ? 'full-errors' : undefined")
+  VeeField(
+    v-bind="modelValue"
+    @change="options ? $emit('update:modelValue', _xor(modelValue, [$event.target.value])) : $emit('update:modelValue', $event.target.value)"
+    :name="name"
+    :rules="computedRules"
+    v-slot="{ field, errors }"
+  )
+    fieldset(v-if="options")
+      label(v-if="label" :for="id")
+        span.font-bold(v-if="label" v-html="label")
+
+      div(v-for="option in options")
+        input.mr-3(
+          v-bind="field"
+          :id="`${id}-${_camelCase(option)}`"
+          :checked="modelValue == (option.value || option)"
+          :value="option.value || option"
+          type="checkbox"
+          :name="name"
+          :class="errors[0] ? 'error' : ''"
+        )
+        label(:for="`${id}-${_camelCase(option)}`")
+          span {{ option.label || option }}
+
+    div(v-else)
       input.mr-3(
-        :id="`${id}-${_camelCase(option)}`"
-        :checked="modelValue == (option.value || option)"
-        :disabled="option.disabled"
-        @change="$emit('update:modelValue', _xor(modelValue, [$event.target.value]))"
-        :value="option.value || option"
-        type="checkbox"
+        v-bind="field"
+        :id="id"
+        :checked="checked"
+        :value="name"
+        :disabled="disabled"
         :name="name"
+        type="checkbox"
+        :class="errors[0] ? 'error' : ''"
       )
-      label(:for="`${id}-${_camelCase(option)}`")
-        span {{ option.label || option }}
+      label(:for="id")
+        span.font-bold {{ label }}
+
+    .errors.full
+      ul(class="text-error marker:text-error-500 dark:text-error-dark marker:dark:text-error-900")
+        li(v-for="error in errors") {{ error }}
+    .errors.single(class="text-error dark:text-error-dark") {{ errors[0] }}
+
     label(v-if="hint" :for="id")
       span.text-xs.text-gray-500(v-if="hint" v-html="hint")
-  div(v-else)
-    input.mr-3(
-      :id="id"
-      :checked="modelValue"
-      :disabled="disabled"
-      @change="$emit('update:modelValue', $event.target.checked)"
-      :name="name"
-      type="checkbox"
-    )
-    label(:for="id")
-      span.font-bold {{ label }}
 </template>

@@ -20,13 +20,23 @@ const props = defineProps({
   filter: {
     type: Function,
     default(items, query) {
-      return items.filter(item => String(item).startsWith(query))
+      return items.filter(item => String(item).toLowerCase().includes(query.toLowerCase()))
     }
   },
   debounce: {
     type: [Boolean, Object],
     default: false
+  },
+  fullErrors: {
+    type: Boolean
+  },
+  rules: {
+    type: Object,
   }
+})
+
+const computedRules = computed(() => {
+  return useValidations(props.rules?.format || 'select', props.rules, props.label)
 })
 
 const emit = defineEmits([
@@ -81,23 +91,37 @@ onClickOutside(target, () => isActive.value = false)
 </script>
 
 <template lang="pug">
-div
-  label(v-if="label" :for="id")
-    span.font-bold(v-if="label" v-html="label")
-  div(ref="target")
-    input(
-      v-model="value"
-      :id="id"
-      :name="name"
-      :type="type"
-      :placeholder="placeholder"
-      autocomplete="off"
-      @focus="isActive = true"
-    )
-    ul(class="bg-base-200" v-show="isActive && results.length")
-      li(v-for="result in results" :key="result")
-        a(@click="value = result;isActive = false")
-          | {{ result }}
-  label(v-if="hint" :for="id")
-    span.text-xs.text-gray-500(v-if="hint" v-html="hint")
+div(:class="fullErrors ? 'full-errors' : undefined")
+  VeeField(
+    v-model="value"
+    :name="name"
+    :rules="computedRules"
+    v-slot="{ field, errors }"
+  )
+    label(v-if="label" :for="id")
+      span.font-bold(v-if="label" v-html="label")
+
+    div(ref="target")
+      input(
+        v-bind="field"
+        :id="id"
+        :type="type"
+        :placeholder="placeholder"
+        autocomplete="off"
+        @focus="isActive = true"
+        @keydown.tab="isActive = false"
+        :class="errors[0] ? 'error' : ''"
+      )
+      ul.not-prose(class="bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
+        li.w-full.px-3(v-for="result in results" :key="result" class="hover:bg-blue-600")
+          a.block.w-full.cursor-pointer(@click="value = result;isActive = false")
+            | {{ result }}
+
+    .errors.full
+      ul(class="text-error marker:text-error-500 dark:text-error-dark marker:dark:text-error-900")
+        li(v-for="error in errors") {{ error }}
+    .errors.single(class="text-error dark:text-error-dark") {{ errors[0] }}
+
+    label(v-if="hint" :for="id")
+      span.text-xs.text-gray-500(v-if="hint" v-html="hint")
 </template>
