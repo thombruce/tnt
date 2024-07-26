@@ -1,19 +1,52 @@
 import * as yup from 'yup'
 
-yup.addMethod(yup.Schema, 'confirms', function confirm(field) {
+/* METHODS */
+/* Any */
+yup.addMethod(yup.Schema, 'confirms', function confirm(sibling) {
   return this.oneOf(
-    [yup.ref(field)],
-    (values) => `${values.label} must match ${yup.ref(field).key}`
+    [yup.ref(sibling)],
+    (field) => `${field.label} must match ${yup.ref(sibling).key}`
   )
 })
 
-yup.addMethod(yup.StringSchema, 'tel', function tel(field) {
+/* String */
+yup.addMethod(yup.StringSchema, 'tel', function tel() {
   return this.matches(
     /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
-    (values) => `${values.label} must be a valid telephone number`
+    (field) => `${field.label} must be a valid telephone number`
   )
 })
 
+/* File */
+yup.addMethod(yup.MixedSchema, 'size', function size(max) {
+  return this.test(
+    'file-size',
+    (field) => `${field.label} must not exceed ${max}`,
+    (value: any) => {
+      if (!value) return true
+      return value.size <= max
+    }
+  )
+})
+
+yup.addMethod(yup.MixedSchema, 'ext', function ext(exts) {
+  exts = [exts].flat()
+
+  return this.test(
+    'file-ext',
+    (field) => {
+      return exts.length > 1
+        ? `${field.label} extension must be one of ${exts.join(', ')}`
+        : `${field.label} extension must be ${exts.join(', ')}`
+    },
+    (value: any) => {
+      if (!value) return true
+      return exts.some((ext) => value.name.endsWith(ext))
+    }
+  )
+})
+
+/* UTILITIES */
 export const yupAuto = (type) => {
   switch(type) {
     case 'text':

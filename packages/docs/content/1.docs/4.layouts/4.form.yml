@@ -148,6 +148,13 @@ body:
       name: file
       label: File
       hint: Upload a file
+      rules:
+        size: 1_000_000
+        ext:
+          - jpg
+          - jpeg
+          - png
+          - gif
 
   - h2: Multi Inputs
 
