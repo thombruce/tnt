@@ -47,11 +47,11 @@ defineEmits([
 <template lang="pug">
 div(:class="fullErrors ? 'full-errors' : undefined")
   VeeField(
-    v-bind="modelValue"
+    :value="modelValue"
     @change="options ? $emit('update:modelValue', _xor(modelValue, [$event.target.value])) : $emit('update:modelValue', $event.target.value)"
     :name="name"
     :rules="computedRules"
-    v-slot="{ field, errors }"
+    v-slot="{ field, value, errors }"
   )
     fieldset(v-if="options")
       label(v-if="label" :for="id")
@@ -61,7 +61,7 @@ div(:class="fullErrors ? 'full-errors' : undefined")
         input.mr-3(
           v-bind="field"
           :id="`${id}-${_camelCase(option)}`"
-          :checked="modelValue == (option.value || option)"
+          :checked="values?.length && values.includes(option.value || option)"
           :value="option.value || option"
           type="checkbox"
           :name="name"

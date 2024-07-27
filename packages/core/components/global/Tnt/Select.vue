@@ -36,7 +36,7 @@ defineEmits([
 div(:class="fullErrors ? 'full-errors' : undefined")
   //- @input changed to @change
   VeeField(
-    v-bind="modelValue"
+    :value="modelValue"
     @change="$emit('update:modelValue', $event.target.value)"
     :name="name"
     :rules="computedRules"
@@ -50,12 +50,12 @@ div(:class="fullErrors ? 'full-errors' : undefined")
       :id="id"
       :class="errors[0] ? 'error' : ''"
     )
-      option(disabled selected) {{ placeholder }}
+      option(v-if="placeholder" disabled :selected="!value?.length") {{ placeholder }}
       option(
         v-for="option in options"
         :key="option"
         :value="option.value || option.text || option"
-        :selected="value && value.includes(option.value || option.text || option)"
+        :selected="value?.length && value.includes(option.value || option.text || option)"
       ) {{ option.text || option.value || option }}
 
     .errors.full

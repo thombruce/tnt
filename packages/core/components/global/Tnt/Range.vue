@@ -39,7 +39,7 @@ defineEmits([
 <template lang="pug">
 div(:class="fullErrors ? 'full-errors' : undefined")
   VeeField(
-    v-bind="modelValue"
+    :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     :name="name"
     :rules="computedRules"
