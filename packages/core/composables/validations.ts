@@ -1,4 +1,4 @@
-import { omit as _omit } from "lodash"
+import _omit from "lodash/omit"
 import { yupAuto } from "../utils/yup"
 
 export const useValidations = (format, rules: any = {}, label) => {
