@@ -61,7 +61,7 @@ div(:class="fullErrors ? 'full-errors' : undefined")
         input.mr-3(
           v-bind="field"
           :id="`${id}-${_camelCase(option)}`"
-          :checked="values?.length && values.includes(option.value || option)"
+          :checked="value?.length && value.includes(option.value || option)"
           :value="option.value || option"
           type="checkbox"
           :name="name"
