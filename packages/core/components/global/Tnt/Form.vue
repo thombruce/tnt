@@ -34,11 +34,13 @@ const computedSchema = computed(() => {
 
   fromBody = yup.object(
     Object.assign(...props.body.map((o) => {
-      const component = Object.keys(o)[0]
+      let component = Object.keys(o)[0]
 
       if (!formComponents.includes(component)) return {}
 
       let b = Object.values(o)[0]
+
+      component = component === 'checkbox' ? b.options ? 'array' : 'string' : component
 
       if (props.schema?.[b.name] && !b.rules) return {}
 

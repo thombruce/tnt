@@ -215,6 +215,8 @@ body:
       name: checkbox
       label: Checkbox
       checked: false
+      rules:
+        matches: checkbox
 
   - checkbox:
       name: checkboxOptions
@@ -223,6 +225,8 @@ body:
         - Salt
         - Pepper
         - Vinegar
+      rules:
+        length: 2
 
   - radio:
       name: radio

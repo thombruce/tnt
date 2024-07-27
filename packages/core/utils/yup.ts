@@ -49,13 +49,12 @@ yup.addMethod(yup.MixedSchema, 'ext', function ext(exts) {
 /* UTILITIES */
 export const yupAuto = (type) => {
   switch(type) {
-    case 'text':
     case 'string':
+    case 'text':
     case 'password':
     case 'select':
     case 'combobox':
     case 'textarea':
-    case 'checkbox':
     case 'radio':
       return yup.string()
     case 'email':
@@ -80,6 +79,9 @@ export const yupAuto = (type) => {
     case 'datetime-local':
     case 'month':
       return yup.date()
+    case 'array':
+    case 'checkbox':
+      return yup.array()
     case 'file':
     default:
       return yup.mixed()
