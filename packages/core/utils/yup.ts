@@ -56,6 +56,7 @@ export const yupAuto = (type) => {
     case 'combobox':
     case 'textarea':
     case 'radio':
+    case 'toggle':
       return yup.string()
     case 'email':
       return yup.string().email()

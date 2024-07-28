@@ -237,6 +237,14 @@ body:
       rules:
         matches: Red pill
 
+  - toggle:
+      name: toggle
+      label: Toggle
+      checked: Oh yeah!
+      unchecked: Oh no...
+      rules:
+        matches: Oh yeah!
+
   - h2: Range Input
   - range:
       name: range

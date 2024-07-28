@@ -9,6 +9,7 @@ export const formComponents = Object.freeze([
   'combobox',
   'checkbox',
   'radio',
+  'toggle',
   'range',
   'textarea'
 ])
