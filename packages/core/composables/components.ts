@@ -16,6 +16,7 @@ export const formComponents = Object.freeze([
 // These components must be prepended by tnt- when used in templates
 export const tntComponents = Object.freeze([
   'button',
+  'submit',
   'form',
   'img',
   'search',
