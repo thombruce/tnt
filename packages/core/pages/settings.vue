@@ -10,5 +10,5 @@ NuxtLayout(:name="layout || 'default'")
       h3.font-bold.text-lg Settings
 
       ClientOnly
-        TntSelect(v-model="colorMode.preference" label="Dark mode" :options="['system', 'light', 'dark']")
+        TntRadio(v-model="colorMode.preference" label="Dark mode" :options="['system', 'light', 'dark']")
 </template>
