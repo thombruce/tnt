@@ -261,5 +261,8 @@ body:
         matches: '[Tt]he [Ff]rench'
 
   - button:
-      label: Submit!
-      type: submit
+      label: This is a button
+      class: error
+
+  - submit:
+      class: bg-success
