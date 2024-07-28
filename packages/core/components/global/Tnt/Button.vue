@@ -14,5 +14,6 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-button(:type="type") {{ label }}
+button(:type="type")
+  slot {{ label }}
 </template>

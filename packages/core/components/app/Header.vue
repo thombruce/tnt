@@ -10,6 +10,8 @@ header
     ul
       //- TNT Content: Content Navigation
       li
+        DarkmodeToggle
+      li
         NuxtLink(to="/settings")
           Icon(name="fa:cog")/
           span.sr-only Settings

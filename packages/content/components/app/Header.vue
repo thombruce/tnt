@@ -16,6 +16,8 @@ header
           Icon(name="fa:search")/
           span.sr-only Search
       li
+        DarkmodeToggle
+      li
         NuxtLink(to="/settings" no-prefetch)
           Icon(name="fa:cog")/
           span.sr-only Settings
