@@ -71,9 +71,6 @@ div(:class="fullErrors ? 'full-errors' : undefined")
     )
     span.font-bold {{ label }}
 
-  pre
-    | {{ value }}
-
   .errors.full
     ul(class="text-error marker:text-error-500 dark:text-error-dark marker:dark:text-error-900")
       li(v-for="error in errors") {{ error }}
