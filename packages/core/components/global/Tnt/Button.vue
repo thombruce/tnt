@@ -4,7 +4,7 @@
 const props = defineProps({
   type: {
     type: String,
-    default: 'submit'
+    default: 'button'
   },
   label: {
     type: String,
