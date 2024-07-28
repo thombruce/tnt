@@ -66,8 +66,8 @@ div(:class="fullErrors ? 'full-errors' : undefined")
       type="checkbox"
       class="sr-only peer"
     )
-    .toggle.mr-3(
-      :class="errors[0] ? 'error' : ''"
+    .toggle(
+      :class="`${label ? 'mr-3 ' : ''}${errors[0] ? 'error ' : ''}`"
     )
     span.font-bold {{ label }}
 
