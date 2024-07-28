@@ -58,7 +58,7 @@ div
   div(v-else)
     VeeField(
       :value="modelValue"
-      @change="options ? $emit('update:modelValue', _xor(modelValue, [$event.target.value])) : $emit('update:modelValue', $event.target.value)"
+      @change="$emit('update:modelValue', $event.target.value)"
       :name="name"
       :rules="computedRules"
       v-slot="{ field, value, errors }"
