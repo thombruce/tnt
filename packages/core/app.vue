@@ -1,10 +1,13 @@
 <script setup>
-const { name } = useAppConfig()
+const { name, gradient } = useAppConfig()
 
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - ${name}` : name
-  }
+  },
+  bodyAttrs: {
+    class: gradient ? 'bg-gradient-auto' : '',
+  },
 })
 </script>
 

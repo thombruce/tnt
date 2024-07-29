@@ -3,4 +3,5 @@ export default defineAppConfig({
   hostname: 'https://tnt.thombruce.com',
   rss: false,
   copyright: 'TNT\nA dynamite Nuxt template',
+  gradient: true,
 })
