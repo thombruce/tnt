@@ -69,6 +69,8 @@
     /* prose-pre: pre */
     prose-pre:bg-base-100
     dark:prose-pre:bg-base-900
+    prose-pre:text-content-950
+    dark:prose-pre:text-content-50
 
     /* prose-ol: ol */
 
