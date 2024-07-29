@@ -4,12 +4,13 @@ const { data: page } = await useAsyncData(`tnt-byline-${route.path}`, () => quer
 </script>
 
 <template lang="pug">
-div
+//- TODO: v-if in root of child component is a bad pattern
+div(v-if="page.authors")
   span.italic
     | {{ `Written by ` }}
 
     template(
-      v-if="page.authors && !(typeof page.authors === 'string')"
+      v-if="!(typeof page.authors === 'string')"
       v-for="(author, index) in page.authors"
     )
       NuxtLink(:to="`/~authors/${_kebabCase(author)}`") {{ author }}
