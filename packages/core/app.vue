@@ -12,11 +12,12 @@ useHead({
 </script>
 
 <template lang="pug">
-.tnt-container
+div
   AppHeader
 
   main
-    NuxtPage(:page-key="route => route.fullPath")
+    .tnt-container
+      NuxtPage(:page-key="route => route.fullPath")
 
   AppFooter
 

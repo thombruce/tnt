@@ -16,24 +16,33 @@ body {
 div.tnt-container {
   @apply
     max-w-4xl
-    mx-auto
-    my-4;
+    mx-auto;
 }
 
 header {
-  @apply mb-4;
+  @apply
+    z-50
+    py-4
+    mb-4
+    backdrop-blur-md
+    bg-gradient-to-t
+    from-primary-100
+    dark:from-primary-950
+    border-b
+    border-primary-100
+    dark:border-primary-950;
 }
 
-header > nav > ul {
+header nav > ul {
   @apply space-x-4;
 }
 
-header > nav > ul > li {
+header nav > ul > li {
   @apply inline;
 }
 
 footer {
-  @apply mt-4 text-center;
+  @apply my-4 text-center;
 }
 
 .tnt-breadcrumbs > nav {
