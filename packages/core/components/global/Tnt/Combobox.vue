@@ -101,7 +101,7 @@ div(:class="fullErrors ? 'full-errors' : undefined")
     label(v-if="label" :for="id")
       span.font-bold(v-if="label" v-html="label")
 
-    div(ref="target")
+    .relative(ref="target")
       input(
         v-bind="field"
         :id="id"
@@ -112,7 +112,7 @@ div(:class="fullErrors ? 'full-errors' : undefined")
         @keydown.tab="isActive = false"
         :class="errors[0] ? 'error' : ''"
       )
-      ul.not-prose(class="bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
+      ul.not-prose(class="absolute w-full bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
         li.w-full.px-3(v-for="result in results" :key="result" class="hover:bg-blue-600")
           a.block.w-full.cursor-pointer(@click="value = result;isActive = false")
             | {{ result }}
