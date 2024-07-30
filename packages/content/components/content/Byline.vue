@@ -1,6 +1,12 @@
 <script setup>
+const props = defineProps({
+  page: Object,
+})
+
 const route = useRoute()
-const { data: page } = await useAsyncData(`tnt-byline-${route.path}`, () => queryContent(route.path).findOne())
+const { data: page } = props.page
+  ? { data: props.page }
+  : await useAsyncData(`tnt-byline-${route.path}`, () => queryContent(route.path).findOne())
 </script>
 
 <template lang="pug">

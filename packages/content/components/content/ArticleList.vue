@@ -33,6 +33,7 @@ div
             li.py-5
               NuxtLink(:to="article._path")
                 strong.text-lg {{ article.navigation?.title || article.title }}
+              Byline(v-if="article.authors" :page="article")
               p {{ article.description }}
     template(#not-found)
       strong.text-lg No articles found.
