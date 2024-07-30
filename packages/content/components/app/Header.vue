@@ -10,8 +10,8 @@ header.sticky.top-0
     nav.flex-0
       ul
         ContentNavigation(v-slot="{ navigation }")
-          li(v-for="link of navigation" :key="link._path")
-            NuxtLink(:to="link._path") {{ link.title }}
+          li
+            AppNavMenu(:navItems="navigation")
         li
           NuxtLink(to="/search" no-prefetch)
             Icon(name="fa:search")/
