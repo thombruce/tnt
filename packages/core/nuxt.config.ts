@@ -49,4 +49,5 @@ export default defineNuxtConfig({
       ErrorMessage: 'VeeErrorMessage',
     },
   },
+  compatibilityDate: '2024-07-30',
 })
