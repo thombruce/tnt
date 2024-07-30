@@ -4,7 +4,7 @@ article.prose
     template(#default="{ doc }")
       h1 {{ doc.title }}
       Breadcrumbs(v-if="doc.breadcrumbs !== false")
-      Byline(v-if="doc.authors" :page="doc")
+      Byline(v-if="doc.authors" :authors="doc.authors")
       TagLists(:exclude="['authors']")
       Toc(v-if="doc.toc === true")
       .hidden-title
