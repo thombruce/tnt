@@ -1,9 +1,29 @@
+<script setup>
+const props = defineProps({
+  toc: Object,
+  page: Object,
+  path: String,
+})
+
+const route = useRoute()
+
+let path = props.path || route.path
+
+const { data: rawData } =
+  props.toc
+  ? { data: { body: { toc: props.toc } } }
+  : props.page
+  ? { data: { body: { toc: props.page.body.toc } } }
+  : await useAsyncData(`tnt-toc-${path}`, () => queryContent(path).findOne())
+
+const data = rawData.body?.toc || rawData.value?.body?.toc
+</script>
+
 <template lang="pug">
-ContentQuery(:path="$route.path" find="one" v-slot="{ data: { body: { toc } } }")
-  .tnt-toc(v-if="toc?.links")
-    h2 Table of Contents
-    ol
-      li(v-for="link in toc.links" :key="link.text")
-        a(:href="`#${link.id}`")
-          | {{ link.text }}
+.tnt-toc(v-if="data?.links")
+  h2 Table of Contents
+  ol
+    li(v-for="link in data.links" :key="link.text")
+      a(:href="`#${link.id}`")
+        | {{ link.text }}
 </template>
