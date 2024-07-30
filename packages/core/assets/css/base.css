@@ -7,8 +7,7 @@ body {
   &.bg-gradient-auto {
     @apply
       bg-fixed
-      bg-gradient-to-tl
-      dark:bg-gradient-to-br
+      bg-gradient-to-br
       from-primary-100
       dark:from-primary-950;
   }
