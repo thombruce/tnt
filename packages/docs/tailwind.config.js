@@ -8,7 +8,20 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        primary: {...colors.rose, ...{
+          DEFAULT: colors.rose['500'],
+          hover: colors.rose['600'],
+          light: {
+            DEFAULT: colors.rose['500'],
+            hover: colors.rose['600'],
+          },
+          dark: {
+            DEFAULT: colors.rose['500'],
+            hover: colors.rose['400'],
+          },
+        }},
+      },
     },
   },
 }
