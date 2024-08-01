@@ -8,6 +8,11 @@ header.sticky.top-0
     ul.flex-0
       //- TNT Content: Content Navigation
       li
+        Dropdown
+          DropdownItem(path="/settings")
+            Icon.mr-2(name="fa:cog")
+            | Settings
+      li
         strong
           NuxtLink(to="/") {{ name }}
     ul.flex-0

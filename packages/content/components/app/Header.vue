@@ -8,7 +8,16 @@ header.sticky.top-0
     ul.flex-0
       li
         ContentNavigation(v-slot="{ navigation }")
-          Dropdown(:items="navigation")
+          Dropdown
+            DropdownItem(v-for="link of navigation" :key="link._path" :path="link._path")
+              Icon.mr-2(v-if="link.icon" :name="link.icon")
+              | {{ link.title }}
+            DropdownItem(path="/search")
+              Icon.mr-2(name="fa:search")
+              | Search
+            DropdownItem(path="/settings")
+              Icon.mr-2(name="fa:cog")
+              | Settings
       li
         strong
           NuxtLink(to="/") {{ name }}
