@@ -4,7 +4,14 @@ defineProps(['url'])
 
 <template lang="pug">
 .tnt-mockup
-  .tnt-address-bar {{ url }}
+  .tnt-address-bar.flex.justify-between
+    span.flex-0
+      Icon.mr-3(name="fa:globe")
+      Icon.mr-3(name="fa:bookmark")
+    span.flex-1.rounded.bg-white.text-black.px-2.py-1(class="dark:bg-black dark:text-white")
+        | {{ url }}
+    span.flex-0
+      Icon.ml-3(name="fa:search")
   .tnt-content-window
     slot
 </template>
@@ -12,6 +19,8 @@ defineProps(['url'])
 <style lang="postcss" scoped>
 .tnt-mockup {
   @apply
+    rounded
+    overflow-hidden
     border
     border-base-300
     dark:border-base-700;
@@ -19,6 +28,8 @@ defineProps(['url'])
 
 .tnt-mockup > .tnt-address-bar {
   @apply
+    px-2
+    py-2
     border
     border-base-300
     dark:border-base-700
