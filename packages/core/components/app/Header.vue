@@ -1,14 +1,23 @@
 <script setup>
 const { name } = useAppConfig()
+
+const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template lang="pug">
 header.sticky.top-0
   nav.tnt-container.flex.space-x-5.justify-between
     ul.flex-0
-      //- TNT Content: Content Navigation
       li
         Dropdown
+          template(v-if="runtimeConfig?.public?.content")
+            ContentNavigation(v-slot="{ navigation }")
+              DropdownItem(v-for="link of navigation" :key="link._path" :path="link._path")
+                Icon.mr-2(v-if="link.icon" :name="link.icon")
+                | {{ link.title }}
+            DropdownItem(v-if="runtimeConfig?.public?.content" path="/search")
+              Icon.mr-2(name="fa:search")
+              | Search
           DropdownItem(path="/settings")
             Icon.mr-2(name="fa:cog")
             | Settings
@@ -16,7 +25,10 @@ header.sticky.top-0
         strong
           NuxtLink(to="/") {{ name }}
     ul.flex-0
-      //- TNT Content: Search
+      li(v-if="runtimeConfig?.public?.content")
+        NuxtLink(to="/search" no-prefetch)
+          Icon(name="fa:search")/
+          span.sr-only Search
       li
         DarkmodeToggle
       li
