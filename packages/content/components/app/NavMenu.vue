@@ -21,6 +21,7 @@ span.relative(ref="target")
     li(v-for="link of navItems" :key="link._path")
       NuxtLink.block.w-full.p-2(
         :to="link._path"
+        @click="showMenu = false"
         class="hover:bg-primary-100 dark:hover:bg-primary-900"
       ) {{ link.title }}
 </template>
