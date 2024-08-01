@@ -27,12 +27,17 @@ header {
     py-4
     mb-4
     backdrop-blur-md
-    bg-gradient-to-t
+    border-b
+    border-base-light
+    dark:border-base-dark;
+}
+
+body.bg-gradient-auto header {
+  @apply
+    bg-gradient-to-b
     from-primary-100
     dark:from-primary-950
-    border-b
-    border-primary-100
-    dark:border-primary-950;
+    border-none;
 }
 
 header nav > ul {
