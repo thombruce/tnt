@@ -8,7 +8,7 @@ header.sticky.top-0
     ul.flex-0
       li
         ContentNavigation(v-slot="{ navigation }")
-          AppNavMenu(:navItems="navigation")
+          Dropdown(:items="navigation")
       li
         strong
           NuxtLink(to="/") {{ name }}

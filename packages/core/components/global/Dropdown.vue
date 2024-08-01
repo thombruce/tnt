@@ -1,7 +1,5 @@
 <script setup>
-const props = defineProps([
-  'navItems'
-])
+const props = defineProps(['items'])
 
 const showMenu = ref(false)
 
@@ -11,14 +9,15 @@ onClickOutside(target, () => showMenu.value = false)
 </script>
 
 <template lang="pug">
-span.relative(ref="target")
-  TntButton.btn-none(@click="showMenu = !showMenu")
-    Icon(name="fa:bars")
+.inline.relative(ref="target")
+  slot(name="button")
+    TntButton.btn-none(@click="showMenu = !showMenu")
+      Icon(name="fa:bars")
   ul(
     v-if="showMenu"
     class="absolute top-10 min-w-48 bg-primary-100 dark:bg-primary-950/90"
   )
-    li(v-for="link of navItems" :key="link._path")
+    li(v-for="link of items" :key="link._path")
       NuxtLink.block.w-full.p-2(
         :to="link._path"
         @click="showMenu = false"

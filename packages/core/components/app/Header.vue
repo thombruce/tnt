@@ -11,6 +11,7 @@ header.sticky.top-0
         strong
           NuxtLink(to="/") {{ name }}
     ul.flex-0
+      //- TNT Content: Search
       li
         DarkmodeToggle
       li
