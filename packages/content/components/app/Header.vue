@@ -4,22 +4,23 @@ const { name } = useAppConfig()
 
 <template lang="pug">
 header.sticky.top-0
-  .tnt-container.flex.space-x-5.justify-between
-    strong.flex-0
-      NuxtLink(to="/") {{ name }}
-    nav.flex-0
-      ul
+  nav.tnt-container.flex.space-x-5.justify-between
+    ul.flex-0
+      li
         ContentNavigation(v-slot="{ navigation }")
-          li
-            AppNavMenu(:navItems="navigation")
-        li
-          NuxtLink(to="/search" no-prefetch)
-            Icon(name="fa:search")/
-            span.sr-only Search
-        li
-          DarkmodeToggle
-        li
-          NuxtLink(to="/settings" no-prefetch)
-            Icon(name="fa:cog")/
-            span.sr-only Settings
+          AppNavMenu(:navItems="navigation")
+      li
+        strong
+          NuxtLink(to="/") {{ name }}
+    ul.flex-0
+      li
+        NuxtLink(to="/search" no-prefetch)
+          Icon(name="fa:search")/
+          span.sr-only Search
+      li
+        DarkmodeToggle
+      li
+        NuxtLink(to="/settings" no-prefetch)
+          Icon(name="fa:cog")/
+          span.sr-only Settings
 </template>

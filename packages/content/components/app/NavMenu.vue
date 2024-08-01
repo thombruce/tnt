@@ -16,12 +16,12 @@ span.relative(ref="target")
     Icon(name="fa:bars")
   ul(
     v-if="showMenu"
-    class="absolute top-8 -right-5 min-w-48 bg-primary-50/90 dark:bg-primary-950/90"
+    class="absolute top-10 min-w-48 bg-primary-100 dark:bg-primary-950/90"
   )
     li(v-for="link of navItems" :key="link._path")
       NuxtLink.block.w-full.p-2(
         :to="link._path"
         @click="showMenu = false"
-        class="hover:bg-primary-100 dark:hover:bg-primary-900"
+        class="hover:bg-primary-200 dark:hover:bg-primary-900"
       ) {{ link.title }}
 </template>

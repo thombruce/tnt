@@ -13,7 +13,7 @@ body {
   }
 }
 
-div.tnt-container {
+.tnt-container {
   @apply
     max-w-4xl
     mx-auto;
