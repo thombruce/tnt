@@ -10,10 +10,12 @@ const { data: page } = runtimeConfig.public?.content
     `tnt-breadcrumb-${props.crumb.path}`,
     () => queryContent(props.crumb.path).where({ _path: props.crumb.path }).findOne()
   )
-  : { data: { title: _startCase(props.crumb.param), _path: props.crumb.path } }
+  : null
 </script>
 
 <template lang="pug">
-NuxtLink(:to="page._path")
+NuxtLink(v-if="page" :to="page._path")
   | {{ page.title }}
+NuxtLink(v-else :to="crumb.path")
+  | {{ _startCase(crumb.param) }}
 </template>

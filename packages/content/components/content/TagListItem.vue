@@ -1,13 +1,21 @@
 <script setup>
-defineProps(['taxonomy', 'tag'])
+const props = defineProps(['taxonomy', 'tag'])
+
+const runtimeConfig = useRuntimeConfig()
+
+const tagPath = `/~${props.taxonomy}/${_kebabCase(props.tag)}`
+
+const { data: page } = await useAsyncData(
+  `tnt-taglist-item-${props.taxonomy}-${_kebabCase(props.tag)}`,
+  () => queryContent(tagPath).where({ _path: tagPath }).findOne()
+)
 </script>
 
 <template lang="pug">
 li.inline
-  NuxtLink(:to="`/~${taxonomy}/${_kebabCase(tag)}`")
-    ContentQuery(:path="`/~${taxonomy}/${_kebabCase(tag)}`" :where="{ _path: `/~${taxonomy}/${_kebabCase(tag)}` }")
-      template(#default="{ data }")
-        | {{ data[0].title }}
-      template(#not-found)
-        | {{ tag }}
+  NuxtLink(:to="tagPath")
+    template(v-if="page")
+      | {{ page.title }}
+    template(v-else)
+      | {{ tag }}
 </template>
