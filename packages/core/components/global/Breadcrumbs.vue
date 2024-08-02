@@ -4,7 +4,7 @@ const { path } = useRoute()
 const crumbs = computed(() => {
   const params = path.split('/').filter(item => item)
 
-  let crumbs = []
+  let crumbs = [{ path: '/', param: 'Home' }]
   let p = ''
   params.forEach((param) => {
     p = `${p}/${param}`
@@ -22,9 +22,6 @@ const crumbs = computed(() => {
 .tnt-breadcrumbs.not-prose
   nav
     ul
-      li
-        NuxtLink(to="/") Home
       li(v-for="crumb in crumbs" :key="crumb.path")
-        NuxtLink(:to="crumb.path")
-          | {{ _startCase(crumb.param) }}
+        Breadcrumb(:crumb="crumb")
 </template>
