@@ -7,16 +7,15 @@ const { data: page } = await useAsyncData(`tnt-tag-list-${route.path}`, () => qu
 <template lang="pug">
 .not-prose
   dl
-    dt
-      strong {{ _startCase(taxonomy) }}:
+    dt {{ _startCase(taxonomy) }}:
     dd
       ul.space-x-3
-        TagListItem(
+        TagListItem.inline(
           v-if="typeof page[taxonomy] === 'string'"
           :taxonomy="taxonomy"
           :tag="page[taxonomy]"
         )
-        TagListItem(
+        TagListItem.inline(
           v-else
           v-for="tag in page[taxonomy]"
           :taxonomy="taxonomy"

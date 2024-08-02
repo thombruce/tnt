@@ -3,6 +3,8 @@ const { path, params } = useRoute()
 
 const taxonomy = params.tag[0]
 
+const { data: page } = await useAsyncData(`tnt-taxonomy-${path}`, () => queryContent(path).where({ _path: path }).findOne())
+
 const contentQuery = await queryContent().where({ [taxonomy]: { $exists: true } }).only(taxonomy).find()
 
 const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
@@ -10,25 +12,14 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 
 <template lang="pug">
 article.prose
-  ContentQuery(:path="path" :where="{ _path: path }")
-    template(#default="{ data }")
-      h1 {{ data[0].title }}
-
-      Breadcrumbs(v-if="data[0].breadcrumbs !== false")
-
-      ContentRenderer(:value="data[0]")
-        template(#empty)
-    template(#not-found)
-      h1 {{ _startCase(taxonomy) }}
-      Breadcrumbs
-  .not-prose
-    ul(class="divide-y divide-gray-500/50" v-if="tags.length")
-      template(v-for="tag of tags" :key="tag")
-        li.py-5
-          NuxtLink(:to="`${path}/${_kebabCase(tag)}`")
-            ContentQuery(:path="`${path}/${_kebabCase(tag)}`" :where="{ _path: `${path}/${_kebabCase(tag)}` }")
-              template(#default="{ data }")
-                strong {{ data[0].title }}
-              template(#not-found)
-                strong {{ tag }}
+  template(v-if="page")
+    h1 {{ page.title }}
+    Breadcrumbs(v-if="page.breadcrumbs !== false")
+    ContentRenderer(:value="page")
+      template(#empty)
+        // Empty
+  template(v-else)
+    h1 {{ _startCase(taxonomy) }}
+    Breadcrumbs
+  TaxonomyTagList(:taxonomy="taxonomy" :tags="tags")
 </template>

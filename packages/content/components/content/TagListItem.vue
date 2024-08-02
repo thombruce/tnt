@@ -12,10 +12,10 @@ const { data: page } = await useAsyncData(
 </script>
 
 <template lang="pug">
-li.inline
+li
   NuxtLink(:to="tagPath")
     template(v-if="page")
-      | {{ page.title }}
+      strong {{ page.title }}
     template(v-else)
-      | {{ tag }}
+      strong {{ tag }}
 </template>

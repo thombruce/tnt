@@ -1,11 +1,11 @@
 <script setup>
 const route = useRoute()
 
-const props = defineProps(['path', 'sort'])
+const props = defineProps(['path', 'sort', 'query'])
 
 const path = props.path || route.path
 
-const query = {
+const query = props.query || {
   where: [
     { navigation: { $ne: false } },
     { _path: {

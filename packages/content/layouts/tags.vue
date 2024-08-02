@@ -6,7 +6,7 @@ const taxonomy = params.tag[0]
 const tag = params.tag[1]
 
 // Fetch content page if it exists
-const { data: page } = await useAsyncData('tags', () => queryContent(path).limit(1).find())
+const { data: page } = await useAsyncData(`tnt-tags-${path}`, () => queryContent(path).where({ _path: path }).findOne())
 
 // Default tag or conditions, used in the absence of a page
 let orConditions = [
@@ -20,40 +20,22 @@ let orConditions = [
 ]
 
 // If page exists, add title to or query conditions
-if (page.value[0] && page.value[0].title) {
-  orConditions.push({ $icontains: page.value[0].title })
+if (page && page.title) {
+  orConditions.push({ $icontains: page.title })
 }
 </script>
 
 <template lang="pug">
 article.prose
-  //- TODO: We're querying for the page again; this is redundant
-  ContentQuery(:path="path" :where="{ _path: path }")
-    template(#default="{ data }")
-      h1 {{ data[0].title }}
+  template(v-if="page")
+    h1 {{ page.title }}
+    Breadcrumbs(v-if="page.breadcrumbs !== false")
+    ContentRenderer(:value="page")
+      template(#empty)
+        // Empty
+  template(v-else)
+    h1 {{ _startCase(tag) }}
+    Breadcrumbs
 
-      Breadcrumbs(v-if="data[0].breadcrumbs !== false")
-
-      ContentRenderer(:value="data[0]")
-        template(#empty)
-          // Empty
-
-    template(#not-found)
-      h1 {{ _startCase(tag) }}
-      Breadcrumbs
-
-  ContentQuery(
-    path="/"
-    :where="{ [taxonomy]: { $or: orConditions } }"
-  )
-    template(#default="{ data }")
-      .not-prose
-        ul(class="divide-y divide-gray-500/50")
-          template(v-for="article of data" :key="article._path")
-            li.py-5
-              NuxtLink(:to="article._path")
-                strong {{ article.title }}
-
-    template(#not-found)
-      strong.text-lg No articles found.
+  ArticleList(path="/", :query="{ where: { [taxonomy]: { $or: orConditions } } }")
 </template>
