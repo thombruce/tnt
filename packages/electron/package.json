@@ -21,5 +21,9 @@
   "devDependencies": {
     "@types/node": "^20.12.7",
     "nuxt": "^3.11.2"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "d342413b4f0a7b71ce03558d8e48b633d5fd1643"
 }
