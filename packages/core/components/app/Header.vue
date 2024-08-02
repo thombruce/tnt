@@ -2,6 +2,10 @@
 const { name } = useAppConfig()
 
 const runtimeConfig = useRuntimeConfig()
+
+const { data: navigation } = runtimeConfig.public?.content
+  ? await useAsyncData('tnt-header-navigation', () => fetchContentNavigation())
+  : []
 </script>
 
 <template lang="pug">
@@ -10,14 +14,12 @@ header.sticky.top-0
     ul.flex-0
       li
         Dropdown
-          template(v-if="runtimeConfig?.public?.content")
-            ContentNavigation(v-slot="{ navigation }")
-              DropdownItem(v-for="link of navigation" :key="link._path" :path="link._path")
-                Icon.mr-2(v-if="link.icon" :name="link.icon")
-                | {{ link.title }}
-            DropdownItem(v-if="runtimeConfig?.public?.content" path="/search")
-              Icon.mr-2(name="fa:search")
-              | Search
+          DropdownItem(v-for="link of navigation" :key="link._path" :path="link._path")
+            Icon.mr-2(v-if="link.icon" :name="link.icon")
+            | {{ link.title }}
+          DropdownItem(v-if="runtimeConfig?.public?.content" path="/search")
+            Icon.mr-2(name="fa:search")
+            | Search
           DropdownItem(path="/settings")
             Icon.mr-2(name="fa:cog")
             | Settings

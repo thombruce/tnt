@@ -1,16 +1,11 @@
-<script setup lang="ts">
+<script setup>
 const route = useRoute()
 
 const props = defineProps(['path', 'sort'])
 
 const path = props.path || route.path
 
-// TODO: Based on the query behaviour, this should be called DirectoryList
-//       We should either rewrite it to enable/disable depth/recursion
-//       via a prop, or rename this and have another component that can
-//       show a more complete list.
-import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
-const query: QueryBuilderParams = {
+const query = {
   where: [
     { navigation: { $ne: false } },
     { _path: {
@@ -21,20 +16,25 @@ const query: QueryBuilderParams = {
   ],
   sort: props.sort
 }
+
+const { data: list } = await useAsyncData(
+  `tnt-article-list-${path}`,
+  () => queryContent(path)
+    .where(query.where)
+    .sort(query.sort)
+    .find()
+)
 </script>
 
 <template lang="pug">
 div
-  ContentList(:query="query")
-    template(#default="{ list }")
-      .not-prose
-        ul(class="divide-y divide-gray-500/50")
-          template(v-for="article in list" :key="article._path")
-            li.py-5
-              NuxtLink(:to="article._path")
-                strong.text-lg {{ article.navigation?.title || article.title }}
-              Byline(v-if="article.authors" :authors="article.authors")
-              p {{ article.description }}
-    template(#not-found)
-      strong.text-lg No articles found.
+  .not-prose(v-if="list")
+    ul(class="divide-y divide-gray-500/50")
+      template(v-for="article in list" :key="article._path")
+        li.py-5
+          NuxtLink(:to="article._path")
+            strong.text-lg {{ article.navigation?.title || article.title }}
+          Byline(v-if="article.authors" :authors="article.authors")
+          p {{ article.description }}
+  strong.text-lg(v-else) No articles found.
 </template>
