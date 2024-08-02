@@ -1,7 +1,6 @@
 {
   "name": "@thombruce/tnt-electron",
   "version": "0.28.0",
-  "private": true,
   "license": "MIT",
   "type": "module",
   "main": "./nuxt.config.ts",
@@ -12,7 +11,12 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@thombruce/tnt": "^0.28.0"
+    "@thombruce/tnt": "^0.28.0",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "nuxt-electron": "^0.7.0",
+    "vite-plugin-electron": "^0.28.7",
+    "vite-plugin-electron-renderer": "^0.14.5"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
