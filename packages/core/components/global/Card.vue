@@ -1,5 +1,7 @@
 <script setup>
 defineProps(['image'])
+
+const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template lang="pug">
@@ -8,9 +10,15 @@ defineProps(['image'])
     img(:src="image")
   .flex
     .card-body.flex-1
-      slot
+      template(v-if="runtimeConfig.public?.content")
+        ContentSlot(:use="$slots.default")
+      template(v-else)
+        slot
     .card-actions.p-2.space-x-4
-      slot(name="actions")
+      template(v-if="runtimeConfig.public?.content")
+        ContentSlot(:use="$slots.actions")
+      template(v-else)
+        slot(name="actions")
 </template>
 
 <style lang="postcss" scoped>
