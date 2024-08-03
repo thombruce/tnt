@@ -2,7 +2,7 @@
 
 import { release } from 'os'
 import path from 'path'
-import { app, BrowserWindow, shell } from 'electron'
+import { app, BrowserWindow, shell, ipcMain } from 'electron'
 
 // Remove electron security warnings only in development mode
 // Read more on https://www.electronjs.org/docs/latest/tutorial/securit
@@ -23,11 +23,13 @@ if (!app.requestSingleInstanceLock()) {
 
 let win: BrowserWindow | null = null
 
+const preload = path.join(__dirname, 'preload.js')
 const distPath = path.join(__dirname, '../.output/public')
 
 async function createWindow() {
   win = new BrowserWindow({
     webPreferences: {
+      preload,
       // Warning: Enabling nodeIntegration and disabling contextIsolation is not secure in production
       // Consider using contextBridge.exposeInMainWorld
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
@@ -50,6 +52,10 @@ async function createWindow() {
       shell.openExternal(url)
     return { action: 'deny' }
   })
+}
+
+function initIpc() {
+  ipcMain.handle('app-start-time', () => (new Date).toLocaleString())
 }
 
 app.on('window-all-closed', () => {
@@ -76,5 +82,6 @@ app.on('activate', () => {
 })
 
 app.whenReady().then(() => {
+  initIpc()
   createWindow()
 })

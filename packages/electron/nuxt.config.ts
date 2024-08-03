@@ -28,6 +28,15 @@ export default defineNuxtConfig({
         entry: fs.existsSync('./electron/main.ts') ? './electron/main.ts'
           : join(currentDir, './electron/main.ts'),
       },
+      {
+        entry: fs.existsSync('./electron/preload.ts') ? './electron/preload.ts'
+          : join(currentDir, './electron/preload.ts'),
+        onstart(options) {
+          // Notify the renderer process to reload the page when the preload-script is completely loaded
+          // Instead of restarting the entire electron app
+          options.reload()
+        },
+      },
     ],
   },
   // ssr: false,
