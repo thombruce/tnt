@@ -4,8 +4,8 @@ const { name, gradient } = useAppConfig()
 // Set colorMode if config file is present
 const colorMode = useColorMode()
 if (isElectron()) {
-  window.tnt.invoke('load-config')
-  window.tnt.on('return-config', (_, data) => {
+  window.api.invoke('load-config')
+  window.api.on('return-config', (_, data) => {
     colorMode.preference = data.colorMode
   })
 }

@@ -5,7 +5,7 @@ const toggleDarkmode = function() {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
 
   if (isElectron()) {
-    window.tnt.send('update-config', { colorMode: colorMode.preference })
+    window.api.send('update-config', { colorMode: colorMode.preference })
   }
 }
 </script>
