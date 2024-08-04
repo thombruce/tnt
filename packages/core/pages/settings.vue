@@ -1,6 +1,12 @@
 <script setup>
 const { layout } = useAppConfig()
 const colorMode = useColorMode()
+
+watch(colorMode, async () => {
+  if (isElectron()) {
+    window.api.send('update-config', { colorMode: colorMode.preference })
+  }
+})
 </script>
 
 <template lang="pug">

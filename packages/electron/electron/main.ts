@@ -4,6 +4,8 @@ import { release } from 'os'
 import path from 'path'
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 
+import fs from 'fs'
+
 // Remove electron security warnings only in development mode
 // Read more on https://www.electronjs.org/docs/latest/tutorial/securit
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
@@ -55,7 +57,28 @@ async function createWindow() {
 }
 
 function initIpc() {
-  ipcMain.handle('app-start-time', () => (new Date).toLocaleString())
+  ipcMain.handle('load-config', () => {
+    fs.readFile("tnt.config.json", (error, file) => {
+      if (error) {
+        console.log(error)
+        return
+      }
+      win!.webContents.send('return-config', JSON.parse(file))
+    })
+  })
+
+  ipcMain.on('update-config', (_, config) => {
+    fs.readFile('tnt.config.json', (error, file) => {
+      const newData = file ? { ...JSON.parse(file), ...config } : config
+      fs.writeFile('tnt.config.json', JSON.stringify(newData, null, 2), (error) => {
+        if (error) {
+          console.log(error)
+          return
+        }
+        win!.webContents.send('return-config', newData)
+      })
+    })
+  })
 }
 
 app.on('window-all-closed', () => {
