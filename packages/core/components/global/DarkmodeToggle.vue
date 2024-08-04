@@ -1,5 +1,8 @@
 <script setup>
 const colorMode = useColorMode()
+
+// TODO: Change in config must update config file
+//       when running in Electron
 </script>
 
 <template lang="pug">
