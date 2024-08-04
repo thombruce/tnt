@@ -58,12 +58,25 @@ async function createWindow() {
 
 function initIpc() {
   ipcMain.handle('load-config', () => {
-    fs.readFile("tnt.config.json", (error, data) => {
+    fs.readFile("tnt.config.json", (error, file) => {
       if (error) {
         console.log(error)
         return
       }
-      win!.webContents.send('return-config', JSON.parse(data))
+      win!.webContents.send('return-config', JSON.parse(file))
+    })
+  })
+
+  ipcMain.on('update-config', (_, config) => {
+    fs.readFile('tnt.config.json', (error, file) => {
+      const newData = file ? { ...JSON.parse(file), ...config } : config
+      fs.writeFile('tnt.config.json', JSON.stringify(newData, null, 2), (error) => {
+        if (error) {
+          console.log(error)
+          return
+        }
+        win!.webContents.send('return-config', newData)
+      })
     })
   })
 }

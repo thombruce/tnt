@@ -2,8 +2,11 @@
 const { layout } = useAppConfig()
 const colorMode = useColorMode()
 
-// TODO: Change in config must update config file
-//       when running in Electron
+watch(colorMode, async () => {
+  if (isElectron()) {
+    window.tnt.send('update-config', { colorMode: colorMode.preference })
+  }
+})
 </script>
 
 <template lang="pug">

@@ -6,7 +6,7 @@ const colorMode = useColorMode()
 if (isElectron()) {
   window.tnt.invoke('load-config')
   window.tnt.on('return-config', (_, data) => {
-    colorMode.value = data.colorMode
+    colorMode.preference = data.colorMode
   })
 }
 
