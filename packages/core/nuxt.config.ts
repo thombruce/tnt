@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-icon',
     '@vee-validate/nuxt',
+    '@pinia/nuxt',
   ],
   nitro: {
     prerender: {
