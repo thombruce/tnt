@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "0.29.3",
+  "version": "0.29.4",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -9,7 +9,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@thombruce/tnt-content": "^0.29.3",
+    "@thombruce/tnt-content": "^0.29.4",
     "nuxt": "^3.11.2"
   }
 }
