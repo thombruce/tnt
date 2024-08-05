@@ -2,9 +2,9 @@
 
 import { release } from 'os'
 import path from 'path'
-import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import { app, BrowserWindow, shell } from 'electron'
 
-import fs from 'fs'
+import initIpc from './api'
 
 // Remove electron security warnings only in development mode
 // Read more on https://www.electronjs.org/docs/latest/tutorial/securit
@@ -53,56 +53,6 @@ async function createWindow() {
     if (url.startsWith('https:'))
       shell.openExternal(url)
     return { action: 'deny' }
-  })
-}
-
-function initIpc() {
-  ipcMain.handle('load-config', () => {
-    return new Promise((resolve, reject) => {
-      fs.readFile("tnt.config.json", "utf8", function (error, file) {
-        if (error) {
-          reject(error)
-          return
-        }
-        resolve(JSON.parse(file))
-      })
-    })
-
-    // NOTE: Alternative pattern; data is returned via IPC send
-    // fs.readFile("tnt.config.json", (error, file) => {
-    //   if (error) {
-    //     console.log(error)
-    //     return
-    //   }
-    //   win!.webContents.send('return-config', JSON.parse(file))
-    // })
-  })
-
-  ipcMain.on('update-config', (_, config) => {
-    return new Promise((resolve, reject) => {
-      fs.readFile('tnt.config.json', (error, file) => {
-        const newData = file ? { ...JSON.parse(file), ...config } : config
-        fs.writeFile('tnt.config.json', JSON.stringify(newData, null, 2), (error) => {
-          if (error) {
-            reject(error)
-            return
-          }
-          resolve(newData)
-        })
-      })
-    })
-
-    // NOTE: Alternative pattern; data is returned via IPC send
-    // fs.readFile('tnt.config.json', (error, file) => {
-    //   const newData = file ? { ...JSON.parse(file), ...config } : config
-    //   fs.writeFile('tnt.config.json', JSON.stringify(newData, null, 2), (error) => {
-    //     if (error) {
-    //       console.log(error)
-    //       return
-    //     }
-    //     win!.webContents.send('return-config', newData)
-    //   })
-    // })
   })
 }
 
