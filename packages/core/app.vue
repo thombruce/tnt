@@ -4,10 +4,13 @@ const { name, gradient } = useAppConfig()
 // Set colorMode if config file is present
 const colorMode = useColorMode()
 if (isElectron()) {
-  window.api.invoke('load-config')
-  window.api.on('return-config', (_, data) => {
-    colorMode.preference = data.colorMode
-  })
+  let config = await window.api.invoke('load-config')
+  colorMode.preference = config.colorMode
+
+  // NOTE: Alternative pattern; data is returned via IPC send
+  // window.api.on('return-config', (_, data) => {
+  //   colorMode.preference = data.colorMode
+  // })
 }
 
 useHead({
