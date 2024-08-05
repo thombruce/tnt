@@ -3,9 +3,7 @@ const { layout } = useAppConfig()
 const colorMode = useColorMode()
 
 watch(colorMode, async () => {
-  if (isElectron()) {
-    window.api.send('update-config', { colorMode: colorMode.preference })
-  }
+  useTntApi().updateConfig({ colorMode: colorMode.preference })
 })
 </script>
 

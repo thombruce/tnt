@@ -3,15 +3,15 @@ const { name, gradient } = useAppConfig()
 
 // Set colorMode if config file is present
 const colorMode = useColorMode()
-if (isElectron()) {
-  let config = await window.api.invoke('load-config')
-  colorMode.preference = config.colorMode
+const config = await useTntApi().loadConfig()
+if (config.colorMode) colorMode.preference = config.colorMode
 
-  // NOTE: Alternative pattern; data is returned via IPC send
-  // window.api.on('return-config', (_, data) => {
-  //   colorMode.preference = data.colorMode
-  // })
-}
+// NOTE: Alternative pattern; data is returned via IPC send
+// if (isElectron()) {
+//   window.api.on('return-config', (_, data) => {
+//     colorMode.preference = data.colorMode
+//   })
+// }
 
 useHead({
   titleTemplate: (titleChunk) => {
