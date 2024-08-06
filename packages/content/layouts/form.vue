@@ -4,7 +4,7 @@ article.prose
     template(#default="{ doc }")
       h1 {{ doc.title }}
 
-      TntForm(
+      TntForm.space-y-5(
         :action="doc.action"
         :method="doc.method"
         :fullErrors="doc.fullErrors"

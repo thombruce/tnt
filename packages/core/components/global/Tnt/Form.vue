@@ -64,7 +64,7 @@ const computedSchema = computed(() => {
 </script>
 
 <template lang="pug">
-VeeForm.space-y-5(
+VeeForm(
   :class="fullErrors ? 'full-errors' : undefined"
   :action="action"
   :method="method"

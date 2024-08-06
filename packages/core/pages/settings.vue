@@ -10,7 +10,7 @@ watch(colorMode, async () => {
 <template lang="pug">
 NuxtLayout(:name="layout || 'default'")
   .prose
-    TntForm
+    TntForm.space-y-5
       h3.font-bold.text-lg Settings
 
       ClientOnly
