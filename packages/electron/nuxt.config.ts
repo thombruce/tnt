@@ -39,7 +39,7 @@ export default defineNuxtConfig({
       },
     ],
   },
-  // ssr: false,
+  ssr: false,
   // router: {
   //   options: {
   //     hashMode: true
