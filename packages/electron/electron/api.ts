@@ -7,7 +7,7 @@ export default function initIpc() {
     return new Promise((resolve, reject) => {
       fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), "tnt.config.json"), "utf8", function (error, file) {
         if (error) {
-          reject(error)
+          resolve({})
           return
         }
         resolve(JSON.parse(file))
@@ -27,8 +27,8 @@ export default function initIpc() {
   ipcMain.on('update-config', (_, config) => {
     return new Promise((resolve, reject) => {
       fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), 'tnt.config.json'), (error, file) => {
-        const newData = file ? { ...JSON.parse(file), ...config } : config
-        fs.writeFile('tnt.config.json', JSON.stringify(newData, null, 2), (error) => {
+        const newData = file ? { ...JSON.parse(String(file)), ...config } : config
+        fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), 'tnt.config.json'), JSON.stringify(newData, null, 2), (error) => {
           if (error) {
             reject(error)
             return
@@ -55,7 +55,7 @@ export default function initIpc() {
     return new Promise((resolve, reject) => {
       fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), path), "utf8", function (error, file) {
         if (error) {
-          reject(error)
+          resolve("")
           return
         }
         resolve(file)
