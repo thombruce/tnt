@@ -5,7 +5,7 @@ import { join } from 'path'
 export default function initIpc() {
   ipcMain.handle('load-config', () => {
     return new Promise((resolve, reject) => {
-      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), "tnt.config.json"), "utf8", function (error, file) {
+      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), "tnt.config.json"), "utf8", function (error, file) {
         if (error) {
           resolve({})
           return
@@ -26,9 +26,9 @@ export default function initIpc() {
 
   ipcMain.on('update-config', (_, config) => {
     return new Promise((resolve, reject) => {
-      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), 'tnt.config.json'), (error, file) => {
+      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), 'tnt.config.json'), (error, file) => {
         const newData = file ? { ...JSON.parse(String(file)), ...config } : config
-        fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), 'tnt.config.json'), JSON.stringify(newData, null, 2), (error) => {
+        fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), 'tnt.config.json'), JSON.stringify(newData, null, 2), (error) => {
           if (error) {
             reject(error)
             return
@@ -53,7 +53,7 @@ export default function initIpc() {
 
   ipcMain.handle('load-file', (_, path) => {
     return new Promise((resolve, reject) => {
-      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), path), "utf8", function (error, file) {
+      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), "utf8", function (error, file) {
         if (error) {
           resolve("")
           return
@@ -65,8 +65,8 @@ export default function initIpc() {
 
   ipcMain.on('update-file', (_, path, content) => {
     return new Promise((resolve, reject) => {
-      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), path), "utf8", (error, file) => {
-        fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR), path), content, (error) => {
+      fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), "utf8", (error, file) => {
+        fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), content, (error) => {
           if (error) {
             reject(error)
             return
