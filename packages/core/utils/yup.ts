@@ -75,11 +75,11 @@ export const yupAuto = (type) => {
     //   break
     case 'number':
     case 'range':
-      return yup.number()
+      return yup.number().nullable().transform((curr, orig) => orig === '' ? null : curr)
     case 'date':
     case 'datetime-local':
     case 'month':
-      return yup.date()
+      return yup.date().nullable().transform((curr, orig) => orig === '' ? null : curr)
     case 'array':
     case 'checkbox':
       return yup.array()
