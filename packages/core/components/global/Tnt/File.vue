@@ -10,7 +10,7 @@ const props = defineProps({
   },
   name: {
     type: String,
-    default: (props) => _camelCase(props.label || 'file')
+    default: (props) => props.label ? _camelCase(props.label) : `file-${_uniqueId()}`
   },
   hint: {},
   fullErrors: {

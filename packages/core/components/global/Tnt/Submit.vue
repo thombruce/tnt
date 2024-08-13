@@ -12,5 +12,6 @@ const isDirty = useIsFormDirty()
 </script>
 
 <template lang="pug">
-button(type="submit" :disabled="!isDirty") {{ label }}
+button(type="submit" :disabled="!isDirty")
+  slot {{ label }}
 </template>

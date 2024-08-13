@@ -12,7 +12,7 @@ const props = defineProps({
   },
   name: {
     type: String,
-    default: (props) => _camelCase(props.label || 'toggle')
+    default: (props) => props.label ? _camelCase(props.label) : `toggle-${_uniqueId()}`
   },
   hint: {},
   checked: {

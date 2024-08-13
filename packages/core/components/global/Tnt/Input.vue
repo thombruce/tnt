@@ -10,7 +10,7 @@ const props = defineProps({
   },
   name: {
     type: String,
-    default: (props) => _camelCase(props.label || 'input')
+    default: (props) => props.label ? _camelCase(props.label) : (`${props.type}-${_uniqueId()}` || `input-${_uniqueId()}`)
   },
   type: {
     type: String,

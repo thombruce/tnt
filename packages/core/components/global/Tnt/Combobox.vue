@@ -8,7 +8,7 @@ const props = defineProps({
   },
   name: {
     type: String,
-    default: (props) => _camelCase(props.label || 'combobox')
+    default: (props) => props.label ? _camelCase(props.label) : (`${props.type}-${_uniqueId()}` || `combobox-${_uniqueId()}`)
   },
   type: {
     type: String,

@@ -15,7 +15,7 @@ const props = defineProps({
   },
   name: {
     type: String,
-    default: (props) => _camelCase(props.label || 'checkbox')
+    default: (props) => props.label ? _camelCase(props.label) : `checkbox-${_uniqueId()}`
   },
   hint: {},
   checked: {
