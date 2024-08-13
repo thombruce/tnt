@@ -14,8 +14,8 @@ onClickOutside(target, () => closeMenu())
 
 <template lang="pug">
 .inline.relative(ref="target")
-  slot(name="button")
-    TntButton.btn-none(@click="showMenu = !showMenu")
+  TntButton.btn-none(@click="showMenu = !showMenu")
+    slot(name="button")
       Icon(name="fa:bars")
   ul(
     v-if="showMenu"
