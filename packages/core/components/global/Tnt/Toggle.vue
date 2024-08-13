@@ -32,15 +32,12 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits([
-  'update:modelValue'
-])
-
 const computedRules = computed(() => {
   return useValidations(props.rules?.format || props.type || 'string', props.rules, props.label)
 })
 
 const { value, checked: isChecked, handleChange, errors } = useField(() => props.name, computedRules.value, {
+  syncVModel: true,
   type: 'checkbox',
   initialValue: props.modelValue,
   valueProp: props.modelValue,

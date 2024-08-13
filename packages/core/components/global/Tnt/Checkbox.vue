@@ -1,4 +1,6 @@
 <script setup>
+// TODO: Update to use useField from vee-validate
+
 // TODO: Separate this component into Checkbox.vue and CheckboxGroup.vue
 //       Also rename Radio.vue to RadioGroup.vue for consistency
 //       What to do about the differing @change actions? Figure it out.

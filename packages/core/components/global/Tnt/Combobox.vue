@@ -1,4 +1,6 @@
 <script setup>
+// TODO: Update to use useField from vee-validate
+
 const props = defineProps({
   modelValue: { type: String },
   label: { type: String },
@@ -39,23 +41,9 @@ const computedRules = computed(() => {
   return useValidations(props.rules?.format || 'select', props.rules, props.label)
 })
 
-const emit = defineEmits([
-  'update:modelValue'
-])
+const { value, errors } = useField(() => props.name, computedRules.value, { syncVModel: true })
 
 const query = ref('')
-
-const value = computed({
-  get() { return props.modelValue || query.value },
-  async set(value) {
-    if (props.modelValue != undefined){
-      await emit('update:modelValue', value)
-    } else {
-      query.value = value
-    }
-    search()
-  }
-})
 
 const results = ref([])
 
@@ -92,36 +80,32 @@ onClickOutside(target, () => isActive.value = false)
 
 <template lang="pug">
 div(:class="fullErrors ? 'full-errors' : undefined")
-  VeeField(
-    v-model="value"
-    :name="name"
-    :rules="computedRules"
-    v-slot="{ field, errors }"
-  )
-    label(v-if="label" :for="id")
-      span.font-bold(v-if="label" v-html="label")
+  label(v-if="label" :for="id")
+    span.font-bold(v-if="label" v-html="label")
 
-    .relative(ref="target")
-      input(
-        v-bind="field"
-        :id="id"
-        :type="type"
-        :placeholder="placeholder"
-        autocomplete="off"
-        @focus="isActive = true"
-        @keydown.tab="isActive = false"
-        :class="errors[0] ? 'error' : ''"
-      )
-      ul.not-prose(class="absolute w-full bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
-        li.w-full.px-3(v-for="result in results" :key="result" class="hover:bg-blue-600")
-          a.block.w-full.cursor-pointer(@click="value = result;isActive = false")
-            | {{ result }}
+  .relative(ref="target")
+    input(
+      v-model="value"
+      :id="id"
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      autocomplete="off"
+      @input="search()"
+      @focus="isActive = true"
+      @keydown.tab="isActive = false"
+      :class="errors[0] ? 'error' : ''"
+    )
+    ul.not-prose(class="absolute w-full bg-base-200 dark:bg-base-800" v-show="isActive && results.length")
+      li.w-full.px-3(v-for="result in results" :key="result" class="hover:bg-blue-600")
+        a.block.w-full.cursor-pointer(@click="value = result;isActive = false")
+          | {{ result }}
 
-    .errors.full
-      ul(class="text-error marker:text-error-500 dark:text-error-dark marker:dark:text-error-900")
-        li(v-for="error in errors") {{ error }}
-    .errors.single(class="text-error dark:text-error-dark") {{ errors[0] }}
+  .errors.full
+    ul(class="text-error marker:text-error-500 dark:text-error-dark marker:dark:text-error-900")
+      li(v-for="error in errors") {{ error }}
+  .errors.single(class="text-error dark:text-error-dark") {{ errors[0] }}
 
-    label(v-if="hint" :for="id")
-      span.text-xs.text-gray-500(v-if="hint" v-html="hint")
+  label(v-if="hint" :for="id")
+    span.text-xs.text-gray-500(v-if="hint" v-html="hint")
 </template>
