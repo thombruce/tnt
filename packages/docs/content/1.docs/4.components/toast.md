@@ -21,7 +21,7 @@ if (!process.server) {
         { is: 'p', content: 'This is text.' },
       ],
       actions: [
-        { is: 'Icon', props: { class: 'text-2xl', name: 'fa:info' } }
+        { is: 'Icon', props: { class: 'text-2xl', name: 'fa6-solid:info' } }
       ]
     },
   )

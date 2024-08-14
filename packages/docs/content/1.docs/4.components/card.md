@@ -18,7 +18,7 @@ TNT is open source under the MIT license.
 This is card content.
 
 #actions
-:icon{class="text-2xl" name="fa:info"}
+:icon{class="text-2xl" name="fa6-solid:info"}
 ::
 ```
 
@@ -43,7 +43,7 @@ This is card content.
 This is card content.
 
 #actions
-:icon{class="text-2xl" name="fa:info"}
+:icon{class="text-2xl" name="fa6-solid:info"}
 :::
 
 :::card{class="my-5 success"}
@@ -64,7 +64,7 @@ This is card content.
 This is card content.
 
 #actions
-:icon{class="text-2xl" name="fa:exclamation"}
+:icon{class="text-2xl" name="fa6-solid:exclamation"}
 :::
 ::
 

@@ -769,6 +769,13 @@
   resolved "https://registry.yarnpkg.com/@hutson/parse-repository-url/-/parse-repository-url-3.0.2.tgz#98c23c950a3d9b6c8f0daed06da6c3af06981340"
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
+"@iconify-json/fa6-solid@^1.1.24":
+  version "1.1.24"
+  resolved "https://registry.yarnpkg.com/@iconify-json/fa6-solid/-/fa6-solid-1.1.24.tgz#4adc4a2b16bf7edfb143db3d7ecc4e2dffd3a039"
+  integrity sha512-ovO4kIW3CjoY36/QUTORg+7ZVlVpJqGSck+FUsqrvVJAr9MPeh3QN2UBnc9zyny41znxs7Kdc0Oz6aun4UUsyw==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/fa@^1.1.8":
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/@iconify-json/fa/-/fa-1.1.8.tgz#23c17b822646768496bd4020073775a194783892"

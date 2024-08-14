@@ -20,10 +20,10 @@ header.sticky.top-0
             Icon.mr-2(v-if="link.icon" :name="link.icon")
             | {{ link.title }}
           DropdownItem(v-if="runtimeConfig?.public?.content" path="/search")
-            Icon.mr-2(name="fa:search")
+            Icon.mr-2(name="fa6-solid:magnifying-glass")
             | Search
           DropdownItem(path="/settings")
-            Icon.mr-2(name="fa:cog")
+            Icon.mr-2(name="fa6-solid:gear")
             | Settings
       li
         strong
@@ -31,13 +31,13 @@ header.sticky.top-0
     ul.flex-0
       li(v-if="runtimeConfig?.public?.content")
         NuxtLink(to="/search" no-prefetch)
-          Icon(name="fa:search")/
+          Icon(name="fa6-solid:magnifying-glass")/
           span.sr-only Search
       li
         DarkmodeToggle
       li
         NuxtLink(to="/settings" no-prefetch)
-          Icon(name="fa:cog")/
+          Icon(name="fa6-solid:gear")/
           span.sr-only Settings
       template(v-if="isElectron()")
         li

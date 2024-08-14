@@ -7,13 +7,13 @@
 ## Usage
 
 ```md
-:icon{name="fa:rocket"}
+:icon{name="fa6-solid:rocket"}
 ```
 
 ## Example
 
 ::browser-mockup{url="https://tnt.thombruce.com"}
-  :icon{name="fa:rocket"}
+  :icon{name="fa6-solid:rocket"}
 ::
 
 ## Resizing

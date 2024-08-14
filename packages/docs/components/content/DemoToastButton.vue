@@ -12,7 +12,7 @@ const addToasts = () => {
         { is: 'p', content: 'This is text.' },
       ],
       actions: [
-        { is: 'Icon', props: { class: 'text-2xl', name: 'fa:exclamation' } }
+        { is: 'Icon', props: { class: 'text-2xl', name: 'fa6-solid:exclamation' } }
       ]
     },
     {
@@ -61,7 +61,7 @@ const addToasts = () => {
         { is: 'p', content: 'This is text.' },
       ],
       actions: [
-        { is: 'Icon', props: { name: 'fa:check' } }
+        { is: 'Icon', props: { name: 'fa6-solid:check' } }
       ]
     },
     {
