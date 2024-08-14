@@ -56,7 +56,7 @@ header.sticky.top-0
 
 <style lang="postcss">
 header {
-  -webkit-user-select: none;
+  @apply select-none;
   -webkit-app-region: drag;
   & a, button {
     -webkit-app-region: no-drag;
