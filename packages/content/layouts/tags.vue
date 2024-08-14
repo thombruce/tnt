@@ -26,7 +26,7 @@ if (page && page.title) {
 </script>
 
 <template lang="pug">
-article.prose
+article
   template(v-if="page")
     h1 {{ page.title }}
     Breadcrumbs(v-if="page.breadcrumbs !== false")

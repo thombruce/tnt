@@ -1,4 +1,4 @@
 <template lang="pug">
-div
+.prose
   h1 Hello, World from TNT Electron!
 </template>

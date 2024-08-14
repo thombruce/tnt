@@ -8,8 +8,8 @@ watch(colorMode, async () => {
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="layout || 'default'")
-  .prose
+.prose
+  NuxtLayout(:name="layout || 'default'")
     TntForm.space-y-5
       h3.font-bold.text-lg Settings
 

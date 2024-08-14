@@ -4,7 +4,7 @@ const { data: page } = await useAsyncData(`tnt-list-${route.path}`, () => queryC
 </script>
 
 <template lang="pug">
-article.prose
+article
   ContentDoc
     template(#default="{ doc }")
       h1 {{ doc.title }}

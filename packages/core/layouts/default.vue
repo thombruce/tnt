@@ -1,4 +1,4 @@
 <template lang="pug">
-article.prose
+div
   slot
 </template>

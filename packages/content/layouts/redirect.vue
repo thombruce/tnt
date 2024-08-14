@@ -10,7 +10,7 @@ useHead({
 </script>
 
 <template lang="pug">
-.prose
+div
   h1 Redirecting to {{ page.title }}...
   p
     | If you are not redirected automatically, click here:

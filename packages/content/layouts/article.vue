@@ -1,5 +1,5 @@
 <template lang="pug">
-article.prose
+article
   ContentDoc
     template(#default="{ doc }")
       h1 {{ doc.title }}

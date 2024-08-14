@@ -3,6 +3,7 @@ const { layout } = useAppConfig()
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="layout || 'default'")
-  ContentSearch
+.prose
+  NuxtLayout(:name="layout || 'default'")
+    ContentSearch
 </template>
