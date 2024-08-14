@@ -2,7 +2,7 @@
 
 import { release } from 'os'
 import path from 'path'
-import { app, BrowserWindow, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 
 import initIpc from './api'
 
@@ -38,6 +38,7 @@ async function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
     },
+    frame: false,
   })
 
   if (app.isPackaged) {
@@ -79,7 +80,24 @@ app.on('activate', () => {
     createWindow()
 })
 
+function initWindowFunctions() {
+  ipcMain.on('minimize-window', () => {
+    win?.isMinimized() ? win?.restore() : win?.minimize()
+  })
+
+  ipcMain.on('maximize-window', () => {
+    win?.setFullScreen(!win?.isFullScreen())
+  })
+
+  ipcMain.on('close-window', () => {
+    app.quit()
+  })
+}
+
 app.whenReady().then(() => {
   initIpc()
+
   createWindow()
+
+  initWindowFunctions()
 })

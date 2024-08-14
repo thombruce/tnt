@@ -2,6 +2,21 @@ import { isElectron } from '../utils/is-electron'
 
 export const useTntApi = () => {
   return {
+    minimize: () => {
+      if (isElectron()) {
+        window.api.send('minimize-window')
+      }
+    },
+    maximize: () => {
+      if (isElectron()) {
+        window.api.send('maximize-window')
+      }
+    },
+    close: () => {
+      if (isElectron()) {
+        window.api.send('close-window')
+      }
+    },
     loadConfig: async () => {
       if (isElectron()) {
         return await window.api.invoke('load-config')
