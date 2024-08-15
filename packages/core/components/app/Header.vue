@@ -55,7 +55,7 @@ header.sticky.top-0
 </template>
 
 <style lang="postcss">
-header {
+body.electron header {
   @apply select-none;
   -webkit-app-region: drag;
   & a, button {
