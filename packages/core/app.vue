@@ -6,12 +6,19 @@ const colorMode = useColorMode()
 const config = await useTntApi().loadConfig()
 if (config.colorMode) colorMode.preference = config.colorMode
 
+const bodyClass = computed(() => {
+  let klasses = []
+  if (isElectron()) klasses.push('electron')
+  if (gradient) klasses.push('bg-gradient-auto')
+  return klasses.join(' ')
+})
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - ${name}` : name
   },
   bodyAttrs: {
-    class: gradient ? 'bg-gradient-auto' : '',
+    class: bodyClass.value,
   },
 })
 </script>

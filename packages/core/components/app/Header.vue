@@ -53,3 +53,13 @@ header.sticky.top-0
             Icon(name="fa6-solid:xmark")/
             span.sr-only Close
 </template>
+
+<style lang="postcss">
+body.electron header {
+  @apply select-none;
+  -webkit-app-region: drag;
+  & a, button {
+    -webkit-app-region: no-drag;
+  }
+}
+</style>
