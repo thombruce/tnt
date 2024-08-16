@@ -60,7 +60,7 @@ export default function initIpc() {
     // attributes: string[]
     // normalizePath: Boolean
     // depth: number
-    opts = { ...{ normalizePath: true }, ...opts }
+    opts = { ...{ normalizePath: false }, ...opts }
 
     return new Promise((resolve, reject) => {
       const tree = dirTree(
