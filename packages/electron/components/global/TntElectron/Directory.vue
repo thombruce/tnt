@@ -8,7 +8,11 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  filter: RegExp
+  filter: RegExp,
+  links: {
+    type: Boolean,
+    default: true
+  }
 })
 
 const files = ref([])
@@ -24,5 +28,7 @@ fetchFiles()
 <template lang="pug">
 slot(:files="files")
   ul.space-y-2
-    li(v-for="file in files" :key="file") {{ file }}
+    li(v-for="file in files" :key="file")
+      NuxtLink(v-if="links" :to="file") {{ file }}
+      template(v-else) {{ file }}
 </template>
