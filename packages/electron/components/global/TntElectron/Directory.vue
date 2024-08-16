@@ -28,5 +28,5 @@ fetchFiles()
 
 <template lang="pug">
 slot(:files="files")
-  TntElectronDirectoryList(:files="files" :open="true" :filter="filter" :links="links")
+  TntElectronDirectoryTree(:files="files" :open="true" :filter="filter" :links="links")
 </template>

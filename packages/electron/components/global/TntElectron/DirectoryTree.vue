@@ -22,7 +22,7 @@ details(:open="open")
     li(v-for="child in children")
       component(
         v-if="child.children"
-        is="tnt-electron-directory-list"
+        is="tnt-electron-directory-tree"
         v-bind="_omit(props, ['files', 'open'])"
         :files="child"
       )
