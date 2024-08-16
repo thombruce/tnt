@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps({
+  rootDir: String,
   files: Object,
   open: {
     type: Boolean,
@@ -26,6 +27,6 @@ details(:open="open")
         v-bind="_omit(props, ['files', 'open'])"
         :files="child"
       )
-      NuxtLink(v-else-if="links" :to="relativePath(child.path)" :key="child.path")  {{ child.name }}
+      NuxtLink(v-else-if="links" :to="child.path.replace(`${rootDir}/`, '')" :key="child.path")  {{ child.name }}
       span(v-else :key="child.path")  {{ child.name }}
 </template>
