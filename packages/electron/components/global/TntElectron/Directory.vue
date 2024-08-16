@@ -2,12 +2,13 @@
 const props = defineProps({
   path: {
     type: String,
-    default: './'
+    default: ''
   },
-  recursive: {
-    type: Boolean,
-    default: false
-  },
+  exclude: [RegExp, Array],
+  extensions: RegExp,
+  // attributes: Array,
+  // normalizePath: Boolean,
+  depth: Number,
   filter: RegExp,
   links: {
     type: Boolean,
@@ -18,8 +19,8 @@ const props = defineProps({
 const files = ref([])
 
 async function fetchFiles() {
-  const dir = await useTntApi().listFiles(props.path, { recursive: props.recursive })
-  if (dir) files.value = props.filter ? dir.filter(f => props.filter.test(f)) : dir
+  const dir = await useTntApi().listFiles(props.path, { exclude: props.exclude, extensions: props.extensions, depth: props.depth })
+  if (dir) files.value = dir
 }
 
 fetchFiles()
@@ -27,8 +28,5 @@ fetchFiles()
 
 <template lang="pug">
 slot(:files="files")
-  ul.space-y-2
-    li(v-for="file in files" :key="file")
-      NuxtLink(v-if="links" :to="file") {{ file }}
-      template(v-else) {{ file }}
+  TntElectronDirectoryList(:files="files" :open="true" :filter="filter" :links="links")
 </template>

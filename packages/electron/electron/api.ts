@@ -2,6 +2,8 @@ import { ipcMain } from 'electron'
 import fs from 'fs'
 import { join } from 'path'
 
+import dirTree, { DirectoryTree } from 'directory-tree'
+
 export default function initIpc() {
   ipcMain.handle('load-config', () => {
     return new Promise((resolve, reject) => {
@@ -51,16 +53,26 @@ export default function initIpc() {
     // })
   })
 
-  ipcMain.handle('list-files', (_, dir, opts?:object):Promise<Buffer[]|string[]> => {
-    opts = { ...{ encoding: "utf8", withFileTypes: false, recursive: false }, ...opts }
+  ipcMain.handle('list-files', (_, dir, opts?:object):Promise<DirectoryTree> => {
+    // Options:
+    // exclude: RegExp|RegExp[]
+    // extensions: RegExp
+    // attributes: string[]
+    // normalizePath: Boolean
+    // depth: number
+    opts = { ...{ normalizePath: true }, ...opts }
+
     return new Promise((resolve, reject) => {
-      fs.readdir(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), dir), opts, function (error, files) {
-        if (error) {
-          resolve([])
-          return
-        }
-        resolve(files)
-      })
+      const tree = dirTree(
+        join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), dir),
+        opts
+      )
+
+      if (tree) {
+        resolve(tree)
+      } else {
+        resolve({} as DirectoryTree)
+      }
     })
   })
 
