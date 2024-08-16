@@ -24,6 +24,5 @@ fetchFiles()
 <template lang="pug">
 slot(:files="files")
   ul.space-y-2
-    li(v-for="file in files")
-      NuxtLink(:to="file" :key="file") {{ file }}
+    li(v-for="file in files" :key="file") {{ file }}
 </template>
