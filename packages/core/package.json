@@ -1,6 +1,6 @@
 {
   "name": "@thombruce/tnt",
-  "version": "0.30.3",
+  "version": "0.30.4",
   "license": "MIT",
   "type": "module",
   "main": "./nuxt.config.ts",
