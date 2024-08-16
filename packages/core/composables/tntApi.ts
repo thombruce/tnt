@@ -29,6 +29,12 @@ export const useTntApi = () => {
       }
       return {}
     },
+    listFiles: async (folder, opts?:object) => {
+      if (isElectron()) {
+        return await window.api.invoke('list-files', folder, opts)
+      }
+      return
+    },
     loadFile: async (file) => {
       if (isElectron()) {
         return await window.api.invoke('load-file', file)
