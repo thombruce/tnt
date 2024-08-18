@@ -1,4 +1,6 @@
 <script setup>
+import { useDirectoryStore } from '@/stores/directory'
+
 const props = defineProps({
   rootDir: String,
   files: Object,
@@ -10,6 +12,11 @@ const props = defineProps({
   filter: RegExp,
 })
 
+// Store
+const store = useDirectoryStore()
+// Store: Actions
+const { deleteFile } = store
+
 const children = computed(() => {
   let filtered = props.filter ? props.files.children?.filter(f => f.children || props.filter.test(f.name)) : props.files.children
   return _sortBy(filtered, ['children', 'name'])
@@ -18,7 +25,10 @@ const children = computed(() => {
 
 <template lang="pug">
 details(:open="open")
-  summary.cursor-pointer {{ files.name }}
+  summary.cursor-pointer
+    span {{ files.name }}
+    TntButton.btn-none.float-right(@click="deleteFile(files.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+        Icon(name="fa6-solid:trash-can")
   ul.ml-4
     li(v-for="child in children")
       component(
@@ -27,6 +37,9 @@ details(:open="open")
         v-bind="_omit(props, ['files', 'open'])"
         :files="child"
       )
-      NuxtLink(v-else-if="links" :to="child.path.replace(`${rootDir}/`, '')" :key="child.path")  {{ child.name }}
+      span(v-else-if="links")
+        NuxtLink(:to="child.path.replace(`${rootDir}/`, '')" :key="child.path")  {{ child.name }}
+        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+          Icon(name="fa6-solid:trash-can")
       span(v-else :key="child.path")  {{ child.name }}
 </template>

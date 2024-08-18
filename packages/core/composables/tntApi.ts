@@ -35,6 +35,12 @@ export const useTntApi = () => {
       }
       return
     },
+    deleteFile: async (file:string) => {
+      if (isElectron()) {
+        return await window.api.invoke('delete-file', file)
+      }
+      return
+    },
     loadFile: async (file) => {
       if (isElectron()) {
         return await window.api.invoke('load-file', file)

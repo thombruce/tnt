@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron'
+import { ipcMain, shell } from 'electron'
 import fs from 'fs'
 import { join } from 'path'
 
@@ -74,6 +74,10 @@ export default function initIpc() {
         resolve({} as DirectoryTree)
       }
     })
+  })
+
+  ipcMain.handle('delete-file', (_, path:string):Promise<void> => {
+    return shell.trashItem(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path))
   })
 
   ipcMain.handle('load-file', (_, path) => {
