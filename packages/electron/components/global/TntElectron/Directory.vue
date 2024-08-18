@@ -32,5 +32,5 @@ fetchDirectory(props.path, { exclude: props.exclude, extensions: props.extension
 
 <template lang="pug">
 slot(:files="tree")
-  TntElectronDirectoryTree(:rootDir="tree.path" :files="tree" :open="true" :filter="filter" :links="links")
+  TntElectronDirectoryTree(:files="tree" :open="true" :filter="filter" :links="links")
 </template>

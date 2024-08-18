@@ -3,7 +3,6 @@ import { useDirectoryStore } from '@/stores/directory'
 import { storeToRefs } from 'pinia'
 
 const props = defineProps({
-  rootDir: String,
   files: Object,
   open: {
     type: Boolean,
@@ -31,7 +30,7 @@ details(:open="open")
   summary.cursor-pointer
     TntElectronDirectoryTreeFileName(v-if="files.path !== root" :path="files.path" :name="files.name")
     span(v-else) {{ files.name }}
-    TntButton.btn-none.float-right(v-if="files.path !== root" @click="deleteFile(files.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+    TntButton.btn-none.float-right(v-if="files.path !== root" @click="deleteFile(files.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
       Icon(name="fa6-solid:trash-can")
   ul.ml-4
     li(v-for="child in children" :key="child.path")
@@ -42,9 +41,8 @@ details(:open="open")
         :files="child"
       )
       span(v-else-if="links")
-        NuxtLink(:to="child.path.replace(`${rootDir}/`, '')")
-          TntElectronDirectoryTreeFileName(:path="child.path" :name="child.name")
-        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+        TntElectronDirectoryTreeFileName(:path="child.path" :name="child.name" :link="links")
+        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
       TntElectronDirectoryTreeFileName(v-else :path="child.path" :name="child.name")
 </template>
