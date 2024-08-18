@@ -19,7 +19,7 @@ const { deleteFile } = store
 
 const children = computed(() => {
   let filtered = props.filter ? props.files.children?.filter(f => f.children || props.filter.test(f.name)) : props.files.children
-  return _sortBy(filtered, ['children', 'name'])
+  return _sortBy(filtered, [function(o) { return !o.children }, 'name'])
 })
 </script>
 
