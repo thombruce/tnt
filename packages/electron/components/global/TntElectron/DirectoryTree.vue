@@ -30,7 +30,7 @@ details(:open="open")
     TntButton.btn-none.float-right(@click="deleteFile(files.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
         Icon(name="fa6-solid:trash-can")
   ul.ml-4
-    li(v-for="child in children")
+    li(v-for="child in children" :key="child.path")
       component(
         v-if="child.children"
         is="tnt-electron-directory-tree"
@@ -38,8 +38,8 @@ details(:open="open")
         :files="child"
       )
       span(v-else-if="links")
-        NuxtLink(:to="child.path.replace(`${rootDir}/`, '')" :key="child.path")  {{ child.name }}
+        NuxtLink(:to="child.path.replace(`${rootDir}/`, '')")  {{ child.name }}
         TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
-      span(v-else :key="child.path")  {{ child.name }}
+      span(v-else)  {{ child.name }}
 </template>
