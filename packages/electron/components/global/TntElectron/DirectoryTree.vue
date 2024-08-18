@@ -46,3 +46,9 @@ details(:open="open")
           Icon(name="fa6-solid:trash-can")
       span(v-else)  {{ child.name }}
 </template>
+
+<style lang="postcss" scoped>
+details li {
+  @apply hover:bg-base-900/50;
+}
+</style>
