@@ -3,6 +3,7 @@ import fs from 'fs'
 import { join } from 'path'
 
 import dirTree, { DirectoryTree } from 'directory-tree'
+import { stringify } from 'querystring'
 
 export default function initIpc() {
   ipcMain.handle('load-config', () => {
@@ -73,6 +74,18 @@ export default function initIpc() {
       } else {
         resolve({} as DirectoryTree)
       }
+    })
+  })
+
+  ipcMain.handle('rename-file', (_, path:string, name:string) => {
+    return new Promise((resolve, reject) => {
+      fs.rename(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), name, (error) => {
+        if (error) {
+          reject(error)
+          return
+        }
+        return
+      })
     })
   })
 

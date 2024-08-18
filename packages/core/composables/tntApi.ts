@@ -35,6 +35,12 @@ export const useTntApi = () => {
       }
       return
     },
+    renameFile: async (file:string, name:string) => {
+      if (isElectron()) {
+        return await window.api.invoke('rename-file', file, name)
+      }
+      return
+    },
     deleteFile: async (file:string) => {
       if (isElectron()) {
         return await window.api.invoke('delete-file', file)

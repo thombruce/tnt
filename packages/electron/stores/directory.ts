@@ -8,6 +8,8 @@ import _uniqueId from 'lodash/uniqueId'
 
 import { useToasts } from '@thombruce/tnt/composables/states'
 
+const toasts = useToasts()
+
 export const useDirectoryStore = defineStore('directory', () => {
   // State
   const tree = ref({} as DirectoryTree)
@@ -21,8 +23,24 @@ export const useDirectoryStore = defineStore('directory', () => {
     if (dir) tree.value = dir
   }
 
+  async function renameFile(file:string, name:string) {
+    await useTntApi().renameFile(file, name)
+    toasts.value.push({
+      uid: _uniqueId('tnt-toast-rename-file-'),
+      duration: 5000,
+      color: 'primary',
+      body: [
+        { is: 'strong', props: { class: 'text-lg' }, content: 'Renamed' },
+        { is: 'p', content: `${file} has been renamed to ${name}.` },
+      ],
+      actions: [
+        { is: 'Icon', props: { class: 'text-2xl', name: 'fa6-solid:info' } }
+      ]
+    })
+    fetchDirectory(root.value)
+  }
+
   async function deleteFile(file:string) {
-    const toasts = useToasts()
     await useTntApi().deleteFile(file)
     toasts.value.push({
       uid: _uniqueId('tnt-toast-delete-file-'),
@@ -46,6 +64,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     root,
     // Actions
     fetchDirectory,
+    renameFile,
     deleteFile,
   }
 })

@@ -29,7 +29,8 @@ const children = computed(() => {
 <template lang="pug">
 details(:open="open")
   summary.cursor-pointer
-    span {{ files.name }}
+    TntElectronDirectoryTreeFileName(v-if="files.path !== root" :path="files.path" :name="files.name")
+    span(v-else) {{ files.name }}
     TntButton.btn-none.float-right(v-if="files.path !== root" @click="deleteFile(files.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
       Icon(name="fa6-solid:trash-can")
   ul.ml-4
@@ -41,10 +42,11 @@ details(:open="open")
         :files="child"
       )
       span(v-else-if="links")
-        NuxtLink(:to="child.path.replace(`${rootDir}/`, '')")  {{ child.name }}
+        NuxtLink(:to="child.path.replace(`${rootDir}/`, '')")
+          TntElectronDirectoryTreeFileName(:path="child.path" :name="child.name")
         TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
-      span(v-else)  {{ child.name }}
+      TntElectronDirectoryTreeFileName(v-else :path="child.path" :name="child.name")
 </template>
 
 <style lang="postcss" scoped>
