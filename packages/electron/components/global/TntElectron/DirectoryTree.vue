@@ -1,5 +1,6 @@
 <script setup>
 import { useDirectoryStore } from '@/stores/directory'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
   rootDir: String,
@@ -14,6 +15,8 @@ const props = defineProps({
 
 // Store
 const store = useDirectoryStore()
+// Getters
+const { root } = storeToRefs(store)
 // Store: Actions
 const { deleteFile } = store
 
@@ -27,8 +30,8 @@ const children = computed(() => {
 details(:open="open")
   summary.cursor-pointer
     span {{ files.name }}
-    TntButton.btn-none.float-right(@click="deleteFile(files.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
-        Icon(name="fa6-solid:trash-can")
+    TntButton.btn-none.float-right(v-if="files.path !== root" @click="deleteFile(files.path.replace(`${rootDir}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+      Icon(name="fa6-solid:trash-can")
   ul.ml-4
     li(v-for="child in children" :key="child.path")
       component(
