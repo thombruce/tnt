@@ -30,7 +30,7 @@ export const useDirectoryStore = defineStore('directory', () => {
       color: 'danger',
       body: [
         { is: 'strong', props: { class: 'text-lg' }, content: 'Deleted' },
-        { is: 'p', content: 'This file has been sent to your trash folder.' },
+        { is: 'p', content: `${file} has been sent to your trash folder.` },
       ],
       actions: [
         { is: 'Icon', props: { class: 'text-2xl', name: 'fa6-solid:trash-can' } }
