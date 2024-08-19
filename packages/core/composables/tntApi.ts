@@ -58,6 +58,12 @@ export const useTntApi = () => {
         return await window.api.send('update-file', file, content)
       } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?
       return
+    },
+    createFolder: async (folder) => {
+      if (isElectron()) {
+        return await window.api.send('create-folder', folder)
+      } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?
+      return
     }
   }
 }

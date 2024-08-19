@@ -118,4 +118,16 @@ export default function initIpc() {
       })
     })
   })
+
+  ipcMain.on('create-folder', (_, path):Promise<void> => {
+    return new Promise((resolve, reject) => {
+      fs.mkdir(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), { recursive: true }, (error) => {
+        if (error) {
+          reject(error)
+          return
+        }
+        resolve()
+      })
+    })
+  })
 }

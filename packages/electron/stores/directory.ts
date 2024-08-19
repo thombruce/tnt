@@ -39,6 +39,23 @@ export const useDirectoryStore = defineStore('directory', () => {
     })
     fetchDirectory(root.value)
   }
+  
+  async function createFolder(folder:string) {
+    await useTntApi().createFolder(folder)
+    toasts.value.push({
+      uid: _uniqueId('tnt-toast-create-folder-'),
+      duration: 5000,
+      color: 'success',
+      body: [
+        { is: 'strong', props: { class: 'text-lg' }, content: 'Added' },
+        { is: 'p', content: `A folder has been created at ${folder}.` },
+      ],
+      actions: [
+        { is: 'Icon', props: { class: 'text-2xl', name: 'fa6-solid:folder' } }
+      ]
+    })
+    fetchDirectory(root.value)
+  }
 
   async function renameFile(file:string, name:string) {
     await useTntApi().renameFile(file, name)
@@ -82,6 +99,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     // Actions
     fetchDirectory,
     createFile,
+    createFolder,
     renameFile,
     deleteFile,
   }

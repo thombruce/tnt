@@ -17,22 +17,42 @@ const store = useDirectoryStore()
 // Getters
 const { root } = storeToRefs(store)
 // Store: Actions
-const { createFile, deleteFile } = store
+const { createFile, createFolder, deleteFile } = store
 
 const children = computed(() => {
   let filtered = props.filter ? props.files.children?.filter(f => f.children || props.filter.test(f.name)) : props.files.children
   return _sortBy(filtered, [function(o) { return !o.children }, 'name'])
 })
 
+// Adding new files
 const newFile = ref('')
+const addingNewFile = ref(false)
 
-function create() {
+function createNewFile() {
   createFile(`${props.files.path.replace(`${root.value}/`, '')}/${newFile.value}`)
   newFile.value = ""
+  addingNewFile.value = false
 }
 
-function cancel() {
+function cancelNewFile() {
   newFile.value = ""
+  addingNewFile.value = false
+}
+
+// Adding new folders
+const newFolder = ref('')
+const addingNewFolder = ref(false)
+
+function createNewFolder() {
+  // TODO: Should this be a separate store action?
+  createFolder(`${props.files.path.replace(`${root.value}/`, '')}/${newFolder.value}`)
+  newFolder.value = ""
+  addingNewFolder.value = false
+}
+
+function cancelNewFolder() {
+  newFolder.value = ""
+  addingNewFolder.value = false
 }
 </script>
 
@@ -57,8 +77,19 @@ details(:open="open")
           Icon(name="fa6-solid:trash-can")
       TntElectronDirectoryTreeFileName(v-else v-model:path="child.path" v-model:name="child.name")
     li
-      TntForm.inline(@submit="create()" @keydown.esc="cancel()")
+      TntButton.btn-none(v-if="!addingNewFile" @click="addingNewFile = true")
+        span New file
+        Icon.ml-2(name="fa6-solid:file")
+      TntForm.inline(v-else @submit="createNewFile()" @keydown.esc="cancelNewFile()")
         TntInput.inline-block(v-model="newFile")
+        TntSubmit.btn-none.ml-2
+          Icon(name="fa6-solid:plus")
+    li
+      TntButton.btn-none(v-if="!addingNewFolder" @click="addingNewFolder = true")
+        span New folder
+        Icon.ml-2(name="fa6-solid:folder")
+      TntForm.inline(v-else @submit="createNewFolder()" @keydown.esc="cancelNewFolder()")
+        TntInput.inline-block(v-model="newFolder")
         TntSubmit.btn-none.ml-2
           Icon(name="fa6-solid:plus")
 </template>
