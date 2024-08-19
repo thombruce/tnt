@@ -17,12 +17,23 @@ const store = useDirectoryStore()
 // Getters
 const { root } = storeToRefs(store)
 // Store: Actions
-const { deleteFile } = store
+const { createFile, deleteFile } = store
 
 const children = computed(() => {
   let filtered = props.filter ? props.files.children?.filter(f => f.children || props.filter.test(f.name)) : props.files.children
   return _sortBy(filtered, [function(o) { return !o.children }, 'name'])
 })
+
+const newFile = ref('')
+
+function create() {
+  createFile(`${props.files.path.replace(`${root.value}/`, '')}/${newFile.value}`)
+  newFile.value = ""
+}
+
+function cancel() {
+  newFile.value = ""
+}
 </script>
 
 <template lang="pug">
@@ -45,6 +56,11 @@ details(:open="open")
         TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
       TntElectronDirectoryTreeFileName(v-else v-model:path="child.path" v-model:name="child.name")
+    li
+      TntForm.inline(@submit="create()" @keydown.esc="cancel()")
+        TntInput.inline-block(v-model="newFile")
+        TntSubmit.btn-none.ml-2
+          Icon(name="fa6-solid:plus")
 </template>
 
 <style lang="postcss" scoped>

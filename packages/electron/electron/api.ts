@@ -105,7 +105,7 @@ export default function initIpc() {
     })
   })
 
-  ipcMain.on('update-file', (_, path, content) => {
+  ipcMain.on('update-file', (_, path, content:string = "") => {
     return new Promise((resolve, reject) => {
       fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), "utf8", (error, file) => {
         fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), content, (error) => {

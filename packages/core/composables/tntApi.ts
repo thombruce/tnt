@@ -53,7 +53,7 @@ export const useTntApi = () => {
       } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?
       return
     },
-    updateFile: async (file, content) => {
+    updateFile: async (file, content?) => {
       if (isElectron()) {
         return await window.api.send('update-file', file, content)
       } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?

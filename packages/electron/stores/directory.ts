@@ -22,6 +22,23 @@ export const useDirectoryStore = defineStore('directory', () => {
     const dir = await useTntApi().listFiles(path, opts)
     if (dir) tree.value = dir
   }
+  
+  async function createFile(file:string) {
+    useTntApi().updateFile(file)
+    toasts.value.push({
+      uid: _uniqueId('tnt-toast-create-file-'),
+      duration: 5000,
+      color: 'success',
+      body: [
+        { is: 'strong', props: { class: 'text-lg' }, content: 'Added' },
+        { is: 'p', content: `A file has been created at ${file}.` },
+      ],
+      actions: [
+        { is: 'Icon', props: { class: 'text-2xl', name: 'fa6-solid:file' } }
+      ]
+    })
+    fetchDirectory(root.value)
+  }
 
   async function renameFile(file:string, name:string) {
     await useTntApi().renameFile(file, name)
@@ -64,6 +81,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     root,
     // Actions
     fetchDirectory,
+    createFile,
     renameFile,
     deleteFile,
   }
