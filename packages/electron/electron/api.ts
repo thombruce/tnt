@@ -3,7 +3,6 @@ import fs from 'fs'
 import { join } from 'path'
 
 import dirTree, { DirectoryTree } from 'directory-tree'
-import { stringify } from 'querystring'
 
 export default function initIpc() {
   ipcMain.handle('load-config', () => {
