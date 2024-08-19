@@ -27,6 +27,9 @@ const children = computed(() => {
 // Adding new files
 const newFile = ref('')
 const addingNewFile = ref(false)
+const newFileRules = ref({
+  matches: props.filter
+})
 
 function createNewFile() {
   createFile(`${props.files.path.replace(`${root.value}/`, '')}/${newFile.value}`)
@@ -81,7 +84,7 @@ details(:open="open")
         span New file
         Icon.ml-2(name="fa6-solid:file")
       TntForm.inline(v-else @submit="createNewFile()" @keydown.esc="cancelNewFile()")
-        TntInput.inline-block(v-model="newFile")
+        TntInput.inline-block(v-model="newFile" :rules="newFileRules")
         TntSubmit.btn-none.ml-2
           Icon(name="fa6-solid:plus")
     li
