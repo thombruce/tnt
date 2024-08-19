@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron'
+import { ipcMain, shell } from 'electron'
 import fs from 'fs'
 import { join } from 'path'
 
@@ -76,6 +76,22 @@ export default function initIpc() {
     })
   })
 
+  ipcMain.handle('rename-file', (_, path:string, name:string):Promise<void> => {
+    return new Promise((resolve, reject) => {
+      fs.rename(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), name, function (error) {
+        if (error) {
+          reject(error)
+          return
+        }
+        resolve()
+      })
+    })
+  })
+
+  ipcMain.handle('delete-file', (_, path:string):Promise<void> => {
+    return shell.trashItem(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path))
+  })
+
   ipcMain.handle('load-file', (_, path) => {
     return new Promise((resolve, reject) => {
       fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), "utf8", function (error, file) {
@@ -88,7 +104,7 @@ export default function initIpc() {
     })
   })
 
-  ipcMain.on('update-file', (_, path, content) => {
+  ipcMain.on('update-file', (_, path, content:string = "") => {
     return new Promise((resolve, reject) => {
       fs.readFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), "utf8", (error, file) => {
         fs.writeFile(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), content, (error) => {
@@ -98,6 +114,18 @@ export default function initIpc() {
           }
           resolve(content)
         })
+      })
+    })
+  })
+
+  ipcMain.on('create-folder', (_, path):Promise<void> => {
+    return new Promise((resolve, reject) => {
+      fs.mkdir(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), { recursive: true }, (error) => {
+        if (error) {
+          reject(error)
+          return
+        }
+        resolve()
       })
     })
   })

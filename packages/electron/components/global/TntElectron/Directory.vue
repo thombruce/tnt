@@ -1,4 +1,7 @@
 <script setup>
+import { useDirectoryStore } from '@/stores/directory'
+import { storeToRefs } from 'pinia'
+
 const props = defineProps({
   path: {
     type: String,
@@ -16,17 +19,18 @@ const props = defineProps({
   }
 })
 
-const files = ref([])
+// Store
+const store = useDirectoryStore()
+// Store: State/Getters
+const { tree } = storeToRefs(store)
+// Store: Actions
+const { fetchDirectory } = store
 
-async function fetchFiles() {
-  const dir = await useTntApi().listFiles(props.path, { exclude: props.exclude, extensions: props.extensions, depth: props.depth })
-  if (dir) files.value = dir
-}
-
-fetchFiles()
+// Init
+fetchDirectory(props.path, { exclude: props.exclude, extensions: props.extensions, depth: props.depth })
 </script>
 
 <template lang="pug">
-slot(:files="files")
-  TntElectronDirectoryTree(:rootDir="files.path" :files="files" :open="true" :filter="filter" :links="links")
+slot(:files="tree")
+  TntElectronDirectoryTree(:files="tree" :open="true" :filter="filter" :links="links")
 </template>

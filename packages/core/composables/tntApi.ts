@@ -35,15 +35,33 @@ export const useTntApi = () => {
       }
       return
     },
+    renameFile: async (file:string, name:string) => {
+      if (isElectron()) {
+        return await window.api.invoke('rename-file', file, name)
+      }
+      return
+    },
+    deleteFile: async (file:string) => {
+      if (isElectron()) {
+        return await window.api.invoke('delete-file', file)
+      }
+      return
+    },
     loadFile: async (file) => {
       if (isElectron()) {
         return await window.api.invoke('load-file', file)
       } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?
       return
     },
-    updateFile: async (file, content) => {
+    updateFile: async (file, content?) => {
       if (isElectron()) {
         return await window.api.send('update-file', file, content)
+      } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?
+      return
+    },
+    createFolder: async (folder) => {
+      if (isElectron()) {
+        return await window.api.send('create-folder', folder)
       } // TODO: else - should we attempt localStorage/IndexedDB/Dexie here?
       return
     }
