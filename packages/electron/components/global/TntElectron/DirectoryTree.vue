@@ -28,7 +28,7 @@ const children = computed(() => {
 <template lang="pug">
 details(:open="open")
   summary.cursor-pointer
-    TntElectronDirectoryTreeFileName(v-if="files.path !== root" :path="files.path" :name="files.name")
+    TntElectronDirectoryTreeFileName(v-if="files.path !== root" v-model:path="files.path" v-model:name="files.name")
     span(v-else) {{ files.name }}
     TntButton.btn-none.float-right(v-if="files.path !== root" @click="deleteFile(files.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
       Icon(name="fa6-solid:trash-can")
@@ -41,10 +41,10 @@ details(:open="open")
         :files="child"
       )
       span(v-else-if="links")
-        TntElectronDirectoryTreeFileName(:path="child.path" :name="child.name" :link="links")
+        TntElectronDirectoryTreeFileName(v-model:path="child.path" v-model:name="child.name" :link="links")
         TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
-      TntElectronDirectoryTreeFileName(v-else :path="child.path" :name="child.name")
+      TntElectronDirectoryTreeFileName(v-else v-model:path="child.path" v-model:name="child.name")
 </template>
 
 <style lang="postcss" scoped>
