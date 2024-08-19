@@ -24,7 +24,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   }
   
   async function createFile(file:string) {
-    useTntApi().updateFile(file)
+    await useTntApi().updateFile(file)
     toasts.value.push({
       uid: _uniqueId('tnt-toast-create-file-'),
       duration: 5000,
