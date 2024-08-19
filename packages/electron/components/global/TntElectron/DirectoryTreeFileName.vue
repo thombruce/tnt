@@ -9,7 +9,7 @@ const props = defineProps([
   'link',
 ])
 
-const initialName = ref(name.value)
+const newName = ref(name.value)
 
 const editing = ref(false)
 
@@ -21,23 +21,23 @@ const { root } = storeToRefs(store)
 const { renameFile } = store
 
 function rename() {
-  const regex = new RegExp(`${initialName.value}$`)
-  const newPath = path.value.replace(regex, name.value)
+  const regex = new RegExp(`${name.value}$`)
+  const newPath = path.value.replace(regex, newName.value)
   renameFile(path.value, newPath)
   path.value = newPath
-  initialName.value = name.value
+  name.value = newName.value
   editing.value = false
 }
 
 function cancel() {
-  name.value = initialName.value
+  newName.value = name.value
   editing.value = false
 }
 </script>
 
 <template lang="pug">
 TntForm.inline(v-if="editing" @submit="rename()" @keydown.esc="cancel()")
-  TntInput.inline-block(v-model="name")
+  TntInput.inline-block(v-model="newName")
   TntSubmit.btn-none.ml-2
     Icon(name="fa6-solid:floppy-disk")
 template(v-else)
