@@ -15,7 +15,7 @@ const props = defineProps({
 // Store
 const store = useDirectoryStore()
 // Getters
-const { root } = storeToRefs(store)
+const { fullRoot, fullRootRegExp } = storeToRefs(store)
 // Store: Actions
 const { createFile, createFolder, deleteFile } = store
 
@@ -32,7 +32,7 @@ const newFileRules = ref({
 })
 
 function createNewFile() {
-  createFile(`${props.files.path.replace(`${root.value}/`, '')}/${newFile.value}`)
+  createFile(`${props.files.path.replace(fullRootRegExp.value, '')}/${newFile.value}`)
   newFile.value = ""
   addingNewFile.value = false
 }
@@ -48,7 +48,7 @@ const addingNewFolder = ref(false)
 
 function createNewFolder() {
   // TODO: Should this be a separate store action?
-  createFolder(`${props.files.path.replace(`${root.value}/`, '')}/${newFolder.value}`)
+  createFolder(`${props.files.path.replace(fullRootRegExp.value, '')}/${newFolder.value}`)
   newFolder.value = ""
   addingNewFolder.value = false
 }
@@ -62,9 +62,9 @@ function cancelNewFolder() {
 <template lang="pug">
 details(:open="open")
   summary.cursor-pointer
-    TntElectronDirectoryTreeFileName(v-if="files.path !== root" v-model:path="files.path" v-model:name="files.name")
+    TntElectronDirectoryTreeFileName(v-if="files.path !== fullRoot" v-model:path="files.path" v-model:name="files.name")
     span(v-else) {{ files.name }}
-    TntButton.btn-none.float-right(v-if="files.path !== root" @click="deleteFile(files.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+    TntButton.btn-none.float-right(v-if="files.path !== fullRoot" @click="deleteFile(files.path.replace(fullRootRegExp, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
       Icon(name="fa6-solid:trash-can")
   ul.ml-4
     li(v-for="child in children" :key="child.path")
@@ -76,7 +76,7 @@ details(:open="open")
       )
       span(v-else-if="links")
         TntElectronDirectoryTreeFileName(v-model:path="child.path" v-model:name="child.name" :link="links")
-        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(`${root}/`, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(fullRootRegExp, ''))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
       TntElectronDirectoryTreeFileName(v-else v-model:path="child.path" v-model:name="child.name")
     li

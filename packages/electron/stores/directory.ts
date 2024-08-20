@@ -14,11 +14,16 @@ export const useDirectoryStore = defineStore('directory', () => {
   // State
   const tree = ref({} as DirectoryTree)
 
+  const root = ref('')
+
   // Getters
-  const root = computed(() => tree.value.path)
+  const fullRoot = computed(() => tree.value.path)
+
+  const fullRootRegExp = computed(() => new RegExp(`${fullRoot.value}/?`))
 
   // Actions
   async function fetchDirectory(path:string, opts?:object) {
+    if (!!root.value) root.value = path
     const dir = await useTntApi().listFiles(path, opts)
     if (dir) tree.value = dir
   }
@@ -94,8 +99,10 @@ export const useDirectoryStore = defineStore('directory', () => {
   return {
     // State
     tree,
-    // Getters
     root,
+    // Getters
+    fullRoot,
+    fullRootRegExp,
     // Actions
     fetchDirectory,
     createFile,
