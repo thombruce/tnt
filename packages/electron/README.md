@@ -7,13 +7,13 @@
 ### Installation
 
 ```sh
-yarn add -D @thombruce/tnt-electron
+yarn add -D @thombruce/tnt @thombruce/tnt-electron
 ```
 
 ### Updating
 
 ```sh
-yarn upgrade @thombruce/tnt-electron
+yarn upgrade @thombruce/tnt @thombruce/tnt-electron
 ```
 
 ## Credits
