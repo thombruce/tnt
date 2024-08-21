@@ -23,7 +23,7 @@ const { renameFile } = store
 function rename() {
   const regex = new RegExp(`${name.value}$`)
   const newPath = path.value.replace(regex, newName.value)
-  renameFile(path.value.replace(fullRootRegExp, ''), newPath.replace(fullRootRegExp, ''))
+  renameFile(path.value.replace(fullRootRegExp.value, ''), newPath.replace(fullRootRegExp.value, ''))
   path.value = newPath
   name.value = newName.value
   editing.value = false

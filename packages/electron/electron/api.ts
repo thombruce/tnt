@@ -78,13 +78,17 @@ export default function initIpc() {
 
   ipcMain.handle('rename-file', (_, path:string, name:string):Promise<void> => {
     return new Promise((resolve, reject) => {
-      fs.rename(join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path), name, function (error) {
-        if (error) {
-          reject(error)
-          return
+      fs.rename(
+        join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), path),
+        join(String(process.env.PORTABLE_EXECUTABLE_DIR || ""), name),
+        function (error) {
+          if (error) {
+            reject(error)
+            return
+          }
+          resolve()
         }
-        resolve()
-      })
+      )
     })
   })
 
