@@ -24,6 +24,7 @@ const toasts = useToasts()
     bottom-10
     right-10
     w-96
+    z-50
     flex
     flex-col-reverse
     gap-y-3;
