@@ -34,13 +34,15 @@ useHead({
     AppSidebar
 
   .flex-1
-    AppHeader
+    .h-screen.flex.flex-col
+      AppHeader
 
-    main
-      .tnt-container
-        NuxtPage(:page-key="route => route.fullPath")
+      .flex-1.overflow-y-auto
+        main
+          .tnt-container
+            NuxtPage(:page-key="route => route.fullPath")
 
-    AppFooter
+        AppFooter
 
   ToastStack
 </template>
