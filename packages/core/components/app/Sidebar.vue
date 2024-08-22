@@ -1,4 +1,6 @@
 <script setup>
+const { directory } = useAppConfig()
+
 const runtimeConfig = useRuntimeConfig()
 
 const { data: navigation } = runtimeConfig.public?.content
@@ -9,7 +11,12 @@ const { data: navigation } = runtimeConfig.public?.content
 <template lang="pug">
 aside(class="w-full h-screen overflow-y-scroll p-5 bg-base-100/50 dark:bg-base-900/50")
   nav
-    TntElectronDirectory(v-if="isElectron()")
+    TntElectronDirectory(
+      v-if="isElectron()"
+      :path="directory?.path"
+      :extensions="directory?.extensions"
+      :filter="directory?.filter"
+    )
     ul.flex-1
       li(v-for="link of navigation" :key="link._path" :path="link._path")
         NuxtLink(:to="link._path")
