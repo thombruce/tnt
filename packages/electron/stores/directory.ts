@@ -5,6 +5,7 @@ import { useTntApi } from '@thombruce/tnt/composables/tntApi'
 import { DirectoryTree } from 'directory-tree'
 
 import _uniqueId from 'lodash/uniqueId'
+import _escapeRegExp from 'lodash/escapeRegExp'
 
 import { useToasts } from '@thombruce/tnt/composables/states'
 
@@ -17,7 +18,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   // Getters
   const fullRoot = computed(() => tree.value.path)
 
-  const fullRootRegExp = computed(() => new RegExp(`${fullRoot.value}/?`))
+  const fullRootRegExp = computed(() => new RegExp(`^${_escapeRegExp(fullRoot.value)}/?`))
 
   // Actions
   async function fetchDirectory(path:string, opts?:object) {
