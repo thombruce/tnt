@@ -41,7 +41,7 @@ TntForm.inline(v-if="editing" @submit="rename()" @keydown.esc="cancel()")
   TntSubmit.btn-none.ml-2
     Icon(name="fa6-solid:floppy-disk")
 template(v-else)
-  NuxtLink(v-if="link" :to="path.replace(fullRootRegExp, '')")
+  NuxtLink(v-if="link" :to="`/${path.replace(fullRootRegExp, '')}`")
     span {{ name }}
     TntButton.btn-none(@click.prevent="editing = true")
       Icon.ml-2(name="fa6-solid:pencil")

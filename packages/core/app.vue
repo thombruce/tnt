@@ -13,6 +13,8 @@ const bodyClass = computed(() => {
   return klasses.join(' ')
 })
 
+const sidebar = useSidebar()
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - ${name}` : name
@@ -24,14 +26,23 @@ useHead({
 </script>
 
 <template lang="pug">
-div
-  AppHeader
+.flex
+  div(
+    class="w-80 transition-all duration-300"
+    :class="sidebar ? 'ml-0' : '-ml-80'"
+  )
+    AppSidebar
 
-  main
-    .tnt-container
-      NuxtPage(:page-key="route => route.fullPath")
+  .flex-1
+    .h-screen.flex.flex-col
+      AppHeader
 
-  AppFooter
+      .flex-1.overflow-y-auto
+        main
+          .tnt-container
+            NuxtPage(:page-key="route => route.fullPath")
+
+        AppFooter
 
   ToastStack
 </template>
