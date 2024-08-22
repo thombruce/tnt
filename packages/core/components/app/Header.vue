@@ -3,9 +3,7 @@ const { name } = useAppConfig()
 
 const runtimeConfig = useRuntimeConfig()
 
-const { data: navigation } = runtimeConfig.public?.content
-  ? await useAsyncData('tnt-header-navigation', () => fetchContentNavigation())
-  : []
+const sidebar = useSidebar()
 </script>
 
 <template lang="pug">
@@ -13,16 +11,10 @@ header.sticky.top-0
   nav.tnt-container.flex.space-x-5.justify-between
     ul.flex-1
       li
-        Dropdown
-          DropdownItem(v-for="link of navigation" :key="link._path" :path="link._path")
-            Icon.mr-2(v-if="link.icon" :name="link.icon")
-            | {{ link.title }}
-          DropdownItem(v-if="runtimeConfig?.public?.content" path="/search")
-            Icon.mr-2(name="fa6-solid:magnifying-glass")
-            | Search
-          DropdownItem(path="/settings")
-            Icon.mr-2(name="fa6-solid:gear")
-            | Settings
+        TntButton.btn-none(@click="sidebar = !sidebar")
+          slot(name="button")
+          Icon(v-if="!sidebar" name="fa6-solid:bars")
+          Icon(v-else name="fa6-solid:chevron-left")
       li
         strong
           NuxtLink(to="/") {{ name }}

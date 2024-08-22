@@ -8,8 +8,6 @@ import _uniqueId from 'lodash/uniqueId'
 
 import { useToasts } from '@thombruce/tnt/composables/states'
 
-const toasts = useToasts()
-
 export const useDirectoryStore = defineStore('directory', () => {
   // State
   const tree = ref({} as DirectoryTree)
@@ -30,7 +28,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   
   async function createFile(file:string) {
     await useTntApi().updateFile(file)
-    toasts.value.push({
+    useToasts().value.push({
       uid: _uniqueId('tnt-toast-create-file-'),
       duration: 5000,
       color: 'success',
@@ -47,7 +45,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   
   async function createFolder(folder:string) {
     await useTntApi().createFolder(folder)
-    toasts.value.push({
+    useToasts().value.push({
       uid: _uniqueId('tnt-toast-create-folder-'),
       duration: 5000,
       color: 'success',
@@ -64,7 +62,7 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   async function renameFile(file:string, name:string) {
     await useTntApi().renameFile(file, name)
-    toasts.value.push({
+    useToasts().value.push({
       uid: _uniqueId('tnt-toast-rename-file-'),
       duration: 5000,
       color: 'primary',
@@ -81,7 +79,7 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   async function deleteFile(file:string) {
     await useTntApi().deleteFile(file)
-    toasts.value.push({
+    useToasts().value.push({
       uid: _uniqueId('tnt-toast-delete-file-'),
       duration: 5000,
       color: 'danger',
