@@ -18,7 +18,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   // Getters
   const fullRoot = computed(() => tree.value.path)
 
-  const fullRootRegExp = computed(() => new RegExp(`^${_escapeRegExp(fullRoot.value)}/?`))
+  const fullRootRegExp = computed(() => new RegExp(`^${_escapeRegExp(fullRoot.value)}`))
 
   // Actions
   async function fetchDirectory(path:string, opts?:object) {

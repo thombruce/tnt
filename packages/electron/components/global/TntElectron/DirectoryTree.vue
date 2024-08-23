@@ -64,7 +64,7 @@ details(:open="open")
   summary.cursor-pointer
     TntElectronDirectoryTreeFileName(v-if="files.path !== fullRoot" v-model:path="files.path" v-model:name="files.name")
     span(v-else) {{ files.name }}
-    TntButton.btn-none.float-right(v-if="files.path !== fullRoot" @click="deleteFile(files.path.replace(fullRootRegExp, './'))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+    TntButton.btn-none.float-right(v-if="files.path !== fullRoot" @click="deleteFile(files.path.replace(fullRootRegExp, '.'))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
       Icon(name="fa6-solid:trash-can")
   ul.ml-4
     li(v-for="child in children" :key="child.path")
@@ -76,7 +76,7 @@ details(:open="open")
       )
       span(v-else-if="links")
         TntElectronDirectoryTreeFileName(v-model:path="child.path" v-model:name="child.name" :link="links")
-        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(fullRootRegExp, './'))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
+        TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(fullRootRegExp, '.'))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
           Icon(name="fa6-solid:trash-can")
       TntElectronDirectoryTreeFileName(v-else v-model:path="child.path" v-model:name="child.name")
     li
