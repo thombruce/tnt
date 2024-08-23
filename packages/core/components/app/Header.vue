@@ -12,9 +12,9 @@ header.sticky.top-0
     ul.flex-1
       li
         TntButton.btn-none(@click="sidebar = !sidebar")
-          slot(name="button")
-          Icon(v-if="!sidebar" name="fa6-solid:bars")
-          Icon(v-else name="fa6-solid:chevron-left")
+          //- TODO: Bug results in duplication of button when using this conditional
+          //-  Icon(v-if="sidebar" name="fa6-solid:chevron-left")
+          Icon(name="fa6-solid:bars")
       li
         strong
           NuxtLink(to="/") {{ name }}
