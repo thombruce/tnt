@@ -35,7 +35,7 @@ useHead({
   .flex-1.flex.flex-col
     AppHeader
 
-    .flex-1.overflow-y-scroll
+    .flex-1.overflow-y-auto
       main
         .tnt-container
           NuxtPage(:page-key="route => route.fullPath")
