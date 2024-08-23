@@ -9,7 +9,7 @@ const { data: navigation } = runtimeConfig.public?.content
 </script>
 
 <template lang="pug">
-aside(class="w-full h-screen overflow-y-auto p-5 bg-base-100/50 dark:bg-base-900/50")
+aside(class="h-screen overflow-y-auto p-5 bg-base-100/50 dark:bg-base-900/50")
   nav
     TntElectronDirectory(
       v-if="isElectron()"

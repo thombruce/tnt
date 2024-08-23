@@ -1,0 +1,7 @@
+/*
+  Addresses a known issue with screen reader only elements.
+  Discussion: https://github.com/tailwindlabs/tailwindcss/discussions/12429
+*/
+.sr-only {
+  @apply fixed;
+}

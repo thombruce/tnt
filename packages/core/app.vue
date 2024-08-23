@@ -26,23 +26,21 @@ useHead({
 </script>
 
 <template lang="pug">
-.flex
-  div(
+.flex.h-screen.overflow-hidden
+  AppSidebar(
     class="w-80 transition-all duration-300"
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
-    AppSidebar
 
-  .flex-1
-    .h-screen.flex.flex-col
-      AppHeader
+  .flex-1.flex.flex-col
+    AppHeader
 
-      .flex-1.overflow-y-auto
-        main
-          .tnt-container
-            NuxtPage(:page-key="route => route.fullPath")
+    .flex-1.overflow-y-scroll
+      main
+        .tnt-container
+          NuxtPage(:page-key="route => route.fullPath")
 
-        AppFooter
+      AppFooter
 
   ToastStack
 </template>
