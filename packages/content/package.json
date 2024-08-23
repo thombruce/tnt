@@ -1,6 +1,6 @@
 {
   "name": "@thombruce/tnt-content",
-  "version": "0.33.0",
+  "version": "0.33.1",
   "license": "MIT",
   "type": "module",
   "main": "./nuxt.config.ts",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
-    "@thombruce/tnt": "^0.33.0",
+    "@thombruce/tnt": "^0.33.1",
     "rss": "^1.2.2",
     "sitemap": "^7.1.1"
   },
