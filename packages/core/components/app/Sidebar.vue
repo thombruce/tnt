@@ -15,6 +15,7 @@ aside(class="h-screen overflow-y-auto p-5 bg-base-100/50 dark:bg-base-900/50")
       v-if="isElectron()"
       :path="directory?.path"
       :extensions="directory?.extensions"
+      :exclude="directory?.exclude"
       :filter="directory?.filter"
     )
     ul.flex-1
