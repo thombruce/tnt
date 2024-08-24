@@ -33,6 +33,8 @@ function cancel() {
   newName.value = name.value
   editing.value = false
 }
+
+const toPath = computed(() => path.value.replace(fullRootRegExp, ''))
 </script>
 
 <template lang="pug">
@@ -41,7 +43,10 @@ TntForm.inline(v-if="editing" @submit="rename()" @keydown.esc="cancel()")
   TntSubmit.btn-none.ml-2
     Icon(name="fa6-solid:floppy-disk")
 template(v-else)
-  NuxtLink(v-if="link" :to="`${path.replace(fullRootRegExp, '')}`")
+  //- NOTE: File paths are handled differently on Windows vs Unix;
+  //-       We need to check for and add a / if one isn't present
+  //-       after fullRootRegExp has done its thing.
+  NuxtLink(v-if="link" :to="`${toPath.startsWith('/') ? '' : '/'}${toPath}`")
     span {{ name }}
     TntButton.btn-none(@click.prevent="editing = true")
       Icon.ml-2(name="fa6-solid:pencil")
