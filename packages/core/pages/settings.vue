@@ -8,11 +8,12 @@ watch(colorMode, async () => {
 </script>
 
 <template lang="pug">
-.prose
-  NuxtLayout(:name="layout || 'default'")
-    TntForm.space-y-5
-      h3.font-bold.text-lg Settings
+NuxtLayout(:name="layout || 'default'")
+  TntForm
+    h1 Settings
 
-      ClientOnly
-        TntRadio(v-model="colorMode.preference" label="Dark mode" :options="['system', 'light', 'dark']")
+    h2 Display
+
+    ClientOnly
+      TntRadio(v-model="colorMode.preference" label="Dark mode" :options="['system', 'light', 'dark']")
 </template>

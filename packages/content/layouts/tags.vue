@@ -1,4 +1,6 @@
 <script setup>
+const sidebar = useSidebar()
+
 const { path, params } = useRoute()
 
 // Get taxonomy and tag name from route params
@@ -26,16 +28,30 @@ if (page && page.title) {
 </script>
 
 <template lang="pug">
-article
-  template(v-if="page")
-    h1 {{ page.title }}
-    Breadcrumbs(v-if="page.breadcrumbs !== false")
-    ContentRenderer(:value="page")
-      template(#empty)
-        // Empty
-  template(v-else)
-    h1 {{ _startCase(tag) }}
-    Breadcrumbs
+.flex.h-screen.overflow-hidden
+  AppSidebar(
+    class="w-80 transition-all duration-300"
+    :class="sidebar ? 'ml-0' : '-ml-80'"
+  )
 
-  ArticleList(path="/", :query="{ where: { [taxonomy]: { $or: orConditions } } }")
+  .flex-1.flex.flex-col
+    AppHeader
+
+    .flex-1.overflow-y-auto
+      main
+        .tnt-container
+          article.prose
+            template(v-if="page")
+              h1 {{ page.title }}
+              Breadcrumbs(v-if="page.breadcrumbs !== false")
+              ContentRenderer(:value="page")
+                template(#empty)
+                  // Empty
+            template(v-else)
+              h1 {{ _startCase(tag) }}
+              Breadcrumbs
+
+            ArticleList(path="/", :query="{ where: { [taxonomy]: { $or: orConditions } } }")
+
+      AppFooter
 </template>
