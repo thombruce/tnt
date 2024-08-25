@@ -15,8 +15,7 @@ const sidebar = useSidebar()
     .flex-1.overflow-y-auto
       main
         .tnt-container
-          .prose
-            slot
+          slot
 
       AppFooter
 </template>
