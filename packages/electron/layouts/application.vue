@@ -9,13 +9,14 @@ const sidebar = useSidebar()
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
 
-  .flex-1.overflow-y-auto
+  .flex-1.flex.flex-col
     AppHeader
 
-    main
-      .tnt-container
-        .prose
-          slot
+    .flex-1.overflow-y-auto
+      main
+        .tnt-container
+          .prose
+            slot
 
-    AppFooter
+      AppFooter
 </template>

@@ -1,4 +1,4 @@
 <template lang="pug">
-.prose
+NuxtLayout(name="application")
   h1 Hello, World from TNT Electron!
 </template>

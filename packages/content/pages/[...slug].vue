@@ -22,10 +22,9 @@ if (contentHead) {
 </script>
 
 <template lang="pug">
-.prose
-  NuxtLayout(:name="page?.layout || layout || 'default'")
-    ContentRenderer(v-if="page" :key="page._id" :value="page")
-      template(#empty="{ value }")
-        DocumentDrivenEmpty(:value="value")/
-    DocumentDrivenNotFound(v-else)/
+NuxtLayout(:name="page?.layout || layout || 'default'")
+  ContentRenderer(v-if="page" :key="page._id" :value="page")
+    template(#empty="{ value }")
+      DocumentDrivenEmpty(:value="value")/
+  DocumentDrivenNotFound(v-else)/
 </template>

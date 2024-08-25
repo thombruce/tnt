@@ -1,4 +1,6 @@
 <script setup>
+const sidebar = useSidebar()
+
 const { path, params } = useRoute()
 
 const taxonomy = params.tag[0]
@@ -11,15 +13,28 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
 </script>
 
 <template lang="pug">
-article
-  template(v-if="page")
-    h1 {{ page.title }}
-    Breadcrumbs(v-if="page.breadcrumbs !== false")
-    ContentRenderer(:value="page")
-      template(#empty)
-        // Empty
-  template(v-else)
-    h1 {{ _startCase(taxonomy) }}
-    Breadcrumbs
-  TaxonomyTagList(:taxonomy="taxonomy" :tags="tags")
+.flex.h-screen.overflow-hidden
+  AppSidebar(
+    class="w-80 transition-all duration-300"
+    :class="sidebar ? 'ml-0' : '-ml-80'"
+  )
+
+  .flex-1.overflow-y-auto
+    AppHeader
+
+    main
+      .tnt-container
+        article.prose
+          template(v-if="page")
+            h1 {{ page.title }}
+            Breadcrumbs(v-if="page.breadcrumbs !== false")
+            ContentRenderer(:value="page")
+              template(#empty)
+                // Empty
+          template(v-else)
+            h1 {{ _startCase(taxonomy) }}
+            Breadcrumbs
+          TaxonomyTagList(:taxonomy="taxonomy" :tags="tags")
+
+    AppFooter
 </template>

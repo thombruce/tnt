@@ -4,7 +4,7 @@ title: Getting Started
 # the article-list component... but not necessarily by default.
 # navigation: false
 layout: redirect
-link: getting-started/installation
+link: /docs/getting-started/installation
 
 # Note that the way Nuxt Content (and I'm sure others) do these redirect pages
 # is to simply add the redirect rule to `routeRules: {}` in nuxt.config. But
