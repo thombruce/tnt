@@ -19,23 +19,22 @@ const tags = _uniq(contentQuery.map((c) => c[taxonomy]).flat())
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
 
-  .flex-1.flex.flex-col
+  .flex-1.overflow-y-auto
     AppHeader
 
-    .flex-1.overflow-y-auto
-      main
-        .tnt-container
-          article.prose
-            template(v-if="page")
-              h1 {{ page.title }}
-              Breadcrumbs(v-if="page.breadcrumbs !== false")
-              ContentRenderer(:value="page")
-                template(#empty)
-                  // Empty
-            template(v-else)
-              h1 {{ _startCase(taxonomy) }}
-              Breadcrumbs
-            TaxonomyTagList(:taxonomy="taxonomy" :tags="tags")
+    main
+      .tnt-container
+        article.prose
+          template(v-if="page")
+            h1 {{ page.title }}
+            Breadcrumbs(v-if="page.breadcrumbs !== false")
+            ContentRenderer(:value="page")
+              template(#empty)
+                // Empty
+          template(v-else)
+            h1 {{ _startCase(taxonomy) }}
+            Breadcrumbs
+          TaxonomyTagList(:taxonomy="taxonomy" :tags="tags")
 
-      AppFooter
+    AppFooter
 </template>

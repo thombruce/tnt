@@ -23,18 +23,17 @@ useHead({
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
 
-  .flex-1.flex.flex-col
+  .flex-1.overflow-y-auto
     AppHeader
 
-    .flex-1.overflow-y-auto
-      main
-        .tnt-container
-          .prose
-            h1 Redirecting to {{ page.title }}...
-            p
-              | If you are not redirected automatically, click here:
-              |
-              NuxtLink(:to="page.link") {{ page.link }}
+    main
+      .tnt-container
+        .prose
+          h1 Redirecting to {{ page.title }}...
+          p
+            | If you are not redirected automatically, click here:
+            |
+            NuxtLink(:to="page.link") {{ page.link }}
 
-      AppFooter
+    AppFooter
 </template>

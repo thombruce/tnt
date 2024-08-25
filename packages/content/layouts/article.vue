@@ -9,27 +9,26 @@ const sidebar = useSidebar()
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
 
-  .flex-1.flex.flex-col
+  .flex-1.overflow-y-auto
     AppHeader
 
-    .flex-1.overflow-y-auto
-      main
-        .tnt-container
-          article.prose
-            ContentDoc
-              template(#default="{ doc }")
-                h1 {{ doc.title }}
-                Breadcrumbs(v-if="doc.breadcrumbs !== false")
-                Byline(v-if="doc.authors" :authors="doc.authors")
-                TagLists(:page="doc" :exclude="['authors']")
-                Toc(v-if="doc.toc === true")
-                .hidden-title
-                  slot/
-                PrevNext(v-if="doc.prevnext !== false")
-              template(#empty)
+    main
+      .tnt-container
+        article.prose
+          ContentDoc
+            template(#default="{ doc }")
+              h1 {{ doc.title }}
+              Breadcrumbs(v-if="doc.breadcrumbs !== false")
+              Byline(v-if="doc.authors" :authors="doc.authors")
+              TagLists(:page="doc" :exclude="['authors']")
+              Toc(v-if="doc.toc === true")
+              .hidden-title
                 slot/
-              template(#not-found)
-                slot/
+              PrevNext(v-if="doc.prevnext !== false")
+            template(#empty)
+              slot/
+            template(#not-found)
+              slot/
 
-      AppFooter
+    AppFooter
 </template>

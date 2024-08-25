@@ -12,35 +12,34 @@ const { data: page } = await useAsyncData(`tnt-list-${route.path}`, () => queryC
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
 
-  .flex-1.flex.flex-col
+  .flex-1.overflow-y-auto
     AppHeader
 
-    .flex-1.overflow-y-auto
-      main
-        .tnt-container
-          article.prose
-            ContentDoc
-              template(#default="{ doc }")
-                h1 {{ doc.title }}
-                Breadcrumbs(v-if="doc.breadcrumbs !== false")
-                TagLists
-                Toc(v-if="doc.toc === true")
-                .hidden-title
-                  slot/
-                ArticleList(:sort="doc.sort")
-                PrevNext(v-if="doc.prevnext")
+    main
+      .tnt-container
+        article.prose
+          ContentDoc
+            template(#default="{ doc }")
+              h1 {{ doc.title }}
+              Breadcrumbs(v-if="doc.breadcrumbs !== false")
+              TagLists
+              Toc(v-if="doc.toc === true")
+              .hidden-title
+                slot/
+              ArticleList(:sort="doc.sort")
+              PrevNext(v-if="doc.prevnext")
 
-              template(#empty)
-                h1 {{ page.title }}
-                Breadcrumbs(v-if="page.breadcrumbs !== false")
-                TagLists
-                ArticleList(:sort="page.sort")
-                PrevNext(v-if="page.prevnext")
+            template(#empty)
+              h1 {{ page.title }}
+              Breadcrumbs(v-if="page.breadcrumbs !== false")
+              TagLists
+              ArticleList(:sort="page.sort")
+              PrevNext(v-if="page.prevnext")
 
-              template(#not-found)
-                h1 {{ _startCase(path.split('/').pop()) }}
-                Breadcrumbs
-                ArticleList
+            template(#not-found)
+              h1 {{ _startCase(path.split('/').pop()) }}
+              Breadcrumbs
+              ArticleList
 
-      AppFooter
+    AppFooter
 </template>

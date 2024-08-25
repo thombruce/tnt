@@ -9,26 +9,25 @@ const sidebar = useSidebar()
     :class="sidebar ? 'ml-0' : '-ml-80'"
   )
 
-  .flex-1.flex.flex-col
+  .flex-1.overflow-y-auto
     AppHeader
 
-    .flex-1.overflow-y-auto
-      main
-        .tnt-container
-          .prose
-            ContentDoc
-              template(#default="{ doc }")
-                h1 {{ doc.title }}
+    main
+      .tnt-container
+        .prose
+          ContentDoc
+            template(#default="{ doc }")
+              h1 {{ doc.title }}
 
-                TntForm.space-y-5(
-                  :action="doc.action"
-                  :method="doc.method"
-                  :fullErrors="doc.fullErrors"
-                  :body="doc.body"
-                  :schema="doc.schema"
-                )
+              TntForm.space-y-5(
+                :action="doc.action"
+                :method="doc.method"
+                :fullErrors="doc.fullErrors"
+                :body="doc.body"
+                :schema="doc.schema"
+              )
 
-      AppFooter
+    AppFooter
 </template>
 
 
