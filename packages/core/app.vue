@@ -1,5 +1,11 @@
 <script setup>
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
 const { name, gradient } = useAppConfig()
+
+const route = useRoute()
 
 // Set colorMode if config file is present
 const colorMode = useColorMode()
@@ -20,6 +26,11 @@ useHead({
   bodyAttrs: {
     class: bodyClass.value,
   },
+})
+
+const sidebar = useSidebar()
+watch(() => route.path, () => {
+  if (breakpoints.smallerOrEqual('md').value) sidebar.value = false
 })
 </script>
 

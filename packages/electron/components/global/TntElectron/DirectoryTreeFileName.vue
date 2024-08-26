@@ -2,11 +2,6 @@
 import { useDirectoryStore } from '@/stores/directory'
 import { storeToRefs } from 'pinia'
 
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-
-const breakpoints = useBreakpoints(breakpointsTailwind)
-const sidebar = useSidebar()
-
 const path = defineModel('path')
 const name = defineModel('name')
 
@@ -51,11 +46,7 @@ template(v-else)
   //- NOTE: File paths are handled differently on Windows vs Unix;
   //-       We need to check for and add a / if one isn't present
   //-       after fullRootRegExp has done its thing.
-  NuxtLink(
-    v-if="link"
-    :to="`${toPath.startsWith('/') ? '' : '/'}${toPath}`"
-    @click="breakpoints.smallerOrEqual('md').value ? sidebar = false : null"
-  )
+  NuxtLink(v-if="link" :to="`${toPath.startsWith('/') ? '' : '/'}${toPath}`")
     span {{ name }}
     TntButton.btn-none(@click.prevent="editing = true")
       Icon.ml-2(name="fa6-solid:pencil")

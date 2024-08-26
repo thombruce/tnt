@@ -33,17 +33,17 @@ aside(
     )
     ul.flex-1
       li(v-for="link of navigation" :key="link._path" :path="link._path")
-        NuxtLink(:to="link._path" @click="breakpoints.smallerOrEqual('md').value ? sidebar = false : null")
+        NuxtLink(:to="link._path")
           Icon.mr-2(v-if="link.icon" :name="link.icon")
           | {{ link.title }}
 
       li(v-if="runtimeConfig?.public?.content")
-        NuxtLink(to="/search" no-prefetch @click="breakpoints.smallerOrEqual('md').value ? sidebar = false : null")
+        NuxtLink(to="/search" no-prefetch)
           Icon.mr-2(name="fa6-solid:magnifying-glass")
           | Search
 
       li
-        NuxtLink(to="/settings" no-prefetch @click="breakpoints.smallerOrEqual('md').value ? sidebar = false : null")
+        NuxtLink(to="/settings" no-prefetch)
           Icon.mr-2(name="fa6-solid:gear")
           | Settings
 </template>
