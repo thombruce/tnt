@@ -1,4 +1,8 @@
 <script setup>
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
 const { directory } = useAppConfig()
 
 const runtimeConfig = useRuntimeConfig()
@@ -6,10 +10,19 @@ const runtimeConfig = useRuntimeConfig()
 const { data: navigation } = runtimeConfig.public?.content
   ? await useAsyncData('tnt-header-navigation', () => fetchContentNavigation())
   : []
+
+const sidebar = useSidebar()
+const target = ref(null)
+onClickOutside(target, () => {
+  if (breakpoints.smallerOrEqual('md').value) sidebar.value = false
+})
 </script>
 
 <template lang="pug">
-aside(class="h-screen overflow-y-auto p-5 bg-base-100/50 dark:bg-base-900/50")
+aside(
+  ref="target"
+  class="h-screen overflow-y-auto p-5 bg-base-100/50 dark:bg-base-900/50"
+)
   nav
     TntElectronDirectory(
       v-if="isElectron()"
