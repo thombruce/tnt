@@ -14,9 +14,7 @@ const sidebar = useSidebar()
 
     .flex-1.overflow-y-auto
       main
-        .tnt-container
-          //- TODO: Consider removing tnt-container so that child elements may fit width
-          slot
+        slot
 
       AppFooter
 </template>
