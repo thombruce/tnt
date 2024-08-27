@@ -34,7 +34,7 @@ function cancel() {
   editing.value = false
 }
 
-const toPath = computed(() => path.value.replace(fullRootRegExp, ''))
+const toPath = computed(() => path.value.replace(fullRootRegExp.value, ''))
 </script>
 
 <template lang="pug">
