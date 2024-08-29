@@ -98,9 +98,6 @@ body:
 
   - h2: Numeric Inputs
 
-  # TODO: Problems with number and date fields. Once entered, if deleted, validation fails due to casting.
-  #       Even if they are marked as strict, nullable or optional.
-
   - input:
       type: number
       name: number

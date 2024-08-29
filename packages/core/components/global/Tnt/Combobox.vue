@@ -1,6 +1,4 @@
 <script setup>
-// TODO: Update to use useField from vee-validate
-
 const props = defineProps({
   modelValue: { type: String },
   label: { type: String },
