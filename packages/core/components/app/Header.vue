@@ -8,7 +8,7 @@ const sidebar = useSidebar()
 
 <template lang="pug">
 header.sticky.top-0
-  nav.px-4.flex.space-x-5.justify-between
+  nav.px-4.flex.space-x-5.justify-between(:class="isElectron() ? '' : 'tnt-container'")
     ul.flex-1
       li
         TntButton.btn-none(@click="sidebar = !sidebar")
