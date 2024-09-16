@@ -16,8 +16,8 @@ if (!(page as any).value && import.meta.server) {
   }
 }
 
-if (contentHead) {
-  useContentHead(page)
+if (contentHead && page.value) {
+  useContentHead(page.value)
 }
 </script>
 
