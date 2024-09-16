@@ -29,6 +29,8 @@ git push
 lerna publish
 ```
 
+_Note: You may see syntax errors in the code when you first pull. To resolve this, you should run `yarn run dev` in each package to generate the `.nuxt` directory which contains type definitions imported by each package's tsconfig file._
+
 ## Credits
 
 Dynamite emoji used as a Favicon is licensed under the CC-BY 4.0 license by Twitter Inc.

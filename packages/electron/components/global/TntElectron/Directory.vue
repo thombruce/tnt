@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useDirectoryStore } from '@/stores/directory'
 import { storeToRefs } from 'pinia'
 
