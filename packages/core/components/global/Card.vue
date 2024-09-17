@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps(['image'])
 
 const runtimeConfig = useRuntimeConfig()

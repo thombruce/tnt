@@ -1,4 +1,8 @@
 <script setup>
+// TODO: TypeScript lang="ts" skipped as we're invoking methods below that aren't necessarily defined.
+//       We could resolve this by duplicating this component on TNT Content where they are
+//       defined.
+
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)

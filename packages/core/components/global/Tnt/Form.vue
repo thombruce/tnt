@@ -1,4 +1,7 @@
 <script setup>
+// TODO: TypeScript exposed an issue with spread operators below.
+//       I have omitted lang="ts" for now.
+
 const props = defineProps({
   action: {
     type: String

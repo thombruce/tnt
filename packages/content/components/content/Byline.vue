@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   authors: [Array, String],
   page: Object,
@@ -9,7 +9,7 @@ const route = useRoute()
 
 let path = props.path || route.path
 
-const { data: rawData } =
+const { data: rawData }: any =
   props.authors
   ? { data: { authors: props.authors } }
   : props.page

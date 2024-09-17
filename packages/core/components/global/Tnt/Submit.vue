@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useIsFormDirty } from 'vee-validate'
 
 const props = defineProps({

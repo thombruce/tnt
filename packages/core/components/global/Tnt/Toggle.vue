@@ -1,4 +1,7 @@
 <script setup>
+// TODO: TypeScript exposed the lack of a definition for `emit` below.
+//       I am unsure if it was otherwise implicitly handled. Look into this.
+
 const props = defineProps({
   modelValue: {
     default: ''

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const showMenu = ref(false)
 
 const target = ref(null)

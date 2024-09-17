@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   page: Object,
   include: {
@@ -13,7 +13,7 @@ const props = defineProps({
 
 const { taxonomies: rawTaxonomies } = useAppConfig()
 
-const taxonomies = props.include || _without(rawTaxonomies, ...props.exclude)
+const taxonomies: any = props.include || _without(rawTaxonomies, ...props.exclude)
 
 const route = useRoute()
 

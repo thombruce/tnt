@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   toc: Object,
   page: Object,
@@ -9,7 +9,7 @@ const route = useRoute()
 
 let path = props.path || route.path
 
-const { data: rawData } =
+const { data: rawData }: any =
   props.toc
   ? { data: { body: { toc: props.toc } } }
   : props.page

@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+import { useSidebar } from '@thombruce/tnt/composables/states';
+
 const sidebar = useSidebar()
 </script>
 

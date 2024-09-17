@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   value: {
     type: [String, Number],
@@ -11,7 +11,7 @@ const props = defineProps({
 })
 
 const percent = computed(() => {
-  return props.value / props.max * 100
+  return Number(props.value) / Number(props.max) * 100
 })
 </script>
 

@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 const sidebar = useSidebar()
 
 const route = useRoute()
-const { data: page } = await useAsyncData(`tnt-redirect-${route.path}`, () => queryContent(route.path).findOne())
+const { data: page }: any = await useAsyncData(`tnt-redirect-${route.path}`, () => queryContent(route.path).findOne())
 
 useHead({
   title: `Redirecting to ${page.value.title}...`,

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   uid: {
     type: String,
@@ -21,10 +21,10 @@ const toasts = useToasts()
 
 const timerLength = ref(props.duration)
 
-const timer = ref(null)
+const timer = ref(null as any)
 const progress = ref(0)
 
-let prevTime = null
+let prevTime: number | null = null
 const startTimer = () => {
   timer.value = setInterval(() => {
     const newTime = Date.now()
@@ -43,7 +43,7 @@ const stopTimer = () => clearInterval(timer.value)
 const closeToast = () => {
   stopTimer()
   // _remove(toasts.value, (toast) => toast.uid === props.uid)
-  toasts.value = _reject(toasts.value, { uid: props.uid })
+  toasts.value = _reject(toasts.value, { uid: props.uid }) as Object[]
 }
 
 onMounted(() => {

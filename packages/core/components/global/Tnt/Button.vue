@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   type: {
     type: String,
@@ -6,7 +6,7 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: (props) => _startCase(props.type)
+    default: (props: any) => _startCase(props.type)
   }
 })
 </script>
