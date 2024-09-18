@@ -9,9 +9,7 @@ const { directory } = useAppConfig()
 
 const runtimeConfig = useRuntimeConfig()
 
-const { data: navigation }: any = runtimeConfig.public?.content
-  ? await useAsyncData('tnt-header-navigation', () => fetchContentNavigation())
-  : []
+const { data: navigation } = await useAsyncData('tnt-header-navigation', () => fetchContentNavigation())
 
 const sidebar = useSidebar()
 const target = ref(null)

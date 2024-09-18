@@ -1,10 +1,10 @@
 import _omit from "lodash/omit"
 import { yupAuto } from "../utils/yup"
 
-export const useValidations = (format, rules: any = {}, label) => {
+export const useValidations = (format: string, rules: any = {}, label: string) => {
   if (rules.spec) return rules
 
-  let yupRules
+  let yupRules: any
 
   yupRules = yupAuto(format)
   Object.entries(_omit(rules, ['format', 'label'])).forEach(([method, arg]) => yupRules = yupRules[method](String(arg) !== 'true' ? arg : undefined))

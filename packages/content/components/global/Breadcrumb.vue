@@ -7,12 +7,10 @@ const props = defineProps([
 
 const runtimeConfig = useRuntimeConfig()
 
-const { data: page }: any = runtimeConfig.public?.content
-  ? await useAsyncData(
-    `tnt-breadcrumb-${props.crumb.path}`,
-    () => queryContent(props.crumb.path).where({ _path: props.crumb.path }).findOne()
-  )
-  : null
+const { data: page } = await useAsyncData(
+  `tnt-breadcrumb-${props.crumb.path}`,
+  () => queryContent(props.crumb.path).where({ _path: props.crumb.path }).findOne()
+)
 </script>
 
 <template lang="pug">

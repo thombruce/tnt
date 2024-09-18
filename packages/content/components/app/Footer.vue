@@ -7,14 +7,12 @@ const runtimeConfig = useRuntimeConfig()
 
 const query = { path: '/', where: { navigation: { $eq: false }, _dir: '' } }
 
-const { data: list }: any = runtimeConfig.public?.content
-  ? await useAsyncData(
-    `tnt-footer-hidden`,
-    () => queryContent(query.path)
-      .where(query.where)
-      .find()
-  )
-  : []
+const { data: list } = await useAsyncData(
+  `tnt-footer-hidden`,
+  () => queryContent(query.path)
+    .where(query.where)
+    .find()
+)
 </script>
 
 <template lang="pug">

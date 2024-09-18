@@ -19,7 +19,7 @@ const props = defineProps({
   options: { type: Array },
   filter: {
     type: Function,
-    default(items: any, query: any) {
+    default(items: any[], query: string) {
       return items.filter((item: any) => String(item).toLowerCase().includes(query.toLowerCase()))
     }
   },
