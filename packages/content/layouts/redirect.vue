@@ -6,10 +6,9 @@ const { data: page }: any = await useAsyncData(`tnt-redirect-${route.path}`, () 
 
 useHead({
   title: `Redirecting to ${page.value.title}...`,
-})
-
-navigateTo(page.value.link, {
-  external: /^https?:\/\//i.test(page.value.link)
+  // NOTE: We can't use Nuxt navigateTo as it omits the template
+  //       and the page to be redirected to is skipped by the generator.
+  meta: [{ "http-equiv": "refresh", content: `0; URL=${page.value.link}` }],
 })
 </script>
 
