@@ -1,11 +1,17 @@
 <script setup lang="ts">
-// NOTE: This component is duplicated on TNT Content
+// NOTE: This component duplicated a Core component
 
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
 const { directory } = useAppConfig()
+
+const runtimeConfig = useRuntimeConfig()
+
+const { data: navigation }: any = runtimeConfig.public?.content
+  ? await useAsyncData('tnt-header-navigation', () => fetchContentNavigation())
+  : []
 
 const sidebar = useSidebar()
 const target = ref(null)
@@ -28,6 +34,11 @@ aside(
       :filter="directory?.filter"
     )
     ul.flex-1
+      li(v-for="link of navigation" :key="link._path" :path="link._path")
+        NuxtLink(:to="link._path")
+          Icon.mr-2(v-if="link.icon" :name="link.icon")
+          | {{ link.title }}
+
       li(v-if="runtimeConfig?.public?.content")
         NuxtLink(to="/search" no-prefetch)
           Icon.mr-2(name="fa6-solid:magnifying-glass")
