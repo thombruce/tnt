@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const sidebar = useSidebar()
 
 const { path, params } = useRoute()
@@ -8,7 +8,7 @@ const taxonomy = params.tag[0]
 const tag = params.tag[1]
 
 // Fetch content page if it exists
-const { data: page } = await useAsyncData(`tnt-tags-${path}`, () => queryContent(path).where({ _path: path }).findOne())
+const { data: page }: any = await useAsyncData(`tnt-tags-${path}`, () => queryContent(path).where({ _path: path }).findOne())
 
 // Default tag or conditions, used in the absence of a page
 let orConditions = [

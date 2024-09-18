@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { layout } = useAppConfig()
 const colorMode = useColorMode()
 

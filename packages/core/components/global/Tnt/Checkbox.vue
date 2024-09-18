@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // TODO: Update to use useField from vee-validate
 
 // TODO: Separate this component into Checkbox.vue and CheckboxGroup.vue
@@ -13,11 +13,11 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: (props) => `${_camelCase(props.label || 'checkbox')}-${_uniqueId()}`
+    default: (props: any) => `${_camelCase(props.label || 'checkbox')}-${_uniqueId()}`
   },
   name: {
     type: String,
-    default: (props) => props.label ? _camelCase(props.label) : `checkbox-${_uniqueId()}`
+    default: (props: any) => props.label ? _camelCase(props.label) : `checkbox-${_uniqueId()}`
   },
   hint: {},
   checked: {
@@ -38,7 +38,7 @@ const props = defineProps({
 })
 
 const computedRules = computed(() => {
-  return useValidations(props.rules?.format || props.type || props.options ? 'array' : 'string', props.rules, props.label)
+  return useValidations(props.rules?.format || props.options ? 'array' : 'string', props.rules, props.label)
 })
 
 const error = useFieldError(props.name)

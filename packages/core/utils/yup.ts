@@ -41,13 +41,13 @@ yup.addMethod(yup.MixedSchema, 'ext', function ext(exts) {
     },
     (value: any) => {
       if (!value) return true
-      return exts.some((ext) => value.name.endsWith(ext))
+      return exts.some((ext: string) => value.name.endsWith(ext))
     }
   )
 })
 
 /* UTILITIES */
-export const yupAuto = (type) => {
+export const yupAuto = (type: string) => {
   switch(type) {
     case 'string':
     case 'text':

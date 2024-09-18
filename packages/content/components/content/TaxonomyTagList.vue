@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps(['taxonomy', 'tags'])
 const route = useRoute()
 const { data: page } = await useAsyncData(`tnt-tag-list-${route.path}`, () => queryContent(route.path).findOne())

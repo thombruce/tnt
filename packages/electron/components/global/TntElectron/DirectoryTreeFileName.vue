@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { useDirectoryStore } from '@/stores/directory'
 import { storeToRefs } from 'pinia'
 
-const path = defineModel('path')
-const name = defineModel('name')
+const path = defineModel<string>('path', { required: true })
+const name = defineModel<string>('name', { required: true })
 
 const props = defineProps([
   'link',

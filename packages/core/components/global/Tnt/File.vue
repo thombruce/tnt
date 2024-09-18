@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   modelValue: {
     default: ''
@@ -6,11 +6,11 @@ const props = defineProps({
   label: { type: String },
   id: {
     type: String,
-    default: (props) => `${_camelCase(props.label || 'file')}-${_uniqueId()}`
+    default: (props: any) => `${_camelCase(props.label || 'file')}-${_uniqueId()}`
   },
   name: {
     type: String,
-    default: (props) => props.label ? _camelCase(props.label) : `file-${_uniqueId()}`
+    default: (props: any) => props.label ? _camelCase(props.label) : `file-${_uniqueId()}`
   },
   hint: {},
   fullErrors: {

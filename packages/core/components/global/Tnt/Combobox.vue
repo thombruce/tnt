@@ -1,14 +1,14 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   modelValue: { type: String },
   label: { type: String },
   id: {
     type: String,
-    default: (props) => `${_camelCase(props.label || 'combobox')}-${_uniqueId()}`
+    default: (props: any) => `${_camelCase(props.label || 'combobox')}-${_uniqueId()}`
   },
   name: {
     type: String,
-    default: (props) => props.label ? _camelCase(props.label) : (`${props.type}-${_uniqueId()}` || `combobox-${_uniqueId()}`)
+    default: (props: any) => props.label ? _camelCase(props.label) : (`${props.type}-${_uniqueId()}` || `combobox-${_uniqueId()}`)
   },
   type: {
     type: String,
@@ -19,8 +19,8 @@ const props = defineProps({
   options: { type: Array },
   filter: {
     type: Function,
-    default(items, query) {
-      return items.filter(item => String(item).toLowerCase().includes(query.toLowerCase()))
+    default(items: any[], query: string) {
+      return items.filter((item: any) => String(item).toLowerCase().includes(query.toLowerCase()))
     }
   },
   debounce: {
@@ -67,8 +67,8 @@ const debounced = _debounce(
   async () => {
     results.value = await props.filter(props.options, value.value)
   },
-  props.debounce?.wait || 250,
-  { 'maxWait': props.debounce?.maxWait || 1000 }
+  (props.debounce as any)?.wait || 250,
+  { 'maxWait': (props.debounce as any)?.maxWait || 1000 }
 )
 
 const target = ref(null)

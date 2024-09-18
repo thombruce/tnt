@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   modelValue: {
     default: ''
@@ -8,11 +8,11 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: (props) => `${_camelCase(props.label || 'toggle')}-${_uniqueId()}`
+    default: (props: any) => `${_camelCase(props.label || 'toggle')}-${_uniqueId()}`
   },
   name: {
     type: String,
-    default: (props) => props.label ? _camelCase(props.label) : `toggle-${_uniqueId()}`
+    default: (props: any) => props.label ? _camelCase(props.label) : `toggle-${_uniqueId()}`
   },
   hint: {},
   checked: {
@@ -32,8 +32,10 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['update:modelValue'])
+
 const computedRules = computed(() => {
-  return useValidations(props.rules?.format || props.type || 'string', props.rules, props.label)
+  return useValidations(props.rules?.format || 'string', props.rules, props.label)
 })
 
 const { value, checked: isChecked, handleChange, errors } = useField(() => props.name, computedRules.value, {
@@ -45,7 +47,7 @@ const { value, checked: isChecked, handleChange, errors } = useField(() => props
   uncheckedValue: props.unchecked,
 })
 
-const onChange = async (event) => {
+const onChange = async (event: any) => {
   await handleChange(event)
   emit('update:modelValue', event.target.value)
 }

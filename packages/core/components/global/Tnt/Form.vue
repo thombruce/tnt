@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   action: {
     type: String
@@ -22,31 +22,33 @@ const computedSchema = computed(() => {
   if (!props.schema && !props.body) return
   if (props.schema?.spec) return props.schema
 
-  let fromSchema = yup.object(), fromBody
+  let fromSchema = yup.object(), fromBody = yup.object()
 
   if (props.schema) {
     fromSchema = yup.object(
-      Object.assign(...Object.entries(props.schema).map(([name, rules]) => {
+      Object.assign({}, ...Object.entries(props.schema).map(([name, rules]) => {
         return { [name]: useValidations(rules.format, rules, rules.label) }
       }))
     )
   }
 
-  fromBody = yup.object(
-    Object.assign(...props.body.map((o) => {
-      let component = Object.keys(o)[0]
+  if (props.body) {
+    fromBody = yup.object(
+      Object.assign({}, ...props.body.map((o: any) => {
+        let component = Object.keys(o)[0]
 
-      if (!formComponents.includes(component)) return {}
+        if (!formComponents.includes(component)) return {}
 
-      let b = Object.values(o)[0]
+        let b: any = Object.values(o)[0]
 
-      component = component === 'checkbox' ? b.options ? 'array' : 'string' : component
+        component = component === 'checkbox' ? b.options ? 'array' : 'string' : component
 
-      if (props.schema?.[b.name] && !b.rules) return {}
+        if (props.schema?.[b.name] && !b.rules) return {}
 
-      return { [b.name]: useValidations(b.rules?.format || b.type || component, b.rules, b.label) }
-    }))
-  )
+        return { [b.name]: useValidations(b.rules?.format || b.type || component, b.rules, b.label) }
+      }))
+    )
+  }
 
   // TODO: This is a crude handling of schema merging. We're skipping the item here
   //       if it both has no rules in its body component AND its name appears in

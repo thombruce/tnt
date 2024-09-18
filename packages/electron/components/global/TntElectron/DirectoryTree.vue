@@ -1,9 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { useDirectoryStore } from '@/stores/directory'
 import { storeToRefs } from 'pinia'
 
 const props = defineProps({
-  files: Object,
+  files: {
+    type: Object,
+    required: true,
+  },
   open: {
     type: Boolean,
     default: false
@@ -20,7 +23,7 @@ const { fullRoot, fullRootRegExp } = storeToRefs(store)
 const { createFile, createFolder, deleteFile } = store
 
 const children = computed(() => {
-  let filtered = props.filter ? props.files.children?.filter(f => f.children || props.filter.test(f.name)) : props.files.children
+  let filtered = props.filter ? props.files.children?.filter((f: any) => f.children || props.filter?.test(f.name)) : props.files.children
   return _sortBy(filtered, [function(o) { return !o.children }, 'name'])
 })
 
