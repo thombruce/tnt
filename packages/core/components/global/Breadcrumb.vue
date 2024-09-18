@@ -7,6 +7,6 @@ const props = defineProps([
 </script>
 
 <template lang="pug">
-NuxtLink(v-else :to="crumb.path")
+NuxtLink(:to="crumb.path")
   | {{ _startCase(crumb.param) }}
 </template>
