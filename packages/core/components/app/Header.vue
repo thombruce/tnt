@@ -13,21 +13,21 @@ header.sticky.top-0
       li
         TntButton.btn-none(@click="sidebar = !sidebar")
           //- TODO: Bug results in duplication of button when using this conditional
-          //-  Icon(v-if="sidebar" name="fa6-solid:chevron-left")
-          Icon(name="fa6-solid:bars")
+          //-  TntIcon(v-if="sidebar" name="fa6-solid:chevron-left")
+          TntIcon(name="fa6-solid:bars")
       li
         strong
           NuxtLink(to="/") {{ name }}
     ul.flex-0
       li(v-if="runtimeConfig?.public?.content")
         NuxtLink(to="/search" no-prefetch)
-          Icon(name="fa6-solid:magnifying-glass")/
+          TntIcon(name="fa6-solid:magnifying-glass")/
           span.sr-only Search
       li
         DarkmodeToggle
       li
         NuxtLink(to="/settings" no-prefetch)
-          Icon(name="fa6-solid:gear")/
+          TntIcon(name="fa6-solid:gear")/
           span.sr-only Settings
     AppWindowControls(v-if="isElectron()")
 </template>

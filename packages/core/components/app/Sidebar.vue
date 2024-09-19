@@ -30,12 +30,12 @@ aside(
     ul.flex-1
       li(v-if="runtimeConfig?.public?.content")
         NuxtLink(to="/search" no-prefetch)
-          Icon.mr-2(name="fa6-solid:magnifying-glass")
+          TntIcon.mr-2(name="fa6-solid:magnifying-glass")
           | Search
 
       li
         NuxtLink(to="/settings" no-prefetch)
-          Icon.mr-2(name="fa6-solid:gear")
+          TntIcon.mr-2(name="fa6-solid:gear")
           | Settings
 </template>
 

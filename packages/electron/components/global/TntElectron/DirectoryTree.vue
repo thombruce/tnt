@@ -68,7 +68,7 @@ details(:open="open")
     TntElectronDirectoryTreeFileName(v-if="files.path !== fullRoot" v-model:path="files.path" v-model:name="files.name")
     span(v-else) {{ files.name }}
     TntButton.btn-none.float-right(v-if="files.path !== fullRoot" @click="deleteFile(files.path.replace(fullRootRegExp, '.'))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
-      Icon(name="fa6-solid:trash-can")
+      TntIcon(name="fa6-solid:trash-can")
   ul.ml-4
     li(v-for="child in children" :key="child.path")
       component(
@@ -80,24 +80,24 @@ details(:open="open")
       span(v-else-if="links")
         TntElectronDirectoryTreeFileName(v-model:path="child.path" v-model:name="child.name" :link="links")
         TntButton.btn-none.float-right(@click="deleteFile(child.path.replace(fullRootRegExp, '.'))" class="text-danger-light hover:text-danger-light-hover dark:text-danger-dark dark:hover:text-danger-dark-hover")
-          Icon(name="fa6-solid:trash-can")
+          TntIcon(name="fa6-solid:trash-can")
       TntElectronDirectoryTreeFileName(v-else v-model:path="child.path" v-model:name="child.name")
     li
       TntButton.btn-none(v-if="!addingNewFile" @click="addingNewFile = true")
         span New file
-        Icon.ml-2(name="fa6-solid:file")
+        TntIcon.ml-2(name="fa6-solid:file")
       TntForm.inline(v-else @submit="createNewFile()" @keydown.esc="cancelNewFile()")
         TntInput.inline-block(v-model="newFile" :rules="newFileRules")
         TntSubmit.btn-none.ml-2
-          Icon(name="fa6-solid:plus")
+          TntIcon(name="fa6-solid:plus")
     li
       TntButton.btn-none(v-if="!addingNewFolder" @click="addingNewFolder = true")
         span New folder
-        Icon.ml-2(name="fa6-solid:folder")
+        TntIcon.ml-2(name="fa6-solid:folder")
       TntForm.inline(v-else @submit="createNewFolder()" @keydown.esc="cancelNewFolder()")
         TntInput.inline-block(v-model="newFolder")
         TntSubmit.btn-none.ml-2
-          Icon(name="fa6-solid:plus")
+          TntIcon(name="fa6-solid:plus")
 </template>
 
 <style lang="postcss" scoped>

@@ -16,7 +16,7 @@ onClickOutside(target, () => closeMenu())
 .inline.relative(ref="target")
   TntButton.btn-none(@click="showMenu = !showMenu")
     slot(name="button")
-      Icon(name="fa6-solid:bars")
+      TntIcon(name="fa6-solid:bars")
   ul(
     v-if="showMenu"
     class="absolute top-10 min-w-48 bg-primary-100 dark:bg-primary-950/90"

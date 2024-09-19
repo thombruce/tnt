@@ -10,5 +10,5 @@ const toggleDarkmode = function() {
 
 <template lang="pug">
 TntButton.btn-none(@click="toggleDarkmode()")
-  Icon(:name="colorMode.value === 'dark' ? 'fa6-solid:sun' : 'fa6-solid:moon'")
+  TntIcon(:name="colorMode.value === 'dark' ? 'fa6-solid:sun' : 'fa6-solid:moon'")
 </template>

@@ -41,7 +41,7 @@ const toPath = computed(() => path.value.replace(fullRootRegExp.value, ''))
 TntForm.inline(v-if="editing" @submit="rename()" @keydown.esc="cancel()")
   TntInput.inline-block(v-model="newName")
   TntSubmit.btn-none.ml-2
-    Icon(name="fa6-solid:floppy-disk")
+    TntIcon(name="fa6-solid:floppy-disk")
 template(v-else)
   //- NOTE: File paths are handled differently on Windows vs Unix;
   //-       We need to check for and add a / if one isn't present
@@ -49,9 +49,9 @@ template(v-else)
   NuxtLink(v-if="link" :to="`${toPath.startsWith('/') ? '' : '/'}${toPath}`")
     span {{ name }}
     TntButton.btn-none(@click.prevent="editing = true")
-      Icon.ml-2(name="fa6-solid:pencil")
+      TntIcon.ml-2(name="fa6-solid:pencil")
   template(v-else)
     span {{ name }}
     TntButton.btn-none(@click.prevent="editing = true")
-      Icon.ml-2(name="fa6-solid:pencil")
+      TntIcon.ml-2(name="fa6-solid:pencil")
 </template>
