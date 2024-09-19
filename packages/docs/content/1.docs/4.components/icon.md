@@ -6,6 +6,14 @@
 
 ## Usage
 
+```html
+<TntIcon name="fa6-solid:rocket" />
+```
+
+```pug
+TntIcon(name="fa6-solid:rocket")
+```
+
 ```md
 :icon{name="fa6-solid:rocket"}
 ```
