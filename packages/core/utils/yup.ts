@@ -63,7 +63,7 @@ export const yupAuto = (type: string) => {
     case 'url':
       return yup.string().url()
     case 'tel':
-      return yup.string().tel()
+      return (yup.string() as any).tel()
     // TODO: yup.string().datetime() apparently has greater customisability than
     //       yup.date(), however the below still does not validate a time or a
     //       week properly. Either... customise the regex for these values or
