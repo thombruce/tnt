@@ -2,7 +2,7 @@ import { ipcMain, shell } from 'electron'
 import fs from 'fs'
 import { join } from 'path'
 
-import dirTree, { DirectoryTree } from 'directory-tree'
+import dirTree, { type DirectoryTree } from 'directory-tree'
 
 export default function initIpc() {
   ipcMain.handle('load-config', () => {

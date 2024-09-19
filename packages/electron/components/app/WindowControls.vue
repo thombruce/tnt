@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useTntApi } from '@thombruce/tnt/composables/tntApi'
+import { useTntWindow } from '~/composables/tntWindow'
 
-const { minimize, maximize, close } = useTntApi()
+const { minimize, maximize, close } = useTntWindow()
 </script>
 
 <template lang="pug">
