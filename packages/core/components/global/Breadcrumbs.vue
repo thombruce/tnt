@@ -23,5 +23,5 @@ const crumbs = computed(() => {
   nav
     ul
       li(v-for="crumb in crumbs" :key="crumb.path")
-        Breadcrumb(:crumb="crumb")
+        TntPrivateBreadcrumb(:crumb="crumb")
 </template>
