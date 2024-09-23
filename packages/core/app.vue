@@ -38,5 +38,5 @@ watch(() => route.path, () => {
 div
   NuxtPage(:page-key="route => route.fullPath")
 
-  ToastStack
+  TntToastStack
 </template>

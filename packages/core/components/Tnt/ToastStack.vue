@@ -4,7 +4,7 @@ const toasts = useToasts()
 
 <template lang="pug">
 .tnt-toast-stack
-  Toast(
+  TntToast(
     v-for="toast in toasts"
     :key="toast.uid"
     :uid="toast.uid"
