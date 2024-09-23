@@ -10,7 +10,7 @@ const type = computed(() => {
 
 <template lang="pug">
 component(
-  :is="tntComponents.includes(type) ? `tnt-${type}` : type"
+  :is="formComponents.includes(type) ? `tnt-form-${type}` : tntComponents.includes(type) ? `tnt-${type}` : type"
   v-bind="typeof component[type] === 'object' ? _omit(component[type], ['body']) : undefined"
 )
   template(v-if="typeof component[type] === 'string'") {{ component[type] }}

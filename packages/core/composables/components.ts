@@ -3,21 +3,21 @@
 
 // These components can receive validations via Vee-validate and Yup
 export const formComponents = Object.freeze([
-  'input',
-  'file',
-  'select',
-  'combobox',
   'checkbox',
+  'combobox',
+  'file',
+  'input',
   'radio',
-  'toggle',
   'range',
-  'textarea'
+  'select',
+  'submit',
+  'textarea',
+  'toggle',
 ])
 
 // These components must be prepended by tnt- when used in templates
 export const tntComponents = Object.freeze([
   'button',
-  'submit',
   'form',
   'img',
   'search',
