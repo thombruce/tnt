@@ -8,14 +8,14 @@ const { minimize, maximize, close } = useTntWindow()
 ul.flex-0
   li
     TntButton.btn-none(@click="minimize()")
-      Icon(name="fa6-solid:minus")/
+      TntIcon(name="fa6-solid:minus")/
       span.sr-only Close
   li
     TntButton.btn-none(@click="maximize()")
-      Icon(name="fa6-regular:square")/
+      TntIcon(name="fa6-regular:square")/
       span.sr-only Close
   li
     TntButton.btn-none(@click="close()")
-      Icon(name="fa6-solid:xmark")/
+      TntIcon(name="fa6-solid:xmark")/
       span.sr-only Close
 </template>

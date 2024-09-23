@@ -108,7 +108,7 @@ const styles = () => {
     .tnt-toast-actions.p-2.space-x-4
       slot(name="actions")
       button.btn-none(v-if="!duration || showClose" type="button" @click="closeToast()")
-        Icon(name="fa6-solid:xmark")/
+        TntIcon(name="fa6-solid:xmark")/
         span.sr-only Close
   .progress(v-if="duration" :class="styles().progress")
     .progress-fill(:class="styles().fill" :style="'width:'+progress+'%;'")

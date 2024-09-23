@@ -1,7 +1,7 @@
 import _omit from "lodash/omit"
 import { yupAuto } from "../utils/yup"
 
-export const useValidations = (format: string, rules: any = {}, label: string) => {
+export const useValidations = (format: string, rules: any = {}, label?: string) => {
   if (rules.spec) return rules
 
   let yupRules: any

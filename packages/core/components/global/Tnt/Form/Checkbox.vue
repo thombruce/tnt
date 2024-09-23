@@ -55,7 +55,7 @@ div
       span.font-bold(v-if="label" v-html="label")
 
     div(v-for="option in options")
-      TntPrivateCheckboxArchetype(:name="name", :checkedValue="option.value || option" :label="option.label || option")
+      TntCheckboxArchetype(:name="name", :checkedValue="option.value || option" :label="option.label || option")
 
   div(v-else)
     VeeField(

@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-TntInput(
+TntFormInput(
   v-bind="$props"
   @input="method()"
   type="search"
