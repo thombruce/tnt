@@ -3,7 +3,7 @@ import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
-const { name, gradient } = useAppConfig()
+const { name } = useAppConfig()
 
 const route = useRoute()
 
@@ -15,7 +15,6 @@ if (config.colorMode) colorMode.preference = config.colorMode
 const bodyClass = computed(() => {
   let klasses = []
   if (isElectron()) klasses.push('electron')
-  if (gradient) klasses.push('bg-gradient-auto')
   return klasses.join(' ')
 })
 

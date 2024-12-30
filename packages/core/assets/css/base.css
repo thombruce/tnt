@@ -4,13 +4,6 @@ body {
     text-content
     dark:bg-base-dark
     dark:text-content-dark;
-  &.bg-gradient-auto {
-    @apply
-      bg-fixed
-      bg-gradient-to-br
-      from-primary-100
-      dark:from-primary-950;
-  }
 }
 
 .tnt-container {
@@ -29,14 +22,6 @@ header {
     border-b
     border-base-light
     dark:border-base-dark;
-}
-
-body.bg-gradient-auto header {
-  @apply
-    bg-gradient-to-b
-    from-primary-100
-    dark:from-primary-950
-    border-none;
 }
 
 header nav > ul {
