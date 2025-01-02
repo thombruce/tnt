@@ -2,5 +2,9 @@
 export default defineNuxtConfig({
   extends: [
     '@thombruce/tnt-content'
-  ]
+  ],
+  site: {
+    url: 'https://tnt.thombruce.com',
+    name: 'TNT',
+  },
 })
