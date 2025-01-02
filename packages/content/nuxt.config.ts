@@ -41,6 +41,9 @@ export default defineNuxtConfig({
     }
   },
   ogImage: {
-    strictNuxtContentPaths: true
+    strictNuxtContentPaths: true,
+    defaults: {
+      renderer: 'chromium'
+    },
   },
 })
