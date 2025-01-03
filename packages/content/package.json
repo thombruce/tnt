@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
+    "prepare": "nuxt prepare",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

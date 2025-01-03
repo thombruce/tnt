@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "docs": "cd packages/docs && nuxt dev"
+    "docs": "lerna run prepare && cd packages/docs && nuxt dev",
+    "docs:build": "lerna run prepare && cd packages/docs && nuxt build"
   },
   "devDependencies": {
     "lerna": "^8.1.7"
