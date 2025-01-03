@@ -40,10 +40,4 @@ export default defineNuxtConfig({
       routes: ['/sitemap.xml', '/feed.xml']
     }
   },
-  ogImage: {
-    strictNuxtContentPaths: true,
-    // defaults: {
-    //   renderer: 'chromium'
-    // },
-  },
 })
