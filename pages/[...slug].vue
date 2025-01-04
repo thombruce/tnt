@@ -1,4 +1,4 @@
 <template lang="pug">
-main
+main.prose
   ContentDoc/
 </template>
