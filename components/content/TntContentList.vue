@@ -10,9 +10,9 @@ const query: QueryBuilderParams = { path, where: [{ _path: { $regex: new RegExp(
 div
   ContentList(:query="query")
     template(#default="{ list }")
-      article(v-for="document in list" :key="document._path")
+      article(v-for="page in list" :key="page._path")
         h2
-          NuxtLink(:to="document._path") {{ document.navigation?.title || document.title }}
-        p {{ document.description }}
+          NuxtLink(:to="page._path") {{ page.navigation?.title || page.title }}
+        p {{ page.description }}
     template(#not-found)
 </template>
