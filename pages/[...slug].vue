@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { path } = useRoute()
 
+const { data: page } = await useAsyncData(`tnt-catchall-${path}`, () => queryContent(path).findOne())
+
 defineOgImageComponent('NuxtSeo',
   {
     // theme: '#ff0000',
@@ -10,10 +12,10 @@ defineOgImageComponent('NuxtSeo',
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="'default'")
-  ContentQuery(:path="path" find="one")
-    template(#default="{ data }")
-      ContentRenderer(:value="data")
-        template(#empty)
-    template(#not-found)
+NuxtLayout(:name="page?.layout || 'default'")
+  template(v-if="page")
+    ContentRenderer(:value="page")
+      template(#empty)
+        template(v-if="['yml', 'yaml'].includes(page._extension)") {{ page.description }}
+  template(v-else)
 </template>
