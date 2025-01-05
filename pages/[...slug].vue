@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { path } = useRoute()
+
 defineOgImageComponent('NuxtSeo',
   {
     // theme: '#ff0000',
@@ -8,10 +10,10 @@ defineOgImageComponent('NuxtSeo',
 </script>
 
 <template lang="pug">
-main.prose
-  ContentDoc
-    template(#empty)
+NuxtLayout(:name="'default'")
+  ContentQuery(:path="path" find="one")
+    template(#default="{ data }")
+      ContentRenderer(:value="data")
+        template(#empty)
     template(#not-found)
-
-  TntContentList/
 </template>
