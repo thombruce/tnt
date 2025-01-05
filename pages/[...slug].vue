@@ -7,6 +7,13 @@ const { data: list } = await useAsyncData(
     _path: { $regex: new RegExp(`^${path.replace(/\/$/, "")}/[^/]+$`) }
   }).find()
 )
+
+defineOgImageComponent('NuxtSeo',
+  {
+    // theme: '#ff0000',
+    colorMode: 'dark'
+  }
+)
 </script>
 
 <template lang="pug">
