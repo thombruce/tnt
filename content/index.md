@@ -1,3 +1,3 @@
-# TNT
+# Home
 
 Welcome to TNT.
