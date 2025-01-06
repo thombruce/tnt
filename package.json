@@ -22,7 +22,6 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@iconify-json/fa6-solid": "^1.2.3",
-    "@iconify-json/fluent-emoji": "^1.2.2"
+    "@iconify-json/fa6-solid": "^1.2.3"
   }
 }
