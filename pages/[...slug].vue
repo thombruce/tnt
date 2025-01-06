@@ -3,10 +3,13 @@ const { path } = useRoute()
 
 const { data: page } = await useAsyncData(`tnt-catchall-${path}`, () => queryContent(path).findOne())
 
-defineOgImageComponent('NuxtSeo',
+defineOgImageComponent('TNT',
   {
-    // theme: '#ff0000',
-    colorMode: 'dark'
+    title: page.value?.navigation?.title || page.value?.title || null,
+    description: page.value?.description || null,
+    icon: page.value?.navigation?.icon || null,
+    colorMode: 'dark',
+    theme: '#dc2626'
   }
 )
 </script>

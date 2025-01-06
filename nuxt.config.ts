@@ -18,4 +18,9 @@ export default defineNuxtConfig({
     description: 'Welcome to TNT!',
     defaultLocale: 'en', // not needed if you have @nuxtjs/i18n installed
   },
+  ogImage: {
+    defaults: {
+      emojis: 'fluent-emoji'
+    }
+  },
 })
