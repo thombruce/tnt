@@ -23,4 +23,7 @@ export default defineNuxtConfig({
       emojis: 'fluent-emoji'
     }
   },
+  sitemap: {
+    strictNuxtContentPaths: true
+  },
 })

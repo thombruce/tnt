@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// const { name } = useAppConfig()
+
 const { path } = useRoute()
 
 const { data: page } = await useAsyncData(`tnt-catchall-${path}`, () => queryContent(path).findOne())
@@ -8,6 +10,7 @@ defineOgImageComponent('TNT',
     title: page.value?.navigation?.title || page.value?.title || null,
     description: page.value?.description || null,
     icon: page.value?.navigation?.icon || null,
+    // siteName: name,
     colorMode: 'dark',
     theme: '#dc2626'
   }
