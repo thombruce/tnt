@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// const { name } = useAppConfig()
-
 const { path } = useRoute()
 
 const { data: page } = await useAsyncData(`tnt-catchall-${path}`, () => queryContent(path).findOne())

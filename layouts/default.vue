@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { name, copyright } = useAppConfig()
+import { useSiteConfig } from '#imports'
+
+const { name, copyright } = useSiteConfig()
 </script>
 
 <template lang="pug">
