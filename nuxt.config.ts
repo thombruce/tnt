@@ -28,6 +28,12 @@ export default defineNuxtConfig({
     copyright: tntConfig.copyright || 'Copyright © All rights reserved',
     defaultLocale: tntConfig.defaultLocale || 'en', // not needed if you have @nuxtjs/i18n installed
   },
+  icon: {
+    serverBundle: 'remote',
+    clientBundle: {
+      scan: true
+    },
+  },
   ogImage: {
     defaults: {
       emojis: 'fluent-emoji'
