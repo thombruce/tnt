@@ -1,4 +1,4 @@
-export default {
+export default<any> {
   name: null,
   description: null,
   url: null,
