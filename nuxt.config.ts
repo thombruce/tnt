@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   routeRules: {
     ...tntConfig.routeRules,
   },
+  nitro: {
+    static: true,
+  },
   content: {},
   tailwindcss: {},
   colorMode: {},
