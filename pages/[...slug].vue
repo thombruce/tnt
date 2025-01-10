@@ -22,7 +22,7 @@ NuxtLayout(:name="page?.layout || 'default'")
   template(v-if="page")
     ContentRenderer(:value="page")
       template(#empty)
-        template(v-if="['yml', 'yaml'].includes(page._extension)") {{ page.description }}
+        MDC(v-if="page.content" :value="page.content" unwrap="p")
 
   template(v-else)
 

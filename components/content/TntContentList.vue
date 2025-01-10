@@ -30,7 +30,7 @@ div
 
           date.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ page.createdAt || page.created || page.date }}
 
-        MDC(v-if="page.description" :value="page.description" unwrap="p")
+        MDC(v-if="page.description || page.content" :value="page.description || page.content" unwrap="p")
 
     template(#not-found)
 </template>
