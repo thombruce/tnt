@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { parseMarkdown } from '@nuxtjs/mdc/runtime'
+
 const { path } = useRoute()
 
 const { data: page } = await useAsyncData(`tnt-catchall-${path}`, () => queryContent(path).findOne())
+
+// Abstract Syntax Tree for page.content; used for YAML pages or other data types.
+const { data: ast } = page.value?.content ? await useAsyncData(`tnt-catchall-ast-${path}`, () => parseMarkdown(page.value?.content)) : { data: false }
 
 defineOgImageComponent('TNT',
   {
@@ -22,7 +27,7 @@ NuxtLayout(:name="page?.layout || 'default'")
   template(v-if="page")
     ContentRenderer(:value="page")
       template(#empty)
-        MDC(v-if="page.content" :value="page.content" unwrap="p")
+        MDCRenderer(v-if="ast" :body="ast.body" :data="ast.data")/
 
   template(v-else)
 
