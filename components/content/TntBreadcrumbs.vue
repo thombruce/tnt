@@ -22,12 +22,13 @@ const crumbs = computed(() => {
 nav.pb-4.not-prose
   ul
     li.inline(v-for="(crumb, index) in crumbs" :key="crumb.path")
-      Icon.text-sm.mr-2(v-if="index === 0" name="fa6-solid:house")
-      Icon.text-sm.mx-2(v-else-if="index > 0" name="fa6-solid:angle-right")
+      Icon.text-sm.mx-2(v-if="index > 0" name="fa6-solid:angle-right")
 
       ContentQuery(:path="crumb.path" find="one")
         template(#default="{ data }")
-          NuxtLink(:to="data._path") {{ data.title }}
+          NuxtLink(:to="data._path")
+            Icon.text-sm.mr-2(v-if="data.icon" :name="data.icon")
+            | {{ data.title }}
         template(#empty)
           NuxtLink(:to="crumb.path") {{ crumb.param }}
         template(#not-found)
