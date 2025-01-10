@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import type { QueryBuilderParams } from '@nuxt/content'
 
-const { path } = useRoute()
+const route = useRoute()
 
-const query: QueryBuilderParams = { path, where: [{ _path: { $regex: new RegExp(`^${path.replace(/\/$/, "")}/[^/]+$`) } }] }
+const props = defineProps([
+  'path',
+  'sort',
+])
+
+const path = props.path || route.path
+
+const query: QueryBuilderParams = {
+  path,
+  where: [{ _path: { $regex: new RegExp(`^${path.replace(/\/$/, "")}/[^/]+$`) } }],
+  sort: props.sort
+}
 </script>
 
 <template lang="pug">
@@ -11,8 +22,13 @@ div
   ContentList(:query="query")
     template(#default="{ list }")
       article(v-for="page in list" :key="page._path")
-        h2
-          NuxtLink(:to="page._path") {{ page.navigation?.title || page.title }}
-        p {{ page.description }}
+        header.mb-2
+          h2.mb-1
+            NuxtLink(:to="page._path") {{ page.navigation?.title || page.title }}
+
+          date.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ page.createdAt || page.created || page.date }}
+
+        MDC(v-if="page.description" :value="page.description" unwrap="p")
+
     template(#not-found)
 </template>

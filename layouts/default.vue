@@ -13,13 +13,7 @@ const { name, copyright } = useSiteConfig()
     TntDarkmodeToggle/
 
   main
-    TntBreadcrumbs/
-
     slot/
-    
-    TntContentList/
-
-    TntPrevNext/
   
   footer.py-4.not-prose.text-center
     | {{ copyright }}
