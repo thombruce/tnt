@@ -24,8 +24,12 @@ defineOgImageComponent('TNT',
 NuxtLayout(:name="page?.layout || 'default'")
   TntBreadcrumbs/
 
-  template(v-if="page")
-    ContentRenderer(:value="page")
+  article(v-if="page")
+    header
+      h1 {{ page.title }}
+      TntToc(:page="page")
+
+    ContentRenderer.tnt-article-body(:value="page")
       template(#empty)
         MDCRenderer(v-if="ast" :body="ast.body" :data="ast.data")/
 
@@ -35,3 +39,9 @@ NuxtLayout(:name="page?.layout || 'default'")
 
   TntPrevNext/
 </template>
+
+<style lang="postcss">
+.tnt-article-body > h1:first-child {
+  @apply hidden;
+}
+</style>
