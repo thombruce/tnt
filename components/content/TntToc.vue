@@ -6,7 +6,7 @@ const props = defineProps({
 const { path } = useRoute()
 
 const { data: rawData }: any =
-  props.page
+  props.page?.body
   ? { data: { body: { toc: props.page.body.toc } } }
   : await useAsyncData(`tnt-toc-${path}`, () => queryContent(path).findOne())
 
