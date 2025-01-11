@@ -28,7 +28,7 @@ div
               Icon.mr-4(v-if="page.icon" :name="page.icon")
               | {{ page.navigation?.title || page.title }}
 
-          date.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ page.createdAt || page.created || page.date }}
+          date.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
 
         MDC(v-if="page.description || page.content" :value="page.description || page.content" unwrap="p")
 

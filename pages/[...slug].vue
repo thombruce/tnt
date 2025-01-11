@@ -27,7 +27,10 @@ NuxtLayout(:name="page?.layout || 'default'")
   article(v-if="page")
     header
       h1 {{ page.title }}
-      TntToc(:page="page")
+
+      date.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
+
+      TntToc(v-if="page?.body?.toc" :page="page")
 
     ContentRenderer.tnt-article-body(:value="page")
       template(#empty)
