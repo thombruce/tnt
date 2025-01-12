@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/seo',
     '@nuxt/icon',
+    '@nuxt/image',
   ],
   routeRules: {
     ...tntConfig.routeRules,
