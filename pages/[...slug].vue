@@ -24,21 +24,22 @@ defineOgImageComponent('TNT',
 NuxtLayout(:name="page?.layout || 'default'")
   TntBreadcrumbs/
 
-  article(v-if="page")
-    header
-      h1 {{ page.title }}
+  article
+    template(v-if="page")
+      header
+        h1 {{ page.title }}
+        time.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
+        TntToc(v-if="page?.body?.toc" :page="page")
 
-      date.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
+      ContentRenderer.tnt-article-body(:value="page")
+        template(#empty)
+          MDCRenderer(v-if="ast" :body="ast.body" :data="ast.data")/
 
-      TntToc(v-if="page?.body?.toc" :page="page")
+    template(v-else)
 
-    ContentRenderer.tnt-article-body(:value="page")
-      template(#empty)
-        MDCRenderer(v-if="ast" :body="ast.body" :data="ast.data")/
-
-  template(v-else)
-
-  TntContentList(v-if="page?.list !== false" :path="page?.list?.path" :sort="page?.list?.sort")/
+    footer
+      TntContentAttachments(v-if="page?.attachments" :attachments="page?.attachments")/
+      TntContentList(v-if="page?.list !== false" :path="page?.list?.path" :sort="page?.list?.sort")/
 
   TntPrevNext/
 </template>

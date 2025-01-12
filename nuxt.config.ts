@@ -17,7 +17,8 @@ export default defineNuxtConfig({
     ...tntConfig.routeRules,
   },
   nitro: {
-    static: true,
+    // ISSUE: https://github.com/nuxt/image/issues/1397
+    static: process.env.NODE_ENV !== 'development',
   },
   content: {},
   tailwindcss: {},
