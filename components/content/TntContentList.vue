@@ -3,17 +3,19 @@ import type { QueryBuilderParams } from '@nuxt/content'
 
 const route = useRoute()
 
-const props = defineProps([
-  'path',
-  'sort',
-])
-
-const path = props.path || route.path
+const { path = undefined, sort = undefined, preview = 'description' } = defineProps<{
+  path?: string,
+  sort?: any,
+  preview?: string
+}>()
 
 const query: QueryBuilderParams = {
-  path,
-  where: [{ _path: { $regex: new RegExp(`^${path.replace(/\/$/, "")}/[^/]+$`) } }],
-  sort: props.sort
+  path: path || route.path,
+  where: [
+    { _path: { $regex: new RegExp(`^${(path || route.path).replace(/\/$/, "")}/[^/]+$`) } },
+    { _partial: false }
+  ],
+  sort: sort
 }
 </script>
 
@@ -30,7 +32,7 @@ div
 
           time.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
 
-        MDC(v-if="page.description || page.content" :value="page.description || page.content" unwrap="p")
+        MDC(v-if="page[preview]" :value="page[preview]" unwrap="p")
 
         footer
           TntContentAttachments(v-if="page.attachments" :attachments="page.attachments")/

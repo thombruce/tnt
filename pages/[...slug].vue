@@ -39,7 +39,10 @@ NuxtLayout(:name="page?.layout || 'default'")
 
     footer
       TntContentAttachments(v-if="page?.attachments" :attachments="page?.attachments")/
-      TntContentList(v-if="page?.list !== false" :path="page?.list?.path" :sort="page?.list?.sort")/
+      TntContentList(
+        v-if="page?.list !== false"
+        v-bind="page?.list"
+      )/
 
   TntPrevNext/
 </template>
