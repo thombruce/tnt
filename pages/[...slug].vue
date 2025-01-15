@@ -24,22 +24,23 @@ NuxtLayout(:name="page?.layout || 'default'")
       header
         h1 {{ page.title }}
         time.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
-        TntToc(v-if="page?.body?.toc" :page="page")
+        TntToc(v-if="page.body?.toc" :page="page")
 
       ContentRenderer.tnt-article-body(:value="page")
         template(#empty)
           TntContent(v-if="page.content" :content="page.content")/
 
+      section
+        TntContentAttachments(v-if="page?.attachments" :attachments="page?.attachments")/
+
     template(v-else)
 
     footer
-      TntContentAttachments(v-if="page?.attachments" :attachments="page?.attachments")/
       TntContentList(
         v-if="page?.list !== false"
         v-bind="page?.list"
       )/
-
-  TntPrevNext/
+      TntPrevNext/
 </template>
 
 <style lang="postcss">

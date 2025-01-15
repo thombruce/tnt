@@ -34,7 +34,7 @@ div
 
         MDC(v-if="page[preview]" :value="page[preview]" unwrap="p")
 
-        footer
+        section
           TntContentAttachments(v-if="page.attachments" :attachments="page.attachments")/
 
     template(#not-found)
