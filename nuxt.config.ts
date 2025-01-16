@@ -22,9 +22,7 @@ export default defineNuxtConfig({
     // ISSUE: https://github.com/nuxt/image/issues/1397
     static: process.env.NODE_ENV !== 'development',
   },
-  content: {
-    // sources: { content: { driver: 'fs', base: resolve(__dirname, 'docs') } }
-  },
+  content: {},
   tailwindcss: {},
   colorMode: {},
   site: {
@@ -48,4 +46,11 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true
   },
+  /* INTERNAL USE */
+  // @ts-expect-error
+  $tntDocs: {
+   content: {
+      sources: { content: { driver: 'fs', base: resolve(__dirname, 'docs') } }
+    },
+  }
 })
