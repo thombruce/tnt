@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import { resolve } from "node:path";
+
 import tntConfig from './tnt.config'
 
 export default defineNuxtConfig({
@@ -20,7 +22,9 @@ export default defineNuxtConfig({
     // ISSUE: https://github.com/nuxt/image/issues/1397
     static: process.env.NODE_ENV !== 'development',
   },
-  content: {},
+  content: {
+    // sources: { content: { driver: 'fs', base: resolve(__dirname, 'docs') } }
+  },
   tailwindcss: {},
   colorMode: {},
   site: {
