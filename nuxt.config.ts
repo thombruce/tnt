@@ -21,6 +21,9 @@ export default defineNuxtConfig({
   nitro: {
     // ISSUE: https://github.com/nuxt/image/issues/1397
     static: process.env.NODE_ENV !== 'development',
+    prerender: {
+      failOnError: false, // NOTE: Prevents failure when links are generated for non-existent content docs; is there a better way?
+    },
   },
   content: {
     sources: {
