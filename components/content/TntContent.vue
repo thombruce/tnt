@@ -6,7 +6,7 @@ const { page } = defineProps<{
 
 <template lang="pug">
 article(:key="page._path")
-  slot(:page="page")
+  slot
     header.mb-2
       h2.mb-1
         NuxtLink(:to="page._path")

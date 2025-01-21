@@ -21,10 +21,10 @@ const query: QueryBuilderParams = {
 
 <template lang="pug">
 div
-  slot(:list="list")
-    ContentList(:query="query")
-      template(#default="{ list }")
+  ContentList(:query="query")
+    template(#default="{ list }")
+      slot(:list="list")
         TntContent(v-for="page in list" :page="page")
 
-      template(#not-found)
+    template(#not-found)
 </template>
