@@ -3,16 +3,17 @@ import type { QueryBuilderParams } from '@nuxt/content'
 
 const route = useRoute()
 
-const { path = undefined, sort = undefined, preview = 'description' } = defineProps<{
+const { path = undefined, where = undefined, sort = undefined, preview = 'description' } = defineProps<{
   path?: string,
+  where?: any,
   sort?: any,
-  preview?: string
+  preview?: string,
 }>()
 
 const query: QueryBuilderParams = {
   path: path || route.path,
   where: [
-    { _path: { $regex: new RegExp(`^${(path || route.path).replace(/\/$/, "")}/[^/]+$`) } },
+    where || {},
     { _partial: false }
   ],
   sort: sort
@@ -24,7 +25,7 @@ div
   ContentList(:query="query")
     template(#default="{ list }")
       slot(:list="list")
-        TntContent(v-for="page in list" :page="page")
+        TntContent(v-for="page in list" :page="page" :preview="preview")
 
     template(#not-found)
 </template>

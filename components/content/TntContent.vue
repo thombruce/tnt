@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { page } = defineProps<{
+const { page, preview = 'description' } = defineProps<{
   page: any,
+  preview?: string,
 }>()
 </script>
 
@@ -15,7 +16,7 @@ article(:key="page._path")
 
       time.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
 
-    MDC(v-if="page[preview]" :value="page[preview]" unwrap="p")
+    TntMarkdownRenderer(v-if="page[preview]" :content="page[preview]")/
 
     section
       TntContentAttachments(v-if="page.attachments" :attachments="page.attachments")/
