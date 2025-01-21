@@ -28,7 +28,7 @@ NuxtLayout(:name="page?.layout || 'default'")
 
       ContentRenderer.tnt-article-body(:value="page")
         template(#empty)
-          TntContent(v-if="page.content" :content="page.content")/
+          TntMarkdownRenderer(v-if="page.content" :content="page.content")/
 
       section
         TntContentAttachments(v-if="page?.attachments" :attachments="page?.attachments")/

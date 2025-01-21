@@ -21,21 +21,10 @@ const query: QueryBuilderParams = {
 
 <template lang="pug">
 div
-  ContentList(:query="query")
-    template(#default="{ list }")
-      article(v-for="page in list" :key="page._path")
-        header.mb-2
-          h2.mb-1
-            NuxtLink(:to="page._path")
-              Icon.mr-4(v-if="page.icon" :name="page.icon")
-              | {{ page.navigation?.title || page.title }}
+  slot(:list="list")
+    ContentList(:query="query")
+      template(#default="{ list }")
+        TntContent(v-for="page in list" :page="page")
 
-          time.text-sm.text-gray-500(v-if="page.createdAt || page.created || page.date") {{ new Date(page.createdAt || page.created || page.date).toDateString() }}
-
-        MDC(v-if="page[preview]" :value="page[preview]" unwrap="p")
-
-        section
-          TntContentAttachments(v-if="page.attachments" :attachments="page.attachments")/
-
-    template(#not-found)
+      template(#not-found)
 </template>

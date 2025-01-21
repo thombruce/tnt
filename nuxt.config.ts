@@ -22,7 +22,15 @@ export default defineNuxtConfig({
     // ISSUE: https://github.com/nuxt/image/issues/1397
     static: process.env.NODE_ENV !== 'development',
   },
-  content: {},
+  content: {
+    sources: {
+      uploads: {
+        driver: 'fs',
+        prefix: '/uploads',
+        base: resolve(__dirname, 'public/uploads')
+      }
+    }
+  },
   tailwindcss: {},
   colorMode: {},
   site: {
