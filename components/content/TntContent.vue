@@ -19,5 +19,5 @@ article(:key="page._path")
     TntMarkdownRenderer(v-if="page[preview]" :content="page[preview]")/
 
     section
-      TntContentAttachments(v-if="page.attachments" :attachments="page.attachments")/
+      TntGallery(v-if="page.attachments" :images="[page.attachments].flat().map(a => Object.create({ _path: a, _file: a }))")/
 </template>

@@ -1,29 +1,30 @@
 <script setup lang="ts">
-import type { QueryBuilderParams } from '@nuxt/content'
-
-const route = useRoute()
-
 const {
-  path = undefined,
-  where = undefined,
-  sort = undefined
+  images = []
 } = defineProps<{
-  path?: string,
-  where?: any,
-  sort?: any,
+  images?: any[]
 }>()
 
-const whereOrDefault: QueryBuilderParams = { _path: { $regex: new RegExp(`^${(path || route.path).replace(/\/$/, "")}/.+$`) } }
+let klass = ''
+
+switch (images.length) {
+  case 1:
+    klass = 'grid-cols-1'
+    break
+  case 2:
+    klass = 'grid-cols-2'
+    break
+  case 3:
+    klass = 'grid-cols-3'
+    break
+  case 4:
+  default:
+    klass = 'grid-cols-4'
+}
 </script>
 
 <template lang="pug">
-TntContentList.not-prose.grid.grid-cols-3.gap-4(
-  :path="path"
-  :where="whereOrDefault"
-  :sort="sort"
-  v-slot="{ list }"
-)
-  TntContent(v-for="page in list" :page="page")
-    NuxtLink.block(:to="page._path")
-      NuxtImg(:src="page._file")
+.not-prose.grid(:class="klass")
+  NuxtLink.block.aspect-square(v-for="image in images" :to="image._path")
+    NuxtImg.w-full.h-full.object-cover(:src="image._file" fit="cover" width="600" height="600")
 </template>

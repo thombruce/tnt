@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { QueryBuilderParams } from '@nuxt/content'
+
 const { path } = useRoute()
 
 const { data: page } = await useAsyncData(`tnt-catchall-${path}`, () => queryContent(path).findOne())
@@ -13,6 +15,8 @@ defineOgImageComponent('TNT',
     theme: '#dc2626'
   }
 )
+
+const whereOrDefault: QueryBuilderParams = { _path: { $regex: new RegExp(`^${(path).replace(/\/$/, "")}/.+$`) } }
 </script>
 
 <template lang="pug">
@@ -30,13 +34,14 @@ NuxtLayout(:name="page?.layout || 'default'")
         template(#empty)
           TntMarkdownRenderer(v-if="page.content" :content="page.content")/
 
-      section
-        TntContentAttachments(v-if="page?.attachments" :attachments="page?.attachments")/
-
     template(v-else)
 
     footer
-      TntGallery(v-if="page?.list !== false")/
+      TntContentList(
+        :where="whereOrDefault"
+        v-slot="{ list }"
+      )
+        TntGallery(:images="list")
 
       TntPrevNext/
 </template>
