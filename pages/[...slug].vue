@@ -37,7 +37,7 @@ NuxtLayout(:name="page?.layout || 'default'")
           TntMarkdownRenderer(v-if="page.content" :content="page.content")/
 
       section
-        TntGallery(v-if="page?.attachments" :images="[page.attachments].flat().map(a => Object.create({ _path: a, _file: a }))")/
+        TntGallery(v-if="page?.attachments" :images="[page.attachments].flat().map(a => Object.create({ _path: a.split('.')[0], _file: a }))")/
 
     template(v-else)
 
