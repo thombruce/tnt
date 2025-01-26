@@ -57,11 +57,4 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true
   },
-  /* INTERNAL USE */
-  // @ts-expect-error
-  $tntDocs: {
-   content: {
-      sources: { content: { driver: 'fs', base: resolve(__dirname, 'docs') } }
-    },
-  }
 })
