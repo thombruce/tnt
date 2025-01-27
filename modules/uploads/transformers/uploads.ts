@@ -2,7 +2,7 @@ import { defineTransformer } from '@nuxt/content/transformers'
 
 export default defineTransformer({
   name: 'uploads-transformer',
-  extensions: ['.jpg'],
+  extensions: ['.jpg', '.jpeg', '.png'],
   parse (_id, rawContent: String) {
     return {
       _id,
