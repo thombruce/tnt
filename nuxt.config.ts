@@ -8,12 +8,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
+    'nuxt-lodash',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/seo',
     '@nuxt/icon',
     '@nuxt/image',
+    '@pinia/nuxt',
   ],
   routeRules: {
     ...tntConfig.routeRules,
@@ -25,6 +27,10 @@ export default defineNuxtConfig({
       failOnError: false, // NOTE: Prevents failure when links are generated for non-existent content docs; is there a better way?
     },
   },
+  lodash: {
+    prefix: "_",
+    upperAfterPrefix: false,
+  },
   content: {
     sources: {
       uploads: {
@@ -32,7 +38,7 @@ export default defineNuxtConfig({
         prefix: '/uploads',
         base: resolve(__dirname, 'public/uploads')
       }
-    }
+    },
   },
   tailwindcss: {},
   colorMode: {},

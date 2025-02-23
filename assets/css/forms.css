@@ -1,0 +1,177 @@
+/*
+  TODO:
+  Input types not yet addressed:
+  - button (but we provide styles for the <button> element instead)
+  - color
+  - hidden (but this shouldn't need styling)
+  - image
+  - reset (a button that resets form; but use of it is not recommended)
+  - submit (but again we already provide <button> styles)
+*/
+
+.errors.full {
+  @apply hidden;
+}
+
+.full-errors .errors.full {
+  @apply block;
+}
+
+.full-errors .errors.single {
+  @apply hidden;
+}
+
+input:not([type]),
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="file"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="time"],
+input[type="week"],
+select,
+textarea {
+  @apply
+    block
+    w-full
+    py-2
+    px-3
+    rounded
+    bg-white
+    dark:bg-base-900
+    text-base-700
+    dark:text-base-300
+    /* border, outline, ring */
+    border
+    focus:outline-none
+    focus:ring-1
+    /* border */
+    border-base-200
+    dark:border-base-700
+    focus:border-primary
+    dark:focus:border-primary-dark
+    /* ring */
+    focus:ring-primary-hover
+    dark:focus:ring-primary-dark-hover;
+  &.error {
+    @apply
+      border-error
+      dark:border-error-dark
+      focus:ring-error-hover
+      dark:focus:ring-error-dark-hover;
+  }
+}
+
+input[type="checkbox"], input[type="radio"] {
+  @apply
+    focus:ring-primary
+    dark:focus:ring-primary-dark
+    checked:bg-primary
+    checked:focus:bg-primary-hover
+    checked:hover:bg-primary-hover
+    dark:checked:bg-primary-dark
+    dark:checked:focus:bg-primary-dark-hover
+    dark:checked:hover:bg-primary-dark-hover;
+  &.error {
+    @apply
+      focus:ring-error
+      dark:focus:ring-error-dark
+      checked:bg-error
+      checked:focus:bg-error-hover
+      checked:hover:bg-error-hover
+      dark:checked:bg-error-dark
+      dark:checked:focus:bg-error-dark-hover
+      dark:checked:hover:bg-error-dark-hover;
+  }
+}
+
+input[type="checkbox"] {
+  @apply
+    rounded;
+}
+
+input[type="range"] {
+  @apply
+    block
+    w-full
+    py-2
+    accent-primary
+    hover:accent-primary-hover
+    active:accent-primary-hover
+    dark:accent-primary-dark
+    dark:hover:accent-primary-dark-hover
+    dark:active:accent-primary-dark-hover;
+  &.error {
+    @apply
+      accent-error
+      hover:accent-error-hover
+      active:accent-error-hover
+      dark:accent-error-dark
+      dark:hover:accent-error-dark-hover
+      dark:active:accent-error-dark-hover;
+  }
+  /*
+    Pseudo-states for range input:
+      hover:
+      focus:
+      active:
+  */
+}
+
+button:not(.btn-none) {
+  @apply
+    block
+    py-2
+    px-4
+    rounded
+    font-bold
+    text-white
+    bg-primary
+    hover:bg-primary-hover
+    dark:bg-primary-dark
+    dark:hover:bg-primary-dark-hover;
+  &.success {
+    @apply
+      bg-success
+      hover:bg-success-hover
+      dark:bg-success-dark
+      dark:hover:bg-success-dark-hover;
+  }
+  &.warning {
+    @apply
+      bg-warning
+      hover:bg-warning-hover
+      dark:bg-warning-dark
+      dark:hover:bg-warning-dark-hover;
+  }
+  &.danger, &.error {
+    @apply
+      bg-danger
+      hover:bg-danger-hover
+      dark:bg-danger-dark
+      dark:hover:bg-danger-dark-hover;
+  }
+  &.neutral {
+    @apply
+      bg-neutral
+      hover:bg-neutral-hover
+      dark:bg-neutral-dark
+      dark:hover:bg-neutral-dark-hover;
+  }
+  &:disabled {
+    @apply
+      bg-neutral
+      dark:bg-neutral-dark;
+  }
+}
+
+button.btn-none {
+  @apply
+    leading-none;
+}
