@@ -8,7 +8,7 @@ const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template lang="pug">
-.tnt-card.not-prose
+.tnt-card.not-prose(:class="color")
   figure(v-if="image")
     img(:src="image")
   .flex
