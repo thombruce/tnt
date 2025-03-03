@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@pinia/nuxt',
+    '@vueuse/nuxt',
   ],
   routeRules: {
     ...tntConfig.routeRules,
