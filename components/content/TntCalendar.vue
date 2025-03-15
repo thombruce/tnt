@@ -28,28 +28,38 @@
 import dayjs, { Dayjs } from 'dayjs'
 
 const { date, start, end, view = 'month' } = defineProps<{
-  date?: Dayjs | string,
-  start?: Dayjs | string,
-  end?: Dayjs | string,
+  date?: string,
+  start?: string,
+  end?: string,
   view?: string, // week, month, year
 }>()
 
-const parsedDate = date instanceof Dayjs ? date : dayjs(date)
-const parsedStart = start ? (start instanceof Dayjs ? start : dayjs(start)) : undefined
-const parsedEnd = end ? (end instanceof Dayjs ? end : dayjs(end)) : undefined
+const parsedDate = dayjs(date)
+const parsedStart = start ? dayjs(start) : undefined
+const parsedEnd = end ? dayjs(end) : undefined
 const parsedView = view
 
 const generateDates = () => {
-  // NOTE: Tempted to commit this as is, because this function needs some fairly significant changes
-  // to support start/end and view features.
+  let dates: Dayjs[] = []
 
-  const daysInMonth = parsedDate.daysInMonth()
+  if (parsedStart && parsedEnd) {
+    const days = parsedEnd.diff(parsedStart, 'day')
 
-  let day = 1, dates: Dayjs[] = []
+    let count = 0
 
-  while (day <= daysInMonth) {
-    dates.push(parsedDate.date(day))
-    day++
+    while (count <= days) {
+      dates.push(parsedStart.add(count, 'day'))
+      count++
+    }
+  } else {
+    const daysInMonth = parsedDate.daysInMonth()
+
+    let day = 1
+
+    while (day <= daysInMonth) {
+      dates.push(parsedDate.date(day))
+      day++
+    }
   }
 
   return dates
@@ -59,7 +69,7 @@ const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 
 const dates = generateDates()
 
-const startOfMonth = dates[0].startOf('month').day()
+const startOfMonth = dates[0].day()
 </script>
 
 <template lang="pug">
