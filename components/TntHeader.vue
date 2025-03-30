@@ -24,6 +24,6 @@ div(class="w-full \
       variant="ghost"
       class="my-2 px-2.5 py-1.5"
     )/
-    UNavigationMenu(:items="navItems")/
+    UNavigationMenu(:items="navItems || undefined" class="w-full justify-center z-50")/
     TntDarkMode/
 </template>
