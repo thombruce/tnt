@@ -9,6 +9,7 @@ export default defineContentConfig({
         // tags: z.array(z.string()),
         // image: z.string(),
         date: z.date(),
+        layout: z.string(),
         navigation: z.object({
           title: z.string(),
           description: z.string(),
