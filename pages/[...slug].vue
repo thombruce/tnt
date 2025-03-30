@@ -8,10 +8,12 @@ const { data: page } = await useAsyncData(route.path, () => {
 
 <template lang="pug">
 UContainer
+  TntBreadcrumbs/
   ContentRenderer(
     v-if="page"
     :value="page"
     class="prose \
           dark:prose-invert"
   )/
+  TntPrevNext/
 </template>
