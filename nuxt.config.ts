@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
+    '@nuxtjs/seo',
     '@nuxt/content',
     '@nuxt/icon',
     '@nuxt/image',
@@ -14,7 +15,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxt/eslint',
-    '@nuxtjs/seo',
   ],
   css: ['~/assets/css/main.css'],
   site: {
