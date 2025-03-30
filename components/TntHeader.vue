@@ -1,0 +1,29 @@
+<script setup lang="ts">
+const { name, nav: navConfig } = useSiteConfig()
+
+const { data: navItems } = await useAsyncData(`tntNav-for-content`, () => {
+  return tntNav(navConfig, 'content')
+})
+</script>
+
+<template lang="pug">
+div(class="w-full \
+           border-b \
+           border-neutral-200 \
+           dark:border-neutral-800"
+)
+  UContainer(
+    class="flex \
+          items-center \
+          justify-between"
+  )
+    UButton(
+      :label="name"
+      to="/"
+      color="neutral"
+      variant="ghost"
+      class="my-2 px-2.5 py-1.5"
+    )/
+    UNavigationMenu(:items="navItems")/
+    TntDarkMode/
+</template>

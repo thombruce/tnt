@@ -7,10 +7,11 @@ const { data: page } = await useAsyncData(route.path, () => {
 </script>
 
 <template lang="pug">
-ContentRenderer(
-  v-if="page"
-  :value="page"
-  class="prose \
-         dark:prose-invert"
-)/
+UContainer
+  ContentRenderer(
+    v-if="page"
+    :value="page"
+    class="prose \
+          dark:prose-invert"
+  )/
 </template>
