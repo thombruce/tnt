@@ -24,4 +24,14 @@ export default defineNuxtConfig({
     copyright: tntConfig.copyright || 'Copyright © All rights reserved',
     nav: tntConfig.nav || false,
   },
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          // TODO: This can be set back to 2 when we have a better solution for our TntToc
+          depth: 1,
+        }
+      }
+    }
+  }
 })

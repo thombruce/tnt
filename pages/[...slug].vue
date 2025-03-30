@@ -12,10 +12,15 @@ const layout = (page.value?.layout || 'default') as LayoutKey
 
 <template lang="pug">
 NuxtLayout(:name="layout")
-  ContentRenderer(
-    v-if="page"
-    :value="page"
-    class="prose \
-          dark:prose-invert"
-  )/
+  .grid.grid-cols-10.gap-10
+    .col-span-8
+      ContentRenderer(
+        v-if="page"
+        :value="page"
+        class="prose \
+              dark:prose-invert \
+              max-w-none"
+      )/
+    .col-span-2
+      TntToc(:toc="page?.body.toc")
 </template>
