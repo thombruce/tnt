@@ -8,6 +8,17 @@ const { data: page } = await useAsyncData(route.path, () => {
 })
 
 const layout = (page.value?.layout || 'default') as LayoutKey
+
+defineOgImageComponent('TNT',
+  {
+    title: page.value?.title || null,
+    description: page.value?.description || null,
+    icon: page.value?.navigation?.icon || null,
+    // siteName: name,
+    colorMode: 'dark',
+    // theme: '#dc2626'
+  }
+)
 </script>
 
 <template lang="pug">
