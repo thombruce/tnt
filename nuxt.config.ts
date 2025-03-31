@@ -31,6 +31,9 @@ export default defineNuxtConfig({
     copyright: tntConfig.copyright || 'Copyright © All rights reserved',
     nav: tntConfig.nav || false,
   },
+  routeRules: {
+    '/docs/getting-started': { redirect: '/docs/getting-started/installation', prerender: false },
+  },
   content: {
     build: {
       markdown: {
