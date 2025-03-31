@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import tntConfig from './tnt.config'
+import siteConfig from './config/site.config'
+import routesConfig from './config/routes.config'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -25,14 +26,14 @@ export default defineNuxtConfig({
     }
   },
   site: {
-    name: tntConfig.name || 'TNT',
-    description: tntConfig.description || 'Welcome to TNT!',
-    url: tntConfig.url || 'https://example.com/',
-    copyright: tntConfig.copyright || 'Copyright © All rights reserved',
-    nav: tntConfig.nav || false,
+    name: siteConfig.name || 'TNT',
+    description: siteConfig.description || 'Welcome to TNT!',
+    url: siteConfig.url || 'https://example.com/',
+    copyright: siteConfig.copyright || 'Copyright © All rights reserved',
+    nav: siteConfig.nav || false,
   },
   routeRules: {
-    '/docs/getting-started': { redirect: '/docs/getting-started/installation', prerender: false },
+    ...routesConfig,
   },
   content: {
     build: {
