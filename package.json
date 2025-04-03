@@ -21,6 +21,8 @@
     "@nuxtjs/seo": "^3.0.1",
     "@tailwindcss/typography": "^0.5.16",
     "@unhead/vue": "^2.0.2",
+    "@vueuse/core": "^13.0.0",
+    "@vueuse/nuxt": "^13.0.0",
     "eslint": "^9.23.0",
     "nuxt": "^3.16.1",
     "pug": "^3.0.3",
