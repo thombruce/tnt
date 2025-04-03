@@ -20,4 +20,7 @@ export default defineContentConfig({
   }
 })
 
-// To define custom collections, see: https://content.nuxt.com/docs/collections/define
+// TNT uses a single collection under the content/
+// directory in order to maintain searchability.
+// To define custom collections, see:
+// https://content.nuxt.com/docs/collections/define
