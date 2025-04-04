@@ -4,7 +4,7 @@ import type { LayoutKey } from '#build/types/layouts'
 const route = useRoute()
 
 const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection('pages').path(route.path).first()
+  return queryCollection('docs').path(route.path).first()
 })
 
 const layout = (page.value?.layout || 'default') as LayoutKey
@@ -25,7 +25,7 @@ defineOgImageComponent('TNT',
 NuxtLayout(:name="layout")
   .grid.grid-cols-10.gap-10
     .col-span-8
-      TntBreadcrumbs/
+      TntBreadcrumbs(collection="docs")/
       ContentRenderer(
         v-if="page"
         :value="page"
@@ -35,4 +35,5 @@ NuxtLayout(:name="layout")
       )/
     .col-span-2
       TntToc(:toc="page?.body.toc")
+  TntPrevNext(collection="docs")/
 </template>

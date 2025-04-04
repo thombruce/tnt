@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import type { BreadcrumbItem } from '@nuxt/ui'
+import type { PageCollections } from '@nuxt/content';
 
 const { path } = useRoute()
 
+const { collection = 'pages' } = defineProps<{
+  collection?: keyof PageCollections
+}>()
+
 const { data: items } = await useAsyncData(`tntBreadcrumbs`, () => {
-  return tntCrumbs(path)
+  return tntCrumbs(path, collection)
 })
 </script>
 

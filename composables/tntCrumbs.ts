@@ -1,14 +1,18 @@
-import type { ContentNavigationItem } from '@nuxt/content'
+import type { ContentNavigationItem, PageCollections } from '@nuxt/content'
 import type { BreadcrumbItem } from '@nuxt/ui'
 
-export const tntCrumbs = async (path: string) => {
+export const tntCrumbs = async (path: string, collection: keyof PageCollections = 'pages') => {
   const params = path.split('/').filter(item => item)
 
-  let navigation: ContentNavigationItem[] = await queryCollectionNavigation('content')
+  const home: ContentNavigationItem | undefined = await queryCollectionNavigation('pages')
+    .where('path', '=', '/')
+    .then(n => n[0])
 
-  const home: ContentNavigationItem | undefined = navigation.find(item => item.path === '/')
+  const navItems: BreadcrumbItem[] = home
+    ? [{ label: home.title, icon: home.icon as string | undefined, to: home.path }]
+    : [{ label: 'Home', icon: 'i-lucide:house', to: '/' }]
 
-  const navItems: BreadcrumbItem[] = home ? [{ label: home.title, icon: home.icon as string | undefined, to: home.path }] : [{ label: 'Home', to: '/' }]
+  let navigation: ContentNavigationItem[] = await queryCollectionNavigation(collection)
 
   let param = ''
 

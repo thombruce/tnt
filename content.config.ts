@@ -2,8 +2,26 @@ import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
-    content: defineCollection({
-      source: '**',
+    pages: defineCollection({
+      source: {
+        include: '**/*',
+        exclude: [
+          'blog/**/*',
+          'docs/**/*',
+        ]
+      },
+      type: 'page',
+      schema: z.object({
+        layout: z.string(),
+        navigation: z.object({
+          title: z.string(),
+          description: z.string(),
+          icon: z.string(),
+        }),
+      })
+    }),
+    blog: defineCollection({
+      source: 'blog/**/*',
       type: 'page',
       schema: z.object({
         // tags: z.array(z.string()),
@@ -14,14 +32,24 @@ export default defineContentConfig({
           title: z.string(),
           description: z.string(),
           icon: z.string(),
-        })
+        }),
       })
-    })
+    }),
+    docs: defineCollection({
+      source: 'docs/**/*',
+      type: 'page',
+      schema: z.object({
+        layout: z.string(),
+        navigation: z.object({
+          title: z.string(),
+          description: z.string(),
+          icon: z.string(),
+        }),
+      })
+    }),
   }
 })
 
-// TNT uses a single collection under the content/
-// directory in order to maintain searchability.
 // To define custom collections, see:
 // https://content.nuxt.com/docs/collections/define
 
@@ -39,11 +67,3 @@ export default defineContentConfig({
 // amidst their keys... but will Nuxt Content's search
 // settings index non-markdown? That's the question.
 // And if not, can we configure it to do so.
-
-// TODO: It also suddenly DOES make sense to have custom
-// collections like pages/, blog/, products/, authors/
-// as actually the CommandPallette allows multiple groups
-// to be sorted by type... and this would actually be kinda
-// killer to have! The only drawback really is... we have
-// got to load multiple search indexes, but that doesn't
-// seem like a great problem any more. 🤔

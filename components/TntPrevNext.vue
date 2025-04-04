@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import type { PageCollections } from '@nuxt/content';
+
 const { path } = useRoute()
 
+const { collection = 'pages' } = defineProps<{
+  collection?: keyof PageCollections
+}>()
+
 const { data } = await useAsyncData('surround', () => {
-  return queryCollectionItemSurroundings('content', path)
+  return queryCollectionItemSurroundings(collection, path)
 })
 
 const [prev, next] = data.value ? [data.value[0], data.value[1]] : []
