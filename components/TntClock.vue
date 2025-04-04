@@ -3,7 +3,7 @@
 //       It may not when rendered statically...?
 //       Investigate and... probably move to a
 //       components/global/ dir if that's the case.
-import { fromDate, toTime, toTimeZone, toLocalTimeZone } from '@internationalized/date'
+import { fromDate, toTime, toTimeZone, toLocalTimeZone, type ZonedDateTime } from '@internationalized/date'
 
 const { type = 'digital', timezone } = defineProps<{
   type?: 'digital' | 'analog', // timer | countdown
@@ -21,8 +21,8 @@ useIntervalFn(() => time.value = getTimeNow(), 500)
 
 const timeInZone = computed(() => {
   const t = timezone
-    ? toTimeZone(time.value, timezone)
-    : toLocalTimeZone(time.value)
+    ? toTimeZone(time.value as ZonedDateTime, timezone)
+    : toLocalTimeZone(time.value as ZonedDateTime)
   return toTime(t)
 })
 </script>
