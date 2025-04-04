@@ -6,6 +6,7 @@
 import { fromDate, toTime, toTimeZone, toLocalTimeZone, type ZonedDateTime } from '@internationalized/date'
 
 const { type = 'digital', timezone } = defineProps<{
+  // TODO: Implement analog.
   type?: 'digital' | 'analog', // timer | countdown
   timezone?: string,
   // 24hr vs 12hr
@@ -28,5 +29,5 @@ const timeInZone = computed(() => {
 </script>
 
 <template lang="pug">
-span {{ timeInZone.toString().split('.')[0] }}
+span(v-if="type === 'digital'") {{ timeInZone.toString().split('.')[0] }}
 </template>
