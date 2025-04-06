@@ -1,50 +1,57 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
+// Global keys shared by all content pages
+const global = {
+  layout: z.string(),
+  title: z.string(),
+  icon: z.string(),
+  description: z.string(),
+}
+
+// Reusable author
+const author = z.object({
+  name: z.string(),
+  avatar: z.object({ src: z.string() }),
+  to: z.string().url(),
+})
+
 export default defineContentConfig({
   collections: {
+    // Pages: E.g. /index.md, /about.md
     pages: defineCollection({
       source: {
         include: '**/*',
         exclude: [
-          'blog/**/*',
-          'docs/**/*',
+          '*blog/**/*',
+          '*docs/**/*',
         ]
       },
       type: 'page',
       schema: z.object({
-        layout: z.string(),
-        navigation: z.object({
-          title: z.string(),
-          description: z.string(),
-          icon: z.string(),
-        }),
+        ...global,
       })
     }),
+    // Blog: Article-like posts
     blog: defineCollection({
-      source: 'blog/**/*',
+      source: '*blog/**/*',
       type: 'page',
       schema: z.object({
-        // tags: z.array(z.string()),
+        ...global,
         // image: z.string(),
-        date: z.date(),
-        layout: z.string(),
-        navigation: z.object({
-          title: z.string(),
-          description: z.string(),
-          icon: z.string(),
-        }),
+        date: z.string().date(),
+        category: z.string(),
+        categories: z.array(z.string()),
+        author: author,
+        authors: z.array(author),
+        tags: z.array(z.string()),
       })
     }),
+    // Docs: For documentation websites
     docs: defineCollection({
-      source: 'docs/**/*',
+      source: '*docs/**/*',
       type: 'page',
       schema: z.object({
-        layout: z.string(),
-        navigation: z.object({
-          title: z.string(),
-          description: z.string(),
-          icon: z.string(),
-        }),
+        ...global,
       })
     }),
   }

@@ -19,7 +19,7 @@ defineOgImageComponent('TNT',
   {
     title: page.value?.title || null,
     description: page.value?.description || null,
-    icon: page.value?.navigation?.icon || null,
+    icon: page.value?.icon || null,
     // siteName: name,
     colorMode: 'dark',
     // theme: '#dc2626'
@@ -41,7 +41,7 @@ NuxtLayout(:name="layout")
               dark:prose-invert \
               max-w-none"
       )/
+      TntPrevNext(collection="docs")/
     .col-span-2
       TntToc(:toc="page?.body.toc")
-  TntPrevNext(collection="docs")/
 </template>

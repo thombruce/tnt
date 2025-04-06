@@ -8,8 +8,9 @@ const mapContentNavToUI = (items: ContentNavigationItem[]): NavigationMenuItem[]
       description: item.description as string,
       icon: item.icon as string,
       to: item.path as string,
-      children: item.children ? mapContentNavToUI(item.children) : undefined,
+      children: item.children && !item.hideChildren ? mapContentNavToUI(item.children) : undefined,
       defaultOpen: true,
+      sort: item.stem,
     }
   })
 }
@@ -18,14 +19,18 @@ export const queryNav = async (collection?: keyof PageCollections) => {
   const nav = []
 
   if (collection) {
-    const collectionNav = await queryCollectionNavigation(collection)
+    const collectionNav = await queryCollectionNavigation(collection, ['icon', 'description'])
     nav.push(...mapContentNavToUI(collectionNav))
   } else for (const coll of tntContentCollections) {
-    const collectionNav = await queryCollectionNavigation(coll)
+    const collectionNav = await queryCollectionNavigation(coll, ['icon', 'description'])
     nav.push(...mapContentNavToUI(collectionNav))
   }
 
-  return nav
+  return nav.sort((a, b) => {
+    const aSort = (a as { sort: string }).sort
+    const bSort = (b as { sort: string }).sort
+    return aSort < bSort ? -1 : aSort > bSort ? 1 : 0
+  })
 }
 
 export const tntNav = async (nav: NavigationMenuItem[] | boolean, collection?: keyof PageCollections) => {
