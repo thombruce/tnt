@@ -28,20 +28,18 @@ defineOgImageComponent('TNT',
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="layout")
-  .grid.grid-cols-10.gap-10
-    .col-span-2
-      UNavigationMenu(:items="navItems || undefined" orientation="vertical" class="")/
-    .col-span-6
-      TntBreadcrumbs(collection="docs")/
-      ContentRenderer(
-        v-if="page"
-        :value="page"
-        class="prose \
-              dark:prose-invert \
-              max-w-none"
-      )/
-      TntPrevNext(collection="docs")/
-    .col-span-2
-      TntToc(:toc="page?.body.toc")
+NuxtLayout(:name="layout" collection="docs")
+  template(#nav)
+    UNavigationMenu(:items="navItems || undefined" orientation="vertical" class="")/
+
+  ContentRenderer(
+    v-if="page"
+    :value="page"
+    class="prose \
+          dark:prose-invert \
+          max-w-none"
+  )/
+
+  template(#toc)
+    TntToc(:toc="page?.body.toc")
 </template>

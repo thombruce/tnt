@@ -22,21 +22,17 @@ defineOgImageComponent('TNT',
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="layout")
-  .grid.grid-cols-10.gap-10
-    .col-span-8
-      TntBreadcrumbs(collection="blog")/
-      template(v-if="page")
-        TntBlogHeader(:page="page")/
+NuxtLayout(:name="layout" collection="blog")
+  TntBlogHeader(v-if="page" :page="page")/
 
-        ContentRenderer(
-          :value="page"
-          class="prose \
-                dark:prose-invert \
-                max-w-none"
-          
-        )/
-      TntPrevNext(collection="blog")/
-    .col-span-2
-      TntToc(:toc="page?.body.toc")
+  ContentRenderer(
+    v-if="page"
+    :value="page"
+    class="prose \
+          dark:prose-invert \
+          max-w-none"
+  )/
+
+  template(#toc)
+    TntToc(:toc="page?.body.toc")
 </template>

@@ -1,5 +1,7 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
+// TODO: Add .optional() where appropriate
+
 // Global keys shared by all content pages
 const global = {
   layout: z.string(),
@@ -37,6 +39,7 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         ...global,
+        layout: z.string().default('article'),
         // image: z.string(),
         date: z.string().date(),
         category: z.string(),
@@ -52,6 +55,7 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         ...global,
+        layout: z.string().default('doc'),
       })
     }),
   }
