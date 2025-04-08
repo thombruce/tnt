@@ -4,17 +4,17 @@ import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 // Global keys shared by all content pages
 const global = {
-  layout: z.string(),
+  layout: z.string().optional(),
   title: z.string(),
-  icon: z.string(),
+  icon: z.string().optional(),
   description: z.string(),
 }
 
 // Reusable author
 const author = z.object({
   name: z.string(),
-  avatar: z.object({ src: z.string() }),
-  to: z.string().url(),
+  avatar: z.object({ src: z.string() }).optional(),
+  to: z.string().url().optional(),
 })
 
 export default defineContentConfig({
@@ -42,11 +42,11 @@ export default defineContentConfig({
         layout: z.string().default('article'),
         // image: z.string(),
         date: z.string().date(),
-        category: z.string(),
-        categories: z.array(z.string()),
-        author: author,
-        authors: z.array(author),
-        tags: z.array(z.string()),
+        category: z.string().optional(),
+        categories: z.array(z.string()).optional(),
+        author: author.optional(),
+        authors: z.array(author).optional(),
+        tags: z.array(z.string()).optional(),
       })
     }),
     // Docs: For documentation websites
