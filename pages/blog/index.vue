@@ -20,9 +20,5 @@ const { data: items } = await useAsyncData(`tntList-for-blog`, () => {
 <template lang="pug">
 NuxtLayout(:name="layout" collection="blog")
   h1.text-4xl.font-extrabold Blog
-  div.my-4.space-y-4
-    ULink.block(v-if="items" v-for="item in items" :to="item.path")
-      UCard
-        h2.text-2xl.font-extrabold {{ item.title }}
-        p {{ item.description }}
+  TntArticleList(collection="blog" path="/blog" :order="{ field: 'date', direction: 'DESC' }")
 </template>

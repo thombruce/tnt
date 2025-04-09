@@ -1,5 +1,7 @@
 # Clock
 
+Provides a digital clock component.
+
 ## UTC
 
 ```js

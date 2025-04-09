@@ -8,6 +8,13 @@ const global = {
   title: z.string(),
   icon: z.string().optional(),
   description: z.string(),
+  list: z.boolean()
+    .or(z.string())
+    .or(z.object({
+      collection: z.string().optional(),
+      path: z.string(),
+      order: z.object({ field: z.string(), direction: z.enum(['ASC', 'DESC']) }).optional()
+    })).optional(),
 }
 
 // Reusable author

@@ -40,6 +40,21 @@ NuxtLayout(:name="layout" collection="docs")
           max-w-none"
   )/
 
+  TntArticleList(
+    v-if="page?.list"
+    :collection="typeof page.list === 'object' && page.list.collection ? page.list.collection : 'docs'"
+    :path=" \
+      typeof page.list === 'boolean' \
+        ? route.path \
+        : typeof page.list === 'string' \
+        ? page.list \
+        : typeof page.list === 'object' \
+        ? page.list.path \
+        : route.path \
+    "
+    :order="typeof page.list === 'object' && page.list.order ? page.list.order : undefined"
+  )
+
   template(#toc)
     TntToc(:toc="page?.body.toc")
 </template>

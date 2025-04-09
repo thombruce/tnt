@@ -30,4 +30,19 @@ NuxtLayout(:name="layout")
           dark:prose-invert \
           max-w-none"
   )/
+
+  TntArticleList(
+    v-if="page?.list"
+    :collection="typeof page.list === 'object' && page.list.collection ? page.list.collection : 'pages'"
+    :path=" \
+      typeof page.list === 'boolean' \
+        ? route.path \
+        : typeof page.list === 'string' \
+        ? page.list \
+        : typeof page.list === 'object' \
+        ? page.list.path \
+        : route.path \
+    "
+    :order="typeof page.list === 'object' && page.list.order ? page.list.order : undefined"
+  )
 </template>

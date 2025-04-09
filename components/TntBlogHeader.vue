@@ -10,7 +10,7 @@ const { page } = defineProps<{
 div
   div.space-y-2
     div.space-x-3
-      UBadge(color="neutral" variant="outline") {{ page.category }}
+      UBadge(v-if="page.category" color="neutral" variant="outline") {{ page.category }}
       strong {{ new Date(page.date).toLocaleDateString() }}
 
     div.space-y-4
