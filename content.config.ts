@@ -1,7 +1,5 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
-// TODO: Add .optional() where appropriate
-
 // Global keys shared by all content pages
 const global = {
   layout: z.string().optional(),
