@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { BlogCollectionItem } from '@nuxt/content'
+import type { BlogCollectionItem, CollectionItemBase } from '@nuxt/content'
 
 const { page } = defineProps<{
-  page: BlogCollectionItem
-}>()
+  page: CollectionItemBase
+}>() as { page: BlogCollectionItem }
 </script>
 
 <template lang="pug">
@@ -11,7 +11,7 @@ div
   div.space-y-2
     div.space-x-3
       UBadge(v-if="page.category" color="neutral" variant="outline") {{ page.category }}
-      strong {{ new Date(page.date).toLocaleDateString() }}
+      strong(v-if="page.date") {{ new Date(page.date).toLocaleDateString() }}
 
     div.space-y-4
       h1(class="text-4xl font-extrabold") {{ page.title }}

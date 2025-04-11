@@ -12,8 +12,13 @@ NuxtLayout(name="base")
   .grid.grid-cols-10.gap-10
     div(:class="($slots.toc) ? 'col-span-8' : 'col-span-10'")
       TntBreadcrumbs(:collection="collection")/
+
+      slot(name="header")
+
       slot
+
       TntPrevNext(:collection="collection")/
+
     .col-span-2(v-if="$slots.toc")
       slot(name="toc")
 </template>

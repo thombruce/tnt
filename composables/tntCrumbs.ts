@@ -4,7 +4,7 @@ import type { BreadcrumbItem } from '@nuxt/ui'
 export const tntCrumbs = async (path: string, collection: keyof PageCollections = 'pages') => {
   const params = path.split('/').filter(item => item)
 
-  const home: ContentNavigationItem | undefined = await queryCollectionNavigation('pages')
+  const home: ContentNavigationItem | undefined = await queryCollectionNavigation('pages', ['icon'])
     .where('path', '=', '/')
     .then(n => n[0])
 

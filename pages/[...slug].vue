@@ -1,10 +1,21 @@
 <script lang="ts" setup>
 import type { LayoutKey } from '#build/types/layouts'
+import type { Collections } from '@nuxt/content'
 
 const route = useRoute()
 
+const collection = tntContentCollections.includes(route.params.slug[0] as keyof Collections)
+  ? route.params.slug[0] as keyof Collections
+  : 'pages'
+
 const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection('pages').path(route.path).first()
+  return queryCollection(collection).path(route.path).first()
+})
+
+const { data: navItems } = await useAsyncData(`tntNav-for-${collection}`, () => {
+  return tntNav(true, collection)
+  // TODO: Look and see if we can tweak tntNav to allow adjustable start and
+  //       end depths.
 })
 
 const layout = (page.value?.layout || 'default') as LayoutKey
@@ -22,7 +33,13 @@ defineOgImageComponent('TNT',
 </script>
 
 <template lang="pug">
-NuxtLayout(:name="layout")
+NuxtLayout(:name="layout" :collection="collection")
+  template(#nav)
+    UNavigationMenu(:items="navItems || undefined" orientation="vertical" class="")/
+
+  template(#header)
+    TntBlogHeader(v-if="page" :page="page")/
+
   ContentRenderer(
     v-if="page"
     :value="page"
@@ -33,7 +50,7 @@ NuxtLayout(:name="layout")
 
   TntArticleList(
     v-if="page?.list"
-    :collection="typeof page.list === 'object' && page.list.collection ? page.list.collection : 'pages'"
+    :collection="typeof page.list === 'object' && page.list.collection ? page.list.collection : collection"
     :path=" \
       typeof page.list === 'boolean' \
         ? route.path \
@@ -45,4 +62,7 @@ NuxtLayout(:name="layout")
     "
     :order="typeof page.list === 'object' && page.list.order ? page.list.order : undefined"
   )
+
+  template(#toc)
+    TntToc(:toc="page?.body.toc")
 </template>
