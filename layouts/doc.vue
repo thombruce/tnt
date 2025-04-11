@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import type { PageCollections } from '@nuxt/content';
 
-// TODO: Enable some kind of sensible default value for collection.
-//       Should it be 'docs'? Should it be 'pages'?
-//       Should we attempt to infer it from the route?
-const { collection }: { collection?: keyof PageCollections | undefined } = useAttrs()
+const { collection = 'pages' }: { collection?: keyof PageCollections | undefined } = useAttrs()
 </script>
 
 <template lang="pug">
