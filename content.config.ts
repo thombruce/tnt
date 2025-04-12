@@ -6,6 +6,7 @@ const global = {
   title: z.string(),
   icon: z.string().optional(),
   description: z.string(),
+  image: z.string().optional(),
   list: z.boolean()
     .or(z.string())
     .or(z.object({
@@ -45,7 +46,6 @@ export default defineContentConfig({
       schema: z.object({
         ...global,
         layout: z.string().default('article'),
-        // image: z.string(),
         date: z.string().date(),
         category: z.string().optional(),
         categories: z.array(z.string()).optional(),

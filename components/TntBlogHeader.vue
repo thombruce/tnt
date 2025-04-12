@@ -7,7 +7,7 @@ const { page } = defineProps<{
 </script>
 
 <template lang="pug">
-div
+div.mb-5
   div.space-y-2
     div.space-x-3
       UBadge(v-if="page.category" color="neutral" variant="outline") {{ page.category }}
@@ -29,4 +29,8 @@ div
       )
 
   USeparator.py-5
+
+  //- TODO: Add multi-image support
+  .block.aspect-video(v-if="page.image")
+    NuxtImg.w-full.h-full.object-cover(:src="page.image" fit="cover" width="1200" height="1200")
 </template>
