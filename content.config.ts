@@ -76,10 +76,3 @@ export default defineContentConfig({
 // creating canonical markdown files which link to
 // "attached" content should you need to use custom
 // types at all.
-
-// TODO: Investigate whether or not it is possible to
-// make well-behaved non-markdown custom "page" types
-// searchable. These will have a title and content
-// amidst their keys... but will Nuxt Content's search
-// settings index non-markdown? That's the question.
-// And if not, can we configure it to do so.
