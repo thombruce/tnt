@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { LayoutKey } from '#build/types/layouts'
-import type { Collections } from '@nuxt/content'
+import type { PageCollections } from '@nuxt/content'
 
 const route = useRoute()
 
-const collection = tntContentCollections.includes(route.params.slug[0] as keyof Collections)
-  ? route.params.slug[0] as keyof Collections
+const collection = tntContentCollections.includes(route.params.slug[0] as keyof PageCollections)
+  ? route.params.slug[0] as keyof PageCollections
   : 'pages'
 
 const { data: page } = await useAsyncData(route.path, () => {
