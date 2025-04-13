@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import * as locales from '@nuxt/ui/locale'
+
+const { locale } = useI18n()
+
 // TODO:
 // - Brochure view
 // - Docs view
@@ -46,7 +50,7 @@
 </script>
 
 <template lang="pug">
-UApp
+UApp(:locale="locales[locale]")
   NuxtRouteAnnouncer/
   NuxtPage/
 </template>

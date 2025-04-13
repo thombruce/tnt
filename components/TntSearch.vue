@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { PageCollections } from '@nuxt/content'
 
+const { $i18n: { t } } = useNuxtApp()
+
 const query = ref('')
 
 const sections: { collection: keyof PageCollections, section: object[] | undefined }[] = []
@@ -21,8 +23,7 @@ const groups = computed(() => {
   return sections.map(s => {
     return {
       id: s.collection,
-      // TODO: Upcase collection or otherwise... consider using i18n for this.
-      label: query.value ? `${s.collection} matching “${query.value}”...` : s.collection,
+      label: query.value ? `${t('content.collections.' + s.collection)} matching “${query.value}”...` : t('content.collections.' + s.collection),
       items: s.section || [],
       // ignoreFilter: true // Can be used if we want to disable default filtering and use our own search logic.
     }

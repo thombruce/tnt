@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/ui',
+    '@nuxtjs/i18n',
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@vueuse/nuxt'
@@ -45,5 +46,11 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+  i18n: {
+    strategy: 'no_prefix',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' }
+    ]
+  },
 })

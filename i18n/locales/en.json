@@ -1,0 +1,9 @@
+{
+  "content": {
+    "collections": {
+      "pages": "Pages",
+      "blog": "Blog posts",
+      "docs": "Docs"
+    }
+  }
+}
