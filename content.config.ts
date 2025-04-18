@@ -7,6 +7,7 @@ const global = {
   icon: z.string().optional(),
   description: z.string(),
   image: z.string().optional(),
+  images: z.array(z.string()).optional(),
   list: z.boolean()
     .or(z.string())
     .or(z.object({

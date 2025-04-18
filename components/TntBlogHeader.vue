@@ -33,4 +33,7 @@ div.mb-5
   //- TODO: Add multi-image support
   .block.aspect-video(v-if="page.image")
     NuxtImg.w-full.h-full.object-cover(:src="page.image" fit="cover" width="1200" height="1200")
+  UCarousel(v-else-if="page.images" v-slot="{ item }" :items="page.images" :ui="{ item: 'basis-1/3' }")
+    .block.aspect-square
+      NuxtImg.w-full.h-full.object-cover.rounded-lg(:src="item" fit="cover" width="1200" height="1200")
 </template>
