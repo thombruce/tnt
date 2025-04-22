@@ -1,9 +1,18 @@
 export default {
-  '/docs': { redirect: '/docs/getting-started/installation', prerender: false },
-  '/docs/getting-started': { redirect: '/docs/getting-started/installation', prerender: false },
+  /* Add your own routeRules here. */
 } as RoutesConfig
 
 /* TYPES */
 type RoutesConfig = {
-  [k: string]: object
+  [k: string]: {
+    redirect?: string,
+    ssr?: boolean,
+    cors?: boolean,
+    headers?: object,
+    swr?: number | boolean,
+    isr?: number | boolean,
+    prerender?: boolean,
+    noScripts?: boolean,
+    appMiddleware?: string | string[] | Record<string, boolean>,
+  }
 }
