@@ -7,9 +7,6 @@ const currentDir = dirname(fileURLToPath(import.meta.url))
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  extends: [
-    '../core',
-  ],
   modules: [
     '@nuxt/content',
   ],
