@@ -1,5 +1,5 @@
 {
-  "name": "tnt-content",
+  "name": "@thombruce/tnt-content",
   "private": true,
   "type": "module",
   "dependencies": {

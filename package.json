@@ -1,5 +1,5 @@
 {
-  "name": "tnt",
+  "name": "@thombruce/tnt-template",
   "private": true,
   "type": "module",
   "workspaces": [

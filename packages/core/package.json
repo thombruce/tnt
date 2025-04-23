@@ -1,5 +1,5 @@
 {
-  "name": "tnt-core",
+  "name": "@thombruce/tnt",
   "private": true,
   "type": "module",
   "dependencies": {
