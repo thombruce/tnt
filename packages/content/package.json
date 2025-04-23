@@ -1,6 +1,6 @@
 {
   "name": "@thombruce/tnt-content",
-  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "dependencies": {
     "@nuxt/content": "^3.4.0"

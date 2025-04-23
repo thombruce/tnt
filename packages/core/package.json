@@ -1,6 +1,6 @@
 {
   "name": "@thombruce/tnt",
-  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "dependencies": {
     "@internationalized/date": "^3.7.0",
