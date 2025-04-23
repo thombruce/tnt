@@ -1,5 +1,8 @@
 {
   "name": "tnt-content",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@nuxt/content": "^3.4.0"
+  }
 }
