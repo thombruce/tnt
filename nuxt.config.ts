@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import { siteConfig, routeRules } from '~/tnt.config'
+import { siteConfig, routeRules } from './tnt.config'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
