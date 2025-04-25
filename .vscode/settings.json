@@ -5,6 +5,7 @@
   "editor.quickSuggestions": {
     "strings": "on"
   },
+  "editor.indentSize": 2,
   "tailwindCSS.classAttributes": ["class", "ui"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]

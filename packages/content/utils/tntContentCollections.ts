@@ -1,7 +1,5 @@
 import type { PageCollections } from "@nuxt/content"
 
-export const tntContentCollections: (keyof PageCollections)[] = [
-  'pages',
-  'blog',
-  'docs',
-]
+import { collections } from '~/tnt.config'
+
+export const tntContentCollections: (keyof PageCollections)[] = collections as (keyof PageCollections)[]
