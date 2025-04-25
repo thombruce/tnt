@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import type { PageCollections } from '@nuxt/content'
 
-const { $i18n: { t } } = useNuxtApp()
+const { $i18n: { t: translate } } = useNuxtApp()
+
+const t = (collection: string): string => {
+  const key = 'content.collections.' + collection
+  if (translate(key) !== key) {
+    return translate(key)
+  } else {
+    return titleCase(collection)
+  }
+}
 
 const query = ref('')
 
@@ -23,7 +32,7 @@ const groups = computed(() => {
   return sections.map(s => {
     return {
       id: s.collection,
-      label: query.value ? `${t('content.collections.' + s.collection)} matching “${query.value}”...` : t('content.collections.' + s.collection),
+      label: query.value ? `${t(s.collection)} matching “${query.value}”...` : t(s.collection),
       items: s.section || [],
       // ignoreFilter: true // Can be used if we want to disable default filtering and use our own search logic.
     }
