@@ -9,6 +9,7 @@ const config = {
     copyright: null,
     defaultLocale: 'en',
     nav: true,
+    backgroundPattern: 'topography',
   },
 
   /* Collections */
@@ -42,6 +43,7 @@ type SiteConfig = {
   copyright: string | null,
   defaultLocale: string,
   nav: NavigationMenuItem[] | boolean,
+  backgroundPattern?: string | false | null,
 }
 
 type CollectionList = string[]
