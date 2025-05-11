@@ -13,10 +13,12 @@ const config = {
   },
 
   /* Collections */
+  // TODO: Move to runtimeConfig defined in nuxt.config.ts ???
   collections: [
     'pages',
-    'blog',
-    'docs',
+    // TODO: Remove if certain we want to simplify like this.
+    // 'blog',
+    // 'docs',
   ],
 
   /* Route Rules */
