@@ -21,7 +21,7 @@ export const queryNav = async (collection?: keyof PageCollections) => {
   if (collection) {
     const collectionNav = await queryCollectionNavigation(collection, ['icon', 'description'])
     nav.push(...mapContentNavToUI(collectionNav))
-  } else for (const coll of tntContentCollections) {
+  } else for (const coll of useRuntimeConfig().public.collections as (keyof PageCollections)[]) {
     const collectionNav = await queryCollectionNavigation(coll, ['icon', 'description'])
     nav.push(...mapContentNavToUI(collectionNav))
   }
