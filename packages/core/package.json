@@ -1,6 +1,6 @@
 {
   "name": "@thombruce/tnt",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "type": "module",
   "style": "./assets/css/main.css",
   "dependencies": {
