@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "@vue/language-plugin-pug": "^2.2.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
