@@ -1,6 +1,6 @@
 {
   "name": "@thombruce/tnt-content",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "type": "module",
   "dependencies": {
     "@nuxt/content": "^3.4.0"
