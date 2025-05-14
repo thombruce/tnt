@@ -6,7 +6,8 @@
     "culori": "^4.0.1"
   },
   "devDependencies": {
-    "@types/culori": "^2.1.1"
+    "@types/culori": "^2.1.1",
+    "nuxt": "^3.17.3"
   },
   "publishConfig": {
     "access": "public"
