@@ -10,6 +10,12 @@ export default defineNuxtConfig({
     copyright: 'Copyright © All rights reserved',
     nav: true,
     backgroundPattern: false,
+    og: {
+      component: 'TntColor',
+      website: null,
+      color: null,
+      image: null,
+    }
   },
   routeRules: {
     /* Custom route rules */
