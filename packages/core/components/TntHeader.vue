@@ -1,10 +1,4 @@
 <script setup lang="ts">
-// TODO: Move to appConfig or runtimeConfig
-//       ...but let's acknowledge that name is an
-//       awkward one as Nuxt SEO does expect this value
-//       to be set in siteConfig, right? Can we retrieve
-//       it from appConfig or runtimeConfig within nuxt.config
-//       to set the siteConfig value from one of those?
 const { name } = useSiteConfig()
 </script>
 
