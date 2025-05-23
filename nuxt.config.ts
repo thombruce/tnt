@@ -8,6 +8,12 @@ export default defineNuxtConfig({
     description: 'Where I post all my awesome stuff!',
     url: 'https://example.com/',
     copyright: 'Copyright © All rights reserved',
+    company: {
+      name: 'My Awesome Company', // Optional; will fallback to site.name
+      email: '', // TODO: Consider need for separate email used for legal/privacy purposes?
+      address: ``, // Optional
+      telephone: '', // Optional
+    },
     ogComponent: 'TntColor',
     og: {
       website: null,
