@@ -1,5 +1,6 @@
 export default defineAppConfig({
   copyright: 'Copyright © All rights reserved',
+  nav: true,
   backgroundPattern: false,
   ui: {
     colors: {

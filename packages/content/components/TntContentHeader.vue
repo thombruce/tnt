@@ -1,5 +1,14 @@
 <script setup lang="ts">
-const { name, nav: navConfig } = useSiteConfig()
+// TODO: Move to appConfig or runtimeConfig
+//       ...but name is tricky (see app.vue)
+//       and can we conceive of any scenario where
+//       the Content module would be used without
+//       the Web module? ... Well, yes... for
+//       maybe an offline wiki? A sort of downloadable
+//       manual.
+const { name } = useSiteConfig()
+
+const { nav: navConfig } = useAppConfig()
 
 const { data: navItems } = await useAsyncData(`tntNav-for-content`, () => {
   return tntNav(navConfig)

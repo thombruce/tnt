@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     name: 'My Awesome Site',
     description: 'Where I post all my awesome stuff!',
     url: 'https://example.com/',
-    nav: true,
     ogComponent: 'TntColor',
     og: {
       website: null,

@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const { name, /* nav: navConfig */ } = useSiteConfig()
-
-// const { data: navItems } = await useAsyncData(`tntNav-for-content`, () => {
-//   return tntNav(navConfig)
-// })
+// TODO: Move to appConfig or runtimeConfig
+//       ...but let's acknowledge that name is an
+//       awkward one as Nuxt SEO does expect this value
+//       to be set in siteConfig, right? Can we retrieve
+//       it from appConfig or runtimeConfig within nuxt.config
+//       to set the siteConfig value from one of those?
+const { name } = useSiteConfig()
 </script>
 
 <template lang="pug">
@@ -26,8 +28,6 @@ div(class="w-full \
       variant="ghost"
       class="my-2 px-2.5 py-1.5 font-extrabold"
     )/
-    //- UNavigationMenu(:items="navItems || undefined" class="w-full justify-center z-50")/
     .flex
-      //- TntSearch/
       TntDarkMode/
 </template>
