@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { copyright, backgroundPattern } = useSiteConfig()
+const { copyright, backgroundPattern } = useAppConfig()
 </script>
 
 <template lang="pug">
