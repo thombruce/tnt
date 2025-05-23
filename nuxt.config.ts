@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     url: 'https://example.com/',
     copyright: 'Copyright © All rights reserved',
     nav: true,
-    backgroundPattern: false,
     ogComponent: 'TntColor',
     og: {
       website: null,

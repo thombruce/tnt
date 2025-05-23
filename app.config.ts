@@ -1,4 +1,5 @@
 export default defineAppConfig({
+  backgroundPattern: false,
   ui: {
     colors: {
       primary: 'green',
