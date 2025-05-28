@@ -43,9 +43,6 @@ export default defineNuxtConfig({
   },
   extends: [
     '@thombruce/tnt',
-    '@thombruce/tnt-fancy',
-    '@thombruce/tnt-web',
-    '@thombruce/tnt-content',
   ],
   modules: [
     /* Custom Modules */

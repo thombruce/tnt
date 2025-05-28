@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { LayoutKey } from '#build/types/layouts'
-import type { PageCollections, PagesCollectionItem } from '@nuxt/content'
+import type { PageCollections } from '@nuxt/content'
 
 const route = useRoute()
 
