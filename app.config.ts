@@ -1,6 +1,6 @@
 export default defineAppConfig({
   nav: true,
-  theme: 'solid',
+  theme: undefined,
   backgroundPattern: false,
   ui: {
     colors: {
