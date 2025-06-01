@@ -35,7 +35,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/seo',
     '@nuxt/content',
-    '@nuxthq/studio',
   ],
   css: [
     fs.existsSync('./assets/css/main.css')
@@ -57,6 +56,9 @@ export default defineNuxtConfig({
           depth: 1,
         }
       }
+    },
+    preview: {
+      api: 'https://api.nuxt.studio'
     }
   },
   i18n: {
