@@ -3,9 +3,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  nitro: {
-    static: true
-  },
+  // nitro: {
+  //   static: true
+  // },
   site: {
     name: 'My Awesome Site',
     description: 'Where I post all my awesome stuff!',
