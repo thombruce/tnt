@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/seo',
     '@nuxt/content',
+    '@nuxthq/studio',
   ],
   css: [
     fs.existsSync('./assets/css/main.css')
