@@ -3,6 +3,7 @@ export default defineAppConfig({
   theme: undefined,
   colorMode: null,
   backgroundPattern: false,
+  defaultLayout: null,
   ui: {
     colors: {
       primary: 'green',
