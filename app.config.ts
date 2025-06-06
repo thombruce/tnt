@@ -2,14 +2,19 @@ export default defineAppConfig({
   site: {
     name: 'My Awesome Site',
     description: 'Where I post all my awesome stuff!',
-    url: 'https://example.com/',
+    url: 'https://www.example.com/',
     copyright: 'Copyright © All rights reserved',
+    og: {
+      component: 'TntColor',
+      website: 'www.example.com',
+      color: '#000000',
+      // image: null, // NOTE: Removed as broken. / TODO: Investigate
+    },
   },
-  nav: true,
-  theme: null,
-  backgroundPattern: false,
-  defaultLayout: null,
   ui: {
+    layout: 'default',
+    theme: null, // NOTE: Changed from theme to ui.theme - update across app.
+    pattern: false,
     colors: {
       primary: 'green',
       secondary: 'blue',
@@ -20,10 +25,5 @@ export default defineAppConfig({
       neutral: 'slate',
     }
   },
-  og: {
-    website: null,
-    color: null,
-    image: null,
-  },
-  ogComponent: 'TntColor', // TODO: Add to og object above if possible
+  nav: true,
 })
