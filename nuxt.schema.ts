@@ -75,7 +75,33 @@ export default defineNuxtSchema({
           default: false,
           // required: ['i like food']
         }),
-        colors: group({})
+        colors: group({
+          title: 'Colors',
+          description: 'Theme colors',
+          fields: {
+            primary: field({
+              type: 'string',
+              title: 'Primary',
+              description: 'Primary color used for links, buttons and interactivity',
+              default: 'green',
+              required: ['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'],
+            }),
+            secondary: field({
+              type: 'string',
+              title: 'Secondary',
+              description: 'Secondary color (not currently used by TNT)',
+              default: 'blue',
+              required: ['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'],
+            }),
+            neutral: field({
+              type: 'string',
+              title: 'Neutral',
+              description: 'Neutral color used for the site text, background and layout',
+              default: 'slate',
+              required: ['slate', 'gray', 'zinc', 'neutral', 'stone'],
+            }),
+          }
+        })
       }
     })
   }
