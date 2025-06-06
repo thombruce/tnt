@@ -63,7 +63,22 @@ export default defineNuxtSchema({
           description: 'Default page layout',
           default: 'default',
           required: ['default', 'headerless', 'article', 'doc', 'empty']
-        })
+        }),
+        theme: field({
+          type: 'string',
+          title: 'Theme',
+          description: 'Base theme',
+          default: 'solid',
+          required: ['solid', 'ghost']
+        }),
+        pattern: field({
+          type: 'string',
+          title: 'Background Pattern',
+          description: 'Hero Patterns by Steve Schoger',
+          default: false,
+          // required: ['i like food']
+        }),
+        colors: group({})
       }
     })
   }
