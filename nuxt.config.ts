@@ -10,13 +10,6 @@ export default defineNuxtConfig({
     name: 'My Awesome Site',
     description: 'Where I post all my awesome stuff!',
     url: 'https://example.com/',
-    copyright: 'Copyright © All rights reserved',
-    ogComponent: 'TntColor',
-    og: {
-      website: null,
-      color: null,
-      image: null,
-    }
   },
   routeRules: {
     /* Custom route rules */
