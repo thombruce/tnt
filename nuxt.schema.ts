@@ -3,8 +3,6 @@ import { field, group } from '@nuxt/content/preview'
 export default defineNuxtSchema({
   appConfig: {
     site: group({
-      title: 'Site',
-      description: 'Site configuration',
       icon: 'ph:info',
       fields: {
         name: field({
@@ -53,8 +51,7 @@ export default defineNuxtSchema({
       },
     }),
     ui: group({
-      title: 'UI',
-      description: 'Theme configuration',
+      // title: 'UI',
       icon: 'ph:palette-fill',
       fields: {
         layout: field({
