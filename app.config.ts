@@ -25,5 +25,16 @@ export default defineAppConfig({
       neutral: 'slate',
     }
   },
-  nav: true,
+  header: {
+    navigation: {
+      content: true,
+      links: [],
+    }
+  },
+  footer: {
+    navigation: {
+      content: true,
+      links: [],
+    }
+  },
 })
