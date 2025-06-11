@@ -22,7 +22,7 @@ const {
 }>()
 
 const computedColor = computed(() => {
-  return template || color
+  return color || template
 })
 
 const computedIcon = computed(() => {
