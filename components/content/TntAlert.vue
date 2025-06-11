@@ -1,10 +1,15 @@
 <script setup lang="ts">
-const { success, info, warning, error, large } = defineProps<{
+// TODO: Explicitly list all props, even those that will be handled by UAlert.
+//       This will ensure that they show up in Studio.
+const { success, info, warning, error, large, title = undefined, description = undefined } = defineProps<{
   success?: boolean
   info?: boolean
   warning?: boolean
   error?: boolean
   large?: boolean
+
+  title?: string
+  description?: string
 }>()
 
 let color: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined, icon: string
