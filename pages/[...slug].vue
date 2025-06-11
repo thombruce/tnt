@@ -55,8 +55,11 @@ NuxtLayout(:name="layout" :theme="theme" :collection="collection")
       :unmount-on-hide="false"
     )/
 
-  template(#header)
-    TntBlogHeader(v-if="page" :page="page")/
+  //- template(#header)
+  //-   TODO: We're presently duplicating title and "description" if present in body.
+  //-         Need to figure out what we want as a default behaviour here.
+  //-         I'm simply going to hide the BlogHeader for now, but let's revisit soon.
+  //-   TntBlogHeader(v-if="page" :page="page")/
 
   ContentRenderer(
     v-if="page"
