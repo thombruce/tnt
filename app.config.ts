@@ -31,11 +31,11 @@ export default defineAppConfig({
     }
   },
   footer: {
-    about: undefined,
+    about: '',
     contact: {
-      email: undefined,
-      tel: undefined,
-      address: undefined,
+      email: '',
+      tel: '',
+      address: '',
     },
     copyright: 'Copyright © All rights reserved',
     navigation: {
