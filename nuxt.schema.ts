@@ -53,7 +53,7 @@ export default defineNuxtSchema({
           title: 'Layout',
           description: 'Default page layout',
           default: 'default',
-          required: ['default', 'headerless', 'article', 'doc', 'empty']
+          required: ['default']
         }),
         theme: field({
           type: 'string',
