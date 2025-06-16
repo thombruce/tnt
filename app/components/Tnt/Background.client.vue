@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { formatHex } from 'culori'
-
 // TODO: Enable background to be used in components like card/hero/etc.,
 //       not just as the main page background.
 // TODO: Allow background to be configured on/off and have its pattern,
@@ -9,7 +7,14 @@ import { formatHex } from 'culori'
 //       move the TntBackground usage from app.vue to [...slug].vue, right?
 //       As we'll need to access to the NuxtPage properties we access there.
 
+import { formatHex } from 'culori'
+
+/* Constants */
+
 const colorMode = useColorMode()
+const styles = getComputedStyle(document.documentElement)
+
+/* Props */
 
 // TODO: Allow color and opacity to be set as props too.
 //       Preferably these should also allow for light and
@@ -18,21 +23,24 @@ const { pattern } = defineProps<{
   pattern: string,
 }>()
 
-const styles = getComputedStyle(document.documentElement)
-const uiColor = styles.getPropertyValue("--ui-bg-accented")
+/* Refs */
 
-const color = ref(formatHex(uiColor))
-const opacity = ref(colorMode.value === 'dark' ? 0.4 : 0.7)
+const uiColor = ref(styles.getPropertyValue("--ui-bg-accented"))
+
+/* Computed */
+
+const color = computed(() => formatHex(uiColor.value))
+const opacity = computed(() => colorMode.value === 'dark' ? 0.4 : 0.7)
+const bgImage = computed(() => `url("${heroPattern(pattern, color.value, opacity.value)}")`)
+
+/* Watch */
 
 watch(colorMode, () => {
+  /* Mod Constants */
   const styles = getComputedStyle(document.documentElement)
-  const uiColor = styles.getPropertyValue("--ui-bg-accented")
-
-  color.value = formatHex(uiColor)
-  opacity.value = colorMode.value === 'dark' ? 0.4 : 0.7
+  /* Update Refs */
+  uiColor.value = styles.getPropertyValue("--ui-bg-accented")
 })
-
-const bgImage = computed(() => `url("${heroPattern(pattern, color.value, opacity.value)}")`)
 </script>
 
 <template lang="pug">
