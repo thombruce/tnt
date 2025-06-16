@@ -9,7 +9,7 @@ const {
     contact: { email, tel, address },
     navigation: { content: navContent, links: navLinks },
   },
-} = useAppConfig()
+} = useAppConfig() as any
 
 const about = tntTranslate('footer.about', footerAbout)
 const copyright = tntTranslate('footer.copyright', footerCopyright)
