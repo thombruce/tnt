@@ -82,7 +82,7 @@ div(:class="footer({ variant })")
               a(:href="`mailto:${email}`" class="text-dimmed hover:text-default") {{ email }}
           dl(v-if="address")
             dt(class="font-bold") Address
-            dd {{ address }}
+            dd(class="text-muted") {{ address }}
 
       div(class="text-center")
 
