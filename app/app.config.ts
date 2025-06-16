@@ -13,7 +13,7 @@ export default defineAppConfig({
   ui: {
     layout: 'default',
     theme: 'solid',
-    pattern: 'i like food',
+    pattern: false,
     colors: {
       primary: 'green',
       secondary: 'blue',
