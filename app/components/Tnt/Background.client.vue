@@ -18,13 +18,13 @@ const { pattern } = defineProps<{
   pattern: string,
 }>()
 
-const color = ref()
-const opacity = ref(0.4)
+const styles = getComputedStyle(document.documentElement)
+const uiColor = styles.getPropertyValue("--ui-bg-accented")
+
+const color = ref(formatHex(uiColor))
+const opacity = ref(colorMode.value === 'dark' ? 0.4 : 0.7)
 
 watch(colorMode, () => {
-  // TODO: The following constants are why this background component
-  //       is client only. Reconfigure it in such a way that some non-theme
-  //       but sensible fallback colors are used when rendered from the server.
   const styles = getComputedStyle(document.documentElement)
   const uiColor = styles.getPropertyValue("--ui-bg-accented")
 
