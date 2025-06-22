@@ -13,12 +13,14 @@ const {
   },
 } = useAppConfig() as any
 
+const { locale, defaultLocale } = useI18n()
+
 const about = tntTranslate('footer.about', footerAbout)
 const copyright = tntTranslate('footer.copyright', footerCopyright)
 
 // @i18n
 
-const { /* color = 'neutral', */ variant = undefined, collection } = defineProps<{
+const { /* color = 'neutral', */ variant = undefined } = defineProps<{
   // color?: 'neutral' | 'primary'
   variant?: 'bordered' | 'solid' | 'ghost'
   // TODO: Size - it would be nice to allow larger text; given that this
@@ -28,7 +30,7 @@ const { /* color = 'neutral', */ variant = undefined, collection } = defineProps
 }>()
 
 // NOTE: useAsyncData removed
-const navItems = await tntNav(navContent ? navContent : navLinks, collection, { shallow: true })
+const navItems = await tntNav(navContent ? navContent : navLinks, undefined, { shallow: true , locale: contentI18n ? (locale.value === defaultLocale ? true : locale.value) : false })
 
 const footer = computed(() => tv({
   base: 'w-full',
