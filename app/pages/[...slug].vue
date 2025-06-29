@@ -76,6 +76,11 @@ NuxtLayout(:name="layout" :theme="theme" :collection="collection")
             dark:prose-invert \
             max-w-none"
     )/
+    template(v-else)
+      div(class="prose dark:prose-invert max-w-none")
+        h1 Page Not Found
+        p Oops! The content you're looking for doesn't exist.
+        NuxtLinkLocale(to="/") Go back home
 
     //- TODO: Ensure that article list shows content from fallback locale
     TntArticleList(
