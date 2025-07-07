@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { UButton } from "#components";
 import type { ButtonProps } from "@nuxt/ui"
 
 const { title, description, headline, links, orientation = 'vertical' } = defineProps<{
@@ -20,6 +21,8 @@ section(
     span(class="mb-4 font-semibold text-primary flex items-center gap-1.5") {{ headline }}
     h1(class="text-5xl sm:text-7xl text-pretty tracking-tight font-bold text-highlighted") {{ title }}
     p(class="text-lg sm:text-xl/8 text-muted text-pretty mt-6") {{ description }}
+    div(v-if="links?.length" class="mt-10 flex flex-wrap gap-x-6 gap-y-3")
+      UButton(v-for="link in links" size="xl" v-bind="link")
   div(v-if="$slots.default")
     slot/
 </template>
