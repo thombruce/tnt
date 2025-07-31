@@ -39,7 +39,7 @@ export const global = {
 
   links: z.array(z.string()).optional(),
 
-  layout: z.enum(['default', 'docs']).optional(),
+  layout: z.enum(['default', 'docs', 'empty']).optional(),
 
   // TODO: Some kinda page.ui object.
   //       Probably include layout (above) in this as well.
@@ -69,5 +69,6 @@ export const global = {
       collection: z.string().optional(),
       path: z.string(),
       order: z.object({ field: z.string(), direction: z.enum(['ASC', 'DESC']) }).optional()
+      // TODO: Allow selection between paginated, infinite and none (list all on single page, no matter how many)
     })).optional(),
 }
