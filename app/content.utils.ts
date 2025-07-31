@@ -44,8 +44,8 @@ export const global = {
   // TODO: Some kinda page.ui object.
   //       Probably include layout (above) in this as well.
   header: z.boolean().default(false),
-  breadcrumbs: z.boolean().default(true),
-  prevnext: z.boolean().default(true),
+  breadcrumbs: z.boolean().or(z.undefined()),
+  prevnext: z.boolean().or(z.undefined()),
   // NOTE: Presently used only by the docs layout
   nav: z.boolean().default(true),
   toc: z.boolean().default(true),
