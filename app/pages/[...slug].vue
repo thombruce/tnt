@@ -26,6 +26,12 @@ let page = await queryCollection(collection).path(route.path).first()
 
 const layout = (page?.layout || defaultLayout || 'default') as LayoutKey
 
+useHead({
+  title: page?.title
+})
+
+useSeoMeta({})
+
 definePageMeta({
   colorMode: pageMeta.colorMode
 })
