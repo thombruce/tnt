@@ -6,17 +6,15 @@ export default defineContentConfig({
   collections: {
     // Pages: E.g. /index.md, /about.md
     pages: defineCollection({
-      source: [
-        {
-          include: '**/*',
-          exclude: [
-            '.*',
-            '.*/**/*',
-            '_*',
-            '_*/**/*',
-          ]
-        },
-      ],
+      source: {
+        include: '**/*',
+        exclude: [
+          '.*',
+          '.*/**/*',
+          '_*',
+          '_*/**/*',
+        ]
+      },
       type: 'page',
       schema: z.object({
         ...global,
