@@ -68,12 +68,6 @@ div(:class="navbar({ variant })")
         class="my-2 px-2.5 py-1.5 font-extrabold"
       )/
 
-    UNavigationMenu(
-      :items="navItems || undefined"
-      :unmount-on-hide="false"
-      class="hidden md:flex w-full justify-center z-50"
-    )/
-
     div(class="flex")
       TntSearch/
       TntColorMode/

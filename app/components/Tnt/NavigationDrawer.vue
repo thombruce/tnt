@@ -9,7 +9,7 @@ const open = ref(false)
 </script>
 
 <template lang="pug">
-UDrawer(v-model:open="open" direction="left" class="md:hidden")
+UDrawer(v-model:open="open" direction="left")
   UButton(
     icon="lucide:menu"
     color="neutral"
