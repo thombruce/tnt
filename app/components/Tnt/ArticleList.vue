@@ -12,6 +12,7 @@ const { collection, path, order = { field: 'stem', direction: 'ASC' } } = define
 const items = await queryCollection(collection as keyof PageCollections)
   // .where('extension', '=', 'md')
   .where('path', 'LIKE', `${path}/%`)
+  .where('path', 'NOT LIKE', `${path}/%/%`)
   // .select('title', 'path', 'description', 'stem', 'date')
   .order(order.field, order.direction)
   .all()
