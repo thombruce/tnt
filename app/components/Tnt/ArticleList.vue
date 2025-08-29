@@ -10,7 +10,7 @@ const { collection, path, order = { field: 'stem', direction: 'ASC' } } = define
 
 // NOTE: useAsyncData removed
 const items = await queryCollection(collection as keyof PageCollections)
-  .where('extension', '=', 'md')
+  // .where('extension', '=', 'md')
   .where('path', 'LIKE', `${path}/%`)
   // .select('title', 'path', 'description', 'stem', 'date')
   .order(order.field, order.direction)
